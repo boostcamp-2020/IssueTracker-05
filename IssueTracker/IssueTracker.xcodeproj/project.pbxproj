@@ -7,62 +7,87 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DABEB845254818DE006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB844254818DE006471F6 /* AppDelegate.swift */; };
-		DABEB847254818DE006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB846254818DE006471F6 /* SceneDelegate.swift */; };
-		DABEB849254818DE006471F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB848254818DE006471F6 /* ViewController.swift */; };
-		DABEB84C254818DE006471F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB84A254818DE006471F6 /* Main.storyboard */; };
-		DABEB84E254818DE006471F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABEB84D254818DE006471F6 /* Assets.xcassets */; };
-		DABEB851254818DE006471F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB84F254818DE006471F6 /* LaunchScreen.storyboard */; };
+		40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */; };
+		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
+		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
+		DABEB86B254821B3006471F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB86A254821B3006471F6 /* ViewController.swift */; };
+		DABEB86E254821B3006471F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB86C254821B3006471F6 /* Main.storyboard */; };
+		DABEB870254821B4006471F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABEB86F254821B4006471F6 /* Assets.xcassets */; };
+		DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB871254821B4006471F6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DABEB841254818DE006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DABEB844254818DE006471F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DABEB846254818DE006471F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DABEB848254818DE006471F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DABEB84B254818DE006471F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DABEB84D254818DE006471F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DABEB850254818DE006471F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		DABEB852254818DE006471F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
+		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		DABEB863254821B3006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DABEB866254821B3006471F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DABEB868254821B3006471F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		DABEB86A254821B3006471F6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DABEB86D254821B3006471F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DABEB86F254821B4006471F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DABEB872254821B4006471F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DABEB874254821B4006471F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DABEB83E254818DE006471F6 /* Frameworks */ = {
+		DABEB860254821B3006471F6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DABEB838254818DE006471F6 = {
+		241B4D018FBB81C43AD4548C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DABEB843254818DE006471F6 /* IssueTracker */,
-				DABEB842254818DE006471F6 /* Products */,
+				D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */,
+				99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2A270A1495A97AF3246318D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DABEB85A254821B3006471F6 = {
+			isa = PBXGroup;
+			children = (
+				DABEB865254821B3006471F6 /* IssueTracker */,
+				DABEB864254821B3006471F6 /* Products */,
+				241B4D018FBB81C43AD4548C /* Pods */,
+				2A270A1495A97AF3246318D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		DABEB842254818DE006471F6 /* Products */ = {
+		DABEB864254821B3006471F6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DABEB841254818DE006471F6 /* IssueTracker.app */,
+				DABEB863254821B3006471F6 /* IssueTracker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DABEB843254818DE006471F6 /* IssueTracker */ = {
+		DABEB865254821B3006471F6 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
-				DABEB844254818DE006471F6 /* AppDelegate.swift */,
-				DABEB846254818DE006471F6 /* SceneDelegate.swift */,
-				DABEB848254818DE006471F6 /* ViewController.swift */,
-				DABEB84A254818DE006471F6 /* Main.storyboard */,
-				DABEB84D254818DE006471F6 /* Assets.xcassets */,
-				DABEB84F254818DE006471F6 /* LaunchScreen.storyboard */,
-				DABEB852254818DE006471F6 /* Info.plist */,
+				DABEB866254821B3006471F6 /* AppDelegate.swift */,
+				DABEB868254821B3006471F6 /* SceneDelegate.swift */,
+				DABEB86A254821B3006471F6 /* ViewController.swift */,
+				DABEB86C254821B3006471F6 /* Main.storyboard */,
+				DABEB86F254821B4006471F6 /* Assets.xcassets */,
+				DABEB871254821B4006471F6 /* LaunchScreen.storyboard */,
+				DABEB874254821B4006471F6 /* Info.plist */,
 			);
 			path = IssueTracker;
 			sourceTree = "<group>";
@@ -70,13 +95,15 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DABEB840254818DE006471F6 /* IssueTracker */ = {
+		DABEB862254821B3006471F6 /* IssueTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DABEB855254818DE006471F6 /* Build configuration list for PBXNativeTarget "IssueTracker" */;
+			buildConfigurationList = DABEB877254821B4006471F6 /* Build configuration list for PBXNativeTarget "IssueTracker" */;
 			buildPhases = (
-				DABEB83D254818DE006471F6 /* Sources */,
-				DABEB83E254818DE006471F6 /* Frameworks */,
-				DABEB83F254818DE006471F6 /* Resources */,
+				C5A2D5F4985AA8F2F0D2302F /* [CP] Check Pods Manifest.lock */,
+				DABEB85F254821B3006471F6 /* Sources */,
+				DABEB860254821B3006471F6 /* Frameworks */,
+				DABEB861254821B3006471F6 /* Resources */,
+				E433D09EA7E0AE5F5B23A436 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -84,25 +111,25 @@
 			);
 			name = IssueTracker;
 			productName = IssueTracker;
-			productReference = DABEB841254818DE006471F6 /* IssueTracker.app */;
+			productReference = DABEB863254821B3006471F6 /* IssueTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		DABEB839254818DE006471F6 /* Project object */ = {
+		DABEB85B254821B3006471F6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
 				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = ralph;
 				TargetAttributes = {
-					DABEB840254818DE006471F6 = {
+					DABEB862254821B3006471F6 = {
 						CreatedOnToolsVersion = 11.7;
 					};
 				};
 			};
-			buildConfigurationList = DABEB83C254818DE006471F6 /* Build configuration list for PBXProject "IssueTracker" */;
+			buildConfigurationList = DABEB85E254821B3006471F6 /* Build configuration list for PBXProject "IssueTracker" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +137,97 @@
 				en,
 				Base,
 			);
-			mainGroup = DABEB838254818DE006471F6;
-			productRefGroup = DABEB842254818DE006471F6 /* Products */;
+			mainGroup = DABEB85A254821B3006471F6;
+			productRefGroup = DABEB864254821B3006471F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DABEB840254818DE006471F6 /* IssueTracker */,
+				DABEB862254821B3006471F6 /* IssueTracker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DABEB83F254818DE006471F6 /* Resources */ = {
+		DABEB861254821B3006471F6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DABEB851254818DE006471F6 /* LaunchScreen.storyboard in Resources */,
-				DABEB84E254818DE006471F6 /* Assets.xcassets in Resources */,
-				DABEB84C254818DE006471F6 /* Main.storyboard in Resources */,
+				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
+				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
+				DABEB86E254821B3006471F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C5A2D5F4985AA8F2F0D2302F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IssueTracker-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E433D09EA7E0AE5F5B23A436 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		DABEB83D254818DE006471F6 /* Sources */ = {
+		DABEB85F254821B3006471F6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DABEB849254818DE006471F6 /* ViewController.swift in Sources */,
-				DABEB845254818DE006471F6 /* AppDelegate.swift in Sources */,
-				DABEB847254818DE006471F6 /* SceneDelegate.swift in Sources */,
+				DABEB86B254821B3006471F6 /* ViewController.swift in Sources */,
+				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
+				DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DABEB84A254818DE006471F6 /* Main.storyboard */ = {
+		DABEB86C254821B3006471F6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DABEB84B254818DE006471F6 /* Base */,
+				DABEB86D254821B3006471F6 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		DABEB84F254818DE006471F6 /* LaunchScreen.storyboard */ = {
+		DABEB871254821B4006471F6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DABEB850254818DE006471F6 /* Base */,
+				DABEB872254821B4006471F6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +235,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		DABEB853254818DE006471F6 /* Debug */ = {
+		DABEB875254821B4006471F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +295,7 @@
 			};
 			name = Debug;
 		};
-		DABEB854254818DE006471F6 /* Release */ = {
+		DABEB876254821B4006471F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,8 +349,9 @@
 			};
 			name = Release;
 		};
-		DABEB856254818DE006471F6 /* Debug */ = {
+		DABEB878254821B4006471F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,8 +368,9 @@
 			};
 			name = Debug;
 		};
-		DABEB857254818DE006471F6 /* Release */ = {
+		DABEB879254821B4006471F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -319,25 +390,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DABEB83C254818DE006471F6 /* Build configuration list for PBXProject "IssueTracker" */ = {
+		DABEB85E254821B3006471F6 /* Build configuration list for PBXProject "IssueTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DABEB853254818DE006471F6 /* Debug */,
-				DABEB854254818DE006471F6 /* Release */,
+				DABEB875254821B4006471F6 /* Debug */,
+				DABEB876254821B4006471F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DABEB855254818DE006471F6 /* Build configuration list for PBXNativeTarget "IssueTracker" */ = {
+		DABEB877254821B4006471F6 /* Build configuration list for PBXNativeTarget "IssueTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DABEB856254818DE006471F6 /* Debug */,
-				DABEB857254818DE006471F6 /* Release */,
+				DABEB878254821B4006471F6 /* Debug */,
+				DABEB879254821B4006471F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = DABEB839254818DE006471F6 /* Project object */;
+	rootObject = DABEB85B254821B3006471F6 /* Project object */;
 }
