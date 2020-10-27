@@ -19,4 +19,8 @@ module.exports = {
       },
     ],
   },
+  // resolve : {
+  //   alias: {
+  //   }
+  // }
 };
