@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */; };
+		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
 		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
 		DABEB86B254821B3006471F6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB86A254821B3006471F6 /* ViewController.swift */; };
@@ -15,11 +16,11 @@
 		DABEB870254821B4006471F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABEB86F254821B4006471F6 /* Assets.xcassets */; };
 		DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB871254821B4006471F6 /* LaunchScreen.storyboard */; };
 		DABEB87D25482290006471F6 /* RankingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB87C25482290006471F6 /* RankingBarView.swift */; };
-		DABEB87F25482452006471F6 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB87E25482452006471F6 /* UIVIew+LivePreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		DABEB863254821B3006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,7 +32,6 @@
 		DABEB872254821B4006471F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DABEB874254821B4006471F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DABEB87C25482290006471F6 /* RankingBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankingBarView.swift; sourceTree = "<group>"; };
-		DABEB87E25482452006471F6 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIVIew+LivePreview.swift"; path = "IssueTracker/UIVIew+LivePreview.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8818249B25484B8000C352A8 /* Extenstion */ = {
+			isa = PBXGroup;
+			children = (
+				8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */,
+			);
+			path = Extenstion;
+			sourceTree = "<group>";
+		};
 		DABEB85A254821B3006471F6 = {
 			isa = PBXGroup;
 			children = (
@@ -92,7 +100,7 @@
 				DABEB86F254821B4006471F6 /* Assets.xcassets */,
 				DABEB871254821B4006471F6 /* LaunchScreen.storyboard */,
 				DABEB874254821B4006471F6 /* Info.plist */,
-				DABEB87E25482452006471F6 /* UIVIew+LivePreview.swift */,
+				8818249B25484B8000C352A8 /* Extenstion */,
 			);
 			path = IssueTracker;
 			sourceTree = "<group>";
@@ -216,7 +224,7 @@
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
 				DABEB87D25482290006471F6 /* RankingBarView.swift in Sources */,
 				DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */,
-				DABEB87F25482452006471F6 /* UIVIew+LivePreview.swift in Sources */,
+				8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
