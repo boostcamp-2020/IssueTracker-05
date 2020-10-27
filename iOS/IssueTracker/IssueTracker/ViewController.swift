@@ -25,7 +25,7 @@ struct Preview: PreviewProvider {
     
     static var previews: some View {
         
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: String(describing: ViewController.self))
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "JJM")
         
         return vc.view.liveView
     }
