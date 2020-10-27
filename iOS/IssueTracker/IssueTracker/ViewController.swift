@@ -15,6 +15,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
 }
 
+#if DEBUG
+
+import SwiftUI
+
+struct Preview: PreviewProvider {
+    
+    static var previews: some View {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: String(describing: ViewController.self))
+        
+        return vc.view.liveView
+    }
+    
+}
+
+#endif
