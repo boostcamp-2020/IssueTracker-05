@@ -1,10 +1,3 @@
-//
-//  UIVIew+LivePreview.swift
-//  IssueTracker
-//
-//  Created by 조정래 on 2020/10/27.
-//  Copyright © 2020 ralph. All rights reserved.
-//
 
 #if DEBUG
 import UIKit
