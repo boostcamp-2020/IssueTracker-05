@@ -35,14 +35,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="407" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-ZO-99p">
-                                                    <rect key="frame" x="54" y="28" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-ZO-99p">
+                                                    <rect key="frame" x="36" y="27.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="leading" secondItem="k0n-DC-FAO" secondAttribute="leading" constant="36" id="j9j-JW-ZbB"/>
+                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="centerY" secondItem="k0n-DC-FAO" secondAttribute="centerY" id="qpq-kE-P5D"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="407" height="76"/>
                                         <connections>
