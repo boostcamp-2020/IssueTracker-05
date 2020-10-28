@@ -13,29 +13,41 @@
         <!--Search List View Controller-->
         <scene sceneID="hnc-uH-Him">
             <objects>
-                <viewController id="ISS-e9-60a" customClass="SearchListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchListViewController" id="ISS-e9-60a" customClass="SearchListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tn8-gr-XTK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ebl-XZ-ZVq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DmG-bh-sk4">
-                                    <size key="itemSize" width="407" height="128"/>
+                                    <size key="itemSize" width="407" height="76"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="YMq-k9-AeK">
-                                        <rect key="frame" x="3.5" y="0.0" width="407" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchListCellView" id="SrX-zD-UA1" customClass="SearchListCellView" customModule="IssueTracker" customModuleProvider="target">
+                                        <rect key="frame" x="3.5" y="0.0" width="407" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U9Y-jo-tEX">
-                                            <rect key="frame" x="0.0" y="0.0" width="407" height="128"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0n-DC-FAO">
+                                            <rect key="frame" x="0.0" y="0.0" width="407" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-ZO-99p">
+                                                    <rect key="frame" x="54" y="28" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="407" height="128"/>
+                                        <size key="customSize" width="407" height="76"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="2Io-ZO-99p" id="85F-GS-9mo"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -49,15 +61,18 @@
                             <constraint firstItem="Ebl-XZ-ZVq" firstAttribute="top" secondItem="Tcc-Bh-9zf" secondAttribute="top" id="t8b-JL-Ta5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionview" destination="Ebl-XZ-ZVq" id="1io-H1-jDz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VC5-qC-dy1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-520.28985507246375" y="760.71428571428567"/>
+            <point key="canvasLocation" x="2374" y="573"/>
         </scene>
         <!--Issue List Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="IssueListViewController" id="BYZ-38-t0r" customClass="IssueListMainViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueListMainViewController" id="BYZ-38-t0r" customClass="IssueListMainViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -66,17 +81,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3It-ve-q31">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <segue destination="ISS-e9-60a" kind="embed" id="OfY-8l-JeL"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <connections>
-                                    <segue destination="ID2-uM-ZeT" kind="embed" id="snE-uR-LzY"/>
+                                    <segue destination="AIc-gn-oDr" kind="embed" id="snE-uR-LzY"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -92,21 +100,24 @@
                             <constraint firstItem="x3U-gf-c9U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sLC-yY-mab"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="x3U-gf-c9U" id="mAM-kI-Aed"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="139"/>
+            <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
         </scene>
         <!--Issue Result View Controller-->
         <scene sceneID="CrW-7S-1lF">
             <objects>
-                <viewController id="ID2-uM-ZeT" customClass="IssueResultViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueResultViewController" id="ID2-uM-ZeT" customClass="IssueResultViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NCS-yi-Wg5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-zG-RSi">
-                                <rect key="frame" x="20" y="44" width="374" height="718"/>
+                                <rect key="frame" x="20" y="88" width="374" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8U0-Yd-1MU">
                                     <size key="itemSize" width="370" height="128"/>
@@ -115,14 +126,33 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y5d-4A-gw8">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueResultCellView" id="nKv-YR-Rwv" customClass="IssueResultCellView" customModule="IssueTracker" customModuleProvider="target">
                                         <rect key="frame" x="2" y="0.0" width="370" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="IssueResultCellView" insetsLayoutMarginsFromSafeArea="NO" id="zsd-fP-iaN" customClass="IssueResultCellView" customModule="IssueTracker" customModuleProvider="target">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EOG-bM-25o">
                                             <rect key="frame" x="0.0" y="0.0" width="370" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w40-Ih-LV5">
+                                                    <rect key="frame" x="38" y="30" width="33" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFt-CN-7zz">
+                                                    <rect key="frame" x="38" y="70" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="370" height="128"/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="iFt-CN-7zz" id="U1X-8m-h99"/>
+                                            <outlet property="titleLabel" destination="w40-Ih-LV5" id="abf-mn-Tky"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -136,13 +166,32 @@
                             <constraint firstItem="jJ6-zG-RSi" firstAttribute="top" secondItem="NCS-yi-Wg5" secondAttribute="topMargin" id="gVj-lS-JLd"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="del-fw-K5Z"/>
                     <connections>
-                        <outlet property="collectionview" destination="jJ6-zG-RSi" id="68i-4h-laJ"/>
+                        <outlet property="collectionview" destination="jJ6-zG-RSi" id="ayj-T0-8M8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2W-jl-Bge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705.79710144927537" y="760.71428571428567"/>
+            <point key="canvasLocation" x="2635" y="-51"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e40-AW-DQV">
+            <objects>
+                <navigationController storyboardIdentifier="issueListNavigation" automaticallyAdjustsScrollViewInsets="NO" id="AIc-gn-oDr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6pU-b3-crZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ID2-uM-ZeT" kind="relationship" relationship="rootViewController" id="WLO-iY-ul4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cm6-sj-TPG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1851" y="-37"/>
         </scene>
     </scenes>
     <resources>

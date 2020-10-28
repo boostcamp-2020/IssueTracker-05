@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.1.0)
+  - Alamofire (5.2.2)
   - Kingfisher (5.15.6):
     - Kingfisher/Core (= 5.15.6)
   - Kingfisher/Core (5.15.6)
@@ -28,7 +28,7 @@ SPEC REPOS:
     - Then
 
 SPEC CHECKSUMS:
-  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
   Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
@@ -37,4 +37,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 93af8f4b1f56ef87771a924a4c2aee2b09c9889f
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.9.3
