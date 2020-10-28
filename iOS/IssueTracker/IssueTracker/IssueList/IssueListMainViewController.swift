@@ -7,23 +7,8 @@ class IssueListMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let searchListViewController = storyboard!.instantiateViewController(identifier: "SearchListViewController")
-//
-//        let nav = storyboard!.instantiateViewController(identifier: "issueListNavigation")
-//        as UINavigationController
-//
-//        nav.pushViewController(searchListViewController, animated: false)
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let searchListViewController = storyboard!.instantiateViewController(identifier: "SearchListViewController")
         
-        let nav = storyboard!.instantiateViewController(identifier: "issueListNavigation")
-        as UINavigationController
-        
-        nav.pushViewController(searchListViewController, animated: false)
     }
     
     
