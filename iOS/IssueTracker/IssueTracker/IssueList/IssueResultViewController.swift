@@ -4,7 +4,6 @@ class IssueResultViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    
     var sections = [IssueListModel]()
     lazy var dataLayout = makeDataLayout()
     
@@ -15,25 +14,14 @@ class IssueResultViewController: UIViewController {
         
         sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
         sections.append(IssueListModel(isOpened: true, label: ["bug"], title: "마일스톤 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-        
-        
-        
+    
         applySnapshot(sections: sections)
-        
     }
     
     func applySnapshot(sections: [IssueListModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<[IssueListModel], IssueListModel>()
-        
         snapshot.appendSections([sections])
-        
         snapshot.appendItems(sections)
-        
-//        sections.forEach { section in
-//            //snapshot.appendItems(section, toSection: section)
-//
-//        }
-        
         dataLayout.apply(snapshot, animatingDifferences: true)
         
     }
@@ -46,8 +34,7 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
-                // TODO: cell update
-                cell.setup(title: issue.title)
+                cell.setup(title: issue.title, description: issue.content)
                 
                 return cell
             })
