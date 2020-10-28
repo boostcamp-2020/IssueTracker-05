@@ -118,7 +118,7 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="y5d-4A-gw8">
                                         <rect key="frame" x="2" y="0.0" width="370" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zsd-fP-iaN">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="IssueResultCellView" insetsLayoutMarginsFromSafeArea="NO" id="zsd-fP-iaN" customClass="IssueResultCellView" customModule="IssueTracker" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="370" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
@@ -127,6 +127,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Nkd-85-0dL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="jJ6-zG-RSi" secondAttribute="trailing" id="35V-as-jav"/>
@@ -135,6 +136,9 @@
                             <constraint firstItem="jJ6-zG-RSi" firstAttribute="top" secondItem="NCS-yi-Wg5" secondAttribute="topMargin" id="gVj-lS-JLd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionview" destination="jJ6-zG-RSi" id="68i-4h-laJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2W-jl-Bge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
