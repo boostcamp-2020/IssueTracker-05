@@ -4,7 +4,7 @@ import Foundation
 struct IssueListModel: Codable, Hashable {
     
     var isOpened: Bool
-    var label: String
+    var label: [String]
     var title: String
     var content: String
     var mId: String // 마일스톤 아이디

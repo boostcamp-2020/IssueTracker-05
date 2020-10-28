@@ -16,6 +16,7 @@
 		88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0381C25497B5E000D4D4A /* IssueResultViewController.swift */; };
 		88C03823254990C5000D4D4A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03822254990C5000D4D4A /* Bindable.swift */; };
 		88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0382625499494000D4D4A /* IssueResultCellView.swift */; };
+		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
 		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
 		DABEB86E254821B3006471F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB86C254821B3006471F6 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		88C0382625499494000D4D4A /* IssueResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResultCellView.swift; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		DA71EACD2549916700F5EC25 /* dummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		DABEB863254821B3006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABEB866254821B3006471F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DABEB868254821B3006471F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				DABEB871254821B4006471F6 /* LaunchScreen.storyboard */,
 				DABEB874254821B4006471F6 /* Info.plist */,
 				8818249B25484B8000C352A8 /* Extenstion */,
+				DA71EACD2549916700F5EC25 /* dummy.json */,
 			);
 			path = IssueTracker;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			files = (
 				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
 				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
+				DA71EACE2549916700F5EC25 /* dummy.json in Resources */,
 				DABEB86E254821B3006471F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
