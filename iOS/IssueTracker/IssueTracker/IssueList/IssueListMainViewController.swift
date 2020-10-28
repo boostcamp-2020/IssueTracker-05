@@ -1,17 +1,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class IssueListMainViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-    }
 
+    }
+    
     
 }
-
 
 #if DEBUG
 
@@ -20,7 +18,7 @@ import SwiftUI
 struct Preview: PreviewProvider {
     static var previews: some View {
         let vc = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(identifier: "JJM")
+            .instantiateViewController(identifier: "IssueListViewController")
         return vc.view.liveView
     }
 }
