@@ -1,6 +1,6 @@
 import UIKit
 
-class SearchListViewController: UIViewController {
+class IssueResultViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
@@ -30,11 +30,11 @@ class SearchListViewController: UIViewController {
         UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
             collectionView: collectionview,
             cellProvider: { [unowned self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchListCellView", for: indexPath) as? SearchListCellView else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
                 
-                cell.setup(title: issue.title)
+                cell.setup(title: issue.title, description: issue.content)
                 
                 return cell
             })
@@ -43,7 +43,7 @@ class SearchListViewController: UIViewController {
     func createListLayout() -> UICollectionViewLayout {
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(30))
+                heightDimension: .absolute(100))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 //            item.contentInsets = NSDirectionalEdgeInsets(
 //                top: 0, leading: 5, bottom: 5, trailing: 5)
@@ -55,4 +55,20 @@ class SearchListViewController: UIViewController {
             
             return UICollectionViewCompositionalLayout(section: section)
         }
+    
 }
+
+
+#if DEBUG
+
+import SwiftUI
+
+struct IssueResultViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif

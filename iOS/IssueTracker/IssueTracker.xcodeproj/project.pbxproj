@@ -85,16 +85,72 @@
 			path = Extenstion;
 			sourceTree = "<group>";
 		};
-		88C03805254960FA000D4D4A /* IssueList */ = {
+		8848EC0E2549DBC000F15A10 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88C0380D25496221000D4D4A /* IssueListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8848EC102549DBC800F15A10 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				88C03807254961BE000D4D4A /* IssueListViewModel.swift */,
-				88C0380D25496221000D4D4A /* IssueListModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8848EC122549DBD100F15A10 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8848EC142549DC0100F15A10 /* Main */,
+				8848EC182549DCBA00F15A10 /* IssueDetail */,
+				8848EC172549DCAB00F15A10 /* IssueCreation */,
+				8848EC162549DC9D00F15A10 /* IssueListFilter */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8848EC142549DC0100F15A10 /* Main */ = {
+			isa = PBXGroup;
+			children = (
 				88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */,
 				88C0381925497B38000D4D4A /* SearchListViewController.swift */,
 				8846B43F2549A552009073D6 /* SearchListCellView.swift */,
 				88C0381C25497B5E000D4D4A /* IssueResultViewController.swift */,
 				88C0382625499494000D4D4A /* IssueResultCellView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8848EC162549DC9D00F15A10 /* IssueListFilter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IssueListFilter;
+			sourceTree = "<group>";
+		};
+		8848EC172549DCAB00F15A10 /* IssueCreation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IssueCreation;
+			sourceTree = "<group>";
+		};
+		8848EC182549DCBA00F15A10 /* IssueDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = IssueDetail;
+			sourceTree = "<group>";
+		};
+		88C03805254960FA000D4D4A /* IssueList */ = {
+			isa = PBXGroup;
+			children = (
+				8848EC0E2549DBC000F15A10 /* Model */,
+				8848EC102549DBC800F15A10 /* ViewModel */,
+				8848EC122549DBD100F15A10 /* View */,
 			);
 			path = IssueList;
 			sourceTree = "<group>";

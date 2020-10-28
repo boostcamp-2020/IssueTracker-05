@@ -1,6 +1,6 @@
 import UIKit
 
-class IssueResultViewController: UIViewController {
+class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
@@ -30,11 +30,11 @@ class IssueResultViewController: UIViewController {
         UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
             collectionView: collectionview,
             cellProvider: { [unowned self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchListCellView", for: indexPath) as? SearchListCellView else {
                     return nil
                 }
                 
-                cell.setup(title: issue.title, description: issue.content)
+                cell.setup(title: issue.title)
                 
                 return cell
             })
@@ -43,7 +43,7 @@ class IssueResultViewController: UIViewController {
     func createListLayout() -> UICollectionViewLayout {
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(100))
+                heightDimension: .absolute(30))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
 //            item.contentInsets = NSDirectionalEdgeInsets(
 //                top: 0, leading: 5, bottom: 5, trailing: 5)
@@ -55,5 +55,18 @@ class IssueResultViewController: UIViewController {
             
             return UICollectionViewCompositionalLayout(section: section)
         }
-    
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct SearchListViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: String(describing: SearchListViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif
