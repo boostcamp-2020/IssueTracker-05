@@ -5,6 +5,7 @@ export default (sequelize, DataTypes) => {
       mid: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
       },
       isOpen: {
@@ -20,7 +21,7 @@ export default (sequelize, DataTypes) => {
         allowNull: true,
       },
       content: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: true,
       },
     },
@@ -29,6 +30,15 @@ export default (sequelize, DataTypes) => {
       underscored: true,
     },
   );
+
+  milestone.associate = (models) => {
+    milestone.hasMany(models.issue, {
+      foreignKey: {
+        name: 'mid',
+        allowNull: true,
+      },
+    });
+  };
 
   return milestone;
 };

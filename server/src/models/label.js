@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
       },
       desc: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
@@ -21,6 +21,12 @@ export default (sequelize, DataTypes) => {
       underscored: true,
     },
   );
+
+  label.associate = (models) => {
+    label.belongsToMany(models.issue, {
+      through: 'issue_label',
+    });
+  };
 
   return label;
 };

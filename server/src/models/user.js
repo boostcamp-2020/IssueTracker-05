@@ -2,13 +2,13 @@ export default (sequelize, DataTypes) => {
   const user = sequelize.define(
     'user',
     {
-      id: {
+      uid: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      uid: {
+      userId: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -34,6 +34,26 @@ export default (sequelize, DataTypes) => {
       underscored: true,
     },
   );
+
+  user.associate = (models) => {
+    user.hasMany(models.comment, {
+      foreignKey: {
+        name: 'uid',
+        allowNull: false,
+      },
+    });
+
+    user.hasMany(models.issue, {
+      foreignKey: {
+        name: 'uid',
+        allowNull: false,
+      },
+    });
+
+    user.belongsToMany(models.issue, {
+      through: 'issue_user',
+    });
+  };
 
   return user;
 };

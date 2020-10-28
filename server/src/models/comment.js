@@ -19,5 +19,21 @@ export default (sequelize, DataTypes) => {
     },
   );
 
+  comment.associate = (models) => {
+    comment.belongsTo(models.user, {
+      foreignKey: {
+        name: 'uid',
+        allowNull: false,
+      },
+    });
+
+    comment.belongsTo(models.issue, {
+      foreignKey: {
+        name: 'iid',
+        allowNull: false,
+      },
+    });
+  };
+
   return comment;
 };

@@ -31,5 +31,21 @@ export default (sequelize, DataTypes) => {
     },
   );
 
+  issue.associate = (models) => {
+    issue.belongsTo(models.milestone, {
+      foreignKey: {
+        name: 'mid',
+        allowNull: true,
+      },
+    });
+
+    issue.hasMany(models.comment, {
+      foreignKey: {
+        name: 'iid',
+        allowNull: false,
+      },
+    });
+  };
+
   return issue;
 };
