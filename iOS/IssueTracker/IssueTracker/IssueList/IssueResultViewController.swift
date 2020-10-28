@@ -57,3 +57,18 @@ class IssueResultViewController: UIViewController {
         }
     
 }
+
+
+#if DEBUG
+
+import SwiftUI
+
+struct IssueResultViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif

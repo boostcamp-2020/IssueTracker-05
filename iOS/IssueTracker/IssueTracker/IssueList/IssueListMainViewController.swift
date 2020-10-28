@@ -33,10 +33,10 @@ class IssueListMainViewController: UIViewController {
 
 import SwiftUI
 
-struct Preview: PreviewProvider {
+struct IssueListMainViewController_Preview: PreviewProvider {
     static var previews: some View {
         let vc = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(identifier: "IssueListMainViewController")
+            .instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
         return vc.view.liveView
     }
 }

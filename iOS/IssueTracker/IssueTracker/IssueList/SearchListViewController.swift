@@ -56,3 +56,17 @@ class SearchListViewController: UIViewController {
             return UICollectionViewCompositionalLayout(section: section)
         }
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct SearchListViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: String(describing: SearchListViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif
