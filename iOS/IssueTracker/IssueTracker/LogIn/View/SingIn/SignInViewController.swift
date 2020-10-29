@@ -10,8 +10,7 @@
 import RxCocoa
 import RxSwift
 import UIKit
-import KeychainSwift
-import Alamofire
+import AuthenticationServices
 
 class SignInViewController: UIViewController {
 
@@ -23,7 +22,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var signInGithubButton: UIButton!
-    @IBOutlet weak var signInAppleButton: UIButton!
+    @IBOutlet weak var signInAppleButton: ASAuthorizationAppleIDButton!
     
     let viewModel = LoginViewModel()
     var disposeBag = DisposeBag()
@@ -32,7 +31,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         bindUI()
-        createCallBack()
     }
     
     func setUI() {
@@ -43,30 +41,6 @@ class SignInViewController: UIViewController {
     }
     
     func bindUI() {
-//        idTextField.rx.text.orEmpty.map(IdValidationChecker().validate).distinctUntilChanged()
-//            .subscribe(onNext: { text in
-//
-//                switch text {
-//                case .invalidIdlength:
-//                    self.idTextField.layer.borderColor = UIColor.red.cgColor
-//                    self.idTextField.layer.borderWidth = 1.0
-//                default:
-//                    self.idTextField.layer.borderWidth = 0.0
-//                }
-//
-//        }).disposed(by: disposeBag)
-//
-//        passwordTextField.rx.text.orEmpty.map(PasswordValidationChecker().validate).distinctUntilChanged().subscribe(onNext: { text in
-//
-//            switch text {
-//            case .invalidPwlength:
-//                self.passwordTextField.layer.borderColor = UIColor.red.cgColor
-//                self.passwordTextField.layer.borderWidth = 1.0
-//            default:
-//                self.passwordTextField.layer.borderWidth = 0.0
-//            }
-//
-//        })
         
         idTextField.rx.text.orEmpty.bind(to: viewModel.emailIdViewModel.data).disposed(by: disposeBag)
         passwordTextField.rx.text.orEmpty.bind(to: viewModel.passwordViewModel.data).disposed(by: disposeBag)
@@ -78,12 +52,6 @@ class SignInViewController: UIViewController {
             if self.viewModel.validateCredentials() {
                 self.viewModel.loginUser()
             }
-        }).disposed(by: disposeBag)
-        
-        signInAppleButton.rx.tap.do(onNext: { [unowned self] in
-            self.requestCode()
-        }).subscribe(onNext: { [unowned self] in
-            
         }).disposed(by: disposeBag)
         
     }
@@ -114,13 +82,41 @@ class SignInViewController: UIViewController {
         }
     }
     
-    @IBAction func ClickedEvent(_ sender: Any) {
+    @IBAction func touchedSignInWithGithub(_ sender: Any) {
         LoginManager.shared.requestCode()
         LoginManager.shared.getUser()
     }
     
+    @IBAction func touchedSignIinWithApple(_ sender: Any) {
+        
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let controller = ASAuthorizationController(authorizationRequests: [request])
+        controller.delegate = self as? ASAuthorizationControllerDelegate
+        controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+        controller.performRequests()
+        
+    }
     
 }
+
+extension SignInViewController: ASAuthorizationControllerDelegate {
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            let user = credential.user
+            print("User: \(user)")
+            guard let email = credential.email else { return }
+            print("Email: \(email)")
+        }
+    }
+    
+}
+
+
 
 extension UITextField {
     func setLabel(_ text: String) {

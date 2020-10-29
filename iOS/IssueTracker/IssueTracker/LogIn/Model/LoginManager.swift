@@ -69,4 +69,5 @@ class LoginManager {
     func logout() {
         KeychainSwift().clear()
     }
+    
 }

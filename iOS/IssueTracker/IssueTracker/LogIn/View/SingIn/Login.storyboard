@@ -43,7 +43,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="ClickedEvent:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="bYG-VN-WXt"/>
+                                    <action selector="touchedSignInWithGithub:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="Nmf-g4-67b"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ki-Ie-WK5">
@@ -52,6 +52,9 @@
                                 <state key="normal" title=" Sign in With Apple">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="touchedSignIinWithApple:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="HfD-sD-eAv"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-GH-6Nc">
                                 <rect key="frame" x="50" y="248" width="314" height="34"/>
