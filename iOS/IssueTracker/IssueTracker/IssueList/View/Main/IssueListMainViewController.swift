@@ -17,7 +17,17 @@ class IssueListMainViewController: UIViewController {
         searchBar.delegate = self
         searchContrainerView.isHidden = true
         
+        searchBar.rx.text.orEmpty
+            .bind(to: viewModel.searchText)
+            .disposed(by: disposeBag)
         
+        viewModel.model.subscribe(onNext: { [weak self] issueList in
+            
+            // 여기서 collection view update
+            
+        })
+        .disposed(by: disposeBag)
+            
     }
     
 }
@@ -38,7 +48,6 @@ extension IssueListMainViewController: UISearchBarDelegate {
     }
     
 }
-
 
 #if DEBUG
 
