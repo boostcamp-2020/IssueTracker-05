@@ -1,5 +1,7 @@
 # 5팀 - Ground Rule
 
+## [Home 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/wiki)
+
 ## 7계명
 
 1. 사람에 대한 리뷰가 아닌, 코드에 대한 리뷰를 하자.
