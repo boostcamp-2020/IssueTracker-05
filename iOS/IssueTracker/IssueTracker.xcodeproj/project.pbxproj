@@ -14,6 +14,10 @@
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
 		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
+		88B8F0F5254AB0F500C23791 /* MilestoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */; };
+		88B8F0F8254AB12000C23791 /* LabelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F7254AB12000C23791 /* LabelList.storyboard */; };
+		88B8F0FB254AB13800C23791 /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */; };
+		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
 		88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380D25496221000D4D4A /* IssueListModel.swift */; };
@@ -39,6 +43,10 @@
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8856FFD0254A861C00C7FD26 /* IssueList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueList.storyboard; sourceTree = "<group>"; };
+		88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MilestoneList.storyboard; sourceTree = "<group>"; };
+		88B8F0F7254AB12000C23791 /* LabelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LabelList.storyboard; sourceTree = "<group>"; };
+		88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
+		88B8F0FD254AB14400C23791 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		88C03807254961BE000D4D4A /* IssueListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewModel.swift; sourceTree = "<group>"; };
 		88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListMainViewController.swift; sourceTree = "<group>"; };
 		88C0380D25496221000D4D4A /* IssueListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListModel.swift; sourceTree = "<group>"; };
@@ -160,6 +168,24 @@
 			path = IssueDetail;
 			sourceTree = "<group>";
 		};
+		88B8F0F2254AB08500C23791 /* MilestoneList */ = {
+			isa = PBXGroup;
+			children = (
+				88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */,
+				88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */,
+			);
+			path = MilestoneList;
+			sourceTree = "<group>";
+		};
+		88B8F0F3254AB09100C23791 /* LabelList */ = {
+			isa = PBXGroup;
+			children = (
+				88B8F0F7254AB12000C23791 /* LabelList.storyboard */,
+				88B8F0FD254AB14400C23791 /* LabelListViewController.swift */,
+			);
+			path = LabelList;
+			sourceTree = "<group>";
+		};
 		88C03805254960FA000D4D4A /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +279,8 @@
 		DABEB865254821B3006471F6 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				88B8F0F3254AB09100C23791 /* LabelList */,
+				88B8F0F2254AB08500C23791 /* MilestoneList */,
 				DA511A7E254A82A10036DDC3 /* LogIn */,
 				88C0381025496860000D4D4A /* Common */,
 				88C03805254960FA000D4D4A /* IssueList */,
@@ -330,10 +358,12 @@
 				88026501254A91270076B04A /* Login.storyboard in Resources */,
 				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
 				8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */,
+				88B8F0F5254AB0F500C23791 /* MilestoneList.storyboard in Resources */,
 				8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */,
 				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
 				DA71EACE2549916700F5EC25 /* dummy.json in Resources */,
 				880264FF254A908D0076B04A /* dummyToken.txt in Resources */,
+				88B8F0F8254AB12000C23791 /* LabelList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,12 +421,14 @@
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
 				88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */,
+				88B8F0FB254AB13800C23791 /* MilestoneListViewController.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,
 				DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */,
 				DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */,
 				8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */,
 				8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */,
+				88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */,
 				DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,

@@ -11,12 +11,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let _ = Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
             
             let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
+            issueListMainViewController.tabBarItem
+                = UITabBarItem(title: "이슈", image: nil, tag: 0)
+            
+            let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
+            labelListViewController.tabBarItem
+                = UITabBarItem(title: "레이블", image: nil, tag: 0)
+            
+            let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
+            milestoneListViewController.tabBarItem
+                = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
             
             let tabBarController = UITabBarController()
             tabBarController.tabBar.tintColor = UIColor.black
-            tabBarController.viewControllers = [issueListMainViewController]
-            issueListMainViewController.tabBarItem
-                = UITabBarItem(title: "이슈목록", image: nil, tag: 0)
+            tabBarController.viewControllers
+                = [issueListMainViewController, labelListViewController, milestoneListViewController]
+            
             window?.rootViewController = tabBarController
             
         } else {
