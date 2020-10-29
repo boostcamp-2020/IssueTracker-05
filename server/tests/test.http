@@ -5,8 +5,14 @@
 
 ### 로그인
 
-GET {{host}}/login HTTP/1.1
+POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
+
+{
+  "userId": "testsdsds1212",
+  "password": "12345678aaa@",
+  "resourceServer": "local"
+}
 
 ### 회원가입
 
@@ -14,7 +20,7 @@ POST {{host}}/signup HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "uid": "testsdsds1212",
+  "userId": "testsdsds1212",
   "password": "12345678aaa@",
   "nickname": "test_nickname"
 }
@@ -25,9 +31,7 @@ POST {{host}}/signup/check-id HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "uid": "test",
-  "password": "testpassword",
-  "nickname": "테스트",
+  "userId": "test"
 }
 
 ### 회원가입

@@ -1,5 +1,7 @@
-const login = (req, res) => {
-  res.send('Hello World!');
+import loginService from '@services/passport'
+
+const localLogin = (req, res) => {
+  loginService.passportLocal(req, res);
 };
 
-export default { login };
+export default { localLogin };

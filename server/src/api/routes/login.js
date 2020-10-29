@@ -7,5 +7,5 @@ export default (app) => {
 
   app.use('/login', route);
 
-  route.get('/', loginController.login);
+  route.post('/', loginController.localLogin);
 };
