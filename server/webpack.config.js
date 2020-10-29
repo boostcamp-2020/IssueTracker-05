@@ -19,8 +19,4 @@ module.exports = {
       },
     ],
   },
-  // resolve : {
-  //   alias: {
-  //   }
-  // }
 };
