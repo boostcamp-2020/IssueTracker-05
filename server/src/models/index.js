@@ -1,11 +1,11 @@
 'use strict';
-
+import moduleAlias from 'module-alias/register';
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-import dbConfig from '../config/db';
+import dbConfig from '@config/db';
 const config = dbConfig[env];
 const db = {};
 
