@@ -10,6 +10,8 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import KeychainSwift
+import Alamofire
 
 class SignInViewController: UIViewController {
 
@@ -19,6 +21,9 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var idValidMessageLabel: UILabel!
     @IBOutlet weak var passwordValidMessageLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var signInGithubButton: UIButton!
+    @IBOutlet weak var signInAppleButton: UIButton!
     
     let viewModel = LoginViewModel()
     var disposeBag = DisposeBag()
@@ -65,6 +70,7 @@ class SignInViewController: UIViewController {
         
         idTextField.rx.text.orEmpty.bind(to: viewModel.emailIdViewModel.data).disposed(by: disposeBag)
         passwordTextField.rx.text.orEmpty.bind(to: viewModel.passwordViewModel.data).disposed(by: disposeBag)
+
         loginButton.rx.tap.do(onNext: { [unowned self] in
             self.idTextField.resignFirstResponder()
             self.passwordTextField.resignFirstResponder()
@@ -72,6 +78,12 @@ class SignInViewController: UIViewController {
             if self.viewModel.validateCredentials() {
                 self.viewModel.loginUser()
             }
+        }).disposed(by: disposeBag)
+        
+        signInAppleButton.rx.tap.do(onNext: { [unowned self] in
+            self.requestCode()
+        }).subscribe(onNext: { [unowned self] in
+            
         }).disposed(by: disposeBag)
         
     }
@@ -91,6 +103,20 @@ class SignInViewController: UIViewController {
                  NSLog("Failure")
              }.disposed(by: disposeBag)
         
+    }
+    
+    func requestCode() {
+        let scope = "repo,user"
+        let client_id = "0da3b116126e34da88f8"
+        let urlString = "https://github.com/login/oauth/authorize?client_id=\(client_id)&scope=\(scope)"
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    @IBAction func ClickedEvent(_ sender: Any) {
+        LoginManager.shared.requestCode()
+        LoginManager.shared.getUser()
     }
     
     

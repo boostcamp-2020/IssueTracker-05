@@ -42,6 +42,9 @@
                                 <state key="normal" title="Sign in With Github">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ClickedEvent:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="bYG-VN-WXt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ki-Ie-WK5">
                                 <rect key="frame" x="50" y="432" width="314" height="30"/>
@@ -53,7 +56,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-GH-6Nc">
                                 <rect key="frame" x="50" y="248" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ji-xk-bsD">
                                 <rect key="frame" x="50" y="226" width="0.0" height="0.0"/>
@@ -93,6 +96,8 @@
                         <outlet property="idValidMessageLabel" destination="2ji-xk-bsD" id="YSp-Uf-V9Y"/>
                         <outlet property="loginButton" destination="eKf-Jt-OLY" id="8Dq-PT-5Yt"/>
                         <outlet property="passwordTextField" destination="MQh-GH-6Nc" id="eCW-Mj-UxP"/>
+                        <outlet property="signInAppleButton" destination="6ki-Ie-WK5" id="aO2-fp-nAZ"/>
+                        <outlet property="signInGithubButton" destination="8qj-NF-SeF" id="Tu4-Jr-Oje"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yr6-tp-xyk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

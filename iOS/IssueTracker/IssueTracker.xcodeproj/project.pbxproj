@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */; };
-		880264FF254A908D0076B04A /* dummyToken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 880264FE254A908D0076B04A /* dummyToken.txt */; };
 		88026501254A91270076B04A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA511A99254A83A00036DDC3 /* Login.storyboard */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
@@ -29,6 +28,8 @@
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9F254A83EF0036DDC3 /* LoginModel.swift */; };
 		DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */; };
+		DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* OctoKit */; };
+		DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AB4254AA3490036DDC3 /* LoginManager.swift */; };
 		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
 		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
@@ -38,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		880264FE254A908D0076B04A /* dummyToken.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dummyToken.txt; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,6 +61,7 @@
 		DA511A9A254A83A00036DDC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DA511A9F254A83EF0036DDC3 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationChecker.swift; sourceTree = "<group>"; };
+		DA511AB4254AA3490036DDC3 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		DA71EACD2549916700F5EC25 /* dummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		DABEB863254821B3006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABEB866254821B3006471F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */,
 				40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +256,7 @@
 			children = (
 				DA511A9F254A83EF0036DDC3 /* LoginModel.swift */,
 				DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */,
+				DA511AB4254AA3490036DDC3 /* LoginManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,7 +293,6 @@
 				DABEB874254821B4006471F6 /* Info.plist */,
 				8818249B25484B8000C352A8 /* Extenstion */,
 				DA71EACD2549916700F5EC25 /* dummy.json */,
-				880264FE254A908D0076B04A /* dummyToken.txt */,
 			);
 			path = IssueTracker;
 			sourceTree = "<group>";
@@ -313,6 +315,9 @@
 			dependencies = (
 			);
 			name = IssueTracker;
+			packageProductDependencies = (
+				DA511AAF254A9E2E0036DDC3 /* OctoKit */,
+			);
 			productName = IssueTracker;
 			productReference = DABEB863254821B3006471F6 /* IssueTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -341,6 +346,9 @@
 				Base,
 			);
 			mainGroup = DABEB85A254821B3006471F6;
+			packageReferences = (
+				DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */,
+			);
 			productRefGroup = DABEB864254821B3006471F6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -362,8 +370,6 @@
 				8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */,
 				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
 				DA71EACE2549916700F5EC25 /* dummy.json in Resources */,
-				880264FF254A908D0076B04A /* dummyToken.txt in Resources */,
-				88B8F0F8254AB12000C23791 /* LabelList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
+				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
@@ -632,6 +639,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA511AAF254A9E2E0036DDC3 /* OctoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */;
+			productName = OctoKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DABEB85B254821B3006471F6 /* Project object */;
 }
