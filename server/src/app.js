@@ -1,4 +1,3 @@
-import 'module-alias/register';
 import express from 'express';
 
 import server from '@loaders';
@@ -7,13 +6,12 @@ import serverConfig from '@config/server';
 const startServer = async () => {
   const app = express();
 
-  console.log('app starting');
-
   await server(app);
 
-  app.listen(serverConfig.port, () => {
+  app.listen(serverConfig.port, () =>
+  {
     console.log(
-      `Example app listening at http://localhost:${serverConfig.port}`,
+      `Example app listening at http://localhost:${serverConfig.port}`
     );
   });
 };

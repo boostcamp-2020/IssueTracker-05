@@ -1,5 +1,4 @@
 'use strict';
-import moduleAlias from 'module-alias/register';
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';

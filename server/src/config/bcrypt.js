@@ -8,4 +8,4 @@ if (envFound.error) {
 
 export default {
   saltRounds: +process.env.SALT_ROUNDS,
-}
+};

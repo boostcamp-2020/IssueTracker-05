@@ -10,5 +10,22 @@
         "corejs": "3.6.4"
       }
     ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "@api": "./src/api",
+          "@config": "./src/config",
+          "@loaders": "./src/loaders",
+          "@migrations": "./src/migrations",
+          "@models": "./src/models",
+          "@seeders": "./src/seeders",
+          "@services": "./src/services"
+        }
+      }
+    ]
   ]
 }
