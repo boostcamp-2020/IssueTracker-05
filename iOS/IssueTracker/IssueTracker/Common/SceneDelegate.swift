@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  IssueTracker
-//
-//  Created by 조정래 on 2020/10/27.
-//  Copyright © 2020 ralph. All rights reserved.
-//
 
 import UIKit
 
@@ -12,12 +5,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if let _ = Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
-            window?.rootViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
+            
+            let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
+            
+            let tabBarController = UITabBarController()
+            tabBarController.tabBar.tintColor = UIColor.black
+            tabBarController.viewControllers = [issueListMainViewController]
+            issueListMainViewController.tabBarItem
+                = UITabBarItem(title: "이슈목록", image: nil, tag: 0)
+            window?.rootViewController = tabBarController
+            
         } else {
             window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: String(describing: SignInViewController.self))
         }
