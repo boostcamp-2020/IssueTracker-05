@@ -4,8 +4,8 @@ import cors from 'cors';
 import createError from 'http-errors';
 import logger from 'morgan';
 
-import routes from '../api';
-import expressConfig from '../config/express';
+import routes from '@api';
+import expressConfig from '@config/express';
 
 export default async (app) => {
   app.use(logger('dev'));
