@@ -1,6 +1,6 @@
 # 5팀 - Ground Rule
 
-## [Home🏠 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/wiki)
+## [Home 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/wiki)
 
 ## 7계명
 
