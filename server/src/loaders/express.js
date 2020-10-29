@@ -4,6 +4,7 @@ import cors from 'cors';
 import createError from 'http-errors';
 import logger from 'morgan';
 
+import passport from '@loaders/passport';
 import routes from '@api';
 import expressConfig from '@config/express';
 
@@ -16,6 +17,7 @@ export default async (app) => {
   app.use(json());
   app.use(urlencoded({ extended: false })); // extended false or true
   app.use(cookieParser());
+  passport(app);
 
   app.get('/status', (req, res) => {
     return res.status(200).end();
