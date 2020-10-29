@@ -21,6 +21,7 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
+    "passport-github": "^1.1.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "sequelize": "^6.3.5"
@@ -45,5 +46,15 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-node-externals": "^2.5.2"
+  },
+  "_moduleAliases": {
+    "@root": "src",
+    "@api": "src/api",
+    "@config": "src/config",
+    "@loaders": "src/loaders",
+    "@migrations": "src/migrations",
+    "@models": "src/models",
+    "@seeders": "src/seeders",
+    "@services": "src/services"
   }
 }
