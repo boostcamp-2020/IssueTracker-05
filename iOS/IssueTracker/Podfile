@@ -9,6 +9,7 @@ target 'IssueTracker' do
   pod 'RxCocoa'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'KeychainSwift'
   # Pods for IssueTracker
 
 end
