@@ -3,7 +3,7 @@
 @host = http://{{hostname}}:{{port}}/api
 @contentType = application/json
 
-### 로그인
+### 로컬 로그인
 
 POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
@@ -13,6 +13,11 @@ content-type: {{contentType}}
   "password": "12345678aaa@",
   "resourceServer": "local"
 }
+
+### 깃허브 로그인
+
+GET {{host}}/login/github HTTP/1.1
+content-type: {{contentType}}
 
 ### 회원가입
 
