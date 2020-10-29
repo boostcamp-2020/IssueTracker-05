@@ -84,13 +84,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U">
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <connections>
                                     <segue destination="ID2-uM-ZeT" kind="embed" id="LNb-g4-X8i"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-7u-C6A">
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-7u-C6A" userLabel="search">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                                 <connections>
                                     <segue destination="ISS-e9-60a" kind="embed" id="eG3-wp-6Rq"/>
@@ -114,8 +114,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="containerView" destination="x3U-gf-c9U" id="mAM-kI-Aed"/>
+                        <outlet property="resultContrainerView" destination="x3U-gf-c9U" id="mAM-kI-Aed"/>
                         <outlet property="searchBar" destination="Y1x-5U-Mue" id="xYl-qG-QHP"/>
+                        <outlet property="searchContrainerView" destination="Ske-7u-C6A" id="rR9-0C-XXO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
