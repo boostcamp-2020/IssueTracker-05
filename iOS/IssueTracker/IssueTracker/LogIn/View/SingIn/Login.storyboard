@@ -91,6 +91,7 @@
                     <connections>
                         <outlet property="idTextField" destination="EyX-xH-xCi" id="f94-PZ-ASW"/>
                         <outlet property="idValidMessageLabel" destination="2ji-xk-bsD" id="YSp-Uf-V9Y"/>
+                        <outlet property="loginButton" destination="eKf-Jt-OLY" id="8Dq-PT-5Yt"/>
                         <outlet property="passwordTextField" destination="MQh-GH-6Nc" id="eCW-Mj-UxP"/>
                     </connections>
                 </viewController>

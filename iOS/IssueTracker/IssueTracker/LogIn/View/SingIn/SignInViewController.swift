@@ -18,6 +18,7 @@ class SignInViewController: UIViewController {
     
     @IBOutlet weak var idValidMessageLabel: UILabel!
     @IBOutlet weak var passwordValidMessageLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     let viewModel = LoginViewModel()
     var disposeBag = DisposeBag()
@@ -64,6 +65,14 @@ class SignInViewController: UIViewController {
         
         idTextField.rx.text.orEmpty.bind(to: viewModel.emailIdViewModel.data).disposed(by: disposeBag)
         passwordTextField.rx.text.orEmpty.bind(to: viewModel.passwordViewModel.data).disposed(by: disposeBag)
+        loginButton.rx.tap.do(onNext: { [unowned self] in
+            self.idTextField.resignFirstResponder()
+            self.passwordTextField.resignFirstResponder()
+        }).subscribe(onNext: { [unowned self] in
+            if self.viewModel.validateCredentials() {
+                self.viewModel.loginUser()
+            }
+        }).disposed(by: disposeBag)
         
     }
     
