@@ -52,6 +52,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
-    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            if url.absoluteString.starts(with: "ralp://") {
+                if let code = url.absoluteString.split(separator: "=").last.map({ String($0) }) {
+                    LoginManager.shared.requestAccessToken(with: code)
+                }
+            }
+//            print(url)
+        }
+    }
 }
 
