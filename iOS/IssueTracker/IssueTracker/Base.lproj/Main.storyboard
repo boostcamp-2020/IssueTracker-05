@@ -70,7 +70,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VC5-qC-dy1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1622" y="29"/>
+            <point key="canvasLocation" x="1781" y="55"/>
         </scene>
         <!--Issue List Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -109,12 +109,13 @@
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="acX-m8-vkQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x3U-gf-c9U" secondAttribute="bottom" id="eVq-kj-tlp"/>
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="glj-Fe-ulQ"/>
-                            <constraint firstAttribute="bottom" secondItem="Ske-7u-C6A" secondAttribute="bottom" id="jMH-ij-kPS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ske-7u-C6A" secondAttribute="bottom" constant="-34" id="jMH-ij-kPS"/>
                             <constraint firstItem="x3U-gf-c9U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sLC-yY-mab"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="x3U-gf-c9U" id="mAM-kI-Aed"/>
+                        <outlet property="searchBar" destination="Y1x-5U-Mue" id="xYl-qG-QHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -186,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2W-jl-Bge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="347.82608695652175" y="28.794642857142854"/>
+            <point key="canvasLocation" x="201" y="106"/>
         </scene>
     </scenes>
     <resources>
