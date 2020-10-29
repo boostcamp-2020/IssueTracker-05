@@ -11,7 +11,7 @@
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
-		8856FFC4254A814C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFC2254A814C00C7FD26 /* IssueList.storyboard */; };
+		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
 		88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380D25496221000D4D4A /* IssueListModel.swift */; };
@@ -31,7 +31,7 @@
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8856FFC3254A814C00C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = IssueTracker/IssueList/View/Base.lproj/IssueList.storyboard; sourceTree = SOURCE_ROOT; };
+		8856FFD0254A861C00C7FD26 /* IssueList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueList.storyboard; sourceTree = "<group>"; };
 		88C03807254961BE000D4D4A /* IssueListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListViewModel.swift; sourceTree = "<group>"; };
 		88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListMainViewController.swift; sourceTree = "<group>"; };
 		88C0380D25496221000D4D4A /* IssueListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListModel.swift; sourceTree = "<group>"; };
@@ -106,6 +106,7 @@
 		8848EC122549DBD100F15A10 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8856FFD0254A861C00C7FD26 /* IssueList.storyboard */,
 				8848EC142549DC0100F15A10 /* Main */,
 				8848EC182549DCBA00F15A10 /* IssueDetail */,
 				8848EC172549DCAB00F15A10 /* IssueCreation */,
@@ -117,7 +118,6 @@
 		8848EC142549DC0100F15A10 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				8856FFC2254A814C00C7FD26 /* IssueList.storyboard */,
 				88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */,
 				88C0381925497B38000D4D4A /* SearchListViewController.swift */,
 				8846B43F2549A552009073D6 /* SearchListCellView.swift */,
@@ -263,7 +263,7 @@
 			files = (
 				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
 				8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */,
-				8856FFC4254A814C00C7FD26 /* IssueList.storyboard in Resources */,
+				8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */,
 				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
 				DA71EACE2549916700F5EC25 /* dummy.json in Resources */,
 			);
@@ -341,14 +341,6 @@
 				8856FFBE254A811700C7FD26 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8856FFC2254A814C00C7FD26 /* IssueList.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8856FFC3254A814C00C7FD26 /* Base */,
-			);
-			name = IssueList.storyboard;
 			sourceTree = "<group>";
 		};
 		DABEB871254821B4006471F6 /* LaunchScreen.storyboard */ = {
