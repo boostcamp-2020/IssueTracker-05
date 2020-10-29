@@ -7,6 +7,7 @@ class IssueListMainViewController: UIViewController {
     
     @IBOutlet weak var resultContrainerView: UIView!
     @IBOutlet weak var searchContrainerView: UIView!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel = IssueListViewModel()
@@ -21,13 +22,21 @@ class IssueListMainViewController: UIViewController {
             .bind(to: viewModel.searchText)
             .disposed(by: disposeBag)
         
-        viewModel.model.subscribe(onNext: { [weak self] issueList in
-            
-            // 여기서 collection view update
-            
-        })
-        .disposed(by: disposeBag)
-            
+        setupSearchListViewController()
+        setupIssueResultViewController()
+    }
+    
+    let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
+    
+    func setupSearchListViewController() {
+        searchViewController.viewModel = viewModel
+        searchContrainerView.addSubview(searchViewController.view)
+    }
+    
+    let issueResultViewController: IssueResultViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueResultViewController.self))
+    
+    func setupIssueResultViewController() {
+        resultContrainerView.addSubview(issueResultViewController.view)
     }
     
 }

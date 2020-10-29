@@ -1,8 +1,13 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
+    
+    var viewModel: IssueListViewModel!
+    var disposeBag = DisposeBag()
     
     var sections = [IssueListModel]()
     lazy var dataLayout = makeDataLayout()
@@ -14,8 +19,12 @@ class SearchListViewController: UIViewController {
         
         sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
         sections.append(IssueListModel(isOpened: true, label: ["bug"], title: "마일스톤 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-    
-        applySnapshot(sections: sections)
+        
+        viewModel.model.subscribe(onNext: { [weak self] issueList in
+            self?.applySnapshot(sections: issueList)
+        })
+        .disposed(by: disposeBag)
+            
     }
     
     func applySnapshot(sections: [IssueListModel]) {
@@ -23,7 +32,6 @@ class SearchListViewController: UIViewController {
         snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
-        
     }
     
     func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {

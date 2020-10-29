@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="SearchListViewController" id="ISS-e9-60a" customClass="SearchListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tn8-gr-XTK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="796"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ebl-XZ-ZVq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DmG-bh-sk4">
                                     <size key="itemSize" width="407" height="76"/>
@@ -86,15 +86,9 @@
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                                <connections>
-                                    <segue destination="ID2-uM-ZeT" kind="embed" id="LNb-g4-X8i"/>
-                                </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-7u-C6A" userLabel="search">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
-                                <connections>
-                                    <segue destination="ISS-e9-60a" kind="embed" id="eG3-wp-6Rq"/>
-                                </connections>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -128,11 +122,11 @@
             <objects>
                 <viewController storyboardIdentifier="IssueResultViewController" id="ID2-uM-ZeT" customClass="IssueResultViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NCS-yi-Wg5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-zG-RSi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8U0-Yd-1MU">
                                     <size key="itemSize" width="370" height="128"/>
