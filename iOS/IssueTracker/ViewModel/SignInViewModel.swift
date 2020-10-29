@@ -1,8 +1,8 @@
 //
-//  ValidationChecker.swift
+//  SignInViewModel.swift
 //  IssueTracker
 //
-//  Created by cho on 2020/10/28.
+//  Created by cho on 2020/10/29.
 //  Copyright © 2020 ralph. All rights reserved.
 //
 
