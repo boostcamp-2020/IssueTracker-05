@@ -10,7 +10,7 @@ const github = (req, res) => {
 }
 
 const githubCallback = (req, res) => {
-  res.status(200).send('성공!!');
+  loginService.passportGithub(req, res);
 }
 
 export default { localLogin, github, githubCallback };
