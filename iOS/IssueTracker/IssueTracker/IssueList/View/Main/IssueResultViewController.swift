@@ -10,6 +10,8 @@ class IssueResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         collectionview.collectionViewLayout = createListLayout()
         
         sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
@@ -52,7 +54,6 @@ class IssueResultViewController: UIViewController {
             let section = NSCollectionLayoutSection(group: group)
 //            section.contentInsets = NSDirectionalEdgeInsets(
 //                top: 10, leading: 5, bottom: 10, trailing: 5)
-            
             return UICollectionViewCompositionalLayout(section: section)
         }
     

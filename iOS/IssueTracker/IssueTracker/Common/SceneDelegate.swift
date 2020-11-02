@@ -11,7 +11,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if nil == Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
             
             let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
-            issueListMainViewController.tabBarItem
+            
+            let navController = UINavigationController(rootViewController: issueListMainViewController)
+            navController.navigationBar.topItem?.title = "이슈"
+            navController.navigationBar.prefersLargeTitles = true
+            navController.tabBarItem
                 = UITabBarItem(title: "이슈", image: nil, tag: 0)
             
             let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
@@ -25,7 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let tabBarController = UITabBarController()
             tabBarController.tabBar.tintColor = UIColor.black
             tabBarController.viewControllers
-                = [issueListMainViewController, labelListViewController, milestoneListViewController]
+                = [navController, labelListViewController, milestoneListViewController]
+            
+            
             
             window?.rootViewController = tabBarController
             
