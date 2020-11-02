@@ -11,16 +11,13 @@ class IssueListMainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel = IssueListViewModel()
+    var searchListViewModel = SearchListViewModel()
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         searchContrainerView.isHidden = true
-        
-        searchBar.rx.text.orEmpty
-            .bind(to: viewModel.searchText)
-            .disposed(by: disposeBag)
         
         setupSearchListViewController()
         setupIssueResultViewController()
@@ -29,7 +26,7 @@ class IssueListMainViewController: UIViewController {
     let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
     
     func setupSearchListViewController() {
-        searchViewController.viewModel = viewModel
+        searchViewController.viewModel = searchListViewModel
         searchContrainerView.addSubview(searchViewController.view)
     }
     
@@ -54,6 +51,11 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchContrainerView.isHidden = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        searchListViewModel.action.searchTextChanged(searchText)
     }
     
 }
