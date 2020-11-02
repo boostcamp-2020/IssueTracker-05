@@ -24,14 +24,52 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInGithubButton: UIButton!
     @IBOutlet weak var signInAppleButton: ASAuthorizationAppleIDButton!
     
-    let viewModel = LoginViewModel()
+    @IBOutlet weak var idErrorMessageLabel: UILabel!
+    @IBOutlet weak var passwordErrorMessageLabel: UILabel!
+    
+    let viewModel = SignInViewModel()
     var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        bindUI()
+        idTextField.delegate = self
+        passwordTextField.delegate = self
+        viewModel.status.idErrorMessage.bind(idErrorLabelUpdate)
+        viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
+        viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
     }
+    
+    func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool) {
+        if idEnable, passwordEnable {
+            self.loginButton.isUserInteractionEnabled = true
+            self.loginButton.alpha = 1.0
+        } else {
+            self.loginButton.isUserInteractionEnabled = false
+            self.loginButton.alpha = 0.3
+        }
+    }
+    
+    func idErrorLabelUpdate(id:String) {
+        // view update
+        if id.isEmpty {
+            self.idErrorMessageLabel.isHidden = true
+        } else {
+            self.idErrorMessageLabel.text = id
+            self.idErrorMessageLabel.isHidden = false
+        }
+    }
+    
+    func passwordErrorLabelUpdate(password:String) {
+        // view update
+        if password.isEmpty {
+            self.passwordErrorMessageLabel.isHidden = true
+        } else {
+            self.passwordErrorMessageLabel.text = password
+            self.passwordErrorMessageLabel.isHidden = false
+        }
+    }
+    
     
     func setUI() {
         
@@ -39,40 +77,7 @@ class SignInViewController: UIViewController {
         passwordTextField.setLabel("비밀번호")
         
     }
-    
-    func bindUI() {
-        
-        idTextField.rx.text.orEmpty.bind(to: viewModel.emailIdViewModel.data).disposed(by: disposeBag)
-        passwordTextField.rx.text.orEmpty.bind(to: viewModel.passwordViewModel.data).disposed(by: disposeBag)
 
-        loginButton.rx.tap.do(onNext: { [unowned self] in
-            self.idTextField.resignFirstResponder()
-            self.passwordTextField.resignFirstResponder()
-        }).subscribe(onNext: { [unowned self] in
-            if self.viewModel.validateCredentials() {
-                self.viewModel.loginUser()
-            }
-        }).disposed(by: disposeBag)
-        
-    }
-    
-    func createCallBack() {
-        
-        // success
-         viewModel.isSuccess.asObservable()
-             .bind{ value in
-                 NSLog("Successfull")
-             }.disposed(by: disposeBag)
-         
-         // errors
-         viewModel.errorMsg.asObservable()
-             .bind { errorMessage in
-                 // Show error
-                 NSLog("Failure")
-             }.disposed(by: disposeBag)
-        
-    }
-    
     func requestCode() {
         let scope = "repo,user"
         let client_id = "0da3b116126e34da88f8"
@@ -116,17 +121,23 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     
 }
 
-
-
 extension UITextField {
     func setLabel(_ text: String) {
         
         let label = UILabel(frame: CGRect(x: 30, y: 5, width: 10, height: 10))
         label.text = text
         label.font = UIFont(name: label.font.fontName, size: 14)
+        label.textAlignment = .right
+        label.widthAnchor.constraint(equalToConstant: 60).isActive = true
         leftView = label
         leftViewMode = .always
-        
+    }
+}
+
+extension SignInViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        viewModel.action.idTextFieldChanged(self.idTextField.text!)
+        viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
     }
 }
 

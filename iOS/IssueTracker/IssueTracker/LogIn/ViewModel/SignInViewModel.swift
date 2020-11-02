@@ -7,95 +7,37 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 
-protocol ValidationViewModel {
-     
-    var errorMessage: String { get }
+class SignInViewModel {
     
-    // Observables
-    var data: BehaviorRelay<String> { get set }
-    var errorValue: BehaviorRelay<String?> { get}
-    
-    // Validation
-    func validateCredentials() -> Bool
-}
-
-class EmailIdViewModel : ValidationViewModel {
-     
-    var errorMessage: String = "Please enter a valid Email Id"
-    
-    var data: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var errorValue: BehaviorRelay<String?> = BehaviorRelay(value: "")
-    
-    func validateCredentials() -> Bool {
-        
-        guard validatePattern(text: data.value) else {
-            errorValue.accept(errorMessage)
-            return false
-        }
-        
-        errorValue.accept("")
-        return true
+    struct Status {
+        var idErrorMessage = Bindable<String>("")
+        var passwordErrorMessage = Bindable<String>("")
+        var buttonEnabled = Bindable((false,false))
     }
     
-    func validatePattern(text : String) -> Bool{
-        return text.count >= 6 && text.count <= 16
+    struct Action {
+        var idTextFieldChanged: (String) -> Void
+        var passwordTextFieldChanged: (String) -> Void
     }
     
-}
+    var status = Status()
+    lazy var action = Action(idTextFieldChanged: self.idValidationChecker, passwordTextFieldChanged: self.passwordValidationChecker)
 
-class PasswordViewModel : ValidationViewModel {
-     
-    var errorMessage: String = "Please enter a valid Password"
+    var idValidationChecker = IdValidationChecker()
+    var passwordValidationChecker = PasswordValidationChecker()
     
-    var data: BehaviorRelay<String> = BehaviorRelay(value: "")
-    var errorValue: BehaviorRelay<String?> = BehaviorRelay(value: "")
-    
-    func validateCredentials() -> Bool {
-        
-        guard validateLength(text: data.value, size: (6,15)) else{
-            errorValue.accept(errorMessage)
-            return false;
-        }
-        
-        errorValue.accept("")
-        return true
+    func idValidationChecker(temp:String) {
+        self.status.idErrorMessage.value = idValidationChecker.validate(input: temp).rawValue
+        self.status.buttonEnabled.value.0 = idValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
     }
     
-    func validateLength(text : String, size : (min : Int, max : Int)) -> Bool{
-        return (size.min...size.max).contains(text.count)
+    func passwordValidationChecker(temp:String) {
+        self.status.passwordErrorMessage.value = passwordValidationChecker.validate(input: temp).rawValue
+        self.status.buttonEnabled.value.1 = passwordValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
+    }
+
+    init() {
+        
     }
 }
-
-class LoginViewModel {
-
-    let model : LoginModel = LoginModel()
-    let disposebag = DisposeBag()
-
-    let emailIdViewModel = EmailIdViewModel()
-    let passwordViewModel = PasswordViewModel()
-
-    let isSuccess : BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    let isLoading : BehaviorRelay<Bool> = BehaviorRelay(value: false)
-    let errorMsg : BehaviorRelay<String> = BehaviorRelay(value: "")
-
-    func validateCredentials() -> Bool{
-        return emailIdViewModel.validateCredentials() && passwordViewModel.validateCredentials();
-    }
-
-    func loginUser(){
-        
-        model.id = emailIdViewModel.data.value
-        model.password = passwordViewModel.data.value
-        
-        self.isLoading.accept(true)
-        
-        print("login success")
-        
-    }
-    
-    
-}
-
