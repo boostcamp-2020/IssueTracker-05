@@ -10,10 +10,36 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
+    
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordConfirmTextField: UITextField!
+    @IBOutlet weak var nickNameTextField: UITextField!
+    
+    @IBOutlet weak var idValidMessageLabel: UILabel!
+    @IBOutlet weak var passwordValidMessageLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    
+    @IBOutlet weak var signInGithubButton: UIButton!
+    @IBOutlet weak var signInAppleButton: ASAuthorizationAppleIDButton!
+    
+    @IBOutlet weak var idErrorMessageLabel: UILabel!
+    @IBOutlet weak var passwordErrorMessageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
+        
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
+
+
+
+
+
 
 }
