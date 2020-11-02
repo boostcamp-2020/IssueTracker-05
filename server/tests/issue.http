@@ -1,0 +1,10 @@
+@hostname = localhost
+@port = 5000
+@host = http://{{hostname}}:{{port}}/api
+@contentType = application/json
+
+### 특정 이슈 하나 불러오기
+@issueId=
+
+GET {{host}}/issue/{{issueId}} HTTP/1.1
+content-type: {{contentType}}
