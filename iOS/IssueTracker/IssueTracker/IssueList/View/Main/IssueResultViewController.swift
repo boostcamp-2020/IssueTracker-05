@@ -52,7 +52,6 @@ class IssueResultViewController: UIViewController {
             let section = NSCollectionLayoutSection(group: group)
 //            section.contentInsets = NSDirectionalEdgeInsets(
 //                top: 10, leading: 5, bottom: 10, trailing: 5)
-            
             return UICollectionViewCompositionalLayout(section: section)
         }
     

@@ -18,6 +18,20 @@ class IssueListMainViewController: UIViewController {
         
         setupSearchListViewController()
         setupIssueResultViewController()
+        
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(title: "Filter", style: .done, target: nil, action: #selector(pushFilterViewController))
+        
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
+    }
+    
+    @objc func pushFilterViewController() {
+        print("filter")
+    }
+    
+    @objc func pushEditViewController() {
+        print("Edit")
     }
     
     let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
