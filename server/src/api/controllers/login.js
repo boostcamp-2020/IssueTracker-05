@@ -13,4 +13,12 @@ const githubCallback = (req, res) => {
   loginService.passportGithub(req, res);
 };
 
-export default { localLogin, github, githubCallback };
+const apple = (req, res) => {
+  passport.authenticate('apple')(req, res);
+};
+
+const appleCallback = (req, res) => {
+  loginService.passportApple(req, res);
+};
+
+export default { localLogin, github, githubCallback, apple, appleCallback };
