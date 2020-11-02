@@ -1,14 +1,20 @@
 import db from '@models';
 
-const createComment = async (nickname, content) => {
+const getComments = async (iid) => {
   try {
-    const user = await db.user.findOne({ where: { nickname } });
-    const { uid } = user;
+    const comments = db.comment.findAll({ where: { iid } });
+    return comments;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+const createComment = async (nickname, content, uid, iid) => {
+  try {
     await db.comment.create({
       nickname,
       content,
       uid,
-      iid: 20,
+      iid,
     });
   } catch (err) {
     throw new Error(err);
@@ -31,4 +37,4 @@ const deleteComment = async (cid) => {
   }
 };
 
-export default { createComment, patchComment, deleteComment };
+export default { getComments, createComment, patchComment, deleteComment };
