@@ -9,6 +9,6 @@ export default (app) => {
 
   route.get('/', milestoneController.getMilestone);
   route.delete('/:id', milestoneController.deleteMilestone);
-  route.put('/:id', milestoneController.editMilestone);
+  route.patch('/:id', milestoneController.editMilestone);
   route.post('/', milestoneController.addMilestone);
 };
