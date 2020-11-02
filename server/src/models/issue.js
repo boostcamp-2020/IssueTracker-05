@@ -12,16 +12,12 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
-      label: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
     },
@@ -44,6 +40,10 @@ export default (sequelize, DataTypes) => {
         name: 'iid',
         allowNull: false,
       },
+    });
+
+    issue.belongsToMany(models.user, {
+      through: 'issue_assignee',
     });
   };
 
