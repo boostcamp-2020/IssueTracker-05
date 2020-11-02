@@ -18,11 +18,6 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var idValidMessageLabel: UILabel!
     @IBOutlet weak var passwordValidMessageLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
-    
-    @IBOutlet weak var signInGithubButton: UIButton!
-    @IBOutlet weak var signInAppleButton: ASAuthorizationAppleIDButton!
     
     @IBOutlet weak var idErrorMessageLabel: UILabel!
     @IBOutlet weak var passwordErrorMessageLabel: UILabel!
