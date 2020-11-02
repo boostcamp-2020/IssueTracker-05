@@ -19,14 +19,13 @@ enum validateMessage: String {
     case invalidPwlength = "비밀번호는 6~12자만 입력 가능합니다."
     case emptyId = "아이디를 입력하세요"
     case emptyPassword = "비밀번호를 입력하세요"
-    case validId = "사용 가능한 아이디입니다."
-    case validPassword = "사용 가능한 비밀번호입니다."
+    case valid = ""
 }
 
 class IdValidationChecker: Validator {
     
     var pass: validateMessage {
-        get { .validId }
+        get { .valid }
     }
     
     func validate(input: String) -> validateMessage {
@@ -38,7 +37,7 @@ class IdValidationChecker: Validator {
             return .invalidIdlength
         }
         
-        return .validId
+        return .valid
     }
     
 }
@@ -46,7 +45,7 @@ class IdValidationChecker: Validator {
 class PasswordValidationChecker: Validator {
     
     var pass: validateMessage {
-        get { .validPassword }
+        get { .valid }
     }
     
     func validate(input: String) -> validateMessage {
@@ -57,7 +56,7 @@ class PasswordValidationChecker: Validator {
         if input.count < 6 || input.count > 12 {
             return .invalidPwlength
         }
-        return .validPassword
+        return .valid
     }
     
 }
