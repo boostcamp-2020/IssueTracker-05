@@ -1,6 +1,4 @@
 import UIKit
-import RxSwift
-import RxCocoa
 
 class SearchListViewController: UIViewController {
     

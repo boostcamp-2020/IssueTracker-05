@@ -1,7 +1,5 @@
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class IssueListMainViewController: UIViewController {
     
@@ -12,7 +10,6 @@ class IssueListMainViewController: UIViewController {
     
     var viewModel = IssueListViewModel()
     var searchListViewModel = SearchListViewModel()
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
