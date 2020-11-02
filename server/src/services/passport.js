@@ -19,6 +19,9 @@ const passportLocal = (req, res) => {
 
 const passportGithub = (req, res) => {
   passport.authenticate('github', { session: false }, (err, user) => {
+    if (err) {
+      return res.status(400).json({ message: err });
+    }
     const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey)
     return res.status(200).json({ user, token });
   })(req, res)

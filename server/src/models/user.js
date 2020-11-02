@@ -51,7 +51,7 @@ export default (sequelize, DataTypes) => {
     });
 
     user.belongsToMany(models.issue, {
-      through: 'issue_user',
+      through: 'issue_assignee',
     });
   };
 

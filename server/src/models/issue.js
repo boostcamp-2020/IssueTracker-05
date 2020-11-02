@@ -11,17 +11,14 @@ export default (sequelize, DataTypes) => {
       isOpen: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
-      label: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        defaultValue: true,
       },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
     },
@@ -44,6 +41,10 @@ export default (sequelize, DataTypes) => {
         name: 'iid',
         allowNull: false,
       },
+    });
+
+    issue.belongsToMany(models.user, {
+      through: 'issue_assignee',
     });
   };
 
