@@ -17,4 +17,11 @@ const passportLocal = (req, res) => {
   })(req, res);
 };
 
-export default { passportLocal };
+const passportGithub = (req, res) => {
+  passport.authenticate('github', { session: false }, (err, user) => {
+    const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey)
+    return res.status(200).json({ user, token });
+  })(req, res)
+}
+
+export default { passportLocal, passportGithub };
