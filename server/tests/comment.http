@@ -1,0 +1,28 @@
+@hostname = localhost
+@port = 5000
+@host = http://{{hostname}}:{{port}}/api
+@contentType = application/json
+
+### 댓글 생성
+
+POST {{host}}/comment HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "nickname": "test_nickname1",
+  "content": "충전기 없는거는 개오바지"
+}
+
+### 댓글 수정
+
+PATCH {{host}}/comment/2 HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "content": "충전기 빼고 100만원 실화냐"
+}
+
+### 댓글 삭제
+
+DELETE {{host}}/comment/3 HTTP/1.1
+content-type: {{contentType}}
