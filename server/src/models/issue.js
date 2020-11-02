@@ -11,6 +11,7 @@ export default (sequelize, DataTypes) => {
       isOpen: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: true,
       },
       title: {
         type: DataTypes.STRING,
