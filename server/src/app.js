@@ -8,10 +8,9 @@ const startServer = async () => {
 
   await server(app);
 
-  app.listen(serverConfig.port, () =>
-  {
+  app.listen(serverConfig.port, () => {
     console.log(
-      `Example app listening at http://localhost:${serverConfig.port}`
+      `Example app listening at http://localhost:${serverConfig.port}`,
     );
   });
 };

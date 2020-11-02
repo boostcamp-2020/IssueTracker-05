@@ -1,10 +1,11 @@
-'use strict';
 import fs from 'fs';
 import path from 'path';
 import Sequelize from 'sequelize';
+import dbConfig from '@config/db';
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-import dbConfig from '@config/db';
+
 const config = dbConfig[env];
 const db = {};
 
@@ -27,7 +28,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file))['default'](
+    const model = require(path.join(__dirname, file)).default(
       sequelize,
       Sequelize.DataTypes,
     );
