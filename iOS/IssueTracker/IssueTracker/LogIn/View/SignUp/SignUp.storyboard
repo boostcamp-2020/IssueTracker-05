@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sign In View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="Le9-1U-CQH">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" id="gdI-Cd-g1s" customClass="SignInViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gdI-Cd-g1s" customClass="SignUpViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T9D-yd-DWY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,13 +33,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjs-hB-ned">
-                                <rect key="frame" x="50" y="226" width="0.0" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71g-87-f4e">
                                 <rect key="frame" x="50" y="223" width="131" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -52,28 +45,24 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~16자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4f-5j-wQk">
-                                <rect key="frame" x="50" y="315" width="314" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~16자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4f-5j-wQk">
+                                <rect key="frame" x="50" y="312.5" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXH-GD-IzC">
-                                <rect key="frame" x="50" y="386" width="314" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXH-GD-IzC">
+                                <rect key="frame" x="50" y="377" width="314" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm PW Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-1m-iSx">
-                                <rect key="frame" x="50" y="357" width="207" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PW Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-1m-iSx">
+                                <rect key="frame" x="50" y="351.5" width="206.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nickname Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-bA-WQW">
-                                <rect key="frame" x="50" y="428" width="191" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cv-bA-WQW">
+                                <rect key="frame" x="50" y="416" width="191" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,26 +72,37 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="ltX-yF-qLU" secondAttribute="trailing" constant="50" id="47R-da-Nks"/>
+                            <constraint firstItem="t4f-5j-wQk" firstAttribute="top" secondItem="OH0-90-jdF" secondAttribute="bottom" constant="5" id="AxJ-Ny-B41"/>
+                            <constraint firstItem="YXH-GD-IzC" firstAttribute="top" secondItem="EmK-1m-iSx" secondAttribute="bottom" constant="5" id="DYO-ZS-dOp"/>
+                            <constraint firstItem="1cv-bA-WQW" firstAttribute="top" secondItem="YXH-GD-IzC" secondAttribute="bottom" constant="5" id="Eyc-7z-3G4"/>
                             <constraint firstItem="ltX-yF-qLU" firstAttribute="leading" secondItem="O6E-lE-H4u" secondAttribute="leading" constant="50" id="KlJ-sG-dlP"/>
                             <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="omS-PI-A3f" secondAttribute="trailing" constant="50" id="LEI-Ws-7Bs"/>
                             <constraint firstItem="ltX-yF-qLU" firstAttribute="top" secondItem="71g-87-f4e" secondAttribute="bottom" constant="5" id="Og7-jD-kQT"/>
+                            <constraint firstItem="t4f-5j-wQk" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="OyE-55-tPl"/>
                             <constraint firstItem="omS-PI-A3f" firstAttribute="leading" secondItem="O6E-lE-H4u" secondAttribute="leading" constant="50" id="Pdl-1M-0D4"/>
                             <constraint firstItem="omS-PI-A3f" firstAttribute="top" secondItem="DpB-Th-uAK" secondAttribute="bottom" constant="50" id="UgI-8v-RZN"/>
                             <constraint firstItem="OH0-90-jdF" firstAttribute="leading" secondItem="ltX-yF-qLU" secondAttribute="leading" id="W4f-9d-Jdl"/>
+                            <constraint firstItem="1cv-bA-WQW" firstAttribute="leading" secondItem="YXH-GD-IzC" secondAttribute="leading" id="WPv-dE-xYL"/>
                             <constraint firstItem="ltX-yF-qLU" firstAttribute="top" secondItem="omS-PI-A3f" secondAttribute="bottom" constant="30" id="Wyb-Xl-soT"/>
+                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="YXH-GD-IzC" secondAttribute="trailing" constant="50" id="XW8-hM-25A"/>
+                            <constraint firstItem="YXH-GD-IzC" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="b0G-xH-gnh"/>
+                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="t4f-5j-wQk" secondAttribute="trailing" constant="50" id="dDt-A4-Kog"/>
                             <constraint firstItem="OH0-90-jdF" firstAttribute="top" secondItem="ltX-yF-qLU" secondAttribute="bottom" constant="5" id="dL3-N3-L9x"/>
                             <constraint firstItem="DpB-Th-uAK" firstAttribute="centerX" secondItem="T9D-yd-DWY" secondAttribute="centerX" id="elg-8l-3e7"/>
+                            <constraint firstItem="EmK-1m-iSx" firstAttribute="leading" secondItem="t4f-5j-wQk" secondAttribute="leading" id="ifx-vl-uKj"/>
                             <constraint firstItem="DpB-Th-uAK" firstAttribute="top" secondItem="O6E-lE-H4u" secondAttribute="top" constant="50" id="lka-AR-EnX"/>
+                            <constraint firstItem="EmK-1m-iSx" firstAttribute="top" secondItem="t4f-5j-wQk" secondAttribute="bottom" constant="5" id="lsh-uM-7G4"/>
                             <constraint firstItem="71g-87-f4e" firstAttribute="top" secondItem="omS-PI-A3f" secondAttribute="bottom" constant="5" id="paM-C2-cEa"/>
                             <constraint firstItem="71g-87-f4e" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="wfY-f9-oi9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="idErrorMessageLabel" destination="71g-87-f4e" id="jXp-a2-QiC"/>
-                        <outlet property="idTextField" destination="omS-PI-A3f" id="Ug9-x5-JTn"/>
-                        <outlet property="idValidMessageLabel" destination="Zjs-hB-ned" id="mIX-bb-ENc"/>
-                        <outlet property="passwordErrorMessageLabel" destination="OH0-90-jdF" id="CK7-qt-e7B"/>
-                        <outlet property="passwordTextField" destination="ltX-yF-qLU" id="sCg-4k-yMN"/>
+                        <outlet property="idErrorMessageLabel" destination="71g-87-f4e" id="AHl-2L-dFC"/>
+                        <outlet property="idTextField" destination="omS-PI-A3f" id="48m-wC-8FU"/>
+                        <outlet property="nickNameTextField" destination="YXH-GD-IzC" id="iKm-By-3L5"/>
+                        <outlet property="passwordConfirmTextField" destination="t4f-5j-wQk" id="dmV-Qc-ITw"/>
+                        <outlet property="passwordErrorMessageLabel" destination="OH0-90-jdF" id="yHM-mZ-CI0"/>
+                        <outlet property="passwordTextField" destination="ltX-yF-qLU" id="fHt-Sh-Apo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIl-Uo-RXv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

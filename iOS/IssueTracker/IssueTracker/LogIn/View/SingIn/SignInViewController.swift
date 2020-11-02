@@ -18,6 +18,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var idValidMessageLabel: UILabel!
     @IBOutlet weak var passwordValidMessageLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var signInGithubButton: UIButton!
     @IBOutlet weak var signInAppleButton: ASAuthorizationAppleIDButton!
@@ -36,6 +37,11 @@ class SignInViewController: UIViewController {
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
         viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     
     func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool) {
         if idEnable, passwordEnable {
@@ -97,6 +103,16 @@ class SignInViewController: UIViewController {
         controller.delegate = self as? ASAuthorizationControllerDelegate
         controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         controller.performRequests()
+        
+    }
+    @IBAction func touchedSignUp(_ sender: Any) {
+        
+                
+        let signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(identifier: String(describing: SignUpViewController.self))
+
+//        self.present(signUpViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        
         
     }
     
