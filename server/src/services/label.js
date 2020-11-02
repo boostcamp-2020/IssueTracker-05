@@ -2,6 +2,10 @@ import db from '@models';
 
 const createLabel = async (name, desc, color) => {
   try {
+    const label = await db.label.findByPk(name);
+    if (label) {
+      throw new Error('이미 존재하는 이름입니다.');
+    }
     await db.label.create({
       name,
       desc,
@@ -30,9 +34,16 @@ const getLabel = async (name) => {
   }
 };
 
-const patchLabel = async (name, desc, color) => {
+const patchLabel = async (beforename, name, desc, color) => {
   try {
-    await db.label.update({ name, desc, color }, { where: { name } });
+    const label = await db.label.findByPk(name);
+    if (label) {
+      throw new Error('이미 존재하는 이름입니다.');
+    }
+    await db.label.update(
+      { name, desc, color },
+      { where: { name: beforename } },
+    );
   } catch (err) {
     throw new Error(err);
   }
