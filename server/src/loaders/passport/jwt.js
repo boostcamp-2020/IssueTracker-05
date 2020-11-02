@@ -11,9 +11,9 @@ const opts = {
 const jwtFn = async (jwtPayload, done) => {
   try {
     const user = await db.user.findOne({
-      where: { 
+      where: {
         userId: jwtPayload.userId,
-        resourceServer: jwtPayload.resourceServer
+        resourceServer: jwtPayload.resourceServer,
       },
     });
     if (!user) {

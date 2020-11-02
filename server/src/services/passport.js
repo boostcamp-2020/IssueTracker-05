@@ -22,9 +22,19 @@ const passportGithub = (req, res) => {
     if (err) {
       return res.status(400).json({ message: err });
     }
-    const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey)
+    const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey);
     return res.status(200).json({ user, token });
-  })(req, res)
-}
+  })(req, res);
+};
 
-export default { passportLocal, passportGithub };
+const passportApple = (req, res) => {
+  passport.authenticate('apple', { session: false }, (err, user) => {
+    if (err) {
+      return res.status(400).json({ message: err });
+    }
+    const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey);
+    return res.status(200).json({ user, token });
+  })(req, res);
+};
+
+export default { passportLocal, passportGithub, passportApple };

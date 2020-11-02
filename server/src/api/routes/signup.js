@@ -15,4 +15,4 @@ export default (app) => {
     signupMiddleware.checkId,
     signupController.signup,
   );
-}
+};

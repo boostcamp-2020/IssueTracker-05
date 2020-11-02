@@ -36,9 +36,10 @@ const getLabel = async (req, res) => {
 };
 
 const patchLabel = async (req, res) => {
+  const beforename = req.params.name;
   const { name, desc, color } = req.body;
   try {
-    await labelService.patchLabel(name, desc, color);
+    await labelService.patchLabel(beforename, name, desc, color);
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({

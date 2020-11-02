@@ -15,17 +15,23 @@ const isValid = (req, res, next) => {
   const { userId, password } = req.body;
 
   if (userId.length < 6) {
-    res.status(400).json({ message: '아이디는 6자 이상 적어주셔야 합니다.' });
-  } else if (userId.length > 16) {
-    res
+    return res
+      .status(400)
+      .json({ message: '아이디는 6자 이상 적어주셔야 합니다.' });
+  }
+  if (userId.length > 16) {
+    return res
       .status(400)
       .json({ message: '아이디는 16자 이하로 적어주셔야 합니다.' });
   }
 
   if (password.length < 6) {
-    res.status(400).json({ message: '비밀번호는 6자 이상 적어주셔야 합니다.' });
-  } else if (password.length > 12) {
-    res
+    return res
+      .status(400)
+      .json({ message: '비밀번호는 6자 이상 적어주셔야 합니다.' });
+  }
+  if (password.length > 12) {
+    return res
       .status(400)
       .json({ message: '비밀번호는 12자 이하로 적어주셔야 합니다.' });
   }
@@ -36,7 +42,7 @@ const isValid = (req, res, next) => {
   const speicalSymbolPattern = /[~!@#$%^&*()_+|<>?:{}]/;
 
   if (!idPattern.test(userId)) {
-    res
+    return res
       .status(400)
       .json({ message: '아이디는 영문과 숫자로만 적어주셔야 합니다.' });
   }
@@ -46,7 +52,7 @@ const isValid = (req, res, next) => {
     !alphabetPattern.test(password) ||
     !speicalSymbolPattern.test(password)
   ) {
-    res.status(400).json({
+    return res.status(400).json({
       message: '비밀번호는 영문자, 숫자, 특수문자로 구성되어야 합니다.',
     });
   }

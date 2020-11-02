@@ -1,5 +1,14 @@
 import db from '@models';
 
+const getComment = async (cid) => {
+  try {
+    const comment = await db.comment.findByPk(cid);
+    return comment;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 const getComments = async (iid) => {
   try {
     const comments = db.comment.findAll({ where: { iid } });
@@ -37,4 +46,10 @@ const deleteComment = async (cid) => {
   }
 };
 
-export default { getComments, createComment, patchComment, deleteComment };
+export default {
+  getComment,
+  getComments,
+  createComment,
+  patchComment,
+  deleteComment,
+};

@@ -8,7 +8,7 @@ if (envFound.error) {
 
 export default {
   secretOrKey: process.env.JWT_SECRET_KEY,
-  clientId : process.env.GITHUB_ID,
+  clientId: process.env.GITHUB_ID,
   clientSecret: process.env.GITHUB_SECRET,
-  callbackURL: `http://localhost:${process.env.PORT}/${process.env.GITHUB_CALLBACK_URL}`
+  callbackURL: `http://localhost:${process.env.PORT}/${process.env.GITHUB_CALLBACK_URL}`,
 };

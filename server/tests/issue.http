@@ -3,8 +3,68 @@
 @host = http://{{hostname}}:{{port}}/api
 @contentType = application/json
 
+###
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "test123",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
+
 ### 특정 이슈 하나 불러오기
 @issueId=
 
 GET {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
+
+### 이슈 불러오기
+
+GET {{host}}/issue
+?page=4
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### 이슈 생성
+
+POST {{host}}/issue HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "title": "이슈 타이틀",
+    "content": null,
+    "author": "이슈 작성자",
+    "label": null,
+    "mid": null,
+    "assignees": null
+}
+
+###
+
+POST {{host}}/issue HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+    "title": "이슈 타이틀",
+    "content": null,
+    "author": "이슈 작성자",
+    "labels": [
+      {
+        "name": "baseball"
+      },
+      {
+        "name": "soccer"
+      }
+    ],
+    "mid": null,
+    "assignees": null
+}
