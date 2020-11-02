@@ -9,9 +9,13 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "babel-module": {},
   "ignorePatterns": ["node_modules/", "build/"],
   "rules": {
     "no-console": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }
