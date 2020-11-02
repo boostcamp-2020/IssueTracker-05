@@ -10,8 +10,8 @@ POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "testsdsds1212",
-  "password": "12345678aaa@",
+  "userId": "test123",
+  "password": "123456a@",
   "resourceServer": "local"
 }
 
@@ -19,8 +19,10 @@ content-type: {{contentType}}
 
 @authToken = {{login.response.body.token}}
 
-### 댓글 불러오기
-GET {{host}}/comment/11 HTTP/1.1
+### 이슈에 있는 전체 댓글 불러오기
+
+@getIssueId=11
+GET {{host}}/comment/{{getIssueId}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
@@ -38,11 +40,10 @@ Authorization: Bearer {{authToken}}
 
 ### 댓글 수정
 
-@editID = 2
+@editID = 1
 PATCH {{host}}/comment/{{editID}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
-
 
 {
   "content": "충전기 빼고 100만원 실화냐"
@@ -50,7 +51,7 @@ Authorization: Bearer {{authToken}}
 
 ### 댓글 삭제
 
-@deleteId = 3
+@deleteId = 4
 DELETE {{host}}/comment/{{deleteId}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
