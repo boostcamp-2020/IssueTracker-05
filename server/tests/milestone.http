@@ -1,0 +1,71 @@
+@hostname = localhost
+@port = 5000
+@host = http://{{hostname}}:{{port}}/api
+@contentType = application/json
+
+### 로컬 로그인
+
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testsdsds1212",
+  "password": "12345678aaa@",
+  "resourceServer": "local"
+}
+
+### 마일스톤 불러오기
+
+GET {{host}}/milestone/ HTTP/1.1
+content-type: {{contentType}}
+
+
+
+### 마일스톤 추가하기
+
+POST {{host}}/milestone/ HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "title": "테스트용 마일스톤",
+  "content": "해치웠나?"
+}
+
+###
+
+POST {{host}}/milestone/ HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "title": "테스트용 마일스톤2",
+  "dueDate": "2020-12-12"
+}
+
+###
+
+POST {{host}}/milestone/ HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "title": "테스트용 마일스톤12312",
+  "content": "해치웠다고!!"
+}
+
+### 마일스톤 삭제하기 (데이터 베이스 확인후 설정)
+
+@deleteId=
+
+DELETE {{host}}/milestone/{{deleteId}} HTTP/1.1
+content-type: {{contentType}}
+
+### 마일스톤 수정하기
+
+@editId=
+
+PATCH {{host}}/milestone/{{editId}} HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "title": "수정 되었다!",
+  "content": "진짜 해치웠나?",
+}
