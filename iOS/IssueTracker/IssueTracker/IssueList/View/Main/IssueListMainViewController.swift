@@ -45,7 +45,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
         return true
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // 엔터 치면 작동
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
@@ -54,7 +54,6 @@ extension IssueListMainViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         searchListViewModel.action.searchTextChanged(searchText)
     }
     
@@ -66,7 +65,7 @@ import SwiftUI
 
 struct IssueListMainViewController_Preview: PreviewProvider {
     static var previews: some View {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
         return vc.view.liveView
     }

@@ -6,7 +6,7 @@ class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var viewModel: SearchListViewModel!
+    var viewModel = SearchListViewModel()
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
@@ -48,8 +48,8 @@ class SearchListViewController: UIViewController {
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: itemSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-//            section.contentInsets = NSDirectionalEdgeInsets(
-//                top: 10, leading: 5, bottom: 10, trailing: 5)
+            section.contentInsets = NSDirectionalEdgeInsets(
+                top: 10, leading: 5, bottom: 10, trailing: 5)
             return UICollectionViewCompositionalLayout(section: section)
         }
 }
@@ -60,8 +60,9 @@ import SwiftUI
 
 struct SearchListViewController_Preview: PreviewProvider {
     static var previews: some View {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
+        
         return vc.view.liveView
     }
 }
