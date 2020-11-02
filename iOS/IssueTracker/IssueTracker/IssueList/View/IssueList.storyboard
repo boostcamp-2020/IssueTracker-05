@@ -80,16 +80,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Y1x-5U-Mue">
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Y1x-5U-Mue">
                                 <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-7u-C6A" userLabel="search">
                                 <rect key="frame" x="0.0" y="100" width="414" height="796"/>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdb-4b-eNB">
+                                <rect key="frame" x="354" y="802" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="d1P-0o-fAD"/>
+                                    <constraint firstAttribute="height" constant="40" id="nfU-Ya-jvj"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="issueCreationButtonTabbed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OIl-Td-5wb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -103,8 +113,10 @@
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="acX-m8-vkQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x3U-gf-c9U" secondAttribute="bottom" id="eVq-kj-tlp"/>
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="glj-Fe-ulQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdb-4b-eNB" secondAttribute="trailing" constant="20" id="hcd-Gf-Y5j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ske-7u-C6A" secondAttribute="bottom" constant="-34" id="jMH-ij-kPS"/>
                             <constraint firstItem="x3U-gf-c9U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sLC-yY-mab"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdb-4b-eNB" secondAttribute="bottom" constant="20" id="uuT-DU-Hpa"/>
                         </constraints>
                     </view>
                     <connections>

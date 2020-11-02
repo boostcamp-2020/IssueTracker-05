@@ -26,6 +26,9 @@ class IssueListMainViewController: UIViewController {
             UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
     }
     
+    @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
+        print("Add")
+    }
     @objc func pushFilterViewController() {
         print("filter")
     }
