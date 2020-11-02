@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+class MilestoneListViewCell: UICollectionViewCell {
+    
+    var id: String?
+    
+}
