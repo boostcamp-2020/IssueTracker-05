@@ -9,8 +9,8 @@ POST {{host}}/label HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "name": "baseball",
-  "color": "#fff"
+  "name": "soccer2",
+  "color": "#ab2135"
 }
 
 ### 모든 레이블 얻기
@@ -20,21 +20,24 @@ content-type: {{contentType}}
 
 ### 특정 레이블 하나 얻기
 
-GET {{host}}/label/test HTTP/1.1
+@getLabel=test
+GET {{host}}/label/{{getLabel}} HTTP/1.1
 content-type: {{contentType}}
 
 ### 특정 레이블 수정하기
 
-PATCH {{host}}/label/test HTTP/1.1
+@editLabel=soccer2
+PATCH {{host}}/label/{{editLabel}} HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "name": "TEST",
+  "name": "TEST2",
   "desc": "test에서 TEST로 레이블명 수정",
   "color": "#2d3f21"
 }
 
 ### 특정 레이블 삭제
 
-DELETE {{host}}/label/baseball HTTP/1.1
+@deleteLabel=TEST2
+DELETE {{host}}/label/{{deleteLabel}} HTTP/1.1
 content-type: {{contentType}}
