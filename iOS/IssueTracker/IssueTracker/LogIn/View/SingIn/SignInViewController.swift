@@ -7,8 +7,6 @@
 //
 
 
-import RxCocoa
-import RxSwift
 import UIKit
 import AuthenticationServices
 
@@ -28,7 +26,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordErrorMessageLabel: UILabel!
     
     let viewModel = SignInViewModel()
-    var disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()

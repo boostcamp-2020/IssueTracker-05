@@ -8,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        if let _ = Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
+        if nil == Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
             
             let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
             issueListMainViewController.tabBarItem

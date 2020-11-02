@@ -4,11 +4,7 @@
 target 'IssueTracker' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'RxSwift'
-  pod 'Then'
-  pod 'RxCocoa'
   pod 'Alamofire'
-  pod 'Kingfisher'
   pod 'KeychainSwift'
   # Pods for IssueTracker
 

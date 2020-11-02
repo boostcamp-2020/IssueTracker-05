@@ -13,9 +13,6 @@
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
 		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
-		88B8F0F5254AB0F500C23791 /* MilestoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */; };
-		88B8F0F8254AB12000C23791 /* LabelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F7254AB12000C23791 /* LabelList.storyboard */; };
-		88B8F0FB254AB13800C23791 /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */; };
 		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
@@ -24,6 +21,10 @@
 		88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0381C25497B5E000D4D4A /* IssueResultViewController.swift */; };
 		88C03823254990C5000D4D4A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03822254990C5000D4D4A /* Bindable.swift */; };
 		88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0382625499494000D4D4A /* IssueResultCellView.swift */; };
+		DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */; };
+		DA1B56E8254FEDD900FE8D2D /* LabelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F7254AB12000C23791 /* LabelList.storyboard */; };
+		DA1B56EA254FEDDF00FE8D2D /* MilestoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */; };
+		DA1B56ED254FF00A00FE8D2D /* SearchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B56EC254FF00900FE8D2D /* SearchListViewModel.swift */; };
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9F254A83EF0036DDC3 /* LoginModel.swift */; };
@@ -31,8 +32,6 @@
 		DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* OctoKit */; };
 		DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AB4254AA3490036DDC3 /* LoginManager.swift */; };
 		DA511ACC254FBAE30036DDC3 /* ErrorMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511ACB254FBAE30036DDC3 /* ErrorMessageLabel.swift */; };
-		DA511AD4254FDFE90036DDC3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA511AD3254FDFE90036DDC3 /* SignUp.storyboard */; };
-		DA511AD7254FE0010036DDC3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AD6254FE0010036DDC3 /* SignUpViewController.swift */; };
 		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
 		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
@@ -59,6 +58,7 @@
 		88C0382625499494000D4D4A /* IssueResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResultCellView.swift; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		DA1B56EC254FF00900FE8D2D /* SearchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListViewModel.swift; sourceTree = "<group>"; };
 		DA511A8D254A83020036DDC3 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DA511A99254A83A00036DDC3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA511A9A254A83A00036DDC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				88C03807254961BE000D4D4A /* IssueListViewModel.swift */,
+				DA1B56EC254FF00900FE8D2D /* SearchListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -374,6 +375,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1B56EA254FEDDF00FE8D2D /* MilestoneList.storyboard in Resources */,
+				DA1B56E8254FEDD900FE8D2D /* LabelList.storyboard in Resources */,
 				88026501254A91270076B04A /* Login.storyboard in Resources */,
 				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
 				8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */,
@@ -432,11 +435,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */,
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
+				DA1B56ED254FF00A00FE8D2D /* SearchListViewModel.swift in Sources */,
 				88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,

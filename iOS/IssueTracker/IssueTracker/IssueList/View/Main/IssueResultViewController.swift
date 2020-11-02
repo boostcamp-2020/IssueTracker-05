@@ -65,7 +65,7 @@ import SwiftUI
 
 struct IssueResultViewController_Preview: PreviewProvider {
     static var previews: some View {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
         return vc.view.liveView
     }

@@ -1,7 +1,5 @@
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class IssueListMainViewController: UIViewController {
     
@@ -11,16 +9,12 @@ class IssueListMainViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var viewModel = IssueListViewModel()
-    var disposeBag = DisposeBag()
+    var searchListViewModel = SearchListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         searchContrainerView.isHidden = true
-        
-        searchBar.rx.text.orEmpty
-            .bind(to: viewModel.searchText)
-            .disposed(by: disposeBag)
         
         setupSearchListViewController()
         setupIssueResultViewController()
@@ -29,7 +23,7 @@ class IssueListMainViewController: UIViewController {
     let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
     
     func setupSearchListViewController() {
-        searchViewController.viewModel = viewModel
+        searchViewController.viewModel = searchListViewModel
         searchContrainerView.addSubview(searchViewController.view)
     }
     
@@ -48,12 +42,16 @@ extension IssueListMainViewController: UISearchBarDelegate {
         return true
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) { // 엔터 치면 작동
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchContrainerView.isHidden = true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchListViewModel.action.searchTextChanged(searchText)
     }
     
 }
@@ -64,7 +62,7 @@ import SwiftUI
 
 struct IssueListMainViewController_Preview: PreviewProvider {
     static var previews: some View {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
         return vc.view.liveView
     }

@@ -1,30 +1,18 @@
 import UIKit
-import RxSwift
-import RxCocoa
 
 class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var viewModel: IssueListViewModel!
-    var disposeBag = DisposeBag()
-    
-    var sections = [IssueListModel]()
+    var viewModel = SearchListViewModel()
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionview.collectionViewLayout = createListLayout()
+        viewModel.status.model.bindAndFire(applySnapshot)
         
-        sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-        sections.append(IssueListModel(isOpened: true, label: ["bug"], title: "마일스톤 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-        
-        viewModel.model.subscribe(onNext: { [weak self] issueList in
-            self?.applySnapshot(sections: issueList)
-        })
-        .disposed(by: disposeBag)
-            
     }
     
     func applySnapshot(sections: [IssueListModel]) {
@@ -58,9 +46,8 @@ class SearchListViewController: UIViewController {
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: itemSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-//            section.contentInsets = NSDirectionalEdgeInsets(
-//                top: 10, leading: 5, bottom: 10, trailing: 5)
-            
+            section.contentInsets = NSDirectionalEdgeInsets(
+                top: 10, leading: 5, bottom: 10, trailing: 5)
             return UICollectionViewCompositionalLayout(section: section)
         }
 }
@@ -71,8 +58,9 @@ import SwiftUI
 
 struct SearchListViewController_Preview: PreviewProvider {
     static var previews: some View {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
+        
         return vc.view.liveView
     }
 }
