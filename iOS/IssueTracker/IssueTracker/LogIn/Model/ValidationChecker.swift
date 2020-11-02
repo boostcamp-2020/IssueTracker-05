@@ -30,7 +30,8 @@ class IdValidationChecker: Validator {
     
     func validate(input: String) -> validateMessage {
         if input.isEmpty {
-            return .emptyId
+//            return .emptyId
+            return .valid
         }
         
         if input.count < 6 || input.count > 16 {
@@ -50,7 +51,8 @@ class PasswordValidationChecker: Validator {
     
     func validate(input: String) -> validateMessage {
         if input.isEmpty {
-            return .emptyPassword
+//            return .emptyPassword
+            return .valid
         }
         
         if input.count < 6 || input.count > 12 {

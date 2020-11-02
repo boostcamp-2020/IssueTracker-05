@@ -13,6 +13,7 @@ class SignInViewModel {
     struct Status {
         var idErrorMessage = Bindable<String>("")
         var passwordErrorMessage = Bindable<String>("")
+        var buttonEnabled = Bindable((false,false))
     }
     
     struct Action {
@@ -26,13 +27,14 @@ class SignInViewModel {
     var idValidationChecker = IdValidationChecker()
     var passwordValidationChecker = PasswordValidationChecker()
     
-    
     func idValidationChecker(temp:String) {
         self.status.idErrorMessage.value = idValidationChecker.validate(input: temp).rawValue
+        self.status.buttonEnabled.value.0 = idValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
     }
     
     func passwordValidationChecker(temp:String) {
         self.status.passwordErrorMessage.value = passwordValidationChecker.validate(input: temp).rawValue
+        self.status.buttonEnabled.value.1 = passwordValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
     }
 
     init() {

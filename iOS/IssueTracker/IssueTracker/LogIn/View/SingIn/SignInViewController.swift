@@ -37,6 +37,17 @@ class SignInViewController: UIViewController {
         passwordTextField.delegate = self
         viewModel.status.idErrorMessage.bind(idErrorLabelUpdate)
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
+        viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
+    }
+    
+    func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool) {
+        if idEnable, passwordEnable {
+            self.loginButton.isUserInteractionEnabled = true
+            self.loginButton.alpha = 1.0
+        } else {
+            self.loginButton.isUserInteractionEnabled = false
+            self.loginButton.alpha = 0.3
+        }
     }
     
     func idErrorLabelUpdate(id:String) {
