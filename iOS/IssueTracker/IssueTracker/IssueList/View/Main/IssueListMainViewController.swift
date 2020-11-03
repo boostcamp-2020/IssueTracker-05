@@ -56,6 +56,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchContrainerView.isHidden = false
+        resultContrainerView.isHidden = true
         return true
     }
     
@@ -65,6 +66,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchContrainerView.isHidden = true
+        resultContrainerView.isHidden = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
