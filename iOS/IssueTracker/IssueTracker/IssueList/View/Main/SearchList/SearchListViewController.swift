@@ -2,10 +2,11 @@ import UIKit
 
 class SearchListViewController: UIViewController {
     
+    typealias ResultType = String
+    
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var defaultModelData = IssueListModel.all() //TOOD: 나중에 삭제해야 한다.
-    var viewModel: SearchListViewModel!
+    var defaultModelData = ["abcdefg"] //TOOD: 나중에 삭제해야 한다.]
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
@@ -14,27 +15,26 @@ class SearchListViewController: UIViewController {
         applySnapshot(sections: defaultModelData)
     }
     
-    func setup(viewModel: SearchListViewModel) {
-        self.viewModel = viewModel
-        viewModel.status.model.bindAndFire(applySnapshot(sections:))
+    func setup(models: [ResultType]) {
+        
     }
     
-    func applySnapshot(sections: [IssueListModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<[IssueListModel], IssueListModel>()
-        snapshot.appendSections([sections])
+    func applySnapshot(sections: [ResultType]) {
+        var snapshot = NSDiffableDataSourceSnapshot<[ResultType], ResultType>()
+        snapshot.appendSections([])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
     }
     
-    func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {
-        UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
+    func makeDataLayout() -> UICollectionViewDiffableDataSource<[ResultType], ResultType> {
+        UICollectionViewDiffableDataSource<[ResultType], ResultType>(
             collectionView: collectionview,
-            cellProvider: { [unowned self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
+            cellProvider: { (collectionView, indexPath, issueTitle) -> UICollectionViewCell? in
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchListCellView", for: indexPath) as? SearchListCellView else {
                     return nil
                 }
                 
-                cell.setup(title: issue.title)
+                cell.setup(title: issueTitle)
                 
                 return cell
             })

@@ -19,16 +19,16 @@ class IssueListViewModel {
     var status = Status()
     lazy var action = Action(
         searchTextChanged: { (text) -> Void in
-            self.status.searchResultList.value
+            self.status.searchResultTitleList.value
                 = self.status.issues.value.filter {
                     $0.title.contains(text)
-                }
-        },searchButtonClicked: { searchBarText in
-            self.status.searchResultTitleList.value
-                = self.status.searchResultList.value.filter {
-                    $0.title == searchBarText
                 }.map {
                     $0.title
+                }
+        },searchButtonClicked: { searchBarText in
+            self.status.searchResultList.value
+                = self.status.issues.value.filter {
+                    $0.title == searchBarText
                 }
         } )
     
