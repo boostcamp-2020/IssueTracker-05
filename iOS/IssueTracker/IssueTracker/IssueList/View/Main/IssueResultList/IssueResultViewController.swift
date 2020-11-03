@@ -37,7 +37,7 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
-                cell.setup(title: issue.title, description: issue.content)
+                cell.setup(title: issue.title, description: issue.content ?? "no")
                 cell.closeButtonAction = {
                     print("여기서 close합니다.")
                 }

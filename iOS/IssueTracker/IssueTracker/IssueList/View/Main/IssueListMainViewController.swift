@@ -32,6 +32,8 @@ class IssueListMainViewController: UIViewController {
         
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
+        
+        viewModel.status.model.bind(issueResultViewController.applySnapshot(sections:))
     }
     
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
