@@ -32,7 +32,7 @@ class MilestoneListViewController: UIViewController {
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "MilestoneListViewCell",
                     for: indexPath) as? MilestoneListViewCell
-                cell?.id = item.id
+                
                 return cell
             })
         return dataSource

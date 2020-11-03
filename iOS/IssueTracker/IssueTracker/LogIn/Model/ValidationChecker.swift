@@ -17,6 +17,7 @@ protocol Validator {
 enum validateMessage: String {
     case invalidIdlength = "아이디는 6~16자만 입력 가능합니다."
     case invalidPwlength = "비밀번호는 6~12자만 입력 가능합니다."
+    case invalidNickname = "닉네임은 6~16자만 입력 가능합니다."
     case emptyId = "아이디를 입력하세요"
     case emptyPassword = "비밀번호를 입력하세요"
     case valid = ""
@@ -51,12 +52,30 @@ class PasswordValidationChecker: Validator {
     
     func validate(input: String) -> validateMessage {
         if input.isEmpty {
-//            return .emptyPassword
             return .valid
         }
         
         if input.count < 6 || input.count > 12 {
             return .invalidPwlength
+        }
+        return .valid
+    }
+    
+}
+
+class NicknameValidationChecker: Validator {
+    
+    var pass: validateMessage {
+        get{ .valid }
+    }
+    
+    func validate(input: String) -> validateMessage {
+        if input.isEmpty {
+            return .valid
+        }
+        
+        if input.count < 6 || input.count > 12 {
+            return .invalidNickname
         }
         return .valid
     }
