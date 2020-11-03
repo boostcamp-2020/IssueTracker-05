@@ -11,7 +11,9 @@ export default {
   githubClientId: process.env.GITHUB_ID,
   githubClientSecret: process.env.GITHUB_SECRET,
   githubCallbackURL: `http://localhost:${process.env.PORT}/${process.env.GITHUB_CALLBACK_URL}`,
-  appleClientId: process.env.Apple_ID,
-  appleClientSecret: process.env.Apple_SECRET,
+  appleClientId: process.env.APPLE_CLIENT_ID,
+  appleTeamId: process.env.APPLE_TEAM_ID,
+  appleKeyId: process.env.APPLE_KEY_ID,
+  applePrivateKey: process.env.APPLE_PRIVATE_KEY,
   appleCallbackURL: `http://localhost:${process.env.PORT}/${process.env.APPLE_CALLBACK_URL}`,
 };

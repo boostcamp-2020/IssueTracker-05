@@ -5,10 +5,10 @@ import passportConfig from '@config/passport';
 export default new AppleStrategy(
   {
     clientID: passportConfig.appleClientId,
-    teamID: '',
+    teamID: passportConfig.appleTeamId,
     callbackURL: passportConfig.appleCallbackURL,
-    keyID: '',
-    privateKeyLocation: passportConfig.appleClientSecret,
+    keyID: passportConfig.appleKeyId,
+    privateKeyLocation: passportConfig.applePrivateKey,
     passReqToCallback: true,
   },
   async (req, accessToken, refreshToken, decodedIdToken, profile, done) => {
