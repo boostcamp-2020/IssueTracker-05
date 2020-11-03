@@ -25,7 +25,6 @@ class IssueResultViewController: UIViewController {
         snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
-        
     }
     
     func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {
@@ -36,6 +35,7 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
+                // setup에서
                 cell.setup(title: issue.title, description: issue.content)
                 
                 return cell

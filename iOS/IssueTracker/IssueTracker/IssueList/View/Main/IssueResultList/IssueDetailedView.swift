@@ -1,7 +1,6 @@
 import UIKit
 
-class IssueResultCellView: UICollectionViewCell {
-    
+class IssueDetailedView: BothSidesSwipingView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var milestoneLabel: UIButton!
