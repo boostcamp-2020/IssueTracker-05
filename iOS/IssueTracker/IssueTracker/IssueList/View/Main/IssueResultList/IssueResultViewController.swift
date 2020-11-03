@@ -50,13 +50,13 @@ class IssueResultViewController: UIViewController {
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(100))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            item.contentInsets = NSDirectionalEdgeInsets(
-//                top: 0, leading: 5, bottom: 5, trailing: 5)
+            item.contentInsets = NSDirectionalEdgeInsets(
+                top: 3, leading: 0, bottom: 0, trailing: 0)
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: itemSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-//            section.contentInsets = NSDirectionalEdgeInsets(
-//                top: 10, leading: 5, bottom: 10, trailing: 5)
+            section.contentInsets = NSDirectionalEdgeInsets(
+                top: 0, leading: 5, bottom: 0, trailing: 5)
             return UICollectionViewCompositionalLayout(section: section)
         }
     
