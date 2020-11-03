@@ -16,6 +16,9 @@ class IssueListMainViewController: UIViewController {
     // searchListViewModel에 있는 origin도 바꾸어 줘야 한다.
     // 이 작업을 해주는 함수를 바인딩 해두자
     
+    var searchViewController: SearchListViewController!
+    var issueResultViewController: IssueResultViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -42,15 +45,13 @@ class IssueListMainViewController: UIViewController {
         print("Edit")
     }
     
-    let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
-    
     func setupSearchListViewController() {
+        searchViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
         searchContrainerView.addSubview(searchViewController.view)
     }
     
-    let issueResultViewController: IssueResultViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueResultViewController.self))
-    
     func setupIssueResultViewController() {
+        issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueResultViewController.self))
         resultContrainerView.addSubview(issueResultViewController.view)
         issueResultViewController.setupModel(
             models: viewModel.status.model.value)
@@ -65,10 +66,12 @@ extension IssueListMainViewController: UISearchBarDelegate {
         searchViewController.setup(viewModel: searchListViewModel)
         resultContrainerView.isHidden = true
         issueCreationButton.isHidden = true
+        navigationController?.isNavigationBarHidden = true
         return true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.text = ""
         searchBar.resignFirstResponder()
         let newVC = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(
@@ -76,6 +79,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
                     as IssueResultViewController
         newVC.setupModel(models: searchListViewModel.status.model.value)
         navigationController?.pushViewController(newVC, animated: false)
+        navigationController?.isNavigationBarHidden = false
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
