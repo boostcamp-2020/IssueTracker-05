@@ -10,8 +10,6 @@ class IssueResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         collectionview.collectionViewLayout = createListLayout()
         
         sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
@@ -35,8 +33,13 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
-                // setup에서
                 cell.setup(title: issue.title, description: issue.content)
+                cell.closeButtonAction = {
+                    print("여기서 close합니다.")
+                }
+                cell.deleteButtonAction = {
+                    print("여기서 delete합니다.")
+                }
                 
                 return cell
             })

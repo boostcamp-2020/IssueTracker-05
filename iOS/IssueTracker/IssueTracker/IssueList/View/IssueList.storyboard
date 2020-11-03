@@ -169,6 +169,9 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="closeButtonTabbed:" destination="nKv-YR-Rwv" eventType="touchUpInside" id="Ahn-fX-gg1"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XCL-1a-fTR" userLabel="delete">
                                                     <rect key="frame" x="290.5" y="0.0" width="72.5" height="100"/>
@@ -184,6 +187,9 @@
                                                             </fragment>
                                                         </attributedString>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="deleteButtonTabbed:" destination="nKv-YR-Rwv" eventType="touchUpInside" id="v6Z-ca-ydr"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IYO-CD-0Xt" customClass="IssueDetailedView" customModule="IssueTracker" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="363" height="100"/>
