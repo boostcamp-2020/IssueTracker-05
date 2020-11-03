@@ -21,9 +21,7 @@ class SearchListViewModel {
     }
     
     func search(text: String) {
-        status.model.value = originModel.filter {
-            $0.title.contains(text)
-        }
+        
     }
     
 }

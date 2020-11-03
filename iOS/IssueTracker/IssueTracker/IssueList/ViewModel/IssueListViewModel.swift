@@ -5,23 +5,50 @@ import Alamofire
 class IssueListViewModel {
     
     struct Status {
-        var model =  Bindable(IssueListModel.all())
+        var issues =  Bindable(IssueListModel.all())
+        var searchResultList = Bindable(IssueListModel.all())
+        var searchResultTitleList = Bindable([String]())
     }
     
-    //TODO: 여기서 서버로부터 데이터를 받아온다. 서비스 객체가 여기에 존재. - 아직은 아웃풋 데이터 발생만 발생할 것으로 예상된다.
+    struct Action {
+        var searchTextChanged: (String) -> Void
+        var searchButtonClicked: (String) -> Void
+        //var searchCancelButtonClicked: () -> Void
+    }
+    
+    var status = Status()
+    lazy var action = Action(
+        searchTextChanged: { (text) -> Void in
+            self.status.searchResultList.value
+                = self.status.issues.value.filter {
+                    $0.title.contains(text)
+                }
+        },searchButtonClicked: { searchBarText in
+            self.status.searchResultTitleList.value
+                = self.status.searchResultList.value.filter {
+                    $0.title == searchBarText
+                }.map {
+                    $0.title
+                }
+        } )
     
     let url = "http://172.30.1.27:5000/api/issue"
     let httpHeaders:HTTPHeaders = ["Accept": "application/json"]
     
     init() {
+        requestIssueData()
+    }
+    
+    func requestIssueData() {
+        // 검색 결과 화면에서 돌아오면 다시 호출해 주어야 한다.
         AF.request(url, method: .get, parameters: nil, headers: httpHeaders).responseJSON { (response) in
             switch response.result {
             case .success(let result):
                 do {
                     let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                     let decodedData = try JSONDecoder().decode([IssueListModel].self, from: resultData)
-                    self.status.model.value = decodedData
-                    print(self.status.model.value)
+                    self.status.issues.value = decodedData
+                    print(self.status.issues.value)
                 } catch {
                     print(error)
                 }
@@ -30,14 +57,6 @@ class IssueListViewModel {
                 print(error.localizedDescription)
             }
         }
-    
     }
-    
-//    struct Action {
-//        func search: (String) -> Void
-//    }
-    
-    var status = Status()
-    //var Action = Action()
     
 }
