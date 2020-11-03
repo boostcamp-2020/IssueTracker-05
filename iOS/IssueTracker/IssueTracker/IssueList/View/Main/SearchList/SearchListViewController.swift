@@ -4,7 +4,7 @@ class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var defaultModelData = IssueListModel.all()
+    var defaultModelData = IssueListModel.all() //TOOD: 나중에 삭제해야 한다.
     var viewModel: SearchListViewModel!
     lazy var dataLayout = makeDataLayout()
     

@@ -4,18 +4,18 @@ class IssueResultViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var models: [IssueListModel]! {
-        didSet {
-            applySnapshot(sections: models)
-        }
-    }
+    var models: [IssueListModel]?
     
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
-        models = IssueListModel.all()
+        if let models = self.models {
+            applySnapshot(sections: models)
+            return
+        }
+        applySnapshot(sections: IssueListModel.all())
     }
     
     func setupModel(models: [IssueListModel]) {

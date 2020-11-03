@@ -4,7 +4,7 @@ import Foundation
 class SearchListViewModel {
         
     struct Status {
-        var model = Bindable(IssueListModel.all())
+        var model = Bindable<[IssueListModel]>([IssueListModel]())
     }
     
     struct Action {
@@ -13,7 +13,8 @@ class SearchListViewModel {
     
     var status = Status()
     var originModel: [IssueListModel] // viewController에서 받아온 원본 데이터 - 뷰컨트롤러 생성하면서 받아 온다.
-    lazy var action = Action(searchTextChanged: search)
+    lazy var action
+        = Action(searchTextChanged: search)
     
     init(originModel: [IssueListModel]) {
         self.originModel = originModel
@@ -24,6 +25,5 @@ class SearchListViewModel {
             $0.title.contains(text)
         }
     }
-    
     
 }

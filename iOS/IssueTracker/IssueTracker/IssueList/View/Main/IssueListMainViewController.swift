@@ -10,7 +10,8 @@ class IssueListMainViewController: UIViewController {
     @IBOutlet weak var issueCreationButton: UIButton!
     
     var viewModel = IssueListViewModel()
-    lazy var searchListViewModel = SearchListViewModel(originModel: self.viewModel.status.model.value)
+    lazy var searchListViewModel
+        = SearchListViewModel(originModel: self.viewModel.status.model.value)
     // TODO: viewmodel에 있는 값이 네트워크로부터 받아온 데이터로 변경되면
     // searchListViewModel에 있는 origin도 바꾸어 줘야 한다.
     // 이 작업을 해주는 함수를 바인딩 해두자
@@ -69,6 +70,12 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+        let newVC = UIStoryboard(name: "IssueList", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueResultViewController.self))
+                    as IssueResultViewController
+        newVC.setupModel(models: searchListViewModel.status.model.value)
+        navigationController?.pushViewController(newVC, animated: false)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
