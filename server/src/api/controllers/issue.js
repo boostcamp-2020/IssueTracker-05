@@ -37,7 +37,18 @@ const createIssue = async (req, res) => {
   }
 };
 
-const updateIssue = async (req, res) => {};
+const updateIssue = async (req, res) => {
+  const iid = req.params.id;
+  const { body } = req;
+  try {
+    const issue = await issueService.updateIssue(body, iid);
+    return res.status(200).json(issue);
+  } catch (err) {
+    return res.status(400).json({
+      message: err.message,
+    });
+  }
+};
 
 const deleteIssue = async (req, res) => {
   const iid = req.params.id;
