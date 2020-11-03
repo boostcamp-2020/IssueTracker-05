@@ -8,6 +8,7 @@
 
 
 import UIKit
+import Alamofire
 import AuthenticationServices
 
 class SignInViewController: UIViewController {
@@ -105,11 +106,64 @@ class SignInViewController: UIViewController {
         controller.performRequests()
         
     }
+    
     @IBAction func touchedSignUp(_ sender: Any) {
         
         let signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(identifier: String(describing: SignUpViewController.self))
 
         self.navigationController?.pushViewController(signUpViewController, animated: true)
+        
+    }
+    
+    @IBAction func touchedLogIn(_ sender: Any) {
+        
+        let url = "http://172.30.1.27:5000"
+        
+        let parameters = ["userId": self.idTextField.text,
+                          "password": self.passwordTextField.text]
+
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                if let json = json as? [String: Any] {
+                    if let message = json["message"] {
+                        self.showToast(message: message as! String)
+                    } else {
+                        print(json["user"])
+                        print(json["token"])
+                        let token = json["token"] as! String
+                        UserDefaults.standard.set(token, forKey: "token")
+                        let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
+                        
+                        let navController = UINavigationController(rootViewController: issueListMainViewController)
+                        navController.navigationBar.topItem?.title = "이슈"
+                        navController.navigationBar.prefersLargeTitles = true
+                        navController.tabBarItem
+                            = UITabBarItem(title: "이슈", image: nil, tag: 0)
+                        
+                        let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
+                        labelListViewController.tabBarItem
+                            = UITabBarItem(title: "레이블", image: nil, tag: 0)
+                        
+                        let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
+                        milestoneListViewController.tabBarItem
+                            = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
+                        
+                        let tabBarController = UITabBarController()
+                        tabBarController.tabBar.tintColor = UIColor.black
+                        tabBarController.viewControllers
+                            = [navController, labelListViewController, milestoneListViewController]
+                        let scenedelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+                        
+                        scenedelegate.window?.rootViewController = tabBarController
+                    }
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
         
     }
     
@@ -166,5 +220,3 @@ extension SignInViewController: UITextFieldDelegate {
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
     }
 }
-
-

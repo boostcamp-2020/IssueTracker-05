@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: UIViewController {
 
@@ -51,7 +52,7 @@ class SignUpViewController: UIViewController {
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
         viewModel.status.passwordConfirmErrorMessage.bind(passwordConfirmLabelUpdate)
         viewModel.status.nicknameErrorMessage.bind(nicknameConfirmLabelUpdate)
-        viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
+        //viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
     }
 
     func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool, passwordConfirmEnable: Bool, nicknameEnable: Bool) {
@@ -124,7 +125,28 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func touchedSignUp(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        let url = "http://172.30.1.27:5000"
+        
+        let parameters = ["userId": self.idTextField.text,
+                          "password": self.passwordTextField.text,
+                          "nickname": self.nickNameTextField.text]
+        
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(url + "/api/signup", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                print(json)
+                if let dic = json as? [String: String] {
+                    let message = dic["message"] ?? ""
+                    print(message)
+                }
+            case let .failure(error):
+                print(error)
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 
