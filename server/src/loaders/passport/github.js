@@ -5,9 +5,9 @@ import db from '@models';
 
 export default new GitHubStrategy(
   {
-    clientID: passportConfig.clientId,
-    clientSecret: passportConfig.clientSecret,
-    callbackURL: passportConfig.callbackURL,
+    clientID: passportConfig.githubClientId,
+    clientSecret: passportConfig.githubClientSecret,
+    callbackURL: passportConfig.githubCallbackURL,
   },
   async (accessToken, refreshToken, profile, done) => {
     const user = await db.user.findOrCreate({

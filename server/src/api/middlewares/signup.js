@@ -12,7 +12,7 @@ const checkId = async (req, res, next) => {
 };
 
 const isValid = (req, res, next) => {
-  const { userId, password } = req.body;
+  const { userId, password, nickname } = req.body;
 
   if (userId.length < 6) {
     return res
@@ -23,6 +23,17 @@ const isValid = (req, res, next) => {
     return res
       .status(400)
       .json({ message: '아이디는 16자 이하로 적어주셔야 합니다.' });
+  }
+
+  if (nickname.length < 6) {
+    return res
+      .status(400)
+      .json({ message: '닉네임은 6자 이상 적어주셔야 합니다.' });
+  }
+  if (nickname.length > 16) {
+    return res
+      .status(400)
+      .json({ message: '닉네임 16자 이하로 적어주셔야 합니다.' });
   }
 
   if (password.length < 6) {
@@ -45,6 +56,12 @@ const isValid = (req, res, next) => {
     return res
       .status(400)
       .json({ message: '아이디는 영문과 숫자로만 적어주셔야 합니다.' });
+  }
+
+  if (!idPattern.test(nickname)) {
+    return res
+      .status(400)
+      .json({ message: '닉네임은 영문과 숫자로만 적어주셔야 합니다.' });
   }
 
   if (

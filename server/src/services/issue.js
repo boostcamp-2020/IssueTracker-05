@@ -11,6 +11,12 @@ const getTargetIssue = async (iid) => {
 
 const getIssues = async (page) => {
   try {
+    if (!page) {
+      const issues = await db.issue.findAll({
+        include: [db.label, db.user],
+      });
+      return issues;
+    }
     const offset = page > 1 ? 10 * (page - 1) : 0;
     const issues = await db.issue.findAll({
       offset,
