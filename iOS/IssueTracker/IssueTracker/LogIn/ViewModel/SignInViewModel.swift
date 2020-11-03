@@ -27,14 +27,14 @@ class SignInViewModel {
     var idValidationChecker = IdValidationChecker()
     var passwordValidationChecker = PasswordValidationChecker()
     
-    func idValidationChecker(temp:String) {
-        self.status.idErrorMessage.value = idValidationChecker.validate(input: temp).rawValue
-        self.status.buttonEnabled.value.0 = idValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
+    func idValidationChecker(text:String) {
+        self.status.idErrorMessage.value = idValidationChecker.validate(input: text).rawValue
+        self.status.buttonEnabled.value.0 = idValidationChecker.validate(input: text).rawValue.isEmpty && !text.isEmpty
     }
     
-    func passwordValidationChecker(temp:String) {
-        self.status.passwordErrorMessage.value = passwordValidationChecker.validate(input: temp).rawValue
-        self.status.buttonEnabled.value.1 = passwordValidationChecker.validate(input: temp).rawValue.isEmpty && !temp.isEmpty
+    func passwordValidationChecker(text:String) {
+        self.status.passwordErrorMessage.value = passwordValidationChecker.validate(input: text).rawValue
+        self.status.buttonEnabled.value.1 = passwordValidationChecker.validate(input: text).rawValue.isEmpty && !text.isEmpty
     }
 
     init() {

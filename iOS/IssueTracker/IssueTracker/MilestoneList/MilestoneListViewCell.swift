@@ -10,6 +10,13 @@ import Foundation
 import UIKit
 class MilestoneListViewCell: UICollectionViewCell {
     
-    var id: String?
+    @IBOutlet var dueDateLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var openLabel: UILabel!
+    @IBOutlet var closedLabel: UILabel!
+    @IBOutlet var percentageLabel: UILabel!
+    @IBOutlet var sprintButton: UIButton!
+    
+    
     
 }

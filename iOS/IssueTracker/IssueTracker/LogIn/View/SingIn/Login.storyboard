@@ -31,6 +31,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-Jt-OLY">
                                 <rect key="frame" x="80" y="366" width="39" height="30"/>
                                 <state key="normal" title="로그인"/>
+                                <connections>
+                                    <action selector="touchedLogIn:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="lq0-fs-YGn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvn-xc-mSe">
                                 <rect key="frame" x="282" y="366" width="52" height="30"/>

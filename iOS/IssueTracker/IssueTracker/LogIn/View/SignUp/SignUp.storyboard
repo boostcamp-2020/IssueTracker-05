@@ -19,7 +19,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~16자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omS-PI-A3f">
                                 <rect key="frame" x="50" y="184" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이슈 트래커" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpB-Th-uAK">
@@ -30,7 +30,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltX-yF-qLU">
                                 <rect key="frame" x="50" y="248" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71g-87-f4e">
@@ -47,13 +47,13 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~16자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t4f-5j-wQk">
                                 <rect key="frame" x="50" y="312.5" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YXH-GD-IzC">
                                 <rect key="frame" x="50" y="377" width="314" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" textContentType="nickname"/>
                             </textField>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PW Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-1m-iSx">
                                 <rect key="frame" x="50" y="351.5" width="206.5" height="20.5"/>
@@ -67,15 +67,34 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lp-eu-w1g">
+                                <rect key="frame" x="50" y="466.5" width="314" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <state key="normal" title="회원가입">
+                                    <color key="titleColor" systemColor="labelColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="touchedSignUp:" destination="gdI-Cd-g1s" eventType="touchUpInside" id="azD-LS-rBP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="O6E-lE-H4u"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="ltX-yF-qLU" secondAttribute="trailing" constant="50" id="47R-da-Nks"/>
+                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="6Lp-eu-w1g" secondAttribute="trailing" constant="50" id="4iZ-1Z-bSY"/>
                             <constraint firstItem="t4f-5j-wQk" firstAttribute="top" secondItem="OH0-90-jdF" secondAttribute="bottom" constant="5" id="AxJ-Ny-B41"/>
+                            <constraint firstItem="t4f-5j-wQk" firstAttribute="trailing" secondItem="omS-PI-A3f" secondAttribute="trailing" id="C42-cG-ThW"/>
                             <constraint firstItem="YXH-GD-IzC" firstAttribute="top" secondItem="EmK-1m-iSx" secondAttribute="bottom" constant="5" id="DYO-ZS-dOp"/>
+                            <constraint firstItem="ltX-yF-qLU" firstAttribute="trailing" secondItem="omS-PI-A3f" secondAttribute="trailing" id="Exj-P2-7lZ"/>
                             <constraint firstItem="1cv-bA-WQW" firstAttribute="top" secondItem="YXH-GD-IzC" secondAttribute="bottom" constant="5" id="Eyc-7z-3G4"/>
-                            <constraint firstItem="ltX-yF-qLU" firstAttribute="leading" secondItem="O6E-lE-H4u" secondAttribute="leading" constant="50" id="KlJ-sG-dlP"/>
                             <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="omS-PI-A3f" secondAttribute="trailing" constant="50" id="LEI-Ws-7Bs"/>
                             <constraint firstItem="ltX-yF-qLU" firstAttribute="top" secondItem="71g-87-f4e" secondAttribute="bottom" constant="5" id="Og7-jD-kQT"/>
                             <constraint firstItem="t4f-5j-wQk" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="OyE-55-tPl"/>
@@ -84,9 +103,9 @@
                             <constraint firstItem="OH0-90-jdF" firstAttribute="leading" secondItem="ltX-yF-qLU" secondAttribute="leading" id="W4f-9d-Jdl"/>
                             <constraint firstItem="1cv-bA-WQW" firstAttribute="leading" secondItem="YXH-GD-IzC" secondAttribute="leading" id="WPv-dE-xYL"/>
                             <constraint firstItem="ltX-yF-qLU" firstAttribute="top" secondItem="omS-PI-A3f" secondAttribute="bottom" constant="30" id="Wyb-Xl-soT"/>
-                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="YXH-GD-IzC" secondAttribute="trailing" constant="50" id="XW8-hM-25A"/>
+                            <constraint firstItem="6Lp-eu-w1g" firstAttribute="leading" secondItem="O6E-lE-H4u" secondAttribute="leading" constant="50" id="YNp-4B-hDh"/>
                             <constraint firstItem="YXH-GD-IzC" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="b0G-xH-gnh"/>
-                            <constraint firstItem="O6E-lE-H4u" firstAttribute="trailing" secondItem="t4f-5j-wQk" secondAttribute="trailing" constant="50" id="dDt-A4-Kog"/>
+                            <constraint firstItem="6Lp-eu-w1g" firstAttribute="top" secondItem="1cv-bA-WQW" secondAttribute="bottom" constant="30" id="bpm-lK-d3S"/>
                             <constraint firstItem="OH0-90-jdF" firstAttribute="top" secondItem="ltX-yF-qLU" secondAttribute="bottom" constant="5" id="dL3-N3-L9x"/>
                             <constraint firstItem="DpB-Th-uAK" firstAttribute="centerX" secondItem="T9D-yd-DWY" secondAttribute="centerX" id="elg-8l-3e7"/>
                             <constraint firstItem="EmK-1m-iSx" firstAttribute="leading" secondItem="t4f-5j-wQk" secondAttribute="leading" id="ifx-vl-uKj"/>
@@ -94,15 +113,20 @@
                             <constraint firstItem="EmK-1m-iSx" firstAttribute="top" secondItem="t4f-5j-wQk" secondAttribute="bottom" constant="5" id="lsh-uM-7G4"/>
                             <constraint firstItem="71g-87-f4e" firstAttribute="top" secondItem="omS-PI-A3f" secondAttribute="bottom" constant="5" id="paM-C2-cEa"/>
                             <constraint firstItem="71g-87-f4e" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="wfY-f9-oi9"/>
+                            <constraint firstItem="ltX-yF-qLU" firstAttribute="leading" secondItem="omS-PI-A3f" secondAttribute="leading" id="x1f-Sd-M0U"/>
+                            <constraint firstItem="YXH-GD-IzC" firstAttribute="trailing" secondItem="omS-PI-A3f" secondAttribute="trailing" id="zZ8-RW-Cml"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="idErrorMessageLabel" destination="71g-87-f4e" id="AHl-2L-dFC"/>
                         <outlet property="idTextField" destination="omS-PI-A3f" id="48m-wC-8FU"/>
+                        <outlet property="nickNameErrorMessageLabel" destination="1cv-bA-WQW" id="igG-wp-YQz"/>
                         <outlet property="nickNameTextField" destination="YXH-GD-IzC" id="iKm-By-3L5"/>
+                        <outlet property="passwordConfirmErrorMessageLabel" destination="EmK-1m-iSx" id="OpQ-5f-kfj"/>
                         <outlet property="passwordConfirmTextField" destination="t4f-5j-wQk" id="dmV-Qc-ITw"/>
                         <outlet property="passwordErrorMessageLabel" destination="OH0-90-jdF" id="yHM-mZ-CI0"/>
                         <outlet property="passwordTextField" destination="ltX-yF-qLU" id="fHt-Sh-Apo"/>
+                        <outlet property="signUpButton" destination="6Lp-eu-w1g" id="YbN-qP-LW2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIl-Uo-RXv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -111,8 +135,14 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

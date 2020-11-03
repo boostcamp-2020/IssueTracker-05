@@ -16,8 +16,8 @@ class LoginManager {
     
     private init() {}
     
-    private let client_id = ""
-    private let client_secret = ""
+    private let client_id = "0da3b116126e34da88f8"
+    private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
     
     func requestCode() {
         let scope = "user"
