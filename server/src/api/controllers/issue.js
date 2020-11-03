@@ -3,7 +3,7 @@ import issueService from '@services/issue';
 const getTargetIssue = async (req, res) => {
   const iid = req.params.id;
   try {
-    const issue = await issueService.getIssue(iid);
+    const issue = await issueService.getTargetIssue(iid);
     return res.status(200).json(issue);
   } catch (err) {
     return res.status(400).json({
