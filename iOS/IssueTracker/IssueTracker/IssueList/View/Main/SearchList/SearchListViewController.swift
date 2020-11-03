@@ -6,7 +6,7 @@ class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var defaultModelData = ["abcdefg"] //TOOD: 나중에 삭제해야 한다.]
+    var defaultModelData = ["abcdefg", "dummy"] //TOOD: 나중에 삭제해야 한다.]
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class SearchListViewController: UIViewController {
     
     func applySnapshot(sections: [ResultType]) {
         var snapshot = NSDiffableDataSourceSnapshot<[ResultType], ResultType>()
-        snapshot.appendSections([])
+        snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
     }

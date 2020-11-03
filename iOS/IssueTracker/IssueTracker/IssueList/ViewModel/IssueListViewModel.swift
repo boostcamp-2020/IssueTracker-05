@@ -6,8 +6,9 @@ class IssueListViewModel {
     
     struct Status {
         var issues =  Bindable(IssueListModel.all())
-        var searchResultList = Bindable(IssueListModel.all())
-        var searchResultTitleList = Bindable([String]())
+        var searchResultTitleList = Bindable([String]())        // searchTitleList의 apply 바인딩
+        var searchResultList = Bindable(IssueListModel.all())   // searchResultLis의 apply 바인딩
+              
     }
     
     struct Action {
@@ -18,17 +19,17 @@ class IssueListViewModel {
     
     var status = Status()
     lazy var action = Action(
-        searchTextChanged: { (text) -> Void in
+        searchTextChanged: { (newText) -> Void in
             self.status.searchResultTitleList.value
                 = self.status.issues.value.filter {
-                    $0.title.contains(text)
+                    $0.title.contains(newText)
                 }.map {
                     $0.title
                 }
         },searchButtonClicked: { searchBarText in
             self.status.searchResultList.value
                 = self.status.issues.value.filter {
-                    $0.title == searchBarText
+                    $0.title.contains(searchBarText)
                 }
         } )
     
@@ -37,6 +38,11 @@ class IssueListViewModel {
     
     init() {
         requestIssueData()
+        status.issues.bindAndFire(updateResultListView)
+    }
+    
+    func updateResultListView(issues: [IssueListModel]) {
+        status.searchResultList.value = issues
     }
     
     func requestIssueData() {
