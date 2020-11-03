@@ -4,15 +4,19 @@ class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var viewModel = SearchListViewModel()
+    var defaultModelData = IssueListModel.all()
+    var viewModel: SearchListViewModel!
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionview.collectionViewLayout = createListLayout()
-        viewModel.status.model.bindAndFire(applySnapshot)
-        
+        applySnapshot(sections: defaultModelData)
+    }
+    
+    func setup(viewModel: SearchListViewModel) {
+        self.viewModel = viewModel
+        viewModel.status.model.bindAndFire(applySnapshot(sections:))
     }
     
     func applySnapshot(sections: [IssueListModel]) {
@@ -41,13 +45,11 @@ class SearchListViewController: UIViewController {
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(30))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            item.contentInsets = NSDirectionalEdgeInsets(
-//                top: 0, leading: 5, bottom: 5, trailing: 5)
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: itemSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(
-                top: 10, leading: 5, bottom: 10, trailing: 5)
+                top: 3, leading: 20, bottom: 0, trailing: 20)
             return UICollectionViewCompositionalLayout(section: section)
         }
 }

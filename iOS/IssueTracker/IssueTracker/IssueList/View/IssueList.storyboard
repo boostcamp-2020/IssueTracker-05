@@ -36,15 +36,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Io-ZO-99p">
-                                                    <rect key="frame" x="36" y="27.5" width="42" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="407" height="76"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="leading" secondItem="k0n-DC-FAO" secondAttribute="leading" constant="36" id="j9j-JW-ZbB"/>
-                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="centerY" secondItem="k0n-DC-FAO" secondAttribute="centerY" id="qpq-kE-P5D"/>
+                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="leading" secondItem="k0n-DC-FAO" secondAttribute="leading" id="7Sa-zJ-J56"/>
+                                                <constraint firstAttribute="bottom" secondItem="2Io-ZO-99p" secondAttribute="bottom" id="Bap-HB-uiO"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Io-ZO-99p" secondAttribute="trailing" id="cjB-Xs-awG"/>
+                                                <constraint firstItem="2Io-ZO-99p" firstAttribute="top" secondItem="k0n-DC-FAO" secondAttribute="top" id="irK-d3-dmg"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="407" height="76"/>
@@ -121,6 +123,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="issueCreationButton" destination="bdb-4b-eNB" id="2De-gj-a3H"/>
                         <outlet property="resultContrainerView" destination="x3U-gf-c9U" id="mAM-kI-Aed"/>
                         <outlet property="searchBar" destination="Y1x-5U-Mue" id="xYl-qG-QHP"/>
                         <outlet property="searchContrainerView" destination="Ske-7u-C6A" id="rR9-0C-XXO"/>

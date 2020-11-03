@@ -12,11 +12,15 @@ class SearchListViewModel {
     }
     
     var status = Status()
-    var origin = IssueListModel.all()
+    var originModel: [IssueListModel] // viewController에서 받아온 원본 데이터 - 뷰컨트롤러 생성하면서 받아 온다.
     lazy var action = Action(searchTextChanged: search)
     
+    init(originModel: [IssueListModel]) {
+        self.originModel = originModel
+    }
+    
     func search(text: String) {
-        status.model.value = origin.filter {
+        status.model.value = originModel.filter {
             $0.title.contains(text)
         }
     }

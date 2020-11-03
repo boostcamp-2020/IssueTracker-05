@@ -7,9 +7,13 @@ class IssueListMainViewController: UIViewController {
     @IBOutlet weak var searchContrainerView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var issueCreationButton: UIButton!
     
     var viewModel = IssueListViewModel()
-    var searchListViewModel = SearchListViewModel()
+    lazy var searchListViewModel = SearchListViewModel(originModel: self.viewModel.status.model.value)
+    // TODO: viewmodel에 있는 값이 네트워크로부터 받아온 데이터로 변경되면
+    // searchListViewModel에 있는 origin도 바꾸어 줘야 한다.
+    // 이 작업을 해주는 함수를 바인딩 해두자
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +44,6 @@ class IssueListMainViewController: UIViewController {
     let searchViewController: SearchListViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: SearchListViewController.self))
     
     func setupSearchListViewController() {
-        searchViewController.viewModel = searchListViewModel
         searchContrainerView.addSubview(searchViewController.view)
     }
     
@@ -48,6 +51,8 @@ class IssueListMainViewController: UIViewController {
     
     func setupIssueResultViewController() {
         resultContrainerView.addSubview(issueResultViewController.view)
+        issueResultViewController.setupModel(
+            models: viewModel.status.model.value)
     }
     
 }
@@ -56,7 +61,9 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchContrainerView.isHidden = false
+        searchViewController.setup(viewModel: searchListViewModel)
         resultContrainerView.isHidden = true
+        issueCreationButton.isHidden = true
         return true
     }
     
@@ -67,6 +74,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchContrainerView.isHidden = true
         resultContrainerView.isHidden = false
+        issueCreationButton.isHidden = false
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

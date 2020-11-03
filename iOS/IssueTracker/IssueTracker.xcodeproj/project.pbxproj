@@ -140,8 +140,8 @@
 		881BC67F25510A9D00676011 /* SearchList */ = {
 			isa = PBXGroup;
 			children = (
-				8846B43F2549A552009073D6 /* SearchListCellView.swift */,
 				88C0381925497B38000D4D4A /* SearchListViewController.swift */,
+				8846B43F2549A552009073D6 /* SearchListCellView.swift */,
 			);
 			path = SearchList;
 			sourceTree = "<group>";
