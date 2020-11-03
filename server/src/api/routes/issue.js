@@ -13,6 +13,6 @@ export default (app) => {
   route.get('/', issueController.getIssues);
   route.get('/:id', issueController.getTargetIssue);
   route.post('/', issueController.createIssue);
-  // route.patch('/:id', issueController.updateIssue);
+  route.patch('/:id', issueController.updateIssue);
   route.delete('/:id', issueController.deleteIssue);
 };
