@@ -1,13 +1,14 @@
 import AppleStrategy from 'passport-apple';
 import db from '@models';
+import passportConfig from '@config/passport';
 
 export default new AppleStrategy(
   {
-    clientID: '',
+    clientID: passportConfig.appleClientId,
     teamID: '',
-    callbackURL: '',
+    callbackURL: passportConfig.appleCallbackURL,
     keyID: '',
-    privateKeyLocation: '',
+    privateKeyLocation: passportConfig.appleClientSecret,
     passReqToCallback: true,
   },
   async (req, accessToken, refreshToken, decodedIdToken, profile, done) => {
