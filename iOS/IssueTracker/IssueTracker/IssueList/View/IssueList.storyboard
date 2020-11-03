@@ -92,7 +92,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdb-4b-eNB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdb-4b-eNB">
                                 <rect key="frame" x="354" y="802" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="d1P-0o-fAD"/>

@@ -8,30 +8,36 @@ class IssueListViewModel {
         var issues =  Bindable(IssueListModel.all())
         var searchResultTitleList = Bindable([String]())        // searchTitleList의 apply 바인딩
         var searchResultList = Bindable(IssueListModel.all())   // searchResultLis의 apply 바인딩
-              
     }
     
     struct Action {
         var searchTextChanged: (String) -> Void
         var searchButtonClicked: (String) -> Void
-        //var searchCancelButtonClicked: () -> Void
+        var searchCancelButtonClicked: () -> Void
     }
     
     var status = Status()
     lazy var action = Action(
-        searchTextChanged: { (newText) -> Void in
-            self.status.searchResultTitleList.value
-                = self.status.issues.value.filter {
+        searchTextChanged: { [weak self] (newText) -> Void in
+            guard let weakSelf = self else { return }
+            weakSelf.status.searchResultTitleList.value
+                = weakSelf.status.issues.value.filter {
                     $0.title.contains(newText)
                 }.map {
                     $0.title
                 }
-        },searchButtonClicked: { searchBarText in
-            self.status.searchResultList.value
-                = self.status.issues.value.filter {
+        },searchButtonClicked: { [weak self] searchBarText in
+            guard let weakSelf = self else { return }
+            weakSelf.status.searchResultList.value
+                = weakSelf.status.issues.value.filter {
                     $0.title.contains(searchBarText)
                 }
-        } )
+        },searchCancelButtonClicked: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.status.searchResultList.value
+                = weakSelf.status.issues.value
+            weakSelf.requestIssueData()
+        })
     
     let url = "http://172.30.1.27:5000/api/issue"
     let httpHeaders:HTTPHeaders = ["Accept": "application/json"]
@@ -58,7 +64,6 @@ class IssueListViewModel {
                 } catch {
                     print(error)
                 }
-                
             case .failure(let error):
                 print(error.localizedDescription)
             }

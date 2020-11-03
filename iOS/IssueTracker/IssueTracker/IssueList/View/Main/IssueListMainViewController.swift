@@ -65,6 +65,7 @@ extension IssueListMainViewController: UISearchBarDelegate {
         resultContrainerView.isHidden = true
         issueCreationButton.isHidden = true
         navigationController?.isNavigationBarHidden = true
+        searchBar.setShowsCancelButton(true, animated: true)
         return true
     }
     
@@ -72,17 +73,32 @@ extension IssueListMainViewController: UISearchBarDelegate {
         viewModel.action.searchButtonClicked(searchBar.text ?? "")
         searchBar.searchTextField.text = ""
         searchBar.resignFirstResponder()
-        navigationController?.isNavigationBarHidden = false
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchContrainerView.isHidden = true
         resultContrainerView.isHidden = false
         issueCreationButton.isHidden = false
+        
+        if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
+            cancelButton.isEnabled = true
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.action.searchTextChanged(searchText)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.text = ""
+        searchContrainerView.isHidden = true
+        resultContrainerView.isHidden = false
+        issueCreationButton.isHidden = false
+        navigationController?.isNavigationBarHidden = false
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.resignFirstResponder()
+        viewModel.action.searchCancelButtonClicked()
     }
     
 }
