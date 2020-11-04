@@ -21,17 +21,14 @@ const sequelize = new Sequelize(
   },
 );
 
-fs.readdirSync(__dirname)
+fs.readdirSync('./src/models')
   .filter((file) => {
     return (
       file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
     );
   })
   .forEach((file) => {
-    const model = require(path.join(__dirname, file)).default(
-      sequelize,
-      Sequelize.DataTypes,
-    );
+    const model = require(`./${file}`).default(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
