@@ -36,7 +36,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = tabBarController
             
         } else {
-            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
+//            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
+
+            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: "IssueDetailEditingVC")
+            
         }
 
     }
