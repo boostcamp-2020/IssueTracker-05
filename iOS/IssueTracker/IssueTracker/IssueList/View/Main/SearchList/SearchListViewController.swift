@@ -2,35 +2,39 @@ import UIKit
 
 class SearchListViewController: UIViewController {
     
+    typealias ResultType = String
+    
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var viewModel = SearchListViewModel()
+    var defaultModelData = ["abcdefg", "dummy"] //TOOD: 나중에 삭제해야 한다.]
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionview.collectionViewLayout = createListLayout()
-        viewModel.status.model.bindAndFire(applySnapshot)
+        applySnapshot(sections: defaultModelData)
+    }
+    
+    func setup(models: [ResultType]) {
         
     }
     
-    func applySnapshot(sections: [IssueListModel]) {
-        var snapshot = NSDiffableDataSourceSnapshot<[IssueListModel], IssueListModel>()
+    func applySnapshot(sections: [ResultType]) {
+        var snapshot = NSDiffableDataSourceSnapshot<[ResultType], ResultType>()
         snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
     }
     
-    func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {
-        UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
+    func makeDataLayout() -> UICollectionViewDiffableDataSource<[ResultType], ResultType> {
+        UICollectionViewDiffableDataSource<[ResultType], ResultType>(
             collectionView: collectionview,
-            cellProvider: { [unowned self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
+            cellProvider: { (collectionView, indexPath, issueTitle) -> UICollectionViewCell? in
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchListCellView", for: indexPath) as? SearchListCellView else {
                     return nil
                 }
                 
-                cell.setup(title: issue.title)
+                cell.setup(title: issueTitle)
                 
                 return cell
             })
@@ -41,13 +45,11 @@ class SearchListViewController: UIViewController {
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .absolute(30))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//            item.contentInsets = NSDirectionalEdgeInsets(
-//                top: 0, leading: 5, bottom: 5, trailing: 5)
             let group = NSCollectionLayoutGroup.horizontal(
                 layoutSize: itemSize, subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(
-                top: 10, leading: 5, bottom: 10, trailing: 5)
+                top: 3, leading: 20, bottom: 0, trailing: 20)
             return UICollectionViewCompositionalLayout(section: section)
         }
 }

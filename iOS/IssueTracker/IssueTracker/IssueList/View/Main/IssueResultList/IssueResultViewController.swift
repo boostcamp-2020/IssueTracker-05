@@ -4,18 +4,12 @@ class IssueResultViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var sections = [IssueListModel]()
     lazy var dataLayout = makeDataLayout()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionview.collectionViewLayout = createListLayout()
-        
-        sections.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-        sections.append(IssueListModel(isOpened: true, label: ["bug"], title: "마일스톤 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-    
-        applySnapshot(sections: sections)
+        applySnapshot(sections: IssueListModel.all())
     }
     
     func applySnapshot(sections: [IssueListModel]) {
@@ -28,14 +22,14 @@ class IssueResultViewController: UIViewController {
     func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {
         UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
             collectionView: collectionview,
-            cellProvider: { [unowned self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
+            cellProvider: { (collectionView, indexPath, issue) -> UICollectionViewCell? in
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
                 
-                cell.setup(title: issue.title, description: issue.content)
+                cell.setup(title: issue.title, description: issue.content ?? "no")
                 cell.closeButtonAction = {
-                    print("여기서 close합니다.")
+                    print("여기서 close합니다.") // TODO: 클로저로 Main에서 ViewModel 함수를 넣어준다. 
                 }
                 cell.deleteButtonAction = {
                     print("여기서 delete합니다.")
@@ -59,7 +53,6 @@ class IssueResultViewController: UIViewController {
                 top: 0, leading: 5, bottom: 0, trailing: 5)
             return UICollectionViewCompositionalLayout(section: section)
         }
-    
 }
 
 
