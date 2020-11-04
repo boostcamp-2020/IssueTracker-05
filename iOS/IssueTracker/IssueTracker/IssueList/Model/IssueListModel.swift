@@ -1,37 +1,84 @@
 
 import Foundation
 
+struct Label: Codable, Hashable {
+    var color: String
+    var desc: String?
+    var name: String
+    
+    static func == (lhs: Label, rhs: Label) -> Bool {
+        return lhs.color == rhs.color
+            && lhs.desc == rhs.desc
+            && lhs.name == rhs.name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(color)
+        hasher.combine(desc)
+        hasher.combine(name)
+    }
+    
+    static func all() -> [Label] {
+        return [
+            Label(color: "#0075ca", desc: "Improvements or additions to documentation", name: "documentation")
+        ]
+    }
+}
+
 struct IssueListModel: Codable, Hashable {
     
-    var isOpened: Bool
-    var label: [String]
+    var uid: Int
+    var iid: Int
     var title: String
-    var content: String
-    var mId: String // 마일스톤 아이디
-    var id: String
+    var content: String?
+    var isOpen: Bool
+    var mId: String? // 마일스톤 아이디
+    var labels: [Label]?
+    
+    // TODO: 어사이니 만들어야
     
     static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
-        return lhs.isOpened == rhs.isOpened
-            && lhs.label == rhs.label
+        return lhs.uid == rhs.uid
+            && lhs.iid == rhs.iid
             && lhs.title == rhs.title
             && lhs.content == rhs.content
+            && lhs.isOpen == rhs.isOpen
             && lhs.mId == rhs.mId
-            && lhs.id == rhs.id
+            && lhs.labels == rhs.labels
     }
-
+    
     func hash(into hasher: inout Hasher) {
-        hasher.combine(isOpened)
-        hasher.combine(label)
+        hasher.combine(uid)
+        hasher.combine(iid)
         hasher.combine(title)
         hasher.combine(content)
+        hasher.combine(isOpen)
         hasher.combine(mId)
-        hasher.combine(id)
+        hasher.combine(labels)
     }
     
     static func all() -> [IssueListModel] {
         var newModel = [IssueListModel]()
-        newModel.append(IssueListModel(isOpened: true, label: ["feature"], title: "레이블 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
-        newModel.append(IssueListModel(isOpened: true, label: ["bug"], title: "마일스톤 목록 보기 구현", content: "레이블 전체 목록을 볼 수 있어야 한다\n 2줄까지 보입니다.", mId: "1", id: "1"))
+        newModel.append(
+            IssueListModel(
+                uid: 8,
+                iid: 66,
+                title: "testtesttest",
+                content: "Hello",
+                isOpen: true,
+                mId: nil,
+                labels: Label.all())
+        )
+        newModel.append(
+            IssueListModel(
+                uid: 2,
+                iid: 68,
+                title: "bugs",
+                content: nil,
+                isOpen: false,
+                mId: nil,
+                labels: Label.all())
+        )
         return newModel
     }
     
