@@ -20,10 +20,11 @@ content-type: {{contentType}}
 @authToken = {{login.response.body.token}}
 
 ### 특정 이슈 하나 불러오기
-@issueId=
+@issueId=11
 
 GET {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 ### 이슈 불러오기
 
