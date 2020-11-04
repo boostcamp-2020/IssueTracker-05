@@ -1,5 +1,5 @@
-import express from './express';
-import mysql from './mysql';
+import express from '@loaders/express';
+import mysql from '@loaders/mysql';
 
 export default async (app) => {
   await mysql();
