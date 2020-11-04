@@ -13,13 +13,13 @@
         <!--Issue Detail Editing View Controller-->
         <scene sceneID="dXm-2k-gEa">
             <objects>
-                <viewController storyboardIdentifier="IssueDetailEditingVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rW-t6-dpX" customClass="IssueDetailEditingViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueDetailEditingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6rW-t6-dpX" customClass="IssueDetailEditingViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yAJ-ey-EiQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ySZ-U1-jsW">
-                                <rect key="frame" x="0.0" y="104" width="414" height="708"/>
+                                <rect key="frame" x="0.0" y="117" width="414" height="672"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bRA-Pr-Dxd">
                                     <size key="itemSize" width="414" height="128"/>
@@ -90,80 +90,65 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Guw-Jm-NgC">
-                                <rect key="frame" x="20" y="54" width="294" height="30"/>
+                                <rect key="frame" x="20" y="64" width="271" height="33"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="댓글 추가"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.40000000000000002"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH8-tu-dts">
-                                <rect key="frame" x="364" y="54" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="JOc-os-PSX"/>
-                                </constraints>
-                                <state key="normal" image="arrow.down" catalog="system"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH8-tu-dts" userLabel="ScrollDown">
+                                <rect key="frame" x="352.5" y="64" width="41.5" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" image="chevron.down" catalog="system"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-XV-zd9">
-                                <rect key="frame" x="20" y="832" width="374" height="30"/>
+                                <rect key="frame" x="20" y="809" width="374" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Close Issue">
-                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                    <color key="titleColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.5"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemBackgroundColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdF-2g-Tbf">
-                                <rect key="frame" x="334" y="54" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="BWk-3l-Xda"/>
-                                </constraints>
-                                <state key="normal" image="arrow.up" catalog="system"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.10000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdF-2g-Tbf" userLabel="ScrollUp">
+                                <rect key="frame" x="311" y="64" width="41.5" height="33"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" image="chevron.up" catalog="system"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQ2-du-hsh"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
-                            <constraint firstItem="2vc-XV-zd9" firstAttribute="top" secondItem="ySZ-U1-jsW" secondAttribute="bottom" constant="20" id="17c-Bv-UPE"/>
                             <constraint firstItem="2vc-XV-zd9" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" constant="20" id="3bf-Bl-Zgr"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="leading" secondItem="ZdF-2g-Tbf" secondAttribute="trailing" id="Jeh-Zl-zaC"/>
-                            <constraint firstItem="Guw-Jm-NgC" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" constant="10" id="KSA-v9-ALy"/>
+                            <constraint firstItem="Guw-Jm-NgC" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" constant="20" id="KSA-v9-ALy"/>
                             <constraint firstItem="ySZ-U1-jsW" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" id="LYl-3Z-90l"/>
                             <constraint firstItem="Guw-Jm-NgC" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" constant="20" id="OpC-sO-Lqg"/>
                             <constraint firstItem="ySZ-U1-jsW" firstAttribute="top" secondItem="ZdF-2g-Tbf" secondAttribute="bottom" constant="20" id="PaS-8u-bFa"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="leading" secondItem="Guw-Jm-NgC" secondAttribute="trailing" constant="20" id="Vgf-ax-TUw"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="bottom" secondItem="Guw-Jm-NgC" secondAttribute="bottom" id="Vwn-fc-g6N"/>
+                            <constraint firstItem="gQ2-du-hsh" firstAttribute="bottom" secondItem="2vc-XV-zd9" secondAttribute="bottom" constant="20" id="bOl-cC-8oR"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="2vc-XV-zd9" secondAttribute="trailing" constant="20" id="c7c-w7-di5"/>
+                            <constraint firstItem="ZdF-2g-Tbf" firstAttribute="width" secondItem="EH8-tu-dts" secondAttribute="width" id="dKV-bv-Ab4"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="ySZ-U1-jsW" secondAttribute="trailing" id="eMq-8d-nMn"/>
-                            <constraint firstItem="gQ2-du-hsh" firstAttribute="bottom" secondItem="ySZ-U1-jsW" secondAttribute="bottom" constant="50" id="fK9-8e-hkg"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="EH8-tu-dts" secondAttribute="trailing" constant="20" id="iL2-M7-Mw4"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="top" secondItem="Guw-Jm-NgC" secondAttribute="top" id="lAR-Tt-wcz"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="top" secondItem="Guw-Jm-NgC" secondAttribute="top" id="oyS-cK-qwj"/>
+                            <constraint firstItem="2vc-XV-zd9" firstAttribute="top" secondItem="ySZ-U1-jsW" secondAttribute="bottom" constant="20" id="rf9-RF-3ql"/>
+                            <constraint firstItem="EH8-tu-dts" firstAttribute="width" secondItem="yAJ-ey-EiQ" secondAttribute="width" multiplier="0.1" id="sEm-VE-fv6"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="bottom" secondItem="Guw-Jm-NgC" secondAttribute="bottom" id="xpk-t0-ZSl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="ySZ-U1-jsW" id="bFL-QA-yxy"/>
+                        <outletCollection property="buttonsForInit" destination="Guw-Jm-NgC" collectionClass="NSMutableArray" id="CZG-wi-gHW"/>
+                        <outletCollection property="buttonsForInit" destination="2vc-XV-zd9" collectionClass="NSMutableArray" id="ayV-43-Ogs"/>
+                        <outletCollection property="buttonsForInit" destination="ZdF-2g-Tbf" collectionClass="NSMutableArray" id="gkQ-re-uZw"/>
+                        <outletCollection property="buttonsForInit" destination="EH8-tu-dts" collectionClass="NSMutableArray" id="CTX-gW-5iY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWT-Ad-Kpl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -172,16 +157,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down" catalog="system" width="120" height="128"/>
-        <image name="arrow.up" catalog="system" width="120" height="128"/>
+        <image name="chevron.down" catalog="system" width="128" height="72"/>
+        <image name="chevron.up" catalog="system" width="128" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

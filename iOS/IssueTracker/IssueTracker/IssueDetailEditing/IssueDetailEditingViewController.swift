@@ -10,6 +10,11 @@ import UIKit
 
 class IssueDetailEditingViewController: UIViewController {
     
+    //@IBOutlet weak var buttonForInit:
+    
+    
+    @IBOutlet var buttonsForInit: [UIButton]!
+    
     @IBOutlet var collectionView: IssueDetailCollectionView! {
         didSet {
             collectionView.delegate = self
@@ -22,6 +27,9 @@ class IssueDetailEditingViewController: UIViewController {
         super.viewDidLoad()
         collectionView.reloadData()
         collectionView.isScrollEnabled = false
+        buttonsForInit.forEach {
+            $0.configureButtonInDetailEditing()
+        }
     }
     
     func configure() {
@@ -85,3 +93,29 @@ extension IssueDetailEditingViewController: UICollectionViewDelegateFlowLayout {
     }
     
 }
+
+extension UIButton {
+    func configureButtonInDetailEditing() {
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 1
+        self.layer.shadowOpacity = 1.0
+        self.layer.cornerRadius = 5
+        self.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    }
+}
+
+
+#if DEBUG
+
+import SwiftUI
+
+struct IssueDetailEditingViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
+            .instantiateViewController(identifier: String(describing: IssueDetailEditingViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif

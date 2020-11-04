@@ -31,7 +31,7 @@ class IssueDetailViewController: UIViewController {
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
                 
-//                cell?.setup(user: comment.user, content: comment.content)
+                //                cell?.setup(user: comment.user, content: comment.content)
                 
                 return cell
             })
@@ -51,8 +51,7 @@ class IssueDetailViewController: UIViewController {
     
     func configureContainerOfSwipeView() {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
-            .instantiateViewController(identifier: "IssueDetailEditingVC")
-                as IssueDetailEditingViewController
+            .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
         containerView.addSubview(swipeUpView.view)
         configureAnimation()
     }
