@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ySZ-U1-jsW">
-                                <rect key="frame" x="0.0" y="94" width="414" height="718"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bRA-Pr-Dxd">
                                     <size key="itemSize" width="414" height="128"/>
@@ -90,7 +90,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Guw-Jm-NgC">
-                                <rect key="frame" x="20" y="44" width="294" height="30"/>
+                                <rect key="frame" x="20" y="54" width="294" height="30"/>
                                 <state key="normal" title="댓글 추가"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -102,7 +102,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH8-tu-dts">
-                                <rect key="frame" x="364" y="44" width="30" height="30"/>
+                                <rect key="frame" x="364" y="54" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="JOc-os-PSX"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdF-2g-Tbf">
-                                <rect key="frame" x="334" y="44" width="30" height="30"/>
+                                <rect key="frame" x="334" y="54" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="BWk-3l-Xda"/>
                                 </constraints>
@@ -146,19 +146,19 @@
                         <constraints>
                             <constraint firstItem="2vc-XV-zd9" firstAttribute="top" secondItem="ySZ-U1-jsW" secondAttribute="bottom" constant="20" id="17c-Bv-UPE"/>
                             <constraint firstItem="2vc-XV-zd9" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" constant="20" id="3bf-Bl-Zgr"/>
-                            <constraint firstItem="Guw-Jm-NgC" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" id="4W5-Ih-let"/>
-                            <constraint firstItem="ZdF-2g-Tbf" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" id="5vk-Bh-6VI"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="leading" secondItem="ZdF-2g-Tbf" secondAttribute="trailing" id="Jeh-Zl-zaC"/>
+                            <constraint firstItem="Guw-Jm-NgC" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" constant="10" id="KSA-v9-ALy"/>
                             <constraint firstItem="ySZ-U1-jsW" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" id="LYl-3Z-90l"/>
                             <constraint firstItem="Guw-Jm-NgC" firstAttribute="leading" secondItem="gQ2-du-hsh" secondAttribute="leading" constant="20" id="OpC-sO-Lqg"/>
                             <constraint firstItem="ySZ-U1-jsW" firstAttribute="top" secondItem="ZdF-2g-Tbf" secondAttribute="bottom" constant="20" id="PaS-8u-bFa"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="leading" secondItem="Guw-Jm-NgC" secondAttribute="trailing" constant="20" id="Vgf-ax-TUw"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="bottom" secondItem="Guw-Jm-NgC" secondAttribute="bottom" id="Vwn-fc-g6N"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="2vc-XV-zd9" secondAttribute="trailing" constant="20" id="c7c-w7-di5"/>
-                            <constraint firstItem="EH8-tu-dts" firstAttribute="top" secondItem="gQ2-du-hsh" secondAttribute="top" id="dTR-ii-Co5"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="ySZ-U1-jsW" secondAttribute="trailing" id="eMq-8d-nMn"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="bottom" secondItem="ySZ-U1-jsW" secondAttribute="bottom" constant="50" id="fK9-8e-hkg"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="EH8-tu-dts" secondAttribute="trailing" constant="20" id="iL2-M7-Mw4"/>
+                            <constraint firstItem="EH8-tu-dts" firstAttribute="top" secondItem="Guw-Jm-NgC" secondAttribute="top" id="lAR-Tt-wcz"/>
+                            <constraint firstItem="ZdF-2g-Tbf" firstAttribute="top" secondItem="Guw-Jm-NgC" secondAttribute="top" id="oyS-cK-qwj"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="bottom" secondItem="Guw-Jm-NgC" secondAttribute="bottom" id="xpk-t0-ZSl"/>
                         </constraints>
                     </view>
