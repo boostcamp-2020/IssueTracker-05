@@ -1,12 +1,9 @@
 
 import Foundation
 
-
-// 이슈를 터치 하면 이 화면이 나오는 거임.
-
 class IssueDetailViewModel {
     struct Status {
-        // Model
+        var model: Bindable<[Comment]> // 여기에 snapshot 연결
     }
     
     struct Action {
@@ -15,4 +12,12 @@ class IssueDetailViewModel {
         // 댓글 추가 버튼
         // 스크롤 버튼
     }
+    
+    var status: Status
+    //var action: Action
+    
+    init(model: [Comment]) {
+        self.status = Status(model: Bindable(model))
+    }
+    
 }

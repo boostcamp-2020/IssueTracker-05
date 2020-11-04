@@ -32,6 +32,7 @@
 		88C03823254990C5000D4D4A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03822254990C5000D4D4A /* Bindable.swift */; };
 		88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0382625499494000D4D4A /* IssueResultCellView.swift */; };
 		88D14AAD25528397000A6395 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AAC25528397000A6395 /* IssueDetailModel.swift */; };
+		88D14AB22552935A000A6395 /* IssueCommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AB12552935A000A6395 /* IssueCommentCellView.swift */; };
 		DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */; };
 		DA1B56E8254FEDD900FE8D2D /* LabelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F7254AB12000C23791 /* LabelList.storyboard */; };
 		DA1B56EA254FEDDF00FE8D2D /* MilestoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */; };
@@ -83,6 +84,7 @@
 		88C03822254990C5000D4D4A /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		88C0382625499494000D4D4A /* IssueResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResultCellView.swift; sourceTree = "<group>"; };
 		88D14AAC25528397000A6395 /* IssueDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailModel.swift; sourceTree = "<group>"; };
+		88D14AB12552935A000A6395 /* IssueCommentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCommentCellView.swift; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewCell.swift; sourceTree = "<group>"; };
@@ -242,9 +244,7 @@
 			children = (
 				880CC62A255270C900AE34C5 /* Model */,
 				880CC629255270C200AE34C5 /* ViewModel */,
-				880CC60F25522FCC00AE34C5 /* IssueDetailViewController.swift */,
-				880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */,
-				880CC6192552304100AE34C5 /* IssueDetail.storyboard */,
+				88D14AAF255286C2000A6395 /* View */,
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
@@ -287,6 +287,17 @@
 				88C03822254990C5000D4D4A /* Bindable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		88D14AAF255286C2000A6395 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				880CC6192552304100AE34C5 /* IssueDetail.storyboard */,
+				880CC60F25522FCC00AE34C5 /* IssueDetailViewController.swift */,
+				880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */,
+				88D14AB12552935A000A6395 /* IssueCommentCellView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {
@@ -546,6 +557,7 @@
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,
 				881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */,
 				88D14AAD25528397000A6395 /* IssueDetailModel.swift in Sources */,
+				88D14AB22552935A000A6395 /* IssueCommentCellView.swift in Sources */,
 				88C03823254990C5000D4D4A /* Bindable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

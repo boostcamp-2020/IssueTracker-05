@@ -1,5 +1,32 @@
 import Foundation
 
+struct Comment: Hashable {
+    var title: String
+    var user: String
+    var content: String
+    
+    static func == (lhs: Comment, rhs: Comment) -> Bool {
+        lhs.title == rhs.title
+            && lhs.user == rhs.user
+            && lhs.content == rhs.content
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(user)
+        hasher.combine(content)
+    }
+    
+    static func all() -> [Comment] {
+        [
+            Comment(title: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가", user: "삐리뽕", content: "하하호호히히키호히히키키하하호호히히키키"),
+            Comment(title: "그렇군", user: "빠리뿡", content: "이잉유유으으으아아이잉유유으으으아잉유유으으으아아"),
+            Comment(title: "그러하다", user: "뿡뿡뽕뽕", content: "")
+        ]
+    }
+}
+
+
 struct IssueDetailModel: Hashable {
     
     var iid: Int
@@ -7,6 +34,9 @@ struct IssueDetailModel: Hashable {
     var isOpen: Bool
     var label: [String]?
     var content: String?
+    
+    var comment: [Comment]?
+    
     var createdAt: String?
     var author: String
     var milestone: [Milestone]
@@ -22,6 +52,7 @@ struct IssueDetailModel: Hashable {
             && lhs.author == rhs.author
             && lhs.milestone == rhs.milestone
             && lhs.assignees == rhs.assignees
+            && lhs.comment == rhs.comment
     }
     
     func hash(into hasher: inout Hasher) {
@@ -34,7 +65,9 @@ struct IssueDetailModel: Hashable {
         hasher.combine(author)
         hasher.combine(milestone)
         hasher.combine(assignees)
+        hasher.combine(comment)
     }
+    
 }
 
 struct Milestone: Hashable {
@@ -57,6 +90,7 @@ struct Milestone: Hashable {
 }
 
 struct IssueState: Hashable { // 이걸로 이슈 얼마나 열려있는지 확인
+    
     var open: Int
     var close: Int
     
