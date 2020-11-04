@@ -54,9 +54,44 @@ class IssueDetailViewController: UIViewController {
         swipeUpView = UIStoryboard(name: "IssueDetail", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueDetailSwipeViewController.self)) as IssueDetailSwipeViewController
         containerView.addSubview(swipeUpView.view)
-        
+        configureAnimation()
         // IssueDetailEditingVC
         // IssueDetailEditingViewController
+    }
+    
+    var swipeGesture: UISwipeGestureRecognizer!
+    var oldY: CGFloat!
+    var newY: CGFloat!
+    
+    func configureAnimation() {
+        //oldY = containerView.frame.origin.y
+        oldY = containerView.frame.origin.y - 83
+        //oldY = collectionView.frame.origin.y + collectionView.frame.height
+        newY = view.frame.height - containerView.frame.height
+        swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(upperGesture))
+        swipeGesture.direction = .up
+        containerView.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc func upperGesture(_ sender: Any) {
+        UIView.transition(
+            with: containerView,
+            duration: 0.5,
+            options: .curveEaseIn,
+            animations: { [weak self] in
+                guard let weakSelf = self else { return }
+                
+                let rect = CGRect(
+                    x: weakSelf.containerView.frame.origin.x,
+                    y: weakSelf.swipeGesture.direction == .up ? weakSelf.newY : weakSelf.oldY,
+                    width: weakSelf.containerView.frame.width,
+                    height: weakSelf.containerView.frame.height)
+                
+                weakSelf.containerView.frame = rect
+                
+                weakSelf.swipeGesture.direction
+                    = weakSelf.swipeGesture.direction == .up ? .down : .up
+            })
     }
     
     func configureNavigation() {

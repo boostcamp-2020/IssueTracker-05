@@ -146,9 +146,9 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wD-gG-kXM">
-                                <rect key="frame" x="0.0" y="770" width="414" height="800"/>
+                                <rect key="frame" x="0.0" y="770" width="414" height="750"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="800" id="wUb-of-2ly"/>
+                                    <constraint firstAttribute="height" constant="750" id="wUb-of-2ly"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -197,6 +197,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4eP-Cq-nPF"/>
+                        <color key="backgroundColor" red="0.37651830590000002" green="0.58328142090000001" blue="0.6643043756" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4N-uC-i95" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
