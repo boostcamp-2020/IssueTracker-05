@@ -23,10 +23,9 @@ export default {
     dialect: 'mysql',
   },
   production: {
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    username: 'root',
+    password: null,
     database: process.env.DB_DATABASE,
-    port: '3031',
     host: '127.0.0.1',
     dialect: 'mysql',
   },
