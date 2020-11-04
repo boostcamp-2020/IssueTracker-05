@@ -49,6 +49,33 @@ struct Comment: Hashable, Codable {
     var uid: Int
     var updatedAt: String
     var createdAt: String
+    
+    static func == (lhs: Comment, rhs: Comment) -> Bool {
+        lhs.cid == rhs.cid
+            && lhs.content == rhs.content
+            && lhs.iid == rhs.iid
+            && lhs.uid == rhs.uid
+            && lhs.updatedAt == rhs.updatedAt
+            && lhs.createdAt == rhs.createdAt
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(content)
+        hasher.combine(iid)
+        hasher.combine(uid)
+        hasher.combine(updatedAt)
+        hasher.combine(createdAt)
+    }
+    
+    static func all() -> [Comment] {
+        [
+            Comment(cid: 1, content: "정재명", iid: 1, uid: 10, updatedAt: "123123", createdAt: "122322"),
+            Comment(cid: 2, content: "정자명", iid: 2, uid: 11, updatedAt: "123123", createdAt: "123123"),
+            Comment(cid: 3, content: "조정래", iid: 3, uid: 12, updatedAt: "123123", createdAt: "123123"),
+            Comment(cid: 4, content: "석민님", iid: 4, uid: 13, updatedAt: "123123", createdAt: "123123"),
+            Comment(cid: 5, content: "귀여워", iid: 5, uid: 14, updatedAt: "123123", createdAt: "123123")
+        ]
+    }
 }
 
 struct Milestone: Hashable, Codable {

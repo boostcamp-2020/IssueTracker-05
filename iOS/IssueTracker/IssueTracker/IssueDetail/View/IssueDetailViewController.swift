@@ -15,7 +15,11 @@ class IssueDetailViewController: UIViewController {
         configureNavigation()
         configureIsOpenView()
         configureContainerOfSwipeView()
-        viewModel?.status.model.bindAndFire(applySnapshot(sections:))
+        if let viewModel = viewModel {
+            viewModel.status.model.bindAndFire(applySnapshot(sections:))
+            return
+        }
+        applySnapshot(sections: Comment.all())
     }
     
     func applySnapshot(sections: [Comment]) {
