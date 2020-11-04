@@ -2,7 +2,10 @@ import db from '@models';
 
 const getTargetIssue = async (iid) => {
   try {
-    const issue = await db.issue.findOne({ where: { iid } });
+    const issue = await db.issue.findOne({ 
+      where: { iid },
+      include: db.comment,
+    });
     return issue;
   } catch (err) {
     throw new Error(err);

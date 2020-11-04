@@ -21,7 +21,7 @@ content-type: {{contentType}}
 
 ### 특정 이슈 하나 불러오기
 
-# @issueId=11
+@issueId=11
 
 GET {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
