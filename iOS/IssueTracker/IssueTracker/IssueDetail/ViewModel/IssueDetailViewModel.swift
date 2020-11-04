@@ -39,7 +39,6 @@ class IssueDetailViewModel {
             switch response.result {
             case .success(let result):
                 do {
-//                    self.status.model.value = Comment.all()
                     print(result)
                     let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                     let decodedData = try JSONDecoder().decode(IssueDetailModel.self, from: resultData)
@@ -49,7 +48,6 @@ class IssueDetailViewModel {
                 }
             case .failure(let error):
                 print(error)
-            default: break
             }
         }
     }

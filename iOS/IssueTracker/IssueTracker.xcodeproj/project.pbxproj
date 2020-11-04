@@ -13,7 +13,6 @@
 		880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC6162552301500AE34C5 /* IssueListFilterViewController.swift */; };
 		880CC61D2552304E00AE34C5 /* IssueCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */; };
 		880CC6202552306600AE34C5 /* IssueListFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */; };
-		880CC6272552709B00AE34C5 /* IssueDetailSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */; };
 		880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */; };
@@ -67,7 +66,6 @@
 		880CC6162552301500AE34C5 /* IssueListFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListFilterViewController.swift; sourceTree = "<group>"; };
 		880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueCreation.storyboard; sourceTree = "<group>"; };
 		880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueListFilter.storyboard; sourceTree = "<group>"; };
-		880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailSwipeViewController.swift; sourceTree = "<group>"; };
 		880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
@@ -303,9 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */,
-				DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */,
-				880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */,
 				88D14AB12552935A000A6395 /* IssueCommentCellView.swift */,
+				DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -579,7 +576,6 @@
 				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
-				880CC6272552709B00AE34C5 /* IssueDetailSwipeViewController.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,
 				881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */,
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,

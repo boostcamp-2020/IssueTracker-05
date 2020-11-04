@@ -5,11 +5,11 @@ class IssueDetailViewController: UIViewController {
     
     var viewModel: IssueDetailViewModel?
     lazy var dataLayout = makeDataLayout()
-    @IBOutlet weak var containerView: UIView!
     var swipeUpView: IssueDetailEditingViewController!
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var isOpenView: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
@@ -51,10 +51,10 @@ class IssueDetailViewController: UIViewController {
     
     func configureContainerOfSwipeView() {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
-            .instantiateViewController(identifier: "IssueDetailEditingVC") as! IssueDetailEditingViewController
+            .instantiateViewController(identifier: "IssueDetailEditingVC")
+                as IssueDetailEditingViewController
         containerView.addSubview(swipeUpView.view)
         configureAnimation()
-        
     }
     
     var swipeGesture: UISwipeGestureRecognizer!
@@ -81,14 +81,10 @@ class IssueDetailViewController: UIViewController {
                     y: weakSelf.swipeGesture.direction == .up ? weakSelf.newY : weakSelf.oldY,
                     width: weakSelf.containerView.frame.width,
                     height: weakSelf.containerView.frame.height)
-                
                 weakSelf.containerView.frame = rect
-                
                 weakSelf.swipeGesture.direction
                     = weakSelf.swipeGesture.direction == .up ? .down : .up
-                
                 weakSelf.swipeUpView.collectionView.isScrollEnabled.toggle()
-                
             })
     }
     

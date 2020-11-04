@@ -1,41 +1,5 @@
 import Foundation
 
-struct Comment: Hashable, Codable {
-    
-    var cid: Int
-    var content: String
-    var iid: Int
-    var uid: Int
-    var updatedAt: String
-    var createdAt: String
-//    var title: String
-//    var user: String
-//    var content: String
-    
-//    static func == (lhs: Comment, rhs: Comment) -> Bool {
-//        lhs.title == rhs.title
-//            && lhs.user == rhs.user
-//            && lhs.content == rhs.content
-//    }
-//
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(title)
-//        hasher.combine(user)
-//        hasher.combine(content)
-//    }
-    
-//    static func all() -> [Comment] {
-//        [
-//            Comment(title: "dd", user: "조정래", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-//            Comment(title: "그렇군", user: "정재명", content: "이잉유유으으으아아이잉유유으으으아잉유유으으으아아"),
-//            Comment(title: "그러하다", user: "뿡뿡뽕뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-//            Comment(title: "그러하다", user: "뿡뿡뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-//            Comment(title: "그러하다", user: "뿡뿡뽕뽕뽕", content: "그런가그런가그런가그가그런가그런가그런그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가")
-//        ]
-//    }
-}
-
-
 struct IssueDetailModel: Hashable, Codable {
     
     var iid: Int
@@ -76,6 +40,15 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(comments)
     }
     
+}
+
+struct Comment: Hashable, Codable {
+    var cid: Int
+    var content: String
+    var iid: Int
+    var uid: Int
+    var updatedAt: String
+    var createdAt: String
 }
 
 struct Milestone: Hashable, Codable {
