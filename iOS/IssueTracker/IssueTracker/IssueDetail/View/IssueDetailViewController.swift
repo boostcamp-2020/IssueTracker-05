@@ -35,7 +35,10 @@ class IssueDetailViewController: UIViewController {
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
                 
-                //                cell?.setup(user: comment.user, content: comment.content)
+                cell?.setup(
+                    user: String(comment.uid),
+                    content: comment.content,
+                    time: comment.updatedAt)
                 
                 return cell
             })

@@ -72,6 +72,7 @@
                                                         <constraint firstItem="gm9-eP-cUw" firstAttribute="leading" secondItem="uFz-zS-Xla" secondAttribute="leading" constant="10" id="Css-69-4Zu"/>
                                                         <constraint firstItem="atN-Hs-UJN" firstAttribute="leading" secondItem="HlC-Fa-b1e" secondAttribute="leading" id="I7z-TJ-i99"/>
                                                         <constraint firstItem="HlC-Fa-b1e" firstAttribute="top" secondItem="gm9-eP-cUw" secondAttribute="top" id="P1h-DW-43Q"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="atN-Hs-UJN" secondAttribute="trailing" constant="10" id="WQn-5p-6Dc"/>
                                                         <constraint firstItem="gm9-eP-cUw" firstAttribute="width" secondItem="uFz-zS-Xla" secondAttribute="width" multiplier="0.12" id="WlO-oQ-OWe"/>
                                                         <constraint firstItem="PFH-4H-OHh" firstAttribute="top" secondItem="gm9-eP-cUw" secondAttribute="bottom" constant="10" id="aHZ-pL-YrF"/>
                                                         <constraint firstItem="gm9-eP-cUw" firstAttribute="top" secondItem="uFz-zS-Xla" secondAttribute="top" constant="10" id="aXe-c0-hmX"/>
@@ -91,6 +92,7 @@
                                         <size key="customSize" width="402" height="133"/>
                                         <connections>
                                             <outlet property="contentLabel" destination="PFH-4H-OHh" id="EMM-4f-D1q"/>
+                                            <outlet property="timeLabel" destination="atN-Hs-UJN" id="hYY-YV-OkD"/>
                                             <outlet property="userLabel" destination="HlC-Fa-b1e" id="K3a-4N-0Rs"/>
                                         </connections>
                                     </collectionViewCell>
@@ -180,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql9-Ge-URk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120.28985507246378" y="55.580357142857139"/>
+            <point key="canvasLocation" x="-232" y="33"/>
         </scene>
     </scenes>
     <resources>

@@ -69,10 +69,14 @@ struct Comment: Hashable, Codable {
     
     static func all() -> [Comment] {
         [
-            Comment(cid: 1, content: "정재명", iid: 1, uid: 10, updatedAt: "123123", createdAt: "122322"),
-            Comment(cid: 2, content: "정자명", iid: 2, uid: 11, updatedAt: "123123", createdAt: "123123"),
+            Comment(cid: 1,
+                    content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다",
+                    iid: 1, uid: 10,
+                    updatedAt: "123123123123123123123123123123123",
+                    createdAt: "1231231231231233123123123123"),
+            Comment(cid: 2, content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다", iid: 2, uid: 11, updatedAt: "123123", createdAt: "123123"),
             Comment(cid: 3, content: "조정래", iid: 3, uid: 12, updatedAt: "123123", createdAt: "123123"),
-            Comment(cid: 4, content: "석민님", iid: 4, uid: 13, updatedAt: "123123", createdAt: "123123"),
+            Comment(cid: 4, content: "석민님", iid: 4, uid: 13, updatedAt: "123123", createdAt: "122323"),
             Comment(cid: 5, content: "귀여워", iid: 5, uid: 14, updatedAt: "123123", createdAt: "123123")
         ]
     }
