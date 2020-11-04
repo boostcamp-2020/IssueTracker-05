@@ -1,0 +1,161 @@
+@hostname = localhost
+@port = 5000
+@host = http://{{hostname}}:{{port}}/api
+@contentType = application/json
+
+### 로컬 로그인
+
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testsdsds1212",
+  "password": "12345678aaa@",
+  "resourceServer": "local"
+}
+
+### 깃허브 로그인
+
+GET {{host}}/login/github HTTP/1.1
+content-type: {{contentType}}
+
+### 회원가입
+
+POST {{host}}/signup HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testsdsds1212",
+  "password": "12345678aaa@",
+  "nickname": "test_nickname"
+}
+
+###
+
+POST {{host}}/signup/check-id HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "test"
+}
+
+### 회원가입
+
+@signupId = sample2
+@signupPassword = hello
+
+POST http://{{host}}/api/auth/signup HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "user": "{{signupId}}",
+  "password": "{{signupPassword}}"
+}
+
+### 로그인 - 로그아웃 같은경우 세션을 사용하지 않기때문에 브라우저에서 클라이언트측에서 삭제하면 된다.
+
+@loginId = sample2
+@loginPassword = hello
+
+# @name login
+POST http://{{host}}/api/auth/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "user": "{{loginId}}",
+  "password": "{{loginPassword}}"
+}
+
+### 기록 받아오기
+
+@authToken = iasjdijsiafhaidfhdiadhfiahwriahlrahkfdhk
+# {{login.response.body.token}}
+
+# @name history
+GET http://{{host}}/api/history/ HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### 결제기능 불러오기
+
+# @name payment
+GET http://{{host}}/api/payment HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### 카테고리 목록 불러오기
+
+# @name category
+GET http://{{host}}/api/category HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### Get 목록
+@historyList = {{history.response.body.*}}
+@paymentList = {{payment.response.body.*}}
+@categoryList = {{category.response.body.*}}
+
+### 기록 관련
+
+@paymentId = 20
+
+@categoryId = 107
+@content = 월급뺏김
+@type = false
+@date = 2020-08-03
+@money = 10000
+
+### 기록 추가
+POST http://{{host}}/api/history/ HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "paymentId": "{{paymentId}}",
+  "categoryId": "{{categoryId}}",
+  "content": "{{content}}",
+  "type": "{{type}}",
+  "date": "{{date}}",
+  "money": "{{money}}"
+}
+
+### 기록 수정 
+
+PUT http://{{host}}/api/history/:id HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "paymentId": "{{paymentId}}",
+  "categoryId": "{{categoryId}}",
+  "content": "{{content}}",
+  "type": "{{type}}",
+  "date": "{{date}}",
+  "money": "{{money}}"
+}
+
+### 기록 삭제 
+
+DELETE http://{{host}}/api/delete/{{paymentId}} HTTP/1.1
+Content-Type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### 결제기능 관련
+
+@name = 국민통장
+@paymentId = 21
+
+### 결제기능 추가 
+
+POST http://{{host}}/api/payment HTTP/1.1
+Content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "name": "{{name}}"
+}
+
+### 결제기능 삭제 
+
+DELETE http://{{host}}/api/payment/{{paymentId}} HTTP/1.1
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,57 @@
+@hostname = localhost
+@port = 5000
+@host = http://{{hostname}}:{{port}}/api
+@contentType = application/json
+
+###
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "test123",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
+
+### 이슈에 있는 전체 댓글 불러오기
+
+@getIssueId=11
+GET {{host}}/comment/{{getIssueId}} HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+### 댓글 생성
+
+POST {{host}}/comment HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "nickname": "test_nickname3",
+  "content": "bakr",
+  "iid": 11
+}
+
+### 댓글 수정
+
+@editID = 1
+PATCH {{host}}/comment/{{editID}} HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "content": "충전기 빼고 100만원 실화냐"
+}
+
+### 댓글 삭제
+
+@deleteId = 4
+DELETE {{host}}/comment/{{deleteId}} HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
