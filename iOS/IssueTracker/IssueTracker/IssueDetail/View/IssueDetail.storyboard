@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PEn-JS-Fvf">
-                                <rect key="frame" x="0.0" y="169" width="414" height="593"/>
+                                <rect key="frame" x="0.0" y="209" width="414" height="553"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yrN-4j-cDT">
                                     <size key="itemSize" width="402" height="133"/>
@@ -97,7 +97,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wM-LR-gN6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="105"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="145"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4m-Lk-1O5">
                                         <rect key="frame" x="10" y="10" width="41.5" height="41.5"/>
@@ -123,6 +123,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fi0-Cd-09Y">
+                                        <rect key="frame" x="20" y="105" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -132,9 +136,11 @@
                                     <constraint firstItem="J4m-Lk-1O5" firstAttribute="top" secondItem="9wM-LR-gN6" secondAttribute="top" constant="10" id="GTe-Wh-7Nl"/>
                                     <constraint firstAttribute="trailing" secondItem="O2L-LE-JRP" secondAttribute="trailing" constant="10" id="LCZ-HY-RnD"/>
                                     <constraint firstItem="O2L-LE-JRP" firstAttribute="top" secondItem="9wM-LR-gN6" secondAttribute="top" constant="10" id="NRa-3I-caq"/>
+                                    <constraint firstAttribute="bottom" secondItem="fi0-Cd-09Y" secondAttribute="bottom" constant="10" id="Prr-MR-P2C"/>
+                                    <constraint firstItem="fi0-Cd-09Y" firstAttribute="leading" secondItem="9wM-LR-gN6" secondAttribute="leading" constant="20" id="gMQ-35-eJf"/>
                                     <constraint firstItem="J4m-Lk-1O5" firstAttribute="width" secondItem="9wM-LR-gN6" secondAttribute="width" multiplier="0.1" id="gb2-3T-qCR"/>
+                                    <constraint firstItem="fi0-Cd-09Y" firstAttribute="top" secondItem="Clx-FO-KE0" secondAttribute="bottom" constant="10" id="i5R-8q-oJH"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Clx-FO-KE0" secondAttribute="trailing" constant="10" id="lYE-BV-7za"/>
-                                    <constraint firstAttribute="bottom" secondItem="Clx-FO-KE0" secondAttribute="bottom" constant="10" id="mCd-vz-dpI"/>
                                     <constraint firstItem="xEx-P2-O5i" firstAttribute="leading" secondItem="J4m-Lk-1O5" secondAttribute="trailing" constant="14.5" id="pYB-jp-p2b"/>
                                     <constraint firstItem="Clx-FO-KE0" firstAttribute="leading" secondItem="J4m-Lk-1O5" secondAttribute="leading" id="xfw-yf-1Wm"/>
                                 </constraints>
@@ -169,6 +175,7 @@
                     <connections>
                         <outlet property="collectionView" destination="PEn-JS-Fvf" id="fvE-Jo-J8M"/>
                         <outlet property="containerView" destination="3wD-gG-kXM" id="YMI-Dt-JS3"/>
+                        <outlet property="isOpenView" destination="fi0-Cd-09Y" id="KTP-MT-FEP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql9-Ge-URk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
