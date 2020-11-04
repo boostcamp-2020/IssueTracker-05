@@ -33,6 +33,11 @@
 		88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0382625499494000D4D4A /* IssueResultCellView.swift */; };
 		88D14AAD25528397000A6395 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AAC25528397000A6395 /* IssueDetailModel.swift */; };
 		88D14AB22552935A000A6395 /* IssueCommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AB12552935A000A6395 /* IssueCommentCellView.swift */; };
+		DA18FCDC25526E8300E17D7B /* IssueDetailEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */; };
+		DA18FCE02552704000E17D7B /* IssueDetailEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FCDF2552704000E17D7B /* IssueDetailEditingViewController.swift */; };
+		DA18FCE32552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FCE22552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift */; };
+		DA18FCE62552919200E17D7B /* InnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FCE52552919200E17D7B /* InnerCollectionViewCell.swift */; };
+		DA18FD0E2552CC4500E17D7B /* IssueDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */; };
 		DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */; };
 		DA1B56E8254FEDD900FE8D2D /* LabelList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F7254AB12000C23791 /* LabelList.storyboard */; };
 		DA1B56EA254FEDDF00FE8D2D /* MilestoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */; };
@@ -87,6 +92,11 @@
 		88D14AB12552935A000A6395 /* IssueCommentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCommentCellView.swift; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetailEditing.storyboard; sourceTree = "<group>"; };
+		DA18FCDF2552704000E17D7B /* IssueDetailEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailEditingViewController.swift; sourceTree = "<group>"; };
+		DA18FCE22552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailEditingCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA18FCE52552919200E17D7B /* InnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCollectionView.swift; sourceTree = "<group>"; };
 		DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewCell.swift; sourceTree = "<group>"; };
 		DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListModel.swift; sourceTree = "<group>"; };
 		DA511A8D254A83020036DDC3 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
@@ -242,9 +252,19 @@
 		8848EC182549DCBA00F15A10 /* IssueDetail */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< Updated upstream
 				880CC62A255270C900AE34C5 /* Model */,
 				880CC629255270C200AE34C5 /* ViewModel */,
 				88D14AAF255286C2000A6395 /* View */,
+=======
+				880CC60F25522FCC00AE34C5 /* IssueDetailViewController.swift */,
+				880CC6192552304100AE34C5 /* IssueDetail.storyboard */,
+				DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */,
+				DA18FCDF2552704000E17D7B /* IssueDetailEditingViewController.swift */,
+				DA18FCE22552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift */,
+				DA18FCE52552919200E17D7B /* InnerCollectionViewCell.swift */,
+				DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */,
+>>>>>>> Stashed changes
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
@@ -472,6 +492,7 @@
 				DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */,
 				8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */,
 				8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */,
+				DA18FCDC25526E8300E17D7B /* IssueDetailEditing.storyboard in Resources */,
 				DABEB870254821B4006471F6 /* Assets.xcassets in Resources */,
 				DA71EACE2549916700F5EC25 /* dummy.json in Resources */,
 			);
@@ -530,13 +551,17 @@
 				DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */,
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
 				DA1B56F8255024B000FE8D2D /* MilestoneListViewCell.swift in Sources */,
+				DA18FCE32552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift in Sources */,
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,
 				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
+				DA18FD0E2552CC4500E17D7B /* IssueDetailCollectionView.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
+				DA18FCE02552704000E17D7B /* IssueDetailEditingViewController.swift in Sources */,
 				88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */,
+				DA18FCE62552919200E17D7B /* InnerCollectionViewCell.swift in Sources */,
 				DAC37CE92550EC2F000C2777 /* SignUpViewModel.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
 				880CC61025522FCC00AE34C5 /* IssueDetailViewController.swift in Sources */,
