@@ -27,7 +27,7 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
-                cell.setup(title: issue.title, description: issue.content ?? "no")
+                cell.setup(iid: issue.iid, title: issue.title, description: issue.content ?? "no")
                 cell.closeButtonAction = {
                     print("여기서 close합니다.") // TODO: 클로저로 Main에서 ViewModel 함수를 넣어준다. 
                 }
@@ -40,21 +40,20 @@ class IssueResultViewController: UIViewController {
     }
     
     func createListLayout() -> UICollectionViewLayout {
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(100))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets = NSDirectionalEdgeInsets(
-                top: 3, leading: 0, bottom: 0, trailing: 0)
-            let group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: itemSize, subitems: [item])
-            let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(
-                top: 0, leading: 5, bottom: 0, trailing: 5)
-            return UICollectionViewCompositionalLayout(section: section)
-        }
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(100))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 3, leading: 0, bottom: 0, trailing: 0)
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: itemSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0, leading: 5, bottom: 0, trailing: 5)
+        return UICollectionViewCompositionalLayout(section: section)
+    }
 }
-
 
 #if DEBUG
 
