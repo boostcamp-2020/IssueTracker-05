@@ -252,11 +252,9 @@
 		8848EC182549DCBA00F15A10 /* IssueDetail */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< Updated upstream
 				880CC62A255270C900AE34C5 /* Model */,
 				880CC629255270C200AE34C5 /* ViewModel */,
 				88D14AAF255286C2000A6395 /* View */,
-=======
 				880CC60F25522FCC00AE34C5 /* IssueDetailViewController.swift */,
 				880CC6192552304100AE34C5 /* IssueDetail.storyboard */,
 				DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */,
@@ -264,7 +262,6 @@
 				DA18FCE22552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift */,
 				DA18FCE52552919200E17D7B /* InnerCollectionViewCell.swift */,
 				DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */,
->>>>>>> Stashed changes
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
