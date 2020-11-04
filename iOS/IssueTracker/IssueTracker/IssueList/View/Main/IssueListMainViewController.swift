@@ -114,7 +114,6 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self))
         
         // 초기화
-        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.pushViewController(newVC, animated: true)
     }
 }

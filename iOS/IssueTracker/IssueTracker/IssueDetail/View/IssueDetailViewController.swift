@@ -48,9 +48,15 @@ class IssueDetailViewController: UIViewController {
     }
     
     func configureNavigation() {
-        
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.topItem?.title = ""
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
     }
     
+    @objc func pushEditViewController() {
+        print("Edit")
+    }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
