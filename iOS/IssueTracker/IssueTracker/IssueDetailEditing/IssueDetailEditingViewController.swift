@@ -10,7 +10,7 @@ import UIKit
 
 class IssueDetailEditingViewController: UIViewController {
     
-    @IBOutlet var collectionView: UICollectionView! {
+    @IBOutlet var collectionView: IssueDetailCollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
@@ -21,12 +21,13 @@ class IssueDetailEditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
-        
+        collectionView.isScrollEnabled = false
     }
     
     func configure() {
         self.collectionView.reloadData()
         self.collectionView.layoutIfNeeded()
+        self.collectionView.isDynamicSizeRequired = true
     }
     
 }
@@ -36,7 +37,7 @@ extension IssueDetailEditingViewController : UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = view.frame.width
-        let estimatedHeight: CGFloat = 300.0
+        let estimatedHeight: CGFloat = 100.0
         let dummyCell = IssueDetailEditingCollectionViewCell(frame: CGRect(x:0, y:0, width: width, height: estimatedHeight))
         dummyCell.layoutIfNeeded()
         let estimatedSize = dummyCell.systemLayoutSizeFitting(
@@ -64,6 +65,7 @@ extension IssueDetailEditingViewController : UICollectionViewDelegate, UICollect
         
         cell.backgroundColor = .systemBackground
         cell.layoutIfNeeded()
+        self.collectionView.collectionViewLayout.invalidateLayout()
         return cell
     }
     

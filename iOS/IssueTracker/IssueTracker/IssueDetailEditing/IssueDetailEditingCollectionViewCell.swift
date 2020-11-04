@@ -11,7 +11,7 @@ import UIKit
 class IssueDetailEditingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var innerCollectionView: UICollectionView!  {
+    @IBOutlet var innerCollectionView: IssueDetailCollectionView!  {
         didSet {
             innerCollectionView.delegate = self
             innerCollectionView.dataSource = self
@@ -30,6 +30,7 @@ extension IssueDetailEditingCollectionViewCell: UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: "innerCell"), for: indexPath) as! InnerCollectionViewCell
         cell.configureButton()
+        self.innerCollectionView.layoutIfNeeded()
         return cell
     }
     

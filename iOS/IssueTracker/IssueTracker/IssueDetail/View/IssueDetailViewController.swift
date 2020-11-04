@@ -6,7 +6,7 @@ class IssueDetailViewController: UIViewController {
     var viewModel: IssueDetailViewModel?
     lazy var dataLayout = makeDataLayout()
     @IBOutlet weak var containerView: UIView!
-    var swipeUpView: IssueDetailSwipeViewController!
+    var swipeUpView: IssueDetailEditingViewController!
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var isOpenView: UIButton!
@@ -51,12 +51,11 @@ class IssueDetailViewController: UIViewController {
     }
     
     func configureContainerOfSwipeView() {
-        swipeUpView = UIStoryboard(name: "IssueDetail", bundle: nil)
-            .instantiateViewController(identifier: String(describing: IssueDetailSwipeViewController.self)) as IssueDetailSwipeViewController
+        swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
+            .instantiateViewController(identifier: "IssueDetailEditingVC") as! IssueDetailEditingViewController
         containerView.addSubview(swipeUpView.view)
         configureAnimation()
-        // IssueDetailEditingVC
-        // IssueDetailEditingViewController
+        
     }
     
     var swipeGesture: UISwipeGestureRecognizer!
@@ -64,9 +63,7 @@ class IssueDetailViewController: UIViewController {
     var newY: CGFloat!
     
     func configureAnimation() {
-        //oldY = containerView.frame.origin.y
-        oldY = containerView.frame.origin.y - 83
-        //oldY = collectionView.frame.origin.y + collectionView.frame.height
+        oldY = containerView.frame.origin.y
         newY = view.frame.height - containerView.frame.height
         swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(upperGesture))
         swipeGesture.direction = .up
@@ -80,7 +77,6 @@ class IssueDetailViewController: UIViewController {
             options: .curveEaseIn,
             animations: { [weak self] in
                 guard let weakSelf = self else { return }
-                
                 let rect = CGRect(
                     x: weakSelf.containerView.frame.origin.x,
                     y: weakSelf.swipeGesture.direction == .up ? weakSelf.newY : weakSelf.oldY,
@@ -91,12 +87,16 @@ class IssueDetailViewController: UIViewController {
                 
                 weakSelf.swipeGesture.direction
                     = weakSelf.swipeGesture.direction == .up ? .down : .up
+                
+                weakSelf.swipeUpView.collectionView.isScrollEnabled.toggle()
+                
             })
     }
     
     func configureNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.topItem?.title = ""
+        self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
     }
