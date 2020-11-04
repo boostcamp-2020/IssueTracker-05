@@ -15,6 +15,8 @@
 		880CC61A2552304100AE34C5 /* IssueDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC6192552304100AE34C5 /* IssueDetail.storyboard */; };
 		880CC61D2552304E00AE34C5 /* IssueCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */; };
 		880CC6202552306600AE34C5 /* IssueListFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */; };
+		880CC6272552709B00AE34C5 /* IssueDetailSwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */; };
+		880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */; };
 		881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC67B25510A5B00676011 /* IssueDetailedView.swift */; };
@@ -60,6 +62,8 @@
 		880CC6192552304100AE34C5 /* IssueDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetail.storyboard; sourceTree = "<group>"; };
 		880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueCreation.storyboard; sourceTree = "<group>"; };
 		880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueListFilter.storyboard; sourceTree = "<group>"; };
+		880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailSwipeViewController.swift; sourceTree = "<group>"; };
+		880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
 		881BC67B25510A5B00676011 /* IssueDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailedView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,21 @@
 				0B4B84B4D4F6858EDDDE54E8 /* Pods_IssueTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		880CC629255270C200AE34C5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		880CC62A255270C900AE34C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8818249B25484B8000C352A8 /* Extenstion */ = {
@@ -218,7 +237,10 @@
 		8848EC182549DCBA00F15A10 /* IssueDetail */ = {
 			isa = PBXGroup;
 			children = (
+				880CC62A255270C900AE34C5 /* Model */,
+				880CC629255270C200AE34C5 /* ViewModel */,
 				880CC60F25522FCC00AE34C5 /* IssueDetailViewController.swift */,
+				880CC6262552709B00AE34C5 /* IssueDetailSwipeViewController.swift */,
 				880CC6192552304100AE34C5 /* IssueDetail.storyboard */,
 			);
 			path = IssueDetail;
@@ -512,8 +534,10 @@
 				8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */,
 				88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */,
 				DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */,
+				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
+				880CC6272552709B00AE34C5 /* IssueDetailSwipeViewController.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,
 				881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */,
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,
@@ -665,7 +689,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -685,7 +709,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
