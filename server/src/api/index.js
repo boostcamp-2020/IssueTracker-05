@@ -8,6 +8,7 @@ import comment from '@api/routes/comment';
 import label from '@api/routes/label';
 import issueFilter from '@api/routes/issueFilter';
 import image from '@api/routes/image';
+import user from '@api/routes/user';
 
 export default () => {
   const app = Router();
@@ -20,6 +21,7 @@ export default () => {
   comment(app);
   label(app);
   issueFilter(app);
+  user(app);
 
   return app;
 };
