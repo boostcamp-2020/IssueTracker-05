@@ -3,7 +3,7 @@ import Foundation
 import Alamofire
 class IssueDetailViewModel {
     struct Status {
-        var model =  Bindable<[Comment]>([Comment]()) // 여기에 snapshot 연결
+        var model = Bindable(IssueDetailModel.all()) // 여기에 snapshot 연결
     }
     
     struct Action {
@@ -42,7 +42,7 @@ class IssueDetailViewModel {
                     print(result)
                     let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                     let decodedData = try JSONDecoder().decode(IssueDetailModel.self, from: resultData)
-                    self.status.model.value = decodedData.comments!
+                    self.status.model.value = decodedData
                 } catch {
                     print(error)
                 }

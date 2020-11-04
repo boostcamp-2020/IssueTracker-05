@@ -39,7 +39,27 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(assignees)
         hasher.combine(comments)
     }
-    
+ 
+    static func all() -> IssueDetailModel {
+        IssueDetailModel(
+            iid: 1,
+            title: "title",
+            isOpen: false,
+            label: nil,
+            content: nil,
+            comments: [Comment(
+                        cid: 3,
+                        content: "alksjdlkajlkwj",
+                        iid: 4,
+                        uid: 1,
+                        updatedAt: "22-2323-1212",
+                        createdAt: "22-2323-1212")],
+            updatedAt: "22-2323-1212",
+            createdAt: "22-2323-1212",
+            author: nil,
+            mid: nil,
+            assignees: nil)
+    }
 }
 
 struct Comment: Hashable, Codable {

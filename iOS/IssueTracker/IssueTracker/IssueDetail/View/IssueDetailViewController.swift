@@ -9,6 +9,11 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var isOpenView: UIButton!
+    var isOpen = true  {// TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
+        didSet {
+            configureIsOpenView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,10 +21,18 @@ class IssueDetailViewController: UIViewController {
         configureIsOpenView()
         configureContainerOfSwipeView()
         if let viewModel = viewModel {
-            viewModel.status.model.bindAndFire(applySnapshot(sections:))
+            viewModel.status.model.bindAndFire(updateViews(model:))
             return
         }
+        containerView.layer.cornerRadius = 10
         applySnapshot(sections: Comment.all())
+    }
+    
+    func updateViews(model: IssueDetailModel) {
+        isOpen = model.isOpen
+        if let comments = model.comments {
+            applySnapshot(sections: comments)
+        }
     }
     
     func applySnapshot(sections: [Comment]) {
@@ -45,7 +58,6 @@ class IssueDetailViewController: UIViewController {
     }
     
     func configureIsOpenView() {
-        let isOpen = true // TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
         isOpenView.setImage(
             UIImage(systemName: "exclamationmark.circle"),
             for: .normal)
