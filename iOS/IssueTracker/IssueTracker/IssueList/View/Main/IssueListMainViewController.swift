@@ -110,12 +110,11 @@ extension IssueListMainViewController: UICollectionViewDelegate {
             return
         }
         //cell.iid 이걸 viewModel에 넘겨준다. viewModel이 생성하면서 서버와 통신하여 해당 iid의 이슈 데이터를 가져온다.
-        print("hllaksd")
         
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self))
         
         // 초기화
-
+        navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.pushViewController(newVC, animated: true)
     }
 }

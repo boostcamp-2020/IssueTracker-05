@@ -32,7 +32,7 @@ class IssueDetailViewController: UIViewController {
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
                 
-                cell?.setup(title: comment.title, user: comment.user, content: comment.content)
+                cell?.setup(user: comment.user, content: comment.content)
                 
                 return cell
             })
@@ -42,10 +42,18 @@ class IssueDetailViewController: UIViewController {
         swipeUpView = UIStoryboard(name: "IssueDetail", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueDetailSwipeViewController.self)) as IssueDetailSwipeViewController
         containerView.addSubview(swipeUpView.view)
+        
+        // IssueDetailEditingVC
+        // IssueDetailEditingViewController
     }
     
     func configureNavigation() {
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 }

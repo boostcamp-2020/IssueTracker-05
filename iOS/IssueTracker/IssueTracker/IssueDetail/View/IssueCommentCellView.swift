@@ -4,12 +4,11 @@ import UIKit
 class IssueCommentCellView: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var conentLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
     
-    func setup(title: String, user: String, content: String) {
-        titleLabel.text = title
+    func setup(user: String, content: String) {
         userLabel.text = user
-        conentLabel.text = content
+        contentLabel.text = content
     }
 }
