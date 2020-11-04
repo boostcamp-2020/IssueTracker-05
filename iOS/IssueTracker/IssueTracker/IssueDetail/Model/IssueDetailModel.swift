@@ -1,47 +1,53 @@
 import Foundation
 
-struct Comment: Hashable {
-    var title: String
-    var user: String
+struct Comment: Hashable, Codable {
+    
+    var cid: Int
     var content: String
+    var iid: Int
+    var uid: Int
+    var updatedAt: String
+    var createdAt: String
+//    var title: String
+//    var user: String
+//    var content: String
     
-    static func == (lhs: Comment, rhs: Comment) -> Bool {
-        lhs.title == rhs.title
-            && lhs.user == rhs.user
-            && lhs.content == rhs.content
-    }
+//    static func == (lhs: Comment, rhs: Comment) -> Bool {
+//        lhs.title == rhs.title
+//            && lhs.user == rhs.user
+//            && lhs.content == rhs.content
+//    }
+//
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(title)
+//        hasher.combine(user)
+//        hasher.combine(content)
+//    }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(title)
-        hasher.combine(user)
-        hasher.combine(content)
-    }
-    
-    static func all() -> [Comment] {
-        [
-            Comment(title: "dd", user: "조정래", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-            Comment(title: "그렇군", user: "정재명", content: "이잉유유으으으아아이잉유유으으으아잉유유으으으아아"),
-            Comment(title: "그러하다", user: "뿡뿡뽕뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-            Comment(title: "그러하다", user: "뿡뿡뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
-            Comment(title: "그러하다", user: "뿡뿡뽕뽕뽕", content: "그런가그런가그런가그가그런가그런가그런그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가")
-        ]
-    }
+//    static func all() -> [Comment] {
+//        [
+//            Comment(title: "dd", user: "조정래", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
+//            Comment(title: "그렇군", user: "정재명", content: "이잉유유으으으아아이잉유유으으으아잉유유으으으아아"),
+//            Comment(title: "그러하다", user: "뿡뿡뽕뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
+//            Comment(title: "그러하다", user: "뿡뿡뽕", content: "그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가"),
+//            Comment(title: "그러하다", user: "뿡뿡뽕뽕뽕", content: "그런가그런가그런가그가그런가그런가그런그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가그런가")
+//        ]
+//    }
 }
 
 
-struct IssueDetailModel: Hashable {
+struct IssueDetailModel: Hashable, Codable {
     
     var iid: Int
     var title: String // 이슈 타이틀
     var isOpen: Bool
     var label: [String]?
     var content: String?
-    
-    var comment: [Comment]?
-    
+    var comments: [Comment]?
+    var updatedAt: String?
     var createdAt: String?
-    var author: String
-    var milestone: [Milestone]
+    var author: String?
+    var mid: Int?
     var assignees: [Assignees]?
     
     static func == (lhs: IssueDetailModel, rhs: IssueDetailModel) -> Bool {
@@ -52,9 +58,9 @@ struct IssueDetailModel: Hashable {
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
             && lhs.author == rhs.author
-            && lhs.milestone == rhs.milestone
+            && lhs.mid == rhs.mid
             && lhs.assignees == rhs.assignees
-            && lhs.comment == rhs.comment
+            && lhs.comments == rhs.comments
     }
     
     func hash(into hasher: inout Hasher) {
@@ -65,14 +71,14 @@ struct IssueDetailModel: Hashable {
         hasher.combine(content)
         hasher.combine(createdAt)
         hasher.combine(author)
-        hasher.combine(milestone)
+        hasher.combine(mid)
         hasher.combine(assignees)
-        hasher.combine(comment)
+        hasher.combine(comments)
     }
     
 }
 
-struct Milestone: Hashable {
+struct Milestone: Hashable, Codable {
     
     var mid: String
     var title: String
@@ -91,7 +97,7 @@ struct Milestone: Hashable {
     }
 }
 
-struct IssueState: Hashable { // 이걸로 이슈 얼마나 열려있는지 확인
+struct IssueState: Hashable, Codable { // 이걸로 이슈 얼마나 열려있는지 확인
     
     var open: Int
     var close: Int
@@ -106,7 +112,7 @@ struct IssueState: Hashable { // 이걸로 이슈 얼마나 열려있는지 확�
     }
 }
 
-struct Assignees: Hashable {
+struct Assignees: Hashable, Codable {
     
     var uid: Int
     

@@ -14,7 +14,6 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
         configureNavigation()
         configureIsOpenView()
-        viewModel = IssueDetailViewModel(model: Comment.all())
         configureContainerOfSwipeView()
         viewModel?.status.model.bindAndFire(applySnapshot(sections:))
     }
@@ -32,7 +31,7 @@ class IssueDetailViewController: UIViewController {
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
                 
-                cell?.setup(user: comment.user, content: comment.content)
+//                cell?.setup(user: comment.user, content: comment.content)
                 
                 return cell
             })
