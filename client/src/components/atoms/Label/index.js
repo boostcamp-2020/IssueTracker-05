@@ -1,14 +1,36 @@
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { font, palette } from "styled-theme";
 
-const fontSize = ({ height }) => `${height / 40}rem`;
-const foregroundColor = ({  }) =>
-  disabled ? palette("grayscale", 0, true) : palette("grayscale", 3, true);
-
-const Label = styled.label`
-  font-size: ${fontSize},
-  padding: ${({ height }) => height * 0.8}px;
-  margin: ${({ height }) => height * 1}px;
-  color: ${}
+const backgroundColor = ({background}) => `${background}`;
+const StyledLabel = styled.div`
+  box-sizing: border-box;
+  background: ${backgroundColor};
+  height: 40px;
+  width: 60px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: ${font('primary')};
 `;
+
+const Label = (props) => {
+  return <StyledLabel {...props} />;
+};
+
+Label.PropTypes = {
+  background: PropTypes.string,
+};
+
+Label.defaultProps = {
+  palette: "primary",
+};
+
+export default Label;
