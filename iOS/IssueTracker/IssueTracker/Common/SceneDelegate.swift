@@ -8,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        if let _ = Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
+        if nil == Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
             
             let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
             
@@ -16,15 +16,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navController.navigationBar.topItem?.title = "이슈"
             navController.navigationBar.prefersLargeTitles = true
             navController.tabBarItem
-                = UITabBarItem(title: "이슈", image: nil, tag: 0)
+                = UITabBarItem(title: "이슈", image: UIImage(systemName: "1.circle.fill"), tag: 0)
             
             let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
             labelListViewController.tabBarItem
-                = UITabBarItem(title: "레이블", image: nil, tag: 0)
+                = UITabBarItem(title: "레이블", image: UIImage(systemName: "2.circle.fill"), tag: 1)
             
             let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
             milestoneListViewController.tabBarItem
-                = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
+                = UITabBarItem(title: "마일스톤", image: UIImage(systemName: "3.circle.fill"), tag: 2)
             
             let tabBarController = UITabBarController()
             tabBarController.tabBar.tintColor = UIColor.black
