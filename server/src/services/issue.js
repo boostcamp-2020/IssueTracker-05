@@ -171,6 +171,9 @@ const updateIssue = async (updatedContent, iid) => {
   try {
     if (updatedContent) {
       // update된 내용이 존재하면, 관계 테이블 관련 내용 제외하고 issue 기본 내용 수정
+      if (updatedContent.isOpen === false) {
+        updatedContent.closedAt = new Date();
+      }
       await db.issue.update(
         {
           ...updatedContent,
