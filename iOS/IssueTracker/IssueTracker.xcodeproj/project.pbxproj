@@ -30,6 +30,7 @@
 		88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0382625499494000D4D4A /* IssueResultCellView.swift */; };
 		88D14AAD25528397000A6395 /* IssueDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AAC25528397000A6395 /* IssueDetailModel.swift */; };
 		88D14AB22552935A000A6395 /* IssueCommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D14AB12552935A000A6395 /* IssueCommentCellView.swift */; };
+		88E6973F2553DE420090635D /* IssueListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E6973E2553DE420090635D /* IssueListService.swift */; };
 		DA18FCDC25526E8300E17D7B /* IssueDetailEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */; };
 		DA18FCE02552704000E17D7B /* IssueDetailEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FCDF2552704000E17D7B /* IssueDetailEditingViewController.swift */; };
 		DA18FCE32552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA18FCE22552719E00E17D7B /* IssueDetailEditingCollectionViewCell.swift */; };
@@ -86,6 +87,7 @@
 		88C0382625499494000D4D4A /* IssueResultCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResultCellView.swift; sourceTree = "<group>"; };
 		88D14AAC25528397000A6395 /* IssueDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailModel.swift; sourceTree = "<group>"; };
 		88D14AB12552935A000A6395 /* IssueCommentCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCommentCellView.swift; sourceTree = "<group>"; };
+		88E6973E2553DE420090635D /* IssueListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListService.swift; sourceTree = "<group>"; };
 		99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.release.xcconfig"; sourceTree = "<group>"; };
 		D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		DA18FCDB25526E8300E17D7B /* IssueDetailEditing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetailEditing.storyboard; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		88C03805254960FA000D4D4A /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
+				88E697412553DE550090635D /* Service */,
 				8848EC0E2549DBC000F15A10 /* Model */,
 				8848EC102549DBC800F15A10 /* ViewModel */,
 				8848EC122549DBD100F15A10 /* View */,
@@ -305,6 +308,14 @@
 				DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		88E697412553DE550090635D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				88E6973E2553DE420090635D /* IssueListService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {
@@ -575,6 +586,7 @@
 				DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */,
 				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
+				88E6973F2553DE420090635D /* IssueListService.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,
 				881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */,
