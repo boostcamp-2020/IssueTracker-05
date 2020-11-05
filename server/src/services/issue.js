@@ -15,7 +15,7 @@ const getTargetIssue = async (iid) => {
       include: [
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname', 'img'],
+          attributes: ['uid', 'userId', 'nickname', 'image'],
         },
         {
           model: db.comment,
@@ -23,13 +23,13 @@ const getTargetIssue = async (iid) => {
           include: [
             {
               model: db.user,
-              attributes: ['uid', 'userId', 'nickname', 'img'],
+              attributes: ['uid', 'userId', 'nickname', 'image'],
             },
           ],
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname', 'img'],
+          attributes: ['uid', 'userId', 'nickname', 'image'],
           as: 'assignees',
           through: { attributes: [] },
         },
@@ -73,7 +73,7 @@ const getIssues = async (page) => {
           },
           {
             model: db.user,
-            attributes: ['uid', 'userId', 'nickname', 'img'],
+            attributes: ['uid', 'userId', 'nickname', 'image'],
             as: 'assignees',
             through: { attributes: [] },
           },
@@ -112,7 +112,7 @@ const getIssues = async (page) => {
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname', 'img'],
+          attributes: ['uid', 'userId', 'nickname', 'image'],
           as: 'assignee',
           through: { attributes: [] },
         },
