@@ -10,4 +10,5 @@ export default (app) => {
   route.post('/', loginController.localLogin);
   route.get('/github', loginController.github);
   route.get('/github/callback', loginController.githubCallback);
+  route.post('/github', loginController.githubAppLogin);
 };
