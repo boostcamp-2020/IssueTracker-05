@@ -1,6 +1,8 @@
 @hostname = localhost
 @port = 5000
-@host = http://{{hostname}}:{{port}}/api
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
 @contentType = application/json
 
 # @name login
@@ -8,7 +10,7 @@ POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "test123",
+  "userId": "testId1",
   "password": "123456a@",
   "resourceServer": "local"
 }
