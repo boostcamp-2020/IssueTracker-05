@@ -27,13 +27,13 @@ class IssueDetailViewController: UIViewController {
         configureNavigation()
         configureIsOpenView()
         configureContainerOfSwipeView()
-        
         swipeUpView.view.layer.cornerRadius = 15
 
-        if let viewModel = viewModel {
-            viewModel.status.model.bindAndFire(updateViews(model:))
-            return
-        }
+//        if let viewModel = viewModel {
+//            viewModel.status.model.bindAndFire(updateViews(model:))
+//            return
+//        }
+        
         // TODO: 나중에 제거해야 한다. 
         updateViews(model: IssueDetailModel.all())
     }
@@ -99,6 +99,7 @@ class IssueDetailViewController: UIViewController {
     func configureContainerOfSwipeView() {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
             .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
+        swipeUpView.delegate = self
         containerView.addSubview(swipeUpView.view)
         configureAnimation()
     }
@@ -151,7 +152,30 @@ class IssueDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    // TODO: action과 configure를 구분
+    
 }
+
+extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
+    func scrollUpButtonTabbed() {
+        print("up")
+        let bottomPoint = CGPoint(x: 0, y: collectionView.contentSize.height)
+        collectionView.setContentOffset(bottomPoint, animated: true)
+    }
+    
+    func scrollDownButtonTabbed() {
+        print("down")
+        let topPoint = CGPoint(x: 0, y: collectionView.contentSize.height)
+        collectionView.setContentOffset(topPoint, animated: true)
+    }
+    
+    func addCommentButtonTabbed() {
+        print("button")
+    }
+
+}
+
+
 
 #if DEBUG
 

@@ -5,13 +5,19 @@
 //  Created by 조정래 on 2020/11/04.
 //  Copyright © 2020 ralph. All rights reserved.
 //
-
 import UIKit
+
+protocol IssueDetailEditingViewControllerDelegate {
+    func scrollUpButtonTabbed()
+    func scrollDownButtonTabbed()
+    func addCommentButtonTabbed()
+}
 
 class IssueDetailEditingViewController: UIViewController {
     
     //@IBOutlet weak var buttonForInit:
     
+    var delegate: IssueDetailEditingViewControllerDelegate?
     
     @IBOutlet var buttonsForInit: [UIButton]!
     
@@ -36,6 +42,18 @@ class IssueDetailEditingViewController: UIViewController {
         self.collectionView.reloadData()
         self.collectionView.layoutIfNeeded()
         self.collectionView.isDynamicSizeRequired = true
+    }
+    
+    @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
+        delegate?.addCommentButtonTabbed()
+    }
+    
+    @IBAction func scrollUpButtonTabbed(_ sender: UIButton) {
+        delegate?.scrollUpButtonTabbed()
+    }
+    
+    @IBAction func scrollDownButtonTabbed(_ sender: UIButton) {
+        delegate?.scrollDownButtonTabbed()
     }
     
 }

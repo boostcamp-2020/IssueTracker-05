@@ -94,11 +94,17 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="댓글 추가"/>
+                                <connections>
+                                    <action selector="addCommentButtonTabbed:" destination="6rW-t6-dpX" eventType="touchUpInside" id="js3-Fx-SW1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EH8-tu-dts" userLabel="ScrollDown">
                                 <rect key="frame" x="352.5" y="64" width="41.5" height="33"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" image="chevron.down" catalog="system"/>
+                                <connections>
+                                    <action selector="scrollDownButtonTabbed:" destination="6rW-t6-dpX" eventType="touchUpInside" id="qy1-lu-dmk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-XV-zd9">
                                 <rect key="frame" x="20" y="809" width="374" height="33"/>
@@ -118,6 +124,9 @@
                                 <rect key="frame" x="311" y="64" width="41.5" height="33"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <state key="normal" image="chevron.up" catalog="system"/>
+                                <connections>
+                                    <action selector="scrollUpButtonTabbed:" destination="6rW-t6-dpX" eventType="touchUpInside" id="Vb3-Wk-GbP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gQ2-du-hsh"/>
@@ -153,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWT-Ad-Kpl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="63.768115942028992" y="-17.410714285714285"/>
+            <point key="canvasLocation" x="297" y="-273"/>
         </scene>
     </scenes>
     <resources>
