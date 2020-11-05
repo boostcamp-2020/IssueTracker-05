@@ -23,7 +23,7 @@ content-type: {{contentType}}
 
 ### 특정 이슈 하나 불러오기
 
-@issueId=75
+@issueId=9
 
 GET {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
@@ -64,31 +64,35 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "testtesttest",
-  "content": null,
-  "author": "이슈 작성자",
+  "title": "[데이터베이스] Sequelize DB 환경설정",
+  "content": "- [x] Sequelize 모듈에 이용할 db config 파일 생성\n- [x] Sequelize init을 활용하여 초기 설정",
+  "uid": 1,
   "labels": [
     {
-      "name": "baseball"
-    },
-    {
-      "name": "soccer"
+      "name": "enhancement"
     }
   ],
-  "mid": null,
-  "assignees": null
+  "mid": 1,
+  "assignees": [
+    {
+      "uid": 1
+    },
+    {
+      "uid": 2
+    }
+  ]
 }
 
 ### 이슈 수정(1). 기본 내용 수정
 
-@editIssueId=11
+@editIssueId=1
 
 PATCH {{host}}/issue/{{editIssueId}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "isOpen": false
+  "content": "- [ ] 6자 ~ 16자로 구성하는지 유효성 검증\n- [ ] 유효성 검증이 되었을 경우 BE로 가입된 아이디인지 체크 요청 전송"
 }
 
 ### 이슈 수정(2). 이슈에 할당되어 있는 label 수정
@@ -108,22 +112,22 @@ Authorization: Bearer {{authToken}}
 
 # ### 이슈 수정(3). 이슈에 할당되어 있는 assginee 추가
 
-PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-content-type: {{contentType}}
-Authorization: Bearer {{authToken}}
+# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
+# content-type: {{contentType}}
+# Authorization: Bearer {{authToken}}
 
-{
-  "assignees": [
-    {
-      "uid": 6,
-      "state": false
-    },
-    {
-      "uid": 8,
-      "state": false
-    }
-  ]
-}
+# {
+#   "assignees": [
+#     {
+#       "uid": 6,
+#       "state": false
+#     },
+#     {
+#       "uid": 8,
+#       "state": false
+#     }
+#   ]
+# }
 
 # ### 이슈 수정(4). 이슈에 할당되어 있는 assginee 삭제
 
@@ -166,3 +170,11 @@ Authorization: Bearer {{authToken}}
 #     }
 #   ]
 # }
+
+### 특정 이슈 삭제
+
+@deleteIssueId=9
+DELETE {{host}}/issue/{{deleteIssueId}} HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+

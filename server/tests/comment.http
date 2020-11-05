@@ -13,7 +13,7 @@ POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "test123",
+  "userId": "testId2",
   "password": "123456a@",
   "resourceServer": "local"
 }
@@ -36,9 +36,8 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "nickname": "test_nickname3",
-  "content": "bakr",
-  "iid": 11
+  "content": "test Comment!!!",
+  "iid": 7
 }
 
 ### 댓글 수정
