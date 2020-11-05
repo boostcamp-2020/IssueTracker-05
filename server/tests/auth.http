@@ -38,3 +38,10 @@ content-type: {{contentType}}
 {
   "userId": "test"
 }
+
+### 앱전용 깃허브로그인
+
+@appToken=
+GET https://api.github.com/user
+content-type: {{contentType}}
+Authorization: bearer {{appToken}}

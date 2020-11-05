@@ -2,7 +2,14 @@ import db from '@models';
 
 const getMilestoneFromDB = async () => {
   try {
-    const milestoneList = await db.milestone.findAll();
+    const milestoneList = await db.milestone.findAll({
+      include: [
+        {
+          model: db.issue,
+          attributes: ['isOpen'],
+        },
+      ],
+    });
     return milestoneList;
   } catch (err) {
     throw new Error(err);
@@ -24,10 +31,10 @@ const deleteMilestoneFromDB = async (milestoneId) => {
 
 const editMilestoneFromDB = async (milestoneId, content) => {
   try {
-    let targetMilestone = await db.milestone.findByPk(milestoneId);
-    targetMilestone = { ...targetMilestone, ...content };
-    await targetMilestone.save();
-    return true;
+    const targetMilestone = await db.milestone.update(content, {
+      where: { mid: milestoneId },
+    });
+    return targetMilestone;
   } catch (err) {
     throw new Error(err);
   }
