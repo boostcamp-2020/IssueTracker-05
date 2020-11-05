@@ -4,11 +4,18 @@ const getTargetIssue = async (iid) => {
   try {
     const issue = await db.issue.findOne({
       where: { iid },
-      attributes: ['iid', 'isOpen', 'title', 'content', 'createdAt', 'closedAt'],
+      attributes: [
+        'iid',
+        'isOpen',
+        'title',
+        'content',
+        'createdAt',
+        'closedAt',
+      ],
       include: [
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
+          attributes: ['uid', 'userId', 'nickname', 'img'],
         },
         {
           model: db.comment,
@@ -16,13 +23,13 @@ const getTargetIssue = async (iid) => {
           include: [
             {
               model: db.user,
-              attributes: ['uid', 'userId', 'nickname'],
+              attributes: ['uid', 'userId', 'nickname', 'img'],
             },
           ],
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
+          attributes: ['uid', 'userId', 'nickname', 'img'],
           as: 'assignees',
           through: { attributes: [] },
         },
@@ -66,7 +73,7 @@ const getIssues = async (page) => {
           },
           {
             model: db.user,
-            attributes: ['uid', 'userId', 'nickname'],
+            attributes: ['uid', 'userId', 'nickname', 'img'],
             as: 'assignees',
             through: { attributes: [] },
           },
@@ -105,7 +112,7 @@ const getIssues = async (page) => {
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
+          attributes: ['uid', 'userId', 'nickname', 'img'],
           as: 'assignee',
           through: { attributes: [] },
         },
