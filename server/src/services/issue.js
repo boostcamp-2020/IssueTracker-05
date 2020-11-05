@@ -159,7 +159,7 @@ const createIssue = async (issueContent, uid) => {
           [db.Sequelize.Op.or]: issueContent.assignees,
         },
       });
-      await issue.addUsers(assignees, { through: { selfGranted: true } });
+      await issue.addAssignees(assignees, { through: { selfGranted: true } });
     }
     return issue;
   } catch (err) {
@@ -246,7 +246,7 @@ const updateIssue = async (updatedContent, iid) => {
                 [db.Sequelize.Op.or]: trueAssignes,
               },
             });
-            await issue.addUsers(assigneesToAdd, {
+            await issue.addAssignees(assigneesToAdd, {
               through: { selfGranted: true },
             });
           }
