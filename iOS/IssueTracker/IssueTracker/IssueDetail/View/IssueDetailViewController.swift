@@ -32,6 +32,8 @@ class IssueDetailViewController: UIViewController {
         isOpen = model.isOpen
         if let comments = model.comments {
             applySnapshot(sections: comments)
+        } else {
+            applySnapshot(sections: Comment.all())
         }
     }
     
