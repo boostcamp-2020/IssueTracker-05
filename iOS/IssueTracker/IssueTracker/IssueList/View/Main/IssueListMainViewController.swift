@@ -116,7 +116,7 @@ extension IssueListMainViewController: UICollectionViewDelegate {
             return
         }
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self)) as! IssueDetailViewController
-        newVC.viewModel = IssueDetailViewModel(iid: cell.iid ?? 0)
+        newVC.viewModel = IssueDetailViewModel(issueId: cell.iid ?? 0)
         navigationController?.pushViewController(newVC, animated: true)
     }
 }

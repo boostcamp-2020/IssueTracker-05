@@ -63,7 +63,7 @@ struct IssueListModel: Codable, Hashable {
         newModel.append(
             IssueListModel(
                 uid: 8,
-                iid: 66,
+                iid: 11,
                 title: "testtesttest",
                 content: "Hello",
                 isOpen: true,
