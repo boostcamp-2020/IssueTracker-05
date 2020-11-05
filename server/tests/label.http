@@ -1,34 +1,55 @@
 @hostname = localhost
 @port = 5000
-@host = http://{{hostname}}:{{port}}/api
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
 @contentType = application/json
+
+### 로컬 로그인
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testId1",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+### 토큰
+@authToken = {{login.response.body.token}}
 
 ### 레이블 생성
 
 POST {{host}}/label HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
-  "name": "soccer2",
-  "color": "#ab2135"
+  "name": "test9812",
+  "desc": "이거슨 테스트입니다.",
+  "color": "#ab3f42"
 }
 
 ### 모든 레이블 얻기
 
 GET {{host}}/label HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 ### 특정 레이블 하나 얻기
 
 @getLabel=test
 GET {{host}}/label/{{getLabel}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 ### 특정 레이블 수정하기
 
 @editLabel=soccer2
 PATCH {{host}}/label/{{editLabel}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
   "name": "TEST2",
@@ -41,3 +62,4 @@ content-type: {{contentType}}
 @deleteLabel=TEST2
 DELETE {{host}}/label/{{deleteLabel}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
