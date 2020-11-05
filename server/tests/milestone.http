@@ -1,6 +1,8 @@
 @hostname = localhost
 @port = 5000
-@host = http://{{hostname}}:{{port}}/api
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
 @contentType = application/json
 
 ### 로컬 로그인
@@ -10,8 +12,8 @@ POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "testsdsds1212",
-  "password": "12345678aaa@",
+  "userId": "testId1",
+  "password": "123456a@",
   "resourceServer": "local"
 }
 ### 기록 받아오기
