@@ -43,10 +43,10 @@ struct IssueDetailModel: Hashable, Codable {
     static func all() -> IssueDetailModel {
         IssueDetailModel(
             iid: 11,
-            title: "title",
-            isOpen: false,
+            title: "이슈 제목",
+            isOpen: true,
             label: nil,
-            content: nil,
+            content: "이슈 내용",
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",

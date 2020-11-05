@@ -39,18 +39,12 @@ class IssueDetailViewController: UIViewController {
     }
     
     func updateViews(model: IssueDetailModel) {
-        // 여기서 업데이트 해야하는 것들
+        
         // 유저 이미지 - 아직은 없음
         
-        // 유저 이름
-        //userName = model 이것도 아직은 없음
-        
-        // 이슈 타이틀
+        userName.text = model.title
         issueTitle.text = model.title
-        
-        // 이슈 넘버
         issueNumber.text = "#\(model.iid)"
-        // 오픈 클로즈 여부
         isOpen = model.isOpen
         
         // 댓글 목록 -> apply
