@@ -3,14 +3,10 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { font, palette } from "styled-theme";
 
-const ExplainBackgroundColor = ({ ExplainBackground }) =>
-  palette(ExplainBackground);
-
 const StyledExplain = styled.div`
   box-sizing: border-box;
   font-size: 20px;
   font-family: ${font("primary")};
-  background: ${ExplainBackgroundColor};
   height: 30px;
   width: 200px;
   padding: 10px;
@@ -23,9 +19,7 @@ const Explain = (props) => {
   return <StyledExplain {...props} />;
 };
 
-Explain.PropTypes = {
-  ExplainBackground: PropTypes.number,
-};
+Explain.PropTypes = {};
 
 Explain.defaultProps = {
   palette: "primary",

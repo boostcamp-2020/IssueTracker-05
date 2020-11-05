@@ -13,6 +13,4 @@ const Template = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  ExplainBackground: 1,
-};
+Default.args = {};

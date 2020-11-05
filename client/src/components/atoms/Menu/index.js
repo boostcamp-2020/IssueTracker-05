@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { font, palette } from "styled-theme";
 
-const backgroundColor = ({ MenuBckground }) => palette(MenuBackground);
+const backgroundColor = ({ MenuBackground }) => palette(MenuBackground);
 const fontSize = ({ MenuFontSize }) => `${MenuFontSize}px`;
 const setHeight = ({ MenuHeight }) => `${MenuHeight}px`;
 const setWidth = ({ MenuWidth }) => `${MenuWidth}px`;
