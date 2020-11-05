@@ -52,8 +52,40 @@ const getTargetIssue = async (iid) => {
 const getIssues = async (page) => {
   try {
     if (!page) {
+      // app의 경우 client rendering
       const issues = await db.issue.findAll({
-        include: [db.label, db.user],
+        attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+        include: [
+          {
+            model: db.user,
+            attributes: ['uid', 'userId', 'nickname'],
+          },
+          {
+            model: db.comment,
+            attributes: ['cid'],
+          },
+          {
+            model: db.user,
+            attributes: ['uid', 'userId', 'nickname'],
+            as: 'assignee',
+            through: { attributes: [] },
+          },
+          {
+            model: db.label,
+            through: { attributes: [] },
+            attributes: ['name', 'color'],
+          },
+          {
+            model: db.milestone,
+            attributes: ['mid', 'title'],
+            include: [
+              {
+                model: db.issue,
+                attributes: ['isOpen'],
+              },
+            ],
+          },
+        ],
       });
       return issues;
     }
@@ -61,6 +93,38 @@ const getIssues = async (page) => {
     const issues = await db.issue.findAll({
       offset,
       limit: 10,
+      attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+      include: [
+        {
+          model: db.user,
+          attributes: ['uid', 'userId', 'nickname'],
+        },
+        {
+          model: db.comment,
+          attributes: ['cid'],
+        },
+        {
+          model: db.user,
+          attributes: ['uid', 'userId', 'nickname'],
+          as: 'assignee',
+          through: { attributes: [] },
+        },
+        {
+          model: db.label,
+          through: { attributes: [] },
+          attributes: ['name', 'color'],
+        },
+        {
+          model: db.milestone,
+          attributes: ['mid', 'title'],
+          include: [
+            {
+              model: db.issue,
+              attributes: ['isOpen'],
+            },
+          ],
+        },
+      ],
     });
     return issues;
   } catch (err) {
