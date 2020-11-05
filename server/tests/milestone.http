@@ -33,8 +33,8 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "테스트용 마일스톤",
-  "content": "해치웠나?"
+  "title": "[백엔드] 로그인 화면 구성",
+  "content": "로그인 API 구성"
 }
 
 ###
@@ -44,7 +44,7 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "테스트용 마일스톤2",
+  "title": "[iOS] 로그인 화면 구성",
   "dueDate": "2020-12-12"
 }
 
@@ -55,8 +55,9 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "테스트용 마일스톤12312",
-  "content": "해치웠다고!!"
+  "title": "[FE] 타이틀 화면 구성",
+  "content": "메인화면을 구성합니다.",
+  "dueDate": "2020-10-30"
 }
 
 ### 마일스톤 삭제하기 (데이터 베이스 확인후 설정)
@@ -69,7 +70,7 @@ Authorization: Bearer {{authToken}}
 
 ### 마일스톤 수정하기
 
-@editId=4
+@editId=3
 
 PATCH {{host}}/milestone/{{editId}} HTTP/1.1
 content-type: {{contentType}}
