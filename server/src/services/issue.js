@@ -2,9 +2,46 @@ import db from '@models';
 
 const getTargetIssue = async (iid) => {
   try {
-    const issue = await db.issue.findOne({ 
+    const issue = await db.issue.findOne({
       where: { iid },
-      include: db.comment,
+      attributes: ['iid', 'isOpen', 'title', 'content', 'createdAt'],
+      include: [
+        {
+          model: db.user,
+          attributes: ['uid', 'userId', 'nickname'],
+        },
+        {
+          model: db.comment,
+          attributes: ['cid', 'content', 'createdAt'],
+          include: [
+            {
+              model: db.user,
+              attributes: ['uid', 'userId', 'nickname'],
+            },
+          ],
+        },
+        {
+          model: db.user,
+          attributes: ['uid', 'userId', 'nickname'],
+          as: 'assignee',
+          through: { attributes: [] },
+        },
+        {
+          model: db.label,
+          through: { attributes: [] },
+          attributes: ['name', 'color'],
+        },
+        {
+          model: db.milestone,
+          attributes: ['mid', 'title'],
+          include: [
+            {
+              model: db.issue,
+              attributes: ['isOpen'],
+            },
+          ],
+        },
+      ],
     });
     return issue;
   } catch (err) {

@@ -40,7 +40,7 @@ GET {{host}}/issue
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
-### 이슈 생성 (1). 관계 테이블이 없는 경우*
+### 이슈 생성 (1). 관계 테이블이 없는 경우
 
 POST {{host}}/issue HTTP/1.1
 content-type: {{contentType}}
@@ -79,94 +79,92 @@ Authorization: Bearer {{authToken}}
 
 ### 이슈 수정(1). 기본 내용 수정
 
-@issueId=47
+# @issueId=47
 
 PATCH {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "content": "바뀔 내용",
-  "isOpen": false,
-  "title": "바뀔 타이틀"
+  "mid": 1
 }
 
-# ### 이슈 수정(2). 이슈에 할당되어 있는 label 수정
+# # # ### 이슈 수정(2). 이슈에 할당되어 있는 label 수정
 
-PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-content-type: {{contentType}}
-Authorization: Bearer {{authToken}}
+# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
+# content-type: {{contentType}}
+# Authorization: Bearer {{authToken}}
 
-{
-  "labels": [
-    {
-      "name": "question",
-      "state": false
-    },
-    {
-      "name": "bug",
-      "state": true
-    }
-  ]
-}
+# {
+#   "labels": [
+#     {
+#       "name": "question",
+#       "state": true
+#     },
+#     {
+#       "name": "bug",
+#       "state": true
+#     }
+#   ]
+# }
 
 # ### 이슈 수정(3). 이슈에 할당되어 있는 assginee 추가
 
-PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-content-type: {{contentType}}
-Authorization: Bearer {{authToken}}
+# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
+# content-type: {{contentType}}
+# Authorization: Bearer {{authToken}}
 
-{
-  "assignees": [
-    {
-      "uid": 6,
-      "state": true
-    },
-    {
-      "uid": 8,
-      "state": true
-    }
-  ]
-}
+# {
+#   "assignees": [
+#     {
+#       "uid": 6,
+#       "state": true
+#     },
+#     {
+#       "uid": 8,
+#       "state": true
+#     }
+#   ]
+# }
 
 # ### 이슈 수정(4). 이슈에 할당되어 있는 assginee 삭제
 
-PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-content-type: {{contentType}}
-Authorization: Bearer {{authToken}}
+# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
+# content-type: {{contentType}}
+# Authorization: Bearer {{authToken}}
 
-{
-  "assignees": [
-    {
-      "uid": 6,
-      "state": false
-    },
-    {
-      "uid": 8,
-      "state": false
-    }
-  ]
-}
+# {
+#   "assignees": [
+#     {
+#       "uid": 6,
+#       "state": false
+#     },
+#     {
+#       "uid": 8,
+#       "state": false
+#     }
+#   ]
+# }
 
-### 이슈 수정 (5). assignees 추가/삭제 동시에 테스트
+# ### 이슈 수정 (5). assignees 추가/삭제 동시에 테스트
 
-PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-content-type: {{contentType}}
-Authorization: Bearer {{authToken}}
+# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
+# content-type: {{contentType}}
+# Authorization: Bearer {{authToken}}
 
-{
-  "assignees": [
-    {
-      "uid": 6,
-      "state": false
-    },
-    {
-      "uid": 8,
-      "state": false
-    },
-    {
-      "uid": 10,
-      "state": true
-    }
-  ]
-}
+# {
+#   "assignees": [
+#     {
+#       "uid": 6,
+#       "state": false
+#     },
+#     {
+#       "uid": 8,
+#       "state": false
+#     },
+#     {
+#       "uid": 10,
+#       "state": true
+#     }
+#   ]
+# }
