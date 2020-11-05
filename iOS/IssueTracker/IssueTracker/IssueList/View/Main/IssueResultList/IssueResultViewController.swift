@@ -6,6 +6,9 @@ class IssueResultViewController: UIViewController {
     
     lazy var dataLayout = makeDataLayout()
     
+    var closeIssueButtonTabbed: ((Int) -> Void)?
+    var deleteIssueButtonTabbed: ((Int) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
@@ -22,19 +25,17 @@ class IssueResultViewController: UIViewController {
     func makeDataLayout() -> UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel> {
         UICollectionViewDiffableDataSource<[IssueListModel], IssueListModel>(
             collectionView: collectionview,
-            cellProvider: { (collectionView, indexPath, issue) -> UICollectionViewCell? in
+            cellProvider: { [weak self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
+                guard let weakSelf = self else { return nil }
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
-                
-                cell.setup(iid: issue.iid, title: issue.title, description: issue.content ?? "no")
-                cell.closeButtonAction = {
-                    print("여기서 close합니다.") // TODO: 클로저로 Main에서 ViewModel 함수를 넣어준다. 
-                }
-                cell.deleteButtonAction = {
-                    print("여기서 delete합니다.")
-                }
-                
+                cell.setup(
+                    iid: issue.iid,
+                    title: issue.title,
+                    description: issue.content ?? "no")
+                cell.closeButtonAction = weakSelf.closeIssueButtonTabbed
+                cell.deleteButtonAction = weakSelf.deleteIssueButtonTabbed
                 return cell
             })
     }
