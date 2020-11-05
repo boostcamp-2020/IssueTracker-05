@@ -5,8 +5,8 @@ class IssueResultCellView: UICollectionViewCell {
     @IBOutlet weak var detailView: IssueDetailedView!
     var iid: Int?
 
-    var closeButtonAction: (() -> Void)?
-    var deleteButtonAction: (() -> Void)?
+    var closeButtonAction: ((Int) -> Void)?
+    var deleteButtonAction: ((Int) -> Void)?
     
     func setup(iid: Int, title: String, description: String) {
         detailView.setup(title: title, description: description)
@@ -14,11 +14,13 @@ class IssueResultCellView: UICollectionViewCell {
     }
     
     @IBAction func closeButtonTabbed(_ sender: UIButton) {
-        closeButtonAction?()
+        guard let iid = iid else { return }
+        closeButtonAction?(iid)
     }
     
     @IBAction func deleteButtonTabbed(_ sender: UIButton) {
-        deleteButtonAction?()
+        guard let iid = iid else { return }
+        deleteButtonAction?(iid)
     }
 
     
