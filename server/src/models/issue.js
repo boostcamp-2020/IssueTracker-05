@@ -56,7 +56,7 @@ export default (sequelize, DataTypes) => {
 
     issue.belongsToMany(models.user, {
       through: 'issue_assignee',
-      as: 'assignee',
+      as: 'assignees',
     });
 
     issue.belongsToMany(models.label, {
