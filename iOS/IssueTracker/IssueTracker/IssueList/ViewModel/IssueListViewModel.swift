@@ -3,7 +3,7 @@ import Foundation
 
 class IssueListViewModel {
     
-    var service = IssueListService()
+    lazy var service = IssueListService(viewModel: self)
     
     struct Status {
         var issues =  Bindable(IssueListModel.all())
@@ -42,7 +42,7 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             weakSelf.status.searchResultList.value
                 = weakSelf.status.issues.value
-            weakSelf.service.requestIssueData(viewModel: weakSelf)
+            weakSelf.service.requestIssueData()
         }, closeButtonTabbed: { iid in
             print(iid, "close")
         }, deleteButtonTabbed: { iid in
@@ -50,7 +50,7 @@ class IssueListViewModel {
         })
     
     init() {
-        service.requestIssueData(viewModel: self)
+        service.requestIssueData()
         status.issues.bindAndFire(updateResultListView)
     }
     
