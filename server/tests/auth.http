@@ -1,6 +1,8 @@
 @hostname = localhost
 @port = 5000
-@host = http://{{hostname}}:{{port}}/api
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
 @contentType = application/json
 
 ### 로컬 로그인
@@ -25,9 +27,9 @@ POST {{host}}/signup HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "test123",
+  "userId": "testId5",
   "password": "123456a@",
-  "nickname": "test"
+  "nickname": "testNickname5"
 }
 
 ###
@@ -42,7 +44,7 @@ content-type: {{contentType}}
 ### 앱전용 깃허브로그인
 
 @appToken=
-POST {{host}}/login/github
+POST http://group05issuetracker.duckdns.org:49203/api/login/github
 content-type: {{contentType}}
 
 {

@@ -1,7 +1,10 @@
 @hostname = localhost
 @port = 5000
-@host = http://{{hostname}}:{{port}}/api
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
 @contentType = application/json
+
 
 ###
 
@@ -46,7 +49,7 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "content": "충전기 빼고 100만원 실화냐"
+  "content": ""
 }
 
 ### 댓글 삭제
