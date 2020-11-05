@@ -26,6 +26,7 @@ theme.palette = {
     "#D73A49", // red (Closed)
     "#F5F7F9", // blue (Selected 'Milestones', Selected 'Labels)
   ],
+  buttonHover: [],
 };
 
 theme.reversePalette = reversePalette(theme.palette);

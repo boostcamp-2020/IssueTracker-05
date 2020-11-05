@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-
-// import { Button, Label, Explain } from "../../atoms";
+import { palette } from "styled-theme";
 
 import Button from "../../atoms/Button/index";
 import Label from "../../atoms/Label/index";
 import Explain from "../../atoms/Explain/index";
 
-const setWidth = ({ width }) => `${width}px`;
+const setWidth = ({ LabelFieldWidth }) => `${LabelFieldWidth}px`;
 const Wrapper = styled.div`
   box-sizing: border-box;
   width: ${setWidth};
@@ -20,37 +19,13 @@ const Wrapper = styled.div`
 `;
 
 const LabelField = (props) => {
-  const {
-    LabelBackground,
-    LabelWidth,
-    ExplainBackgound,
-    ButtonDisabled,
-    ButtonHeight,
-    ButtonWidth,
-    ButtonFontSize,
-    LabelName,
-    ExplainDesc,
-    ButtonUpdate,
-    ButtonDelete,
-    LabelFieldwidth,
-  } = props;
-
-  const LabelFieldInform = { width: LabelFieldwidth };
-  const LabelInform = { background: LabelBackground, width: LabelWidth };
-  const ButtonInform = {
-    disabled: ButtonDisabled,
-    height: ButtonHeight,
-    width: ButtonWidth,
-    fontSize: ButtonFontSize,
-  };
-  const ExplainInform = { background: ExplainBackgound };
-
+  const { LabelName, ExplainDesc, ButtonUpdate, ButtonDelete } = props;
   return (
-    <Wrapper {...LabelFieldInform}>
-      <Label {...LabelInform}>{LabelName}</Label>
-      <Explain {...ExplainInform}>{ExplainDesc}</Explain>
-      <Button {...ButtonInform}>{ButtonUpdate}</Button>
-      <Button {...ButtonInform}>{ButtonDelete}</Button>
+    <Wrapper {...props}>
+      <Label {...props}>{LabelName}</Label>
+      <Explain {...props}>{ExplainDesc}</Explain>
+      <Button {...props}>{ButtonUpdate}</Button>
+      <Button {...props}>{ButtonDelete}</Button>
     </Wrapper>
   );
 };
@@ -67,11 +42,11 @@ LabelField.PropTypes = {
   ExplainDesc: PropTypes.string,
   ButtonUpdate: PropTypes.string,
   ButtonDelete: PropTypes.string,
-  LabelFieldwidth: PropTypes.number,
+  LabelFieldWidth: PropTypes.number,
 };
 
 LabelField.defaultProps = {
-  type: "primary",
+  palette: "primary",
 };
 
 export default LabelField;

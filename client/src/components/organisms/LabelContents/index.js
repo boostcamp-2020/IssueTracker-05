@@ -4,48 +4,23 @@ import PropTypes from "prop-types";
 import ContentHeader from "../../atoms/ContentHeader";
 import LabelField from "../../molecules/LabelFiled";
 
-const setWidth = ({ width }) => `${width}px`;
+const setWidth = ({ LabelContentsWidth }) => `${LabelContentsWidth}px`;
 
 const Wrapper = styled.div`
-  box-sizing: border-box;  
-  width: ${setWidth}
+  box-sizing: border-box;
   border: 1px solid black;
+  width: ${setWidth};
 `;
 
 const LabelContents = (props) => {
   const labelCnt = useRef(0);
-  const {
-    width,
-    height,
-    fontSize,
-    LabelWidth,
-    ExplainBackgound,
-    ButtonDisabled,
-    ButtonHeight,
-    ButtonWidth,
-    ButtonFontSize,
-    ButtonUpdate,
-    ButtonDelete,
-    LabelsInform,
-  } = props;
-  const ContentsInform = { width, height, fontSize };
-  const LabelFieldInform = {
-    LabelWidth,
-    ExplainBackgound,
-    ButtonDisabled,
-    ButtonHeight,
-    ButtonWidth,
-    ButtonFontSize,
-    ButtonUpdate,
-    ButtonDelete,
-    LabelFieldwidth: width,
-  };
+  const { LabelsInform } = props;
   return (
-    <Wrapper {...ContentsInform}>
-      <ContentHeader {...ContentsInform}>레이블 목록</ContentHeader>
+    <Wrapper {...props}>
+      <ContentHeader {...props}>레이블 목록</ContentHeader>
       {LabelsInform.map((LabelInform) => (
         <LabelField
-          {...{ ...LabelInform, ...LabelFieldInform }}
+          {...{ ...LabelInform, ...props }}
           key={labelCnt.current++}
         />
       ))}
@@ -54,7 +29,7 @@ const LabelContents = (props) => {
 };
 
 LabelContents.PropTypes = {
-  width: PropTypes.number,
+  LabelContentsWidth: PropTypes.number,
   LabelsInform: PropTypes.array,
 };
 

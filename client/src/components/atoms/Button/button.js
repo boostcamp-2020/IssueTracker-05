@@ -3,20 +3,6 @@ import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { key, font, palette } from "styled-theme";
 
-const fontSize = ({ ButtonFontSize }) => `${ButtonFontSize}px`;
-const backgroundColor = ({ ButtonDisabled }) =>
-  ButtonDisabled ? palette(2) : palette(1);
-const fontColor = ({ ButtonDisabled }) =>
-  ButtonDisabled
-    ? palette("grayscale", 0, true)
-    : palette("grayscale", 3, true);
-const hoverBackgroundColor = ({ ButtonDisabled }) =>
-  !ButtonDisabled && palette(0);
-const hoverForegroundColor = ({ ButtonDisabled }) =>
-  !ButtonDisabled && palette(0);
-const setHeight = ({ ButtonHeight }) => `${ButtonHeight}px`;
-const setWidth = ({ ButtonWidth }) => `${ButtonWidth}px`;
-
 const buttonStyle = styled.button`
   display: inline-flex;
   height: 2.5em;
@@ -41,35 +27,13 @@ pointer-events
 color, backgroundcolor
 */
 
-const createButton = styled(buttonStyle)`
+const CreateButton = styled(buttonStyle)`
   cursor: pointer;
   pointer-events: auto;
   color: ${palette(0)};
 `;
 
-const StyledButton = styled.button`
-  display: inline-flex;
-  font-size: ${fontSize};
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  font-family: ${font("primary")};
-  background: ${backgroundColor};
-  color: ${fontColor};
-  border-radius: 4px;
-  width: ${setWidth};
-  height: ${setHeight};
-  &:hover,
-  &:focus,
-  &:active {
-    background-color: ${hoverBackgroundColor};
-    color: ${hoverForegroundColor};
-  }
-
-  &:focus {
-    outline: none;
-  }
-`;
+const CancelButton = s;
 
 const Button = (props) => {
   return <StyledButton {...props} />;

@@ -9,7 +9,6 @@ import MainHeader from "../../atoms/MainHeader";
 const setWidth = ({ width }) => `${width}px`;
 
 const WhoreWrapper = styled.div`
-  width: ${setWidth};
   display: flex;
   justify-content: center;
 `;
@@ -17,50 +16,29 @@ const WhoreWrapper = styled.div`
 const TopWrapper = styled.div`
   width: ${setWidth};
   display: flex;
-  justyify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
+  border: 1px solid black;
 `;
 
 const LabelPage = (props) => {
-  const {
-    MainHeaderTitle,
-    MainHeaderBackground,
-    MilestoneButtonName,
-    LabelButtonName,
-    MLWidth,
-    MLHeight,
-    disabled,
-    palette,
-    NewLabelButtonFontSize,
-    NewLabelButtonWidth,
-    NewLabelButtonHeight,
-  } = props;
-  const MainHeaderInform = {
-    title: MainHeaderTitle,
-    background: MainHeaderBackground,
-    palette,
-  };
-  const ChangeMLButtonInform = {
-    MilestoneButtonName,
-    LabelButtonName,
-    disabled,
-    width: MLWidth,
-    height: MLHeight,
-  };
-  const NewLabelButtonInform = {
-    fontSize: NewLabelButtonFontSize,
-    width: NewLabelButtonWidth,
-    height: NewLabelButtonHeight,
-  };
+  const { LMInform } = props;
+  const { LabelsInform } = props;
   return (
     <>
-      <MainHeader {...MainHeaderInform} />
-      <TopWrapper>
-        <ChangeLMButton {...ChangeMLButtonInform}></ChangeLMButton>
-        <Button {...NewLabelButtonInform}>New Label</Button>
+      <MainHeader {...props} />
+      <TopWrapper {...props}>
+        <ChangeLMButton {...LMInform} />
+        <Button {...props}>New Label</Button>
       </TopWrapper>
-      <WhoreWrapper></WhoreWrapper>
+      <WhoreWrapper>
+        <LabelContents {...LabelsInform} />
+      </WhoreWrapper>
     </>
   );
 };
+
+LabelPage.Propt = {};
+
+export default LabelPage;

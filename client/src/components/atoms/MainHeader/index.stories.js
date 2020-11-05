@@ -11,7 +11,4 @@ export default {
 const Template = (args) => <MainHeader {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  MainHeaderBackground: 3,
-  MainHeaderTitle: "ISSUE",
-};
+Default.args = {};

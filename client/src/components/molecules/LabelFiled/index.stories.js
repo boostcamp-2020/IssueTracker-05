@@ -8,13 +8,12 @@ export default {
   decorators: [withKnobs],
 };
 
-const Template = (args) => <LabelField {...args}></LabelField>;
+const Template = (args) => <LabelField {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   LabelBackground: "#3d2f0d",
   LabelWidth: 80,
-  ExplainBackgound: 0,
   ButtonDisabled: true,
   ButtonWidth: 30,
   ButtonHeight: 50,
@@ -23,5 +22,5 @@ Default.args = {
   ExplainDesc: "라벨 설명",
   ButtonUpdate: "수정",
   ButtonDelete: "삭제",
-  LabelFieldwidth: 1000,
+  LabelFieldWidth: 1000,
 };

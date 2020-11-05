@@ -3,14 +3,11 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { palette } from "styled-theme";
 
-const backgroundColor = ({ MainHeaderBackground }) =>
-  palette(MainHeaderBackground);
-
 const StyledHeader = styled.h1`
   box-sizing: border-box;
   width: 100%;
   height: 80px;
-  background: ${backgroundColor};
+  background: ${palette(1)};
   color: #fff;
   font-size: 30px;
   display: flex;
@@ -30,6 +27,7 @@ MainHeader.PropTypes = {
 
 MainHeader.defaultProps = {
   palette: "primary",
+  MainHeaderTitle: "ISSUE",
 };
 
 export default MainHeader;
