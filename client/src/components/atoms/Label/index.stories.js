@@ -1,6 +1,6 @@
 import React from "react";
-import Label from '.';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import Label from ".";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
 
 export default {
   component: Label,
@@ -8,9 +8,10 @@ export default {
   decorators: [withKnobs],
 };
 
-const Template = args => <Label {...args}>안녕</Label>
+const Template = (args) => <Label {...args}>{text("메세지", "Hello")}</Label>;
 
 export const Default = Template.bind({});
 Default.args = {
-  background: "#aa22ff"
+  LabelBackground: "#4341fd",
+  LabelWidth: 60,
 };
