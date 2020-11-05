@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PEn-JS-Fvf">
                                 <rect key="frame" x="0.0" y="209" width="414" height="553"/>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yrN-4j-cDT">
                                     <size key="itemSize" width="402" height="133"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -148,9 +148,9 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wD-gG-kXM">
-                                <rect key="frame" x="0.0" y="770" width="414" height="750"/>
+                                <rect key="frame" x="0.0" y="762" width="414" height="800"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="750" id="wUb-of-2ly"/>
+                                    <constraint firstAttribute="height" constant="800" id="wUb-of-2ly"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -163,7 +163,7 @@
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="leading" secondItem="SEc-4u-TvL" secondAttribute="leading" id="1Ip-a8-15O"/>
-                            <constraint firstItem="3wD-gG-kXM" firstAttribute="top" secondItem="PEn-JS-Fvf" secondAttribute="bottom" constant="8" symbolic="YES" id="1Zv-dO-hKw"/>
+                            <constraint firstItem="3wD-gG-kXM" firstAttribute="top" secondItem="PEn-JS-Fvf" secondAttribute="bottom" id="1Zv-dO-hKw"/>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="trailing" secondItem="SEc-4u-TvL" secondAttribute="trailing" id="5DV-Pp-qBL"/>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="top" secondItem="9wM-LR-gN6" secondAttribute="bottom" constant="20" id="DaB-I9-TGq"/>
                             <constraint firstItem="9wM-LR-gN6" firstAttribute="leading" secondItem="SEc-4u-TvL" secondAttribute="leading" id="G4A-eK-BdV"/>
@@ -178,6 +178,10 @@
                         <outlet property="collectionView" destination="PEn-JS-Fvf" id="fvE-Jo-J8M"/>
                         <outlet property="containerView" destination="3wD-gG-kXM" id="YMI-Dt-JS3"/>
                         <outlet property="isOpenView" destination="fi0-Cd-09Y" id="KTP-MT-FEP"/>
+                        <outlet property="issueNumber" destination="O2L-LE-JRP" id="EW6-tz-MXj"/>
+                        <outlet property="issueTitle" destination="Clx-FO-KE0" id="eMt-UR-HhJ"/>
+                        <outlet property="userImage" destination="J4m-Lk-1O5" id="oBp-CZ-Ga2"/>
+                        <outlet property="userName" destination="xEx-P2-O5i" id="fSQ-vw-ZpY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ql9-Ge-URk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -191,9 +195,6 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
