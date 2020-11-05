@@ -43,10 +43,14 @@ class IssueListViewModel {
             weakSelf.status.searchResultList.value
                 = weakSelf.status.issues.value
             weakSelf.service.requestIssueData()
-        }, closeButtonTabbed: { iid in
+        }, closeButtonTabbed: { [weak self] iid in
+            guard let weakSelf = self else { return }
             print(iid, "close")
-        }, deleteButtonTabbed: { iid in
+            weakSelf.service.requestCloaseIssue(issueId: iid)
+        }, deleteButtonTabbed: { [weak self] iid in
+            guard let weakSelf = self else { return }
             print(iid, "delete")
+            weakSelf.service.requestDeleteIssue(issueId: iid)
         })
     
     init() {

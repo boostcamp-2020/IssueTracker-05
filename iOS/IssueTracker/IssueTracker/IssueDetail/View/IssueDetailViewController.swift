@@ -29,10 +29,10 @@ class IssueDetailViewController: UIViewController {
         configureContainerOfSwipeView()
         swipeUpView.view.layer.cornerRadius = 15
 
-//        if let viewModel = viewModel {
-//            viewModel.status.model.bindAndFire(updateViews(model:))
-//            return
-//        }
+        if let viewModel = viewModel {
+            viewModel.status.model.bindAndFire(updateViews(model:))
+            return
+        }
         
         // TODO: 나중에 제거해야 한다. 
         updateViews(model: IssueDetailModel.all())
