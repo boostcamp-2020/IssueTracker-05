@@ -4,7 +4,7 @@ const getTargetIssue = async (iid) => {
   try {
     const issue = await db.issue.findOne({
       where: { iid },
-      attributes: ['iid', 'isOpen', 'title', 'content', 'createdAt'],
+      attributes: ['iid', 'isOpen', 'title', 'content', 'createdAt', 'closedAt'],
       include: [
         {
           model: db.user,
@@ -23,7 +23,7 @@ const getTargetIssue = async (iid) => {
         {
           model: db.user,
           attributes: ['uid', 'userId', 'nickname'],
-          as: 'assignee',
+          as: 'assignees',
           through: { attributes: [] },
         },
         {
@@ -54,7 +54,7 @@ const getIssues = async (page) => {
     if (!page) {
       // app의 경우 client rendering
       const issues = await db.issue.findAll({
-        attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+        attributes: ['iid', 'isOpen', 'title', 'createdAt', 'closedAt'],
         include: [
           {
             model: db.user,
@@ -67,7 +67,7 @@ const getIssues = async (page) => {
           {
             model: db.user,
             attributes: ['uid', 'userId', 'nickname'],
-            as: 'assignee',
+            as: 'assignees',
             through: { attributes: [] },
           },
           {
@@ -93,7 +93,7 @@ const getIssues = async (page) => {
     const issues = await db.issue.findAll({
       offset,
       limit: 10,
-      attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+      attributes: ['iid', 'isOpen', 'title', 'createdAt, closedAt'],
       include: [
         {
           model: db.user,
