@@ -12,7 +12,7 @@ const hoverForegroundColor = ({ disabled }) => !disabled && palette(0);
 
 const StyledButton = styled.button`
   font-size: ${fontSize};
-  box-sizeing: border-box;
+  box-sizing: border-box;
   outline: none;
   border: none;
   background: ${backgroundColor};
