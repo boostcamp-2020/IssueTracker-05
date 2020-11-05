@@ -25,9 +25,9 @@ POST {{host}}/signup HTTP/1.1
 content-type: {{contentType}}
 
 {
-  "userId": "test123",
+  "userId": "testId5",
   "password": "123456a@",
-  "nickname": "test"
+  "nickname": "testNickname5"
 }
 
 ###
