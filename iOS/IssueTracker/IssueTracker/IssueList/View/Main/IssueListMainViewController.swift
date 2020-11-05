@@ -32,6 +32,20 @@ class IssueListMainViewController: UIViewController {
         bind()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "이슈"
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.topItem?.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.layoutIfNeeded()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.layoutIfNeeded()
+    }
+    
+    
     func bind() {
         viewModel.status.searchResultList
             .bindAndFire(issueResultViewController.applySnapshot(sections:))
@@ -117,6 +131,7 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         }
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self)) as! IssueDetailViewController
         newVC.viewModel = IssueDetailViewModel(issueId: cell.iid ?? 0)
+        navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)
     }
 }

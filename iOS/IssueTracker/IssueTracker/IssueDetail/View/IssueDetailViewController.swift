@@ -42,7 +42,7 @@ class IssueDetailViewController: UIViewController {
         
         // 유저 이미지 - 아직은 없음
         
-        userName.text = model.title
+        //userName.text = model.
         issueTitle.text = model.title
         issueNumber.text = "#\(model.iid)"
         isOpen = model.isOpen
@@ -69,12 +69,10 @@ class IssueDetailViewController: UIViewController {
             collectionView: collectionView,
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
-                
                 cell?.setup(
                     user: comment.user.userId,
                     content: comment.content,
                     time: comment.createdAt)
-                
                 return cell
             })
     }
@@ -131,8 +129,6 @@ class IssueDetailViewController: UIViewController {
     
     func configureNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.topItem?.title = ""
-        self.tabBarController?.tabBar.isHidden = true
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
     }
