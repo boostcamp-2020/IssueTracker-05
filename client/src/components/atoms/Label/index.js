@@ -3,12 +3,14 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { font, palette } from "styled-theme";
 
-const backgroundColor = ({background}) => `${background}`;
+const backgroundColor = ({ LabelBackground }) => `${LabelBackground}`;
+const setWidth = ({ LabelWidth }) => `${LabelWidth}px`;
+
 const StyledLabel = styled.div`
   box-sizing: border-box;
   background: ${backgroundColor};
   height: 40px;
-  width: 60px;
+  width: ${setWidth};
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -18,7 +20,7 @@ const StyledLabel = styled.div`
   border: none;
   border-radius: 5px;
   padding: 5px;
-  font-family: ${font('primary')};
+  font-family: ${font("primary")};
 `;
 
 const Label = (props) => {
@@ -26,7 +28,8 @@ const Label = (props) => {
 };
 
 Label.PropTypes = {
-  background: PropTypes.string,
+  LabelBackground: PropTypes.string,
+  LabelWidth: PropTypes.number,
 };
 
 Label.defaultProps = {

@@ -1,26 +1,33 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { palette } from "styled-theme";
+import { key, font, palette } from "styled-theme";
 
-const fontSize = ({ height }) => `${height / 40}rem`;
-const backgroundColor = ({ disabled }) => (disabled ? palette(2) : palette(1));
-const foregroundColor = ({ disabled }) =>
-  disabled ? palette("grayscale", 0, true) : palette("grayscale", 3, true);
-const hoverBackgroundColor = ({ disabled }) => !disabled && palette(0);
-const hoverForegroundColor = ({ disabled }) => !disabled && palette(0);
+const fontSize = ({ ButtonFontSize }) => `${ButtonFontSize}px`;
+const backgroundColor = ({ ButtonDisabled }) =>
+  ButtonDisabled ? palette(2) : palette(1);
+const foregroundColor = ({ ButtonDisabled }) =>
+  ButtonDisabled
+    ? palette("grayscale", 0, true)
+    : palette("grayscale", 3, true);
+const hoverBackgroundColor = ({ ButtonDisabled }) =>
+  !ButtonDisabled && palette(0);
+const hoverForegroundColor = ({ ButtonDisabled }) =>
+  !ButtonDisabled && palette(0);
+const setHeight = ({ ButtonHeight }) => `${ButtonHeight}px`;
+const setWidth = ({ ButtonWidth }) => `${ButtonWidth}px`;
 
 const StyledButton = styled.button`
   font-size: ${fontSize};
   box-sizing: border-box;
   outline: none;
   border: none;
+  font-family: ${font("secondary")};
   background: ${backgroundColor};
-  padding: ${({ height }) => height * 0.8}px;
-  margin: ${({ height }) => height * 1}px;
   color: ${foregroundColor};
   border-radius: 4px;
-
+  width: ${setWidth};
+  height: ${setHeight};
   &:hover,
   &:focus,
   &:active {
@@ -38,8 +45,11 @@ const Button = (props) => {
 };
 
 Button.PropTypes = {
-  disabled: PropTypes.bool,
-  height: PropTypes.number,
+  ButtonFontSize: PropTypes.number,
+  ButtonDisabled: PropTypes.bool,
+  ButtonWidth: PropTypes.number,
+  ButtonHeight: PropTypes.number,
+  ButtonFont: PropTypes.string,
 };
 
 Button.defaultProps = {

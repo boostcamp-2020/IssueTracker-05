@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { font, palette } from "styled-theme";
 
-const setWidth = ({width}) => `${width}px`;
-const setHeight = ({height}) => `${height}px`;
-const backgroundColor = ({background}) => palette(background);
+const setWidth = ({ InputWidth }) => `${InputWidth}px`;
+const setHeight = ({ InputHeight }) => `${InputHeight}px`;
+const backgroundColor = ({ InputBackground }) => palette(InputBackground);
 
 const StyledInput = styled.input`
   box-sizing: border-box;
@@ -21,9 +21,9 @@ const Input = (props) => {
 };
 
 Input.PropTypes = {
-  background: PropTypes.number,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  InputBackground: PropTypes.number,
+  InputWidth: PropTypes.number,
+  InputHeight: PropTypes.number,
 };
 
 Input.defaultProps = {
