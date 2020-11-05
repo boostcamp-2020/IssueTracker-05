@@ -11,10 +11,10 @@ const getComments = async (req, res) => {
 };
 
 const createComment = async (req, res) => {
-  const { nickname, content, iid } = req.body;
+  const { content, iid } = req.body;
   const { uid } = req.user;
   try {
-    await commentService.createComment(nickname, content, uid, iid);
+    await commentService.createComment(content, uid, iid);
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({
