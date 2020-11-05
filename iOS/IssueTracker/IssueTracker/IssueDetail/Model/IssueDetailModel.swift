@@ -42,18 +42,12 @@ struct IssueDetailModel: Hashable, Codable {
  
     static func all() -> IssueDetailModel {
         IssueDetailModel(
-            iid: 1,
+            iid: 11,
             title: "title",
             isOpen: false,
             label: nil,
             content: nil,
-            comments: [Comment(
-                        cid: 3,
-                        content: "alksjdlkajlkwj",
-                        iid: 4,
-                        uid: 1,
-                        updatedAt: "22-2323-1212",
-                        createdAt: "22-2323-1212")],
+            comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
             author: nil,

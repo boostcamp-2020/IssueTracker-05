@@ -6,9 +6,16 @@ class IssueDetailViewController: UIViewController {
     var viewModel: IssueDetailViewModel?
     lazy var dataLayout = makeDataLayout()
     var swipeUpView: IssueDetailEditingViewController!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var issueTitle: UILabel!
+    @IBOutlet weak var issueNumber: UILabel!
     @IBOutlet weak var isOpenView: UIButton!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
+    
     var isOpen = true  {// TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
         didSet {
             configureIsOpenView()
@@ -20,21 +27,40 @@ class IssueDetailViewController: UIViewController {
         configureNavigation()
         configureIsOpenView()
         configureContainerOfSwipeView()
+        
+        swipeUpView.view.layer.cornerRadius = 15
+
         if let viewModel = viewModel {
             viewModel.status.model.bindAndFire(updateViews(model:))
             return
         }
-        containerView.layer.cornerRadius = 10
-        applySnapshot(sections: Comment.all())
+        // TODO: 나중에 제거해야 한다. 
+        updateViews(model: IssueDetailModel.all())
     }
     
     func updateViews(model: IssueDetailModel) {
+        // 여기서 업데이트 해야하는 것들
+        // 유저 이미지 - 아직은 없음
+        
+        // 유저 이름
+        //userName = model 이것도 아직은 없음
+        
+        // 이슈 타이틀
+        issueTitle.text = model.title
+        
+        // 이슈 넘버
+        issueNumber.text = "#\(model.iid)"
+        // 오픈 클로즈 여부
         isOpen = model.isOpen
+        
+        // 댓글 목록 -> apply
         if let comments = model.comments {
             applySnapshot(sections: comments)
         } else {
             applySnapshot(sections: Comment.all())
         }
+        
+        //swipeUpView update -> 담당자, 마일스톤, 레이블
     }
     
     func applySnapshot(sections: [Comment]) {
@@ -67,7 +93,7 @@ class IssueDetailViewController: UIViewController {
         isOpenView.setTitle(title, for: .normal)
         isOpenView.backgroundColor = isOpen ? .systemGreen : .systemPink
         isOpenView.tintColor = isOpen ? .white : .white
-        isOpenView.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
+        isOpenView.contentEdgeInsets = UIEdgeInsets(top: 1, left: 7, bottom: 1, right: 7)
     }
     
     func configureContainerOfSwipeView() {
