@@ -5,6 +5,7 @@
 
 ### 로컬 로그인
 
+# @name login
 POST {{host}}/login HTTP/1.1
 content-type: {{contentType}}
 
@@ -13,18 +14,21 @@ content-type: {{contentType}}
   "password": "12345678aaa@",
   "resourceServer": "local"
 }
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
 
 ### 마일스톤 불러오기
 
 GET {{host}}/milestone/ HTTP/1.1
 content-type: {{contentType}}
-
-
+Authorization: Bearer {{authToken}}
 
 ### 마일스톤 추가하기
 
 POST {{host}}/milestone/ HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
   "title": "테스트용 마일스톤",
@@ -35,6 +39,7 @@ content-type: {{contentType}}
 
 POST {{host}}/milestone/ HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
   "title": "테스트용 마일스톤2",
@@ -45,6 +50,7 @@ content-type: {{contentType}}
 
 POST {{host}}/milestone/ HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
   "title": "테스트용 마일스톤12312",
@@ -57,15 +63,27 @@ content-type: {{contentType}}
 
 DELETE {{host}}/milestone/{{deleteId}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 ### 마일스톤 수정하기
 
-@editId=
+@editId=4
 
 PATCH {{host}}/milestone/{{editId}} HTTP/1.1
 content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
 
 {
   "title": "수정 되었다!",
-  "content": "진짜 해치웠나?",
+  "content": "진짜 해치웠나?"
+}
+
+###
+
+PATCH {{host}}/milestone/{{editId}} HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "isOpen": false
 }
