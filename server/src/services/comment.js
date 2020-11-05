@@ -17,10 +17,9 @@ const getComments = async (iid) => {
     throw new Error(err);
   }
 };
-const createComment = async (nickname, content, uid, iid) => {
+const createComment = async (content, uid, iid) => {
   try {
     await db.comment.create({
-      nickname,
       content,
       uid,
       iid,

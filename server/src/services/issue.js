@@ -4,11 +4,18 @@ const getTargetIssue = async (iid) => {
   try {
     const issue = await db.issue.findOne({
       where: { iid },
-      attributes: ['iid', 'isOpen', 'title', 'content', 'createdAt'],
+      attributes: [
+        'iid',
+        'isOpen',
+        'title',
+        'content',
+        'createdAt',
+        'closedAt',
+      ],
       include: [
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
+          attributes: ['uid', 'userId', 'nickname', 'image'],
         },
         {
           model: db.comment,
@@ -16,14 +23,14 @@ const getTargetIssue = async (iid) => {
           include: [
             {
               model: db.user,
-              attributes: ['uid', 'userId', 'nickname'],
+              attributes: ['uid', 'userId', 'nickname', 'image'],
             },
           ],
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
-          as: 'assignee',
+          attributes: ['uid', 'userId', 'nickname', 'image'],
+          as: 'assignees',
           through: { attributes: [] },
         },
         {
@@ -54,7 +61,7 @@ const getIssues = async (page) => {
     if (!page) {
       // app의 경우 client rendering
       const issues = await db.issue.findAll({
-        attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+        attributes: ['iid', 'isOpen', 'title', 'createdAt', 'closedAt'],
         include: [
           {
             model: db.user,
@@ -66,8 +73,8 @@ const getIssues = async (page) => {
           },
           {
             model: db.user,
-            attributes: ['uid', 'userId', 'nickname'],
-            as: 'assignee',
+            attributes: ['uid', 'userId', 'nickname', 'image'],
+            as: 'assignees',
             through: { attributes: [] },
           },
           {
@@ -93,7 +100,7 @@ const getIssues = async (page) => {
     const issues = await db.issue.findAll({
       offset,
       limit: 10,
-      attributes: ['iid', 'isOpen', 'title', 'createdAt'],
+      attributes: ['iid', 'isOpen', 'title', 'createdAt, closedAt'],
       include: [
         {
           model: db.user,
@@ -105,7 +112,7 @@ const getIssues = async (page) => {
         },
         {
           model: db.user,
-          attributes: ['uid', 'userId', 'nickname'],
+          attributes: ['uid', 'userId', 'nickname', 'image'],
           as: 'assignee',
           through: { attributes: [] },
         },
@@ -152,7 +159,7 @@ const createIssue = async (issueContent, uid) => {
           [db.Sequelize.Op.or]: issueContent.assignees,
         },
       });
-      await issue.addUsers(assignees, { through: { selfGranted: true } });
+      await issue.addAssignees(assignees, { through: { selfGranted: true } });
     }
     return issue;
   } catch (err) {
@@ -164,6 +171,9 @@ const updateIssue = async (updatedContent, iid) => {
   try {
     if (updatedContent) {
       // update된 내용이 존재하면, 관계 테이블 관련 내용 제외하고 issue 기본 내용 수정
+      if (updatedContent.isOpen === false) {
+        updatedContent.closedAt = new Date();
+      }
       await db.issue.update(
         {
           ...updatedContent,
@@ -239,7 +249,7 @@ const updateIssue = async (updatedContent, iid) => {
                 [db.Sequelize.Op.or]: trueAssignes,
               },
             });
-            await issue.addUsers(assigneesToAdd, {
+            await issue.addAssignees(assigneesToAdd, {
               through: { selfGranted: true },
             });
           }

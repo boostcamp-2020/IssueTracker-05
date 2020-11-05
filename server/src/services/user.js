@@ -3,7 +3,7 @@ import db from '@models';
 const getUsers = async () => {
   try {
     const users = db.user.findAll({
-      attributes: ['uid', 'userId', 'nickname'],
+      attributes: ['uid', 'userId', 'nickname', 'image'],
     });
     return users;
   } catch (err) {

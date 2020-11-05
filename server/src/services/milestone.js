@@ -6,7 +6,7 @@ const getMilestoneFromDB = async () => {
       include: [
         {
           model: db.issue,
-          attributes: ['isOpen'],
+          attributes: ['iid', 'title', 'isOpen'],
         },
       ],
     });
@@ -31,6 +31,9 @@ const deleteMilestoneFromDB = async (milestoneId) => {
 
 const editMilestoneFromDB = async (milestoneId, content) => {
   try {
+    if (!content.isOpen) {
+      content.closedAt = new Date();
+    }
     const targetMilestone = await db.milestone.update(content, {
       where: { mid: milestoneId },
     });

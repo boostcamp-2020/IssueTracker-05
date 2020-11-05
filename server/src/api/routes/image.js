@@ -16,4 +16,5 @@ export default (app) => {
   route.use(passportJwtMiddleware);
 
   route.post('/upload', upload.single('img'), imageController.imageUpload);
+  route.post('/profile', upload.single('img'), imageController.profileUpload);
 };
