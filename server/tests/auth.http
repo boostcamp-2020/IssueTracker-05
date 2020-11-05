@@ -42,6 +42,9 @@ content-type: {{contentType}}
 ### 앱전용 깃허브로그인
 
 @appToken=
-GET https://api.github.com/user
+POST {{host}}/login/github
 content-type: {{contentType}}
-Authorization: bearer {{appToken}}
+
+{
+  "token": "{{appToken}}"
+}
