@@ -36,6 +36,13 @@ export default (sequelize, DataTypes) => {
       },
     });
 
+    issue.belongsTo(models.user, {
+      foreignKey: {
+        name: 'uid',
+        allowNull: false,
+      },
+    });
+
     issue.hasMany(models.comment, {
       foreignKey: {
         name: 'iid',
@@ -45,6 +52,7 @@ export default (sequelize, DataTypes) => {
 
     issue.belongsToMany(models.user, {
       through: 'issue_assignee',
+      as: 'assignee',
     });
 
     issue.belongsToMany(models.label, {
