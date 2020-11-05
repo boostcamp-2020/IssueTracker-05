@@ -65,7 +65,8 @@ extension IssueDetailEditingViewController : UICollectionViewDelegate, UICollect
         
         cell.backgroundColor = .systemBackground
         cell.layoutIfNeeded()
-        self.collectionView.collectionViewLayout.invalidateLayout()
+
+//        self.collectionView.collectionViewLayout.invalidateLayout()
         return cell
     }
     

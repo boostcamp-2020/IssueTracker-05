@@ -18,13 +18,13 @@ class LoginManager {
     
     private let client_id = "0da3b116126e34da88f8"
     private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
+    private let api_server_url = "http://group05issuetracker.duckdns.org:49203"
     
     func requestCode() {
         let scope = "user"
         let urlString = "https://github.com/login/oauth/authorize?client_id=\(client_id)&scope=\(scope)"
         if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
-            // redirect to scene(_:openURLContexts:) if user authorized
         }
     }
     
@@ -43,19 +43,71 @@ class LoginManager {
                 if let dic = json as? [String: String] {
                     let accessToken = dic["access_token"] ?? ""
                     KeychainSwift().set(accessToken, forKey: "accessToken")
+                    print(dic)
+                    if let token = dic["access_token"] {
+                        self.requestJWT(acccess_token: token)
+                    }
                 }
+                
             case let .failure(error):
                 print(error)
             }
         }
     }
     
+    func requestJWT(acccess_token:String) {
+        
+        let parameters = ["token":acccess_token]
+        
+        let headers: HTTPHeaders = ["content-type": "application/x-www-form-urlencoded"]
+        
+        AF.request(api_server_url+"/api/login/github", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                print(json)
+                if let json = json as? [String: Any] {
+                    let token = json["token"] as! String
+                    UserDefaults.standard.set(token, forKey: "token")
+                    let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
+                    
+                    let navController = UINavigationController(rootViewController: issueListMainViewController)
+                    navController.navigationBar.topItem?.title = "이슈"
+                    navController.navigationBar.prefersLargeTitles = true
+                    navController.tabBarItem
+                        = UITabBarItem(title: "이슈", image: nil, tag: 0)
+                    
+                    let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
+                    labelListViewController.tabBarItem
+                        = UITabBarItem(title: "레이블", image: nil, tag: 0)
+                    
+                    let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
+                    milestoneListViewController.tabBarItem
+                        = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
+                    
+                    let tabBarController = UITabBarController()
+                    tabBarController.tabBar.tintColor = UIColor.black
+                    tabBarController.viewControllers
+                        = [navController, labelListViewController, milestoneListViewController]
+                    let scenedelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
+                    
+                    scenedelegate.window?.rootViewController = tabBarController
+                }
+                
+            case let .failure(error):
+                print(error)
+            }
+        }
+        
+        
+    }
+    
+    
     func getUser() {
         let url = "https://api.github.com/user"
         let accessToken = KeychainSwift().get("accessToken") ?? ""
         let headers: HTTPHeaders = ["Accept": "application/vnd.github.v3+json",
                                     "Authorization": "token \(accessToken)"]
-
+        
         AF.request(url, method: .get, parameters: [:], headers: headers).responseJSON(completionHandler: { (response) in
             switch response.result {
             case .success(let json):

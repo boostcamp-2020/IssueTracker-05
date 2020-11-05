@@ -81,19 +81,10 @@ class SignInViewController: UIViewController {
         passwordTextField.setLabel("비밀번호")
         
     }
-
-    func requestCode() {
-        let scope = "repo,user"
-        let client_id = "0da3b116126e34da88f8"
-        let urlString = "https://github.com/login/oauth/authorize?client_id=\(client_id)&scope=\(scope)"
-        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        }
-    }
     
     @IBAction func touchedSignInWithGithub(_ sender: Any) {
         LoginManager.shared.requestCode()
-        LoginManager.shared.getUser()
+        //LoginManager.shared.getUser()
     }
     
     @IBAction func touchedSignIinWithApple(_ sender: Any) {
@@ -181,11 +172,13 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let user = credential.user
-            let jwt = credential.identityToken
-            
-            print("User: \(user)")
-            guard let email = credential.email else { return }
-            print("Email: \(email)")
+            let identityToken = credential.identityToken
+            print(credential)
+            print(identityToken)
+//            print("User: \(user)")
+//            print(String(data: jwt!, encoding: .utf8))
+//            guard let email = credential.email else { return }
+//            print("Email: \(email)")
         }
     }
     

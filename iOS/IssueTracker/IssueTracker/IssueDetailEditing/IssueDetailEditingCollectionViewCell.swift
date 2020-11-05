@@ -19,7 +19,8 @@ class IssueDetailEditingCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBOutlet var editButton: UIButton!
-
+    @IBOutlet var innerViewHeight: NSLayoutConstraint!
+    
 }
 
 extension IssueDetailEditingCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -31,15 +32,16 @@ extension IssueDetailEditingCollectionViewCell: UICollectionViewDelegate, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: "innerCell"), for: indexPath) as! InnerCollectionViewCell
         cell.configureButton()
         self.innerCollectionView.layoutIfNeeded()
+        self.innerViewHeight.constant = innerCollectionView.collectionViewLayout.collectionViewContentSize.height
+        cell.subviews.forEach { view in
+            view.layoutIfNeeded()
+        }
         return cell
     }
     
 }
 
 extension IssueDetailEditingCollectionViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: collectionView.frame.size.width / 7, height: 30)
-    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         5
     }
