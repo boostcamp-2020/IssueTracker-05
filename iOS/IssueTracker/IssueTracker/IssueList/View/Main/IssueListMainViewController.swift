@@ -3,8 +3,8 @@ import UIKit
 
 class IssueListMainViewController: UIViewController {
     
-    @IBOutlet weak var resultContrainerView: UIView!
     @IBOutlet weak var searchContrainerView: UIView!
+    @IBOutlet weak var resultContrainerView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var issueCreationButton: UIButton!
@@ -22,15 +22,25 @@ class IssueListMainViewController: UIViewController {
         setupSearchListViewController()
         setupIssueResultViewController()
         
+        //TODO: filter랑 edit에 데이터 넘겨줄 때 viewModel 액션을 여기에 바인딩 해야함.
+        // 데이터 넘겨주어야 하기 때문.
+        // Filter, Edit 후 서버에 보내고 필터링, 에디팅 된 정보를 출력한다.
         navigationItem.leftBarButtonItem =
             UIBarButtonItem(title: "Filter", style: .done, target: nil, action: #selector(pushFilterViewController))
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
-        
+        bind()
+    }
+    
+    func bind() {
         viewModel.status.searchResultList
             .bindAndFire(issueResultViewController.applySnapshot(sections:))
         viewModel.status.searchResultTitleList
             .bind(searchViewController.applySnapshot(sections:))
+        issueResultViewController.closeIssueButtonTabbed
+            = viewModel.action.closeButtonTabbed
+        issueResultViewController.deleteIssueButtonTabbed
+            = viewModel.action.deleteButtonTabbed
     }
     
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
@@ -83,10 +93,6 @@ extension IssueListMainViewController: UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.action.searchTextChanged(searchText)
     }
@@ -109,15 +115,9 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? IssueResultCellView else {
             return
         }
-        //cell.iid 이걸 viewModel에 넘겨준다. viewModel이 생성하면서 서버와 통신하여 해당 iid의 이슈 데이터를 가져온다.
-        
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self)) as! IssueDetailViewController
-        
-        newVC.viewModel = IssueDetailViewModel(iid: cell.iid ?? 0)
-        
-        // 초기화
+        newVC.viewModel = IssueDetailViewModel(issueId: cell.iid ?? 0)
         navigationController?.pushViewController(newVC, animated: true)
-        
     }
 }
 

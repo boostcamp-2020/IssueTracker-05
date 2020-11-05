@@ -5,17 +5,56 @@ class IssueDetailViewController: UIViewController {
     
     var viewModel: IssueDetailViewModel?
     lazy var dataLayout = makeDataLayout()
-    @IBOutlet weak var containerView: UIView!
     var swipeUpView: IssueDetailEditingViewController!
-    @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var issueTitle: UILabel!
+    @IBOutlet weak var issueNumber: UILabel!
     @IBOutlet weak var isOpenView: UIButton!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var containerView: UIView!
+    
+    var isOpen = true  {// TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
+        didSet {
+            configureIsOpenView()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureIsOpenView()
         configureContainerOfSwipeView()
-        viewModel?.status.model.bindAndFire(applySnapshot(sections:))
+        swipeUpView.view.layer.cornerRadius = 15
+
+        if let viewModel = viewModel {
+            viewModel.status.model.bindAndFire(updateViews(model:))
+            return
+        }
+        
+        // TODO: 나중에 제거해야 한다. 
+        updateViews(model: IssueDetailModel.all())
+    }
+    
+    func updateViews(model: IssueDetailModel) {
+        
+        // 유저 이미지 - 아직은 없음
+        
+        userName.text = model.title
+        issueTitle.text = model.title
+        issueNumber.text = "#\(model.iid)"
+        isOpen = model.isOpen
+        
+        // 댓글 목록 -> apply
+        if let comments = model.comments {
+            applySnapshot(sections: comments)
+        } else {
+            applySnapshot(sections: Comment.all())
+        }
+        
+        //swipeUpView update -> 담당자, 마일스톤, 레이블
     }
     
     func applySnapshot(sections: [Comment]) {
@@ -31,14 +70,16 @@ class IssueDetailViewController: UIViewController {
             cellProvider: { (collectionview, indexPath, comment) -> UICollectionViewCell? in
                 let cell = collectionview.dequeueReusableCell(withReuseIdentifier: "IssueCommentCellView", for: indexPath) as? IssueCommentCellView
                 
-//                cell?.setup(user: comment.user, content: comment.content)
+                cell?.setup(
+                    user: comment.user.userId,
+                    content: comment.content,
+                    time: comment.createdAt)
                 
                 return cell
             })
     }
     
     func configureIsOpenView() {
-        let isOpen = true // TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
         isOpenView.setImage(
             UIImage(systemName: "exclamationmark.circle"),
             for: .normal)
@@ -46,15 +87,15 @@ class IssueDetailViewController: UIViewController {
         isOpenView.setTitle(title, for: .normal)
         isOpenView.backgroundColor = isOpen ? .systemGreen : .systemPink
         isOpenView.tintColor = isOpen ? .white : .white
-        isOpenView.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
+        isOpenView.contentEdgeInsets = UIEdgeInsets(top: 1, left: 7, bottom: 1, right: 7)
     }
     
     func configureContainerOfSwipeView() {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
-            .instantiateViewController(identifier: "IssueDetailEditingVC") as! IssueDetailEditingViewController
+            .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
+        swipeUpView.delegate = self
         containerView.addSubview(swipeUpView.view)
         configureAnimation()
-        
     }
     
     var swipeGesture: UISwipeGestureRecognizer!
@@ -81,14 +122,10 @@ class IssueDetailViewController: UIViewController {
                     y: weakSelf.swipeGesture.direction == .up ? weakSelf.newY : weakSelf.oldY,
                     width: weakSelf.containerView.frame.width,
                     height: weakSelf.containerView.frame.height)
-                
                 weakSelf.containerView.frame = rect
-                
                 weakSelf.swipeGesture.direction
                     = weakSelf.swipeGesture.direction == .up ? .down : .up
-                
                 weakSelf.swipeUpView.collectionView.isScrollEnabled.toggle()
-                
             })
     }
     
@@ -109,7 +146,31 @@ class IssueDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    // TODO: action과 configure를 구분
+    
 }
+
+extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
+    func scrollUpButtonTabbed() {
+        print("up")
+        let topPoint = CGPoint(x: 0, y: 0)
+        collectionView.setContentOffset(topPoint, animated: true)
+    }
+    
+    func scrollDownButtonTabbed() {
+        print("down")
+        let bottomPoint = CGPoint(x: 0, y: collectionView.contentSize.height - collectionView.frame.height)
+        collectionView.setContentOffset(bottomPoint, animated: true)
+    }
+    
+    func addCommentButtonTabbed() {
+        print("button")
+        // TODO: 이슈 생성 화면을 보여준다.
+    }
+
+}
+
+
 
 #if DEBUG
 

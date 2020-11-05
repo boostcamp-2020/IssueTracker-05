@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
 //            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
 
-            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: "IssueDetailEditingVC")
+            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailEditingViewController.self))
             
         }
 

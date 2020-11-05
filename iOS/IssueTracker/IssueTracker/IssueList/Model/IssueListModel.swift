@@ -34,8 +34,7 @@ struct IssueListModel: Codable, Hashable {
     var isOpen: Bool
     var mId: String? // 마일스톤 아이디
     var labels: [Label]?
-    
-    // TODO: 어사이니 만들어야
+    var assignees: [Assignees]?
     
     static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
         return lhs.uid == rhs.uid
@@ -45,6 +44,7 @@ struct IssueListModel: Codable, Hashable {
             && lhs.isOpen == rhs.isOpen
             && lhs.mId == rhs.mId
             && lhs.labels == rhs.labels
+            && lhs.assignees == rhs.assignees
     }
     
     func hash(into hasher: inout Hasher) {
@@ -55,6 +55,7 @@ struct IssueListModel: Codable, Hashable {
         hasher.combine(isOpen)
         hasher.combine(mId)
         hasher.combine(labels)
+        hasher.combine(assignees)
     }
     
     static func all() -> [IssueListModel] {
@@ -62,7 +63,7 @@ struct IssueListModel: Codable, Hashable {
         newModel.append(
             IssueListModel(
                 uid: 8,
-                iid: 66,
+                iid: 11,
                 title: "testtesttest",
                 content: "Hello",
                 isOpen: true,
