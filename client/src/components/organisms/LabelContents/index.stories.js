@@ -12,7 +12,7 @@ const Template = (args) => <LabelContents {...args}></LabelContents>;
 
 export const Default = Template.bind({});
 Default.args = {
-  width: 1000,
+  LabelContentsWidth: 1000,
   height: 40,
   fontSize: 20,
   LabelWidth: 50,
