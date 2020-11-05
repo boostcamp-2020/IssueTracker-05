@@ -3,12 +3,15 @@ import React from "react";
 import Login from "./temp/Login";
 import Title from "./temp/Title";
 
+import { ThemeProvider } from "styled-components";
+import theme from "./components/themes/default";
+
 const App = () => {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <Title />
       <Login />
-    </React.Fragment>
+    </ThemeProvider>
   );
 };
 

@@ -1,10 +1,6 @@
 import { reversePalette } from "styled-theme/composer";
 import { createGlobalStyle } from "styled-components";
 
-const GlobalFont = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap');
-`;
-
 const theme = {};
 
 theme.palette = {
@@ -28,17 +24,18 @@ theme.palette = {
     "#2BB64C", // green (New Issue, Submit New Issue, New Milestone, Create Milestone, Create Label, Save Changes, Open)
     "#E8EAEC", // gray (Cancel, Count of Labels & Milestones, Edit, Close Issue, Reopen Issue, )
     "#D73A49", // red (Closed)
-    "#F5F7F9" // blue (Selected 'Milestones', Selected 'Labels)
-  ], 
-
+    "#F5F7F9", // blue (Selected 'Milestones', Selected 'Labels)
+  ],
 };
 
 theme.reversePalette = reversePalette(theme.palette);
 
 theme.fonts = {
-  primary: "Noto Sans KR, Helvetica Neue, Helvetica, Roboto, sans-serif",
+  primary: "Helvetica Neue, Helvetica, Roboto, sans-serif",
   pre: "Consolas, Liberation Mono, Menlo, Courier, monospace",
   quote: "Georgia, serif",
+  main: "'Jua', 'Do Hyeon', 'Noto Sans KR', sans-serif",
+  secondary: "'Gamjs Flower', 'Nanum Brush Script', 'Stylish', monospace",
 };
 
 theme.sizes = {
