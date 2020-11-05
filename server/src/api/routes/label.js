@@ -1,11 +1,14 @@
 import { Router } from 'express';
 
 import labelController from '@api/controllers/label';
+import passportJwtMiddleware from '@api/middlewares/passportJwt';
 
 export default (app) => {
   const route = Router();
 
   app.use('/label', route);
+
+  route.use(passportJwtMiddleware);
 
   route.post('/', labelController.createLabel);
   route.get('/', labelController.getLabels);
