@@ -9,26 +9,21 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: cente;
   align-items: center;
-  width: 300px;
-  border: 2px solid black;
 `;
 
 const ChangeLMButton = (props) => {
-  const
   return (
     <Wrapper>
-      <Button {...ButtonInform}>{LabelButtonName}</Button>
-      <Button {...ButtonInform}>{MilestoneButtonName}</Button>
+      <Button {...props}>LabelButton</Button>
+      <Button {...props}>MilestoneButton</Button>
     </Wrapper>
   );
 };
 
 ChangeLMButton.PropTypes = {
-  MilestoneButtonName: PropTypes.string,
-  LabelButtonName: PropTypes.string,
-  disabled: PropTypes.bool,
-  height: PropTypes.number,
-  width: PropTypes.number,
+  ButtonDisabled: PropTypes.bool,
+  ButtonHeight: PropTypes.number,
+  ButtonWidth: PropTypes.number,
 };
 
 ChangeLMButton.defaultProps = {

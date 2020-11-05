@@ -8,13 +8,11 @@ export default {
   decorators: [withKnobs],
 };
 
-const Template = (args) => <ChangeLMButton {...args}></ChangeLMButton>;
+const Template = (args) => <ChangeLMButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  MilestoneButtonName: "Milestones",
-  LabelButtonName: "Labels",
-  disabled: true,
-  height: 30,
-  width: 100,
+  ButtonDisabled: true,
+  ButtonWidth: 200,
+  ButtonHeight: 50,
 };
