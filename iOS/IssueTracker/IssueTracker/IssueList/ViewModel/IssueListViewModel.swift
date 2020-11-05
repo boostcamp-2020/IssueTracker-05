@@ -23,9 +23,12 @@ class IssueListViewModel {
             weakSelf.status.searchResultTitleList.value
                 = weakSelf.status.issues.value.filter {
                     $0.title.contains(newText)
-                }.map {
-                    $0.title
-                }
+                }.reduce([String()], { (uniqueTitleList, issueListModel) in
+                    if !uniqueTitleList.contains(issueListModel.title) {
+                        return uniqueTitleList + [issueListModel.title]
+                    }
+                    return uniqueTitleList
+                })
         },searchButtonClicked: { [weak self] searchBarText in
             guard let weakSelf = self else { return }
             weakSelf.status.searchResultList.value
