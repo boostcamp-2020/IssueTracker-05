@@ -48,6 +48,9 @@
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BXD-aR-9IV">
                                                     <rect key="frame" x="10" y="70" width="394" height="48"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="48" id="uRd-mb-Yhf"/>
+                                                    </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jak-Sj-RD5">
                                                         <size key="itemSize" width="54" height="47"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -84,6 +87,7 @@
                                         <connections>
                                             <outlet property="editButton" destination="jjp-h8-Ks4" id="xzB-aK-8ti"/>
                                             <outlet property="innerCollectionView" destination="BXD-aR-9IV" id="TBt-zt-rPg"/>
+                                            <outlet property="innerViewHeight" destination="uRd-mb-Yhf" id="ASl-ed-f14"/>
                                             <outlet property="titleLabel" destination="ifJ-Mu-qSJ" id="fF8-6t-Mds"/>
                                         </connections>
                                     </collectionViewCell>

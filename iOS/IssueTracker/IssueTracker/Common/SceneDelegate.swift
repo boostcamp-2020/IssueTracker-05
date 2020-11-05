@@ -8,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        if nil == Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
+        if let _ = Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
             
             let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
             
@@ -31,15 +31,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             tabBarController.viewControllers
                 = [navController, labelListViewController, milestoneListViewController]
             
-            
-            
             window?.rootViewController = tabBarController
             
         } else {
-//            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
-
-            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailEditingViewController.self))
-            
+            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
+            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailEditingViewController.self))            
         }
 
     }
@@ -79,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     LoginManager.shared.requestAccessToken(with: code)
                 }
             }
-//            print(url)
+            print(url)
         }
     }
 }

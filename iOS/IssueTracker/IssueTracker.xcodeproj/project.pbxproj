@@ -53,6 +53,7 @@
 		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DA8B33BB2552D6F000E3331F /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */; };
 		DA8B33BC2552D6F000E3331F /* IssueDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */; };
+		DA8B33CF2553C3DE00E3331F /* MilestoneListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B33CE2553C3DE00E3331F /* MilestoneListViewModel.swift */; };
 		DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB866254821B3006471F6 /* AppDelegate.swift */; };
 		DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABEB868254821B3006471F6 /* SceneDelegate.swift */; };
 		DABEB870254821B4006471F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DABEB86F254821B4006471F6 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		DA71EACD2549916700F5EC25 /* dummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
 		DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueDetail.storyboard; sourceTree = "<group>"; };
+		DA8B33CE2553C3DE00E3331F /* MilestoneListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewModel.swift; sourceTree = "<group>"; };
 		DABEB863254821B3006471F6 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DABEB866254821B3006471F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DABEB868254821B3006471F6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,10 +267,9 @@
 		88B8F0F2254AB08500C23791 /* MilestoneList */ = {
 			isa = PBXGroup;
 			children = (
-				88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */,
-				88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */,
-				DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */,
-				DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */,
+				DA8B33CB2553C36100E3331F /* Model */,
+				DA8B33CC2553C36700E3331F /* View */,
+				DA8B33CD2553C37500E3331F /* VIewModel */,
 			);
 			path = MilestoneList;
 			sourceTree = "<group>";
@@ -395,6 +396,32 @@
 				DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */,
 			);
 			path = IssueDetailEditing;
+			sourceTree = "<group>";
+		};
+		DA8B33CB2553C36100E3331F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DA8B33CC2553C36700E3331F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */,
+				DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */,
+				88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA8B33CD2553C37500E3331F /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DA8B33CE2553C3DE00E3331F /* MilestoneListViewModel.swift */,
+			);
+			path = VIewModel;
 			sourceTree = "<group>";
 		};
 		DABEB85A254821B3006471F6 = {
@@ -596,6 +623,7 @@
 				88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */,
 				DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */,
 				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
+				DA8B33CF2553C3DE00E3331F /* MilestoneListViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
 				88E6973F2553DE420090635D /* IssueListService.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
@@ -753,7 +781,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8ULFNR9M33;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -773,7 +801,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8ULFNR9M33;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
