@@ -10,7 +10,7 @@ struct IssueDetailModel: Hashable, Codable {
     var comments: [Comment]?
     var updatedAt: String?
     var createdAt: String?
-    var author: String?
+    //var author: String?
     var mid: Int?
     var assignees: [Assignees]?
     
@@ -21,7 +21,7 @@ struct IssueDetailModel: Hashable, Codable {
             && lhs.label == rhs.label
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
-            && lhs.author == rhs.author
+            //&& lhs.author == rhs.author
             && lhs.mid == rhs.mid
             && lhs.assignees == rhs.assignees
             && lhs.comments == rhs.comments
@@ -34,7 +34,7 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(label)
         hasher.combine(content)
         hasher.combine(createdAt)
-        hasher.combine(author)
+        //hasher.combine(author)
         hasher.combine(mid)
         hasher.combine(assignees)
         hasher.combine(comments)
@@ -50,7 +50,7 @@ struct IssueDetailModel: Hashable, Codable {
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
-            author: nil,
+           // author: nil,
             mid: nil,
             assignees: nil)
     }

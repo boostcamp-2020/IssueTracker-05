@@ -16,11 +16,13 @@ class IssueResultCellView: UICollectionViewCell {
     @IBAction func closeButtonTabbed(_ sender: UIButton) {
         guard let iid = iid else { return }
         closeButtonAction?(iid)
+        detailView.reset()
     }
     
     @IBAction func deleteButtonTabbed(_ sender: UIButton) {
         guard let iid = iid else { return }
         deleteButtonAction?(iid)
+        detailView.reset()
     }
 
     

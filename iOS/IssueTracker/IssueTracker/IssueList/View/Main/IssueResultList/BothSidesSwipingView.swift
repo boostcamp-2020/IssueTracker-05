@@ -31,6 +31,17 @@ class BothSidesSwipingView: UIView {
         self.addGestureRecognizer(swipeRecognizerRight)
     }
     
+    func reset() {
+        removeGestureRecognizer(swipeRecognizerRight)
+        removeGestureRecognizer(swipeRecognizerLeft)
+        let newFrame = CGRect(
+            x: 0,
+            y: self.frame.origin.y,
+            width: self.frame.width, height: self.frame.height)
+        animate(to: newFrame)
+        setupSwipeBothSides()
+    }
+    
     @objc func swipeActionLeft(_ sender: Any) {
         let width = swipeRecognizerLeft.direction == .left ?
             self.frame.width * buttonWidthRatio : -self.frame.width * buttonWidthRatio

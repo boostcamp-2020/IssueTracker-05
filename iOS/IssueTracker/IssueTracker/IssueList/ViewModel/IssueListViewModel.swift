@@ -51,6 +51,12 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             print(iid, "delete")
             weakSelf.service.requestDeleteIssue(issueId: iid)
+            for index in weakSelf.status.issues.value.indices {
+                if weakSelf.status.issues.value[index].iid == iid {
+                    weakSelf.status.issues.value.remove(at: index)
+                   return
+                }
+            }
         })
     
     init() {
