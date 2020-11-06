@@ -26,9 +26,8 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
         configureNavigation()
         configureIsOpenView()
+        collectionView.collectionViewLayout = createCompositionalList()
         configureContainerOfSwipeView()
-        swipeUpView.view.layer.cornerRadius = 15
-
         if let viewModel = viewModel {
             viewModel.status.model.bindAndFire(updateViews(model:))
             return
@@ -36,6 +35,11 @@ class IssueDetailViewController: UIViewController {
         
         // TODO: 나중에 제거해야 한다. 
         updateViews(model: IssueDetailModel.all())
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        configureContainerOfSwipeView()
     }
     
     func updateViews(model: IssueDetailModel) {
@@ -62,6 +66,20 @@ class IssueDetailViewController: UIViewController {
         snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func createCompositionalList() -> UICollectionViewLayout {
+        let size = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .estimated(100))
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitems: [item])
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: 10, leading: 0, bottom: 5, trailing: 0)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+                top: 5, leading: 5, bottom: 5, trailing: 5)
+        return UICollectionViewCompositionalLayout(section: section)
     }
     
     func makeDataLayout() -> UICollectionViewDiffableDataSource<[Comment], Comment> {
@@ -92,12 +110,9 @@ class IssueDetailViewController: UIViewController {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
             .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
         swipeUpView.delegate = self
+        swipeUpView.view.frame = containerView.bounds
         containerView.addSubview(swipeUpView.view)
-        swipeUpView.view.translatesAutoresizingMaskIntoConstraints = false
-        swipeUpView.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        swipeUpView.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        swipeUpView.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        swipeUpView.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        swipeUpView.view.layer.cornerRadius = 15
         configureAnimation()
     }
     
@@ -122,7 +137,8 @@ class IssueDetailViewController: UIViewController {
                 guard let weakSelf = self else { return }
                 let rect = CGRect(
                     x: weakSelf.containerView.frame.origin.x,
-                    y: weakSelf.swipeGesture.direction == .up ? weakSelf.newY : weakSelf.oldY,
+                    y: weakSelf.swipeGesture.direction == .up ?
+                        weakSelf.newY : weakSelf.oldY,
                     width: weakSelf.containerView.frame.width,
                     height: weakSelf.containerView.frame.height)
                 weakSelf.containerView.frame = rect

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="SearchListViewController" id="ISS-e9-60a" customClass="SearchListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tn8-gr-XTK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ebl-XZ-ZVq">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DmG-bh-sk4">
                                     <size key="itemSize" width="407" height="76"/>
@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchListCellView" id="SrX-zD-UA1" customClass="SearchListCellView" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="3.5" y="0.0" width="407" height="76"/>
+                                        <rect key="frame" x="-43.5" y="0.0" width="407" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="k0n-DC-FAO">
                                             <rect key="frame" x="0.0" y="0.0" width="407" height="76"/>
@@ -79,21 +79,21 @@
             <objects>
                 <viewController storyboardIdentifier="IssueListMainViewController" id="BYZ-38-t0r" customClass="IssueListMainViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Y1x-5U-Mue">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="search" translatesAutoresizingMaskIntoConstraints="NO" id="Ske-7u-C6A" userLabel="search">
-                                <rect key="frame" x="0.0" y="100" width="414" height="796"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" restorationIdentifier="result" translatesAutoresizingMaskIntoConstraints="NO" id="x3U-gf-c9U" userLabel="result">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="512"/>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdb-4b-eNB">
-                                <rect key="frame" x="354" y="802" width="40" height="40"/>
+                                <rect key="frame" x="260" y="508" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="d1P-0o-fAD"/>
                                     <constraint firstAttribute="height" constant="40" id="nfU-Ya-jvj"/>
@@ -112,12 +112,12 @@
                             <constraint firstItem="Ske-7u-C6A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DEs-nl-Pzp"/>
                             <constraint firstItem="Ske-7u-C6A" firstAttribute="top" secondItem="Y1x-5U-Mue" secondAttribute="bottom" id="NOh-lM-w8E"/>
                             <constraint firstItem="x3U-gf-c9U" firstAttribute="top" secondItem="Y1x-5U-Mue" secondAttribute="bottom" id="OhD-xz-cZD"/>
-                            <constraint firstAttribute="trailing" secondItem="Ske-7u-C6A" secondAttribute="trailing" id="TyX-zu-aoy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ske-7u-C6A" secondAttribute="trailing" id="aKZ-cJ-j5j"/>
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="acX-m8-vkQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x3U-gf-c9U" secondAttribute="bottom" id="eVq-kj-tlp"/>
                             <constraint firstItem="Y1x-5U-Mue" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="glj-Fe-ulQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bdb-4b-eNB" secondAttribute="trailing" constant="20" id="hcd-Gf-Y5j"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ske-7u-C6A" secondAttribute="bottom" constant="-34" id="jMH-ij-kPS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ske-7u-C6A" secondAttribute="bottom" id="jMH-ij-kPS"/>
                             <constraint firstItem="x3U-gf-c9U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sLC-yY-mab"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bdb-4b-eNB" secondAttribute="bottom" constant="20" id="uuT-DU-Hpa"/>
                         </constraints>
@@ -138,11 +138,11 @@
             <objects>
                 <viewController storyboardIdentifier="IssueResultViewController" id="ID2-uM-ZeT" customClass="IssueResultViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NCS-yi-Wg5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-zG-RSi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8U0-Yd-1MU">
                                     <size key="itemSize" width="363" height="100"/>
@@ -152,7 +152,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueResultCellView" id="nKv-YR-Rwv" customClass="IssueResultCellView" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="25.5" y="0.0" width="363" height="100"/>
+                                        <rect key="frame" x="-21.5" y="0.0" width="363" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EOG-bM-25o">
                                             <rect key="frame" x="0.0" y="0.0" width="363" height="100"/>

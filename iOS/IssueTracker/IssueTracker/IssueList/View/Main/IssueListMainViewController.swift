@@ -75,12 +75,19 @@ class IssueListMainViewController: UIViewController {
     func setupSearchListViewController() {
         searchViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
+        
+        searchContrainerView.frame = searchContrainerView.bounds
         searchContrainerView.addSubview(searchViewController.view)
     }
     
     func setupIssueResultViewController() {
         issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
+        
+        
+        issueResultViewController.view.frame = resultContrainerView.bounds
+        
+        
         resultContrainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
     }
