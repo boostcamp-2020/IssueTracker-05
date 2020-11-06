@@ -31,11 +31,10 @@ extension IssueDetailEditingCollectionViewCell: UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: "innerCell"), for: indexPath) as! InnerCollectionViewCell
         cell.configureButton()
-        self.innerCollectionView.layoutIfNeeded()
+        innerCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        innerCollectionView.widthAnchor.constraint(equalToConstant: self.frame.width - 20).isActive = true
         self.innerViewHeight.constant = innerCollectionView.collectionViewLayout.collectionViewContentSize.height
-        cell.subviews.forEach { view in
-            view.layoutIfNeeded()
-        }
+        self.innerCollectionView.layoutIfNeeded()
         return cell
     }
     

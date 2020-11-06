@@ -96,6 +96,8 @@ class SignInViewController: UIViewController {
         controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         controller.performRequests()
         
+        
+        
     }
     
     @IBAction func touchedSignUp(_ sender: Any) {
