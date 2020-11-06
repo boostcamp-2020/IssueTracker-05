@@ -148,10 +148,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wD-gG-kXM">
-                                <rect key="frame" x="0.0" y="762" width="414" height="800"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="800" id="wUb-of-2ly"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="762" width="414" height="761.5"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -164,6 +161,7 @@
                         <constraints>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="leading" secondItem="SEc-4u-TvL" secondAttribute="leading" id="1Ip-a8-15O"/>
                             <constraint firstItem="3wD-gG-kXM" firstAttribute="top" secondItem="PEn-JS-Fvf" secondAttribute="bottom" id="1Zv-dO-hKw"/>
+                            <constraint firstItem="3wD-gG-kXM" firstAttribute="height" secondItem="H9G-T9-61j" secondAttribute="height" multiplier="0.85" id="4Ao-7p-yVU"/>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="trailing" secondItem="SEc-4u-TvL" secondAttribute="trailing" id="5DV-Pp-qBL"/>
                             <constraint firstItem="PEn-JS-Fvf" firstAttribute="top" secondItem="9wM-LR-gN6" secondAttribute="bottom" constant="20" id="DaB-I9-TGq"/>
                             <constraint firstItem="9wM-LR-gN6" firstAttribute="leading" secondItem="SEc-4u-TvL" secondAttribute="leading" id="G4A-eK-BdV"/>

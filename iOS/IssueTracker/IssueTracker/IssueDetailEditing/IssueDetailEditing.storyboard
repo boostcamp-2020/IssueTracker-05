@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ySZ-U1-jsW">
-                                <rect key="frame" x="0.0" y="117" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="117" width="414" height="662"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bRA-Pr-Dxd">
                                     <size key="itemSize" width="414" height="128"/>
@@ -111,7 +111,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vc-XV-zd9">
-                                <rect key="frame" x="20" y="809" width="374" height="33"/>
+                                <rect key="frame" x="20" y="799" width="374" height="33"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Close Issue">
@@ -144,7 +144,7 @@
                             <constraint firstItem="ySZ-U1-jsW" firstAttribute="top" secondItem="ZdF-2g-Tbf" secondAttribute="bottom" constant="20" id="PaS-8u-bFa"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="leading" secondItem="Guw-Jm-NgC" secondAttribute="trailing" constant="20" id="Vgf-ax-TUw"/>
                             <constraint firstItem="EH8-tu-dts" firstAttribute="bottom" secondItem="Guw-Jm-NgC" secondAttribute="bottom" id="Vwn-fc-g6N"/>
-                            <constraint firstItem="gQ2-du-hsh" firstAttribute="bottom" secondItem="2vc-XV-zd9" secondAttribute="bottom" constant="20" id="bOl-cC-8oR"/>
+                            <constraint firstItem="gQ2-du-hsh" firstAttribute="bottom" secondItem="2vc-XV-zd9" secondAttribute="bottom" constant="30" id="bOl-cC-8oR"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="2vc-XV-zd9" secondAttribute="trailing" constant="20" id="c7c-w7-di5"/>
                             <constraint firstItem="ZdF-2g-Tbf" firstAttribute="width" secondItem="EH8-tu-dts" secondAttribute="width" id="dKV-bv-Ab4"/>
                             <constraint firstItem="gQ2-du-hsh" firstAttribute="trailing" secondItem="ySZ-U1-jsW" secondAttribute="trailing" id="eMq-8d-nMn"/>
