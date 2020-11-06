@@ -93,6 +93,11 @@ class IssueDetailViewController: UIViewController {
             .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
         swipeUpView.delegate = self
         containerView.addSubview(swipeUpView.view)
+        swipeUpView.view.translatesAutoresizingMaskIntoConstraints = false
+        swipeUpView.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        swipeUpView.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        swipeUpView.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        swipeUpView.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         configureAnimation()
     }
     

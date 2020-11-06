@@ -38,11 +38,15 @@ class IssueListMainViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.layoutIfNeeded()
+        
+        self.tabBarController?.tabBar.isHidden = false
+        self.issueCreationButton.bottomAnchor.constraint(equalTo: self.tabBarController!.tabBar.topAnchor).isActive = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.layoutIfNeeded()
+        //self.tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -131,6 +135,7 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         }
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self)) as! IssueDetailViewController
         newVC.viewModel = IssueDetailViewModel(issueId: cell.iid ?? 0)
+        self.tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)
     }
