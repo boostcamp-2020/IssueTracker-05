@@ -28,6 +28,10 @@ export default (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      image: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
     },
     {
       tableName: 'user',
@@ -51,7 +55,8 @@ export default (sequelize, DataTypes) => {
     });
 
     user.belongsToMany(models.issue, {
-      through: 'issue_user',
+      through: 'issue_assignee',
+      as: 'assignees',
     });
   };
 

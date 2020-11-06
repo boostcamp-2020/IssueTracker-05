@@ -11,17 +11,18 @@ export default (sequelize, DataTypes) => {
       isOpen: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-      },
-      label: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        defaultValue: true,
       },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      closedAt: {
+        type: DataTypes.DATE,
         allowNull: true,
       },
     },
@@ -39,11 +40,27 @@ export default (sequelize, DataTypes) => {
       },
     });
 
+    issue.belongsTo(models.user, {
+      foreignKey: {
+        name: 'uid',
+        allowNull: false,
+      },
+    });
+
     issue.hasMany(models.comment, {
       foreignKey: {
         name: 'iid',
         allowNull: false,
       },
+    });
+
+    issue.belongsToMany(models.user, {
+      through: 'issue_assignee',
+      as: 'assignees',
+    });
+
+    issue.belongsToMany(models.label, {
+      through: 'issue_label',
     });
   };
 

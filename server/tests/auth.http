@@ -1,0 +1,52 @@
+@hostname = localhost
+@port = 5000
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
+@contentType = application/json
+
+### 로컬 로그인
+
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testsdsds1212",
+  "password": "12345678aaa@",
+  "resourceServer": "local"
+}
+
+### 깃허브 로그인
+
+GET {{host}}/login/github HTTP/1.1
+content-type: {{contentType}}
+
+### 회원가입
+
+POST {{host}}/signup HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testId5",
+  "password": "123456a@",
+  "nickname": "testNickname5"
+}
+
+###
+
+POST {{host}}/signup/check-id HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "test"
+}
+
+### 앱전용 깃허브로그인
+
+@appToken=
+POST http://group05issuetracker.duckdns.org:49203/api/login/github
+content-type: {{contentType}}
+
+{
+  "token": "{{appToken}}"
+}

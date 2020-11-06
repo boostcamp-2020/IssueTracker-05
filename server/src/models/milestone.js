@@ -11,6 +11,7 @@ export default (sequelize, DataTypes) => {
       isOpen: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
+        defaultValue: true,
       },
       title: {
         type: DataTypes.STRING,
@@ -21,7 +22,11 @@ export default (sequelize, DataTypes) => {
         allowNull: true,
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
+      closedAt: {
+        type: DataTypes.DATE,
         allowNull: true,
       },
     },

@@ -1,12 +1,10 @@
 import express from 'express';
-import server from './loaders';
 
-import serverConfig from './config/server';
+import server from '@loaders';
+import serverConfig from '@config/server';
 
 const startServer = async () => {
   const app = express();
-
-  console.log('app starting');
 
   await server(app);
 

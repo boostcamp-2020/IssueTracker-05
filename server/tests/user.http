@@ -1,0 +1,26 @@
+@hostname = localhost
+@port = 5000
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
+@contentType = application/json
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testId1",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
+
+### 모든 유저들 받아오기
+
+GET {{host}}/user HTTP/1.1
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}

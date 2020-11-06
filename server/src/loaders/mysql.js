@@ -1,4 +1,4 @@
-import db from '../models';
+import db from '@models';
 
 export default async () => {
   try {

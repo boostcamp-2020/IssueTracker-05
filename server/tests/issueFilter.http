@@ -1,0 +1,49 @@
+@hostname = localhost
+@port = 5000
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
+@contentType = application/json
+
+###
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "test123",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
+
+### 검색 이슈 필터링
+
+POST {{host}}/filter/search
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "labels": [
+    {
+      "name": "soccer"
+    }
+  ]
+}
+
+###
+
+POST {{host}}/filter/search
+content-type: {{contentType}}
+Authorization: Bearer {{authToken}}
+
+{
+  "uid": 6,
+  "mid": null,
+  "labels": null,
+  "assignees": null
+}
