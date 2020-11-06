@@ -126,7 +126,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func touchedSignUp(_ sender: Any) {
         
-        let url = "http://172.30.1.27:5000"
+        let url = "http://group05issuetracker.duckdns.org:49203"
         
         let parameters = ["userId": self.idTextField.text,
                           "password": self.passwordTextField.text,

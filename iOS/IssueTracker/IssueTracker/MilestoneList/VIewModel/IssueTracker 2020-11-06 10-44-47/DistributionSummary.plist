@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IssueTracker.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>E42CC24136FAF9AA5B5550473F49D0D2BDF9E590</string>
+				<key>dateExpires</key>
+				<string>2020/12/24</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E42CC24136FAF9AA5B5550473F49D0D2BDF9E590</string>
+						<key>dateExpires</key>
+						<string>2020/12/24</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>Alamofire.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>8ULFNR9M33</string>
+						<key>name</key>
+						<string>Jung Rae Cho</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E42CC24136FAF9AA5B5550473F49D0D2BDF9E590</string>
+						<key>dateExpires</key>
+						<string>2020/12/24</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>KeychainSwift.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>8ULFNR9M33</string>
+						<key>name</key>
+						<string>Jung Rae Cho</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>8ULFNR9M33.net.ralph.IssueTracker</string>
+				<key>com.apple.developer.applesignin</key>
+				<array>
+					<string>Default</string>
+				</array>
+				<key>com.apple.developer.team-identifier</key>
+				<string>8ULFNR9M33</string>
+				<key>get-task-allow</key>
+				<true/>
+			</dict>
+			<key>name</key>
+			<string>IssueTracker.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>414bb0d4-a7a5-4479-8904-bf4070ddd7c9</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: net.ralph.IssueTracker</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>8ULFNR9M33</string>
+				<key>name</key>
+				<string>Jung Rae Cho</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
