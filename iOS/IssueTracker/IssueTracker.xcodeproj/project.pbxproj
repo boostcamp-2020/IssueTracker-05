@@ -44,6 +44,8 @@
 		DA1B56F5255015ED00FE8D2D /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA511AD3254FDFE90036DDC3 /* SignUp.storyboard */; };
 		DA1B56F8255024B000FE8D2D /* MilestoneListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */; };
 		DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */; };
+		DA33525E25565B3C00B9F24A /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */; };
+		DA335264255664B000B9F24A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA335263255664B000B9F24A /* Coordinator.swift */; };
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9F254A83EF0036DDC3 /* LoginModel.swift */; };
@@ -100,6 +102,8 @@
 		DA18FD0D2552CC4500E17D7B /* IssueDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCollectionView.swift; sourceTree = "<group>"; };
 		DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewCell.swift; sourceTree = "<group>"; };
 		DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListModel.swift; sourceTree = "<group>"; };
+		DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		DA335263255664B000B9F24A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA511A8D254A83020036DDC3 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DA511A99254A83A00036DDC3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA511A9A254A83A00036DDC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				DABEB866254821B3006471F6 /* AppDelegate.swift */,
 				DABEB868254821B3006471F6 /* SceneDelegate.swift */,
 				88C03822254990C5000D4D4A /* Bindable.swift */,
+				DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -328,6 +333,14 @@
 				88E697442553F8F00090635D /* IssueDetailService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		DA335262255664A400B9F24A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DA335263255664B000B9F24A /* Coordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {
@@ -445,6 +458,7 @@
 		DABEB865254821B3006471F6 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				DA335262255664A400B9F24A /* Coordinator */,
 				DA511AC0254ABB450036DDC3 /* IssueTracker.entitlements */,
 				88C0381025496860000D4D4A /* Common */,
 				DA511A7E254A82A10036DDC3 /* LogIn */,
@@ -618,6 +632,7 @@
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,
 				DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */,
 				DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */,
+				DA335264255664B000B9F24A /* Coordinator.swift in Sources */,
 				8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */,
 				8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */,
 				88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */,
@@ -628,6 +643,7 @@
 				88E6973F2553DE420090635D /* IssueListService.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,
+				DA33525E25565B3C00B9F24A /* SceneCoordinator.swift in Sources */,
 				881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */,
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,
 				881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */,
