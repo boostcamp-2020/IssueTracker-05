@@ -344,9 +344,9 @@
 		DA335262255664A400B9F24A /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				DA335263255664B000B9F24A /* Coordinator.swift */,
 				DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */,
 				8872A13A25569A0200EB1E91 /* TabCoordinator.swift */,
-				DA335263255664B000B9F24A /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";

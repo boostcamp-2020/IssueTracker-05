@@ -5,7 +5,7 @@ enum TabBarPage {
     case issue
     case label
     case milestone
-
+    
     init?(index: Int) {
         switch index {
         case 0: self = .issue
@@ -22,7 +22,7 @@ enum TabBarPage {
         case .milestone: return "마일스톤"
         }
     }
-
+    
     func pageOrderNumber() -> Int {
         switch self {
         case .issue:  return 0
@@ -30,7 +30,7 @@ enum TabBarPage {
         case .milestone: return 2
         }
     }
-
+    
     // Add tab icon value
     func pageeIconeImage() -> UITabBarItem {
         UITabBarItem(
@@ -47,39 +47,28 @@ enum TabBarPage {
 
 protocol TabCoordinatorProtocol: Coordinator {
     var tabBarController: UITabBarController { get set }
-    
     func selectPage(_ page: TabBarPage)
-    
     func setSelectedIndex(_ index: Int)
-    
     func currentPage() -> TabBarPage?
 }
 
 class TabCoordinator: NSObject, Coordinator {
     weak var finishDelegate: CoordinatorFinishDelegate?
-        
     var childCoordinators: [Coordinator] = []
-
     var navigationController: UINavigationController
-    
     var tabBarController: UITabBarController
-
     var type: CoordinatorType { .tab }
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.tabBarController = .init()
     }
-
+    
     func start() {
         let pages: [TabBarPage] = [.milestone, .label, .issue]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
-    }
-    
-    deinit {
-        print("TabCoordinator deinit")
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
@@ -91,15 +80,15 @@ class TabCoordinator: NSObject, Coordinator {
         
         navigationController.viewControllers = [tabBarController]
     }
-      
+    
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navController = UINavigationController()
         navController.setNavigationBarHidden(false, animated: false)
-
+        
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: nil,
                                                      tag: page.pageOrderNumber())
-
+        
         switch page {
         // If needed: Each tab bar flow can have it's own Coordinator.
         case .issue:
@@ -107,42 +96,38 @@ class TabCoordinator: NSObject, Coordinator {
                 name: "IssueList", bundle: nil).instantiateViewController(
                     identifier: String(describing: IssueListMainViewController.self))
             
-//            issueListMainViewController.didSendEventClosure = { [weak self] event in
-//                switch event {
-//                case . :
-//                    self?.selectPage(.steady)
-//                }
-//            }
-                        
+            issueListMainViewController.didSendEventClosure = { [weak self] event in
+                switch event {
+                case .finish :
+                    self?.finish()
+                }
+            }
+            
             navController.pushViewController(issueListMainViewController, animated: true)
         case .label:
             let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-//            labelListViewController.tabBarItem
-//                            = UITabBarItem(title: "레이블",
-//                                           image: UIImage(systemName: "2.circle.fill"), tag: 1)
-//
+            //            labelListViewController.tabBarItem
+            //                            = UITabBarItem(title: "레이블",
+            //                                           image: UIImage(systemName: "2.circle.fill"), tag: 1)
             
-
-//            steadyVC.didSendEventClosure = { [weak self] event in
-//                switch event {
-//                case .steady:
-//                    self?.selectPage(.go)
-//                }
-//            }
-//
+            labelListViewController.didSendEventClosure
+                = { [weak self] event in
+                    switch event {
+                    case .finish:
+                        self?.finish()
+                    }
+                }
             navController.pushViewController(labelListViewController, animated: true)
-        
         case .milestone:
             
             let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-            
-//            let goVC = GoViewController()
-//            goVC.didSendEventClosure = { [weak self] event in
-//                switch event {
-//                case .go:
-//                    self?.finish()
-//                }
-//            }
+            milestoneListViewController.didSendEventClosure
+                = { [weak self] event in
+                switch event {
+                case .finish:
+                    self?.finish()
+                }
+            }
             navController.pushViewController(milestoneListViewController, animated: true)
         }
         
@@ -150,7 +135,7 @@ class TabCoordinator: NSObject, Coordinator {
     }
     
     func currentPage() -> TabBarPage? { TabBarPage.init(index: tabBarController.selectedIndex) }
-
+    
     func selectPage(_ page: TabBarPage) {
         tabBarController.selectedIndex = page.pageOrderNumber()
     }
