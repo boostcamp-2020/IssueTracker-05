@@ -1,4 +1,4 @@
-import signupService from '@services/signup';
+import signupService from '@services/auth/signup';
 
 const checkId = (req, res) => {
   return res.status(200);

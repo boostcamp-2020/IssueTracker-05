@@ -14,7 +14,7 @@ const createLabel = async (req, res) => {
 
 const getLabels = async (req, res) => {
   try {
-    const labels = await labelService.getLabels();
+    const labels = await labelService.readLabels();
     return res.status(200).json(labels);
   } catch (err) {
     return res.status(400).json({
@@ -26,7 +26,7 @@ const getLabels = async (req, res) => {
 const getLabel = async (req, res) => {
   const { name } = req.params;
   try {
-    const label = await labelService.getLabel(name);
+    const label = await labelService.readLabel(name);
     return res.status(200).json(label);
   } catch (err) {
     return res.status(400).json({
@@ -39,7 +39,7 @@ const patchLabel = async (req, res) => {
   const beforename = req.params.name;
   const { name, desc, color } = req.body;
   try {
-    await labelService.patchLabel(beforename, name, desc, color);
+    await labelService.updateLabel(beforename, name, desc, color);
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({

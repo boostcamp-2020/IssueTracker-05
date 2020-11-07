@@ -9,13 +9,14 @@ const imageUpload = (req, res) => {
 const profileUpload = async (req, res) => {
   const { link } = req.file.data;
   const { uid } = req.user;
-  const success = await imageService.profileUpload(link, uid);
-  if (!success) {
-    return res.status(400).end();
+  try {
+    await imageService.updateProfile(link, uid);
+    return res.status(200).json({ link });
+  } catch (err) {
+    return res.status(400).json({
+      message: err,
+    });
   }
-  return res.status(200).json({
-    link,
-  });
 };
 
 export default { imageUpload, profileUpload };
