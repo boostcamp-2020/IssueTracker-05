@@ -21,9 +21,9 @@ class SceneCoordinator: Coordinator {
     
     func start() {
         if let _ = isToken {
-            showLoginFlow()
-        } else {
             showMainFlow()
+        } else {
+            showLoginFlow()
         }
     }
     
