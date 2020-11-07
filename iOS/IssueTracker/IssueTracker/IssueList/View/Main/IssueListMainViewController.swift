@@ -3,6 +3,8 @@ import UIKit
 
 class IssueListMainViewController: UIViewController {
     
+    var didSendEventClosure: ((SignInViewController.Event)-> Void)?
+    
     @IBOutlet weak var searchContrainerView: UIView!
     @IBOutlet weak var resultContrainerView: UIView!
     
@@ -38,9 +40,9 @@ class IssueListMainViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.topItem?.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.layoutIfNeeded()
-        
         self.tabBarController?.tabBar.isHidden = false
         self.issueCreationButton.bottomAnchor.constraint(equalTo: self.tabBarController!.tabBar.topAnchor).isActive = true
+        navigationController?.transitioningDelegate
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -145,6 +147,12 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)
+    }
+}
+
+extension IssueListMainViewController {
+    enum Event {
+        //case signin, signup
     }
 }
 

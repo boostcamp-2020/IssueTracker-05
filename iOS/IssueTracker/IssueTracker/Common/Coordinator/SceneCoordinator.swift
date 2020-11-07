@@ -11,26 +11,20 @@ import UIKit
 class SceneCoordinator: Coordinator {
     
     var finishDelegate: CoordinatorFinishDelegate? = nil
-    
     var navigationController: UINavigationController
-    
     var childCoordinators = [Coordinator]()
-    
     var type: CoordinatorType { .jrm }
     
     var isToken: String? {
         UserDefaults.standard.string(forKey: "token")
     }
     
-    
     func start() {
-        
         if let _ = isToken {
             showLoginFlow()
         } else {
             showMainFlow()
         }
-        
     }
     
     required init(_ navigationController: UINavigationController) {
@@ -46,7 +40,9 @@ class SceneCoordinator: Coordinator {
     }
     
     func showMainFlow() {
-        print("2")
+        let tabCoordinator = TabCoordinator(navigationController)
+        tabCoordinator.finishDelegate = self
+        tabCoordinator.start()
     }
     
 }
