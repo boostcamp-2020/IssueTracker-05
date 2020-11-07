@@ -32,11 +32,8 @@ enum TabBarPage {
     }
     
     // Add tab icon value
-    func pageeIconeImage() -> UITabBarItem {
-        UITabBarItem(
-            title: self.pageTitleValue(),
-            image: UIImage(systemName: "\(self.pageOrderNumber() + 1).circle.fill"),
-            tag: self.pageOrderNumber())
+    func pageIconImage() -> UIImage? {
+        UIImage(systemName: "\(self.pageOrderNumber() + 1).circle.fill")
     }
     
     // Add tab icon selected / deselected color
@@ -84,50 +81,45 @@ class TabCoordinator: NSObject, Coordinator {
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let navController = UINavigationController()
         navController.setNavigationBarHidden(false, animated: false)
-        
         navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
-                                                     image: nil,
+                                                     image: page.pageIconImage(),
                                                      tag: page.pageOrderNumber())
         
         switch page {
         // If needed: Each tab bar flow can have it's own Coordinator.
         case .issue:
-            let issueListMainViewController = UIStoryboard(
-                name: "IssueList", bundle: nil).instantiateViewController(
+            let issueListMainViewController: IssueListMainViewController =
+                UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
                     identifier: String(describing: IssueListMainViewController.self))
             
             issueListMainViewController.didSendEventClosure = { [weak self] event in
                 switch event {
-                case .finish :
+                case .finished :
                     self?.finish()
                 }
             }
             
             navController.pushViewController(issueListMainViewController, animated: true)
         case .label:
-            let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-            //            labelListViewController.tabBarItem
-            //                            = UITabBarItem(title: "레이블",
-            //                                           image: UIImage(systemName: "2.circle.fill"), tag: 1)
-            
+            let labelListViewController: LabelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
             labelListViewController.didSendEventClosure
                 = { [weak self] event in
                     switch event {
-                    case .finish:
+                    case .finished:
                         self?.finish()
                     }
                 }
             navController.pushViewController(labelListViewController, animated: true)
         case .milestone:
             
-            let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
+            let milestoneListViewController: MilestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
             milestoneListViewController.didSendEventClosure
                 = { [weak self] event in
-                switch event {
-                case .finish:
-                    self?.finish()
+                    switch event {
+                    case .finished:
+                        self?.finish()
+                    }
                 }
-            }
             navController.pushViewController(milestoneListViewController, animated: true)
         }
         
