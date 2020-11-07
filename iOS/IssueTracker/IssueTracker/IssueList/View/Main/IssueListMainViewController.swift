@@ -26,9 +26,9 @@ class IssueListMainViewController: UIViewController {
         // 데이터 넘겨주어야 하기 때문.
         // Filter, Edit 후 서버에 보내고 필터링, 에디팅 된 정보를 출력한다.
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Filter", style: .done, target: nil, action: #selector(pushFilterViewController))
+            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(pushFilterViewController))
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
+            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(pushEditViewController))
         bind()
     }
     

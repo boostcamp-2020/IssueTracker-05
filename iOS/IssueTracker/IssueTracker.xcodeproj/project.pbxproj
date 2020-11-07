@@ -46,6 +46,8 @@
 		DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */; };
 		DA33525E25565B3C00B9F24A /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */; };
 		DA335264255664B000B9F24A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA335263255664B000B9F24A /* Coordinator.swift */; };
+		DA33526825566ABD00B9F24A /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33526725566ABD00B9F24A /* SignInCoordinator.swift */; };
+		DA33526B255672CB00B9F24A /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33526A255672CB00B9F24A /* SignUpCoordinator.swift */; };
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9F254A83EF0036DDC3 /* LoginModel.swift */; };
@@ -104,6 +106,8 @@
 		DA1B56FA2550269800FE8D2D /* MilestoneListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListModel.swift; sourceTree = "<group>"; };
 		DA33525D25565B3C00B9F24A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		DA335263255664B000B9F24A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DA33526725566ABD00B9F24A /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		DA33526A255672CB00B9F24A /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		DA511A8D254A83020036DDC3 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DA511A99254A83A00036DDC3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA511A9A254A83A00036DDC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -343,9 +347,19 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		DA33526625566AAF00B9F24A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DA33526725566ABD00B9F24A /* SignInCoordinator.swift */,
+				DA33526A255672CB00B9F24A /* SignUpCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
+				DA33526625566AAF00B9F24A /* Coordinator */,
 				DA511A9E254A83EF0036DDC3 /* Model */,
 				DA511A8E254A83020036DDC3 /* View */,
 				DA511A8C254A83020036DDC3 /* ViewModel */,
@@ -627,6 +641,7 @@
 				88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */,
 				DA18FCE62552919200E17D7B /* InnerCollectionViewCell.swift in Sources */,
 				DAC37CE92550EC2F000C2777 /* SignUpViewModel.swift in Sources */,
+				DA33526B255672CB00B9F24A /* SignUpCoordinator.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
 				880CC61425522FEF00AE34C5 /* IssueCreationViewController.swift in Sources */,
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,
@@ -640,6 +655,7 @@
 				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
 				DA8B33CF2553C3DE00E3331F /* MilestoneListViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
+				DA33526825566ABD00B9F24A /* SignInCoordinator.swift in Sources */,
 				88E6973F2553DE420090635D /* IssueListService.swift in Sources */,
 				DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */,
 				88C0381A25497B38000D4D4A /* SearchListViewController.swift in Sources */,

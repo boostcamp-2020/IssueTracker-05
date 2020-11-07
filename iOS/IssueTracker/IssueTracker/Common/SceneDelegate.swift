@@ -5,10 +5,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var sceneCoordinator: SceneCoordinator?
+    var loginManager = LoginManager(viewModel: SignInViewController() )
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         let navigationController = UINavigationController()
+        
+        window?.rootViewController = navigationController
         
         sceneCoordinator = SceneCoordinator.init(navigationController)
         sceneCoordinator?.start()
@@ -77,7 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let url = URLContexts.first?.url {
             if url.absoluteString.starts(with: "ralp://") {
                 if let code = url.absoluteString.split(separator: "=").last.map({ String($0) }) {
-                    LoginManager.shared.requestAccessToken(with: code)
+                    loginManager.requestAccessToken(with: code)
                 }
             }
             print(url)

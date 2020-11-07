@@ -25,6 +25,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     var viewModel = SignUpViewModel()
     
+    var didSendEventClosure: ((SignUpViewController.Event) -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -45,6 +47,12 @@ class SignUpViewController: UIViewController {
         passwordTextField.setLabel("비밀번호")
         passwordConfirmTextField.setLabel("비밀번호 확인")
         nickNameTextField.setLabel("닉네임")
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(tabbedbackButton))
+    }
+    
+    @objc func tabbedbackButton() {
+        didSendEventClosure?(Event.back)
     }
 
     func bindUI() {
@@ -52,7 +60,6 @@ class SignUpViewController: UIViewController {
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
         viewModel.status.passwordConfirmErrorMessage.bind(passwordConfirmLabelUpdate)
         viewModel.status.nicknameErrorMessage.bind(nicknameConfirmLabelUpdate)
-        //viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
     }
 
     func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool, passwordConfirmEnable: Bool, nicknameEnable: Bool) {
@@ -134,7 +141,7 @@ class SignUpViewController: UIViewController {
         
         let headers: HTTPHeaders = ["Accept": "application/json"]
         
-        AF.request(url + "/api/signup", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+        AF.request(url + "/api/signup", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
             switch response.result {
             case let .success(json):
                 print(json)
@@ -142,12 +149,15 @@ class SignUpViewController: UIViewController {
                     let message = dic["message"] ?? ""
                     print(message)
                 }
+                self?.didSendEventClosure?(Event.signUp)
             case let .failure(error):
                 print(error)
+                self?.showToast(message: "회원 가입에 실패했습니다.")
             }
-            self.navigationController?.popViewController(animated: true)
         }
+        
     }
+    
 }
 
 
@@ -157,5 +167,11 @@ extension SignUpViewController: UITextFieldDelegate {
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
         viewModel.action.passwordConfirmFieldChanged(self.passwordTextField.text!, self.passwordConfirmTextField.text!)
         viewModel.action.nicknameFieldChanged(self.nickNameTextField.text!)
+    }
+}
+
+extension SignUpViewController {
+    enum Event {
+        case signUp, back
     }
 }

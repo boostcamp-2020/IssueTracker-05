@@ -27,6 +27,19 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var idErrorMessageLabel: UILabel!
     @IBOutlet weak var passwordErrorMessageLabel: UILabel!
     
+    var didSendEventClosure: ((SignInViewController.Event)-> Void)?
+    lazy var loginManager = LoginManager(viewModel: self)
+
+    var loginSuccessed: Bool = false {
+        didSet {
+            if loginSuccessed {
+                didSendEventClosure?(Event.signin)
+            } else {
+                showToast(message: "failfail")
+            }
+        }
+    }
+    
     let viewModel = SignInViewModel()
     
     override func viewDidLoad() {
@@ -83,8 +96,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func touchedSignInWithGithub(_ sender: Any) {
-        LoginManager.shared.requestCode()
-        //LoginManager.shared.getUser()
+        loginManager.requestCode()
     }
     
     @IBAction func touchedSignIinWithApple(_ sender: Any) {
@@ -101,11 +113,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func touchedSignUp(_ sender: Any) {
-        
-        let signUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(identifier: String(describing: SignUpViewController.self))
-
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
-        
+        didSendEventClosure?(Event.signup)
     }
     
     @IBAction func touchedLogIn(_ sender: Any) {
@@ -117,44 +125,12 @@ class SignInViewController: UIViewController {
 
         let headers: HTTPHeaders = ["Accept": "application/json"]
         
-        AF.request(url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+        AF.request(url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
             switch response.result {
-            case let .success(json):
-                if let json = json as? [String: Any] {
-                    if let message = json["message"] {
-                        self.showToast(message: message as! String)
-                    } else {
-                        print(json["user"])
-                        print(json["token"])
-                        let token = json["token"] as! String
-                        UserDefaults.standard.set(token, forKey: "token")
-                        let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
-                        
-                        let navController = UINavigationController(rootViewController: issueListMainViewController)
-                        navController.navigationBar.topItem?.title = "이슈"
-                        navController.navigationBar.prefersLargeTitles = true
-                        navController.tabBarItem
-                            = UITabBarItem(title: "이슈", image: nil, tag: 0)
-                        
-                        let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-                        labelListViewController.tabBarItem
-                            = UITabBarItem(title: "레이블", image: nil, tag: 0)
-                        
-                        let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-                        milestoneListViewController.tabBarItem
-                            = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
-                        
-                        let tabBarController = UITabBarController()
-                        tabBarController.tabBar.tintColor = UIColor.black
-                        tabBarController.viewControllers
-                            = [navController, labelListViewController, milestoneListViewController]
-                        let scenedelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-                        
-                        scenedelegate.window?.rootViewController = tabBarController
-                    }
-                }
+            case let .success(_):
+                self?.loginSuccessed = true
             case let .failure(error):
-                print(error)
+                self?.loginSuccessed = false
             }
         }
         
@@ -175,12 +151,8 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let user = credential.user
             let identityToken = credential.identityToken
-            print(credential)
-            print(identityToken)
-//            print("User: \(user)")
-//            print(String(data: jwt!, encoding: .utf8))
-//            guard let email = credential.email else { return }
-//            print("Email: \(email)")
+            self.didSendEventClosure?(.signin)
+
         }
     }
     
@@ -213,5 +185,11 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.action.idTextFieldChanged(self.idTextField.text!)
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
+    }
+}
+
+extension SignInViewController {
+    enum Event {
+        case signin, signup
     }
 }

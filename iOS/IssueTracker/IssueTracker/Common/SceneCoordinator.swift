@@ -9,7 +9,7 @@
 import UIKit
 
 class SceneCoordinator: Coordinator {
-
+    
     var finishDelegate: CoordinatorFinishDelegate? = nil
     
     var navigationController: UINavigationController
@@ -41,6 +41,9 @@ class SceneCoordinator: Coordinator {
     
     func showLoginFlow() {
         print("1")
+        let loginCoordinator = SignInCoordinator(navigationController)
+        loginCoordinator.finishDelegate = self
+        loginCoordinator.start()
     }
     
     func showMainFlow() {
@@ -57,7 +60,7 @@ extension SceneCoordinator: CoordinatorFinishDelegate {
         case .tab:
             navigationController.viewControllers.removeAll()
             showLoginFlow()
-        case .jrm:
+        case .signIn:
             navigationController.viewControllers.removeAll()
             showMainFlow()
         default: break

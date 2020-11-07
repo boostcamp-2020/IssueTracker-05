@@ -8,17 +8,16 @@
 import Foundation
 import KeychainSwift
 import Alamofire
-import UIKit
 
 class LoginManager {
-    
-    static let shared = LoginManager()
-    
-    private init() {}
+        
+    init(viewModel: SignInViewController) { self.signInViewModel = viewModel }
     
     private let client_id = "0da3b116126e34da88f8"
     private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
     private let api_server_url = "http://group05issuetracker.duckdns.org:49203"
+
+    unowned var signInViewModel: SignInViewController
     
     func requestCode() {
         let scope = "user"
@@ -64,35 +63,7 @@ class LoginManager {
         AF.request(api_server_url+"/api/login/github", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case let .success(json):
-                print(json)
-                if let json = json as? [String: Any] {
-                    let token = json["token"] as! String
-                    UserDefaults.standard.set(token, forKey: "token")
-                    let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
-                    
-                    let navController = UINavigationController(rootViewController: issueListMainViewController)
-                    navController.navigationBar.topItem?.title = "이슈"
-                    navController.navigationBar.prefersLargeTitles = true
-                    navController.tabBarItem
-                        = UITabBarItem(title: "이슈", image: nil, tag: 0)
-                    
-                    let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-                    labelListViewController.tabBarItem
-                        = UITabBarItem(title: "레이블", image: nil, tag: 0)
-                    
-                    let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-                    milestoneListViewController.tabBarItem
-                        = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
-                    
-                    let tabBarController = UITabBarController()
-                    tabBarController.tabBar.tintColor = UIColor.black
-                    tabBarController.viewControllers
-                        = [navController, labelListViewController, milestoneListViewController]
-                    let scenedelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-                    
-                    scenedelegate.window?.rootViewController = tabBarController
-                }
-                
+                self.signInViewModel.loginSuccessed = true
             case let .failure(error):
                 print(error)
             }

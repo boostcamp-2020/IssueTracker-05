@@ -33,5 +33,5 @@ protocol CoordinatorFinishDelegate: class {
 }
 
 enum CoordinatorType {
-    case jrm, login, tab
+    case jrm, tab, signIn, signUp, issueList, milestoneList
 }
