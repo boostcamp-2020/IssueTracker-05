@@ -1,6 +1,8 @@
 import { Strategy } from 'passport-local';
+import jwt from 'jsonwebtoken';
 
-import bcrypt from '@services/passwordBcrypt';
+import bcrypt from '@services/auth/passwordBcrypt';
+import passportConfig from '@config/passport';
 import db from '@models';
 
 const localConfig = {
@@ -18,7 +20,8 @@ const localFunction = async (userId, password, done) => {
   if (!isCorrectPassword) {
     return done(null, false, { message: '비밀번호가 다릅니다.' });
   }
-  return done(null, user);
+  const token = jwt.sign(user.toJSON(), passportConfig.secretOrKey);
+  return done(null, { user, token });
 };
 
 export default new Strategy(localConfig, localFunction);

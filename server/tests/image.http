@@ -1,0 +1,48 @@
+@hostname = localhost
+@port = 5000
+@develop = http://{{hostname}}:{{port}}/api
+@server = http://group05issuetracker.duckdns.org:49203/api
+@host = {{develop}}
+@contentType = application/json
+
+###
+
+# @name login
+POST {{host}}/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "userId": "testId1",
+  "password": "123456a@",
+  "resourceServer": "local"
+}
+
+### 기록 받아오기
+
+@authToken = {{login.response.body.token}}
+
+### 이미지 테스트
+
+POST {{host}}/image/upload HTTP/1.1
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=----asdsidsj
+
+------asdsidsj
+Content-Disposition: form-data; name="img"; filename="cat.jpg"
+Content-Type: image/jpeg
+
+< ./img/cat.jpg
+------asdsidsj--
+
+###
+
+POST {{host}}/image/upload
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=---asdf
+
+-----asdf
+Content-Disposition: form-data; name="img"; filename="ie.png"
+Content-Type: image/png
+
+< ./img/ie_is_trash.png
+-----asdf--

@@ -1,5 +1,5 @@
 import db from '@models';
-import bcrypt from '@services/passwordBcrypt';
+import bcrypt from '@services/auth/passwordBcrypt';
 
 const isDuplicated = async (userId) => {
   const user = await db.user.findOne({ where: { userId } });

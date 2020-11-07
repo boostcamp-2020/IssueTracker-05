@@ -1,4 +1,4 @@
-import signupService from '@services/signup';
+import signupService from '@services/auth/signup';
 
 const checkId = async (req, res, next) => {
   const { userId } = req.body; // true 아이디 없음, false 이미 아이디가 존재함

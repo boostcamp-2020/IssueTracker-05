@@ -1,17 +1,13 @@
-import loginService from '@services/passport';
-import githubService from '@services/github';
-import passport from 'passport';
+// import loginService from '@services/passport';
+import githubService from '@services/auth/github';
+import appleService from '@services/auth/apple';
 
 const localLogin = (req, res) => {
-  loginService.passportLocal(req, res);
-};
-
-const github = (req, res) => {
-  passport.authenticate('github', { scope: ['user: email'] })(req, res);
+  return res.status(200).json(req.user);
 };
 
 const githubCallback = (req, res) => {
-  loginService.passportGithub(req, res);
+  return res.status(200).json(req.user);
 };
 
 const githubAppLogin = async (req, res) => {
@@ -20,4 +16,10 @@ const githubAppLogin = async (req, res) => {
   return res.status(200).json(userToken);
 };
 
-export default { localLogin, github, githubCallback, githubAppLogin };
+const appleAppLogin = async (req, res) => {
+  const { token } = req.body;
+  const userToken = await appleService.appleLogin(token);
+  return res.status(200).json(userToken);
+};
+
+export default { localLogin, githubCallback, githubAppLogin, appleAppLogin };

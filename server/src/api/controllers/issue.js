@@ -3,7 +3,7 @@ import issueService from '@services/issue';
 const getTargetIssue = async (req, res) => {
   const iid = req.params.id;
   try {
-    const issue = await issueService.getTargetIssue(iid);
+    const issue = await issueService.readIssue(iid);
     return res.status(200).json(issue);
   } catch (err) {
     return res.status(400).json({
@@ -13,9 +13,8 @@ const getTargetIssue = async (req, res) => {
 };
 
 const getIssues = async (req, res) => {
-  const { page } = req.query;
   try {
-    const issues = await issueService.getIssues(page);
+    const issues = await issueService.readIssues(req.query, req.user.uid);
     return res.status(200).json(issues);
   } catch (err) {
     return res.status(400).json({

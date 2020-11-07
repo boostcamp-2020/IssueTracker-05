@@ -1,6 +1,6 @@
 import db from '@models';
 
-const profileUpload = async (link, uid) => {
+export default async (link, uid) => {
   try {
     await db.user.update(
       { image: link },
@@ -10,8 +10,6 @@ const profileUpload = async (link, uid) => {
     );
     return true;
   } catch (err) {
-    return false;
+    throw new Error(err);
   }
 };
-
-export default { profileUpload };
