@@ -5,7 +5,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
     var sceneCoordinator: SceneCoordinator?
-    var loginManager = LoginManager(viewModel: SignInViewController() )
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
@@ -15,36 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         sceneCoordinator = SceneCoordinator.init(navigationController)
         sceneCoordinator?.start()
-//
-//        if let _ = UserDefaults.standard.string(forKey: "token") {
-//
-//            let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
-//
-//            let navController = UINavigationController(rootViewController: issueListMainViewController)
-//            navController.navigationBar.topItem?.title = "이슈"
-//            navController.navigationBar.prefersLargeTitles = true
-//            navController.tabBarItem
-//                = UITabBarItem(title: "이슈", image: UIImage(systemName: "1.circle.fill"), tag: 0)
-//
-//            let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-//            labelListViewController.tabBarItem
-//                = UITabBarItem(title: "레이블", image: UIImage(systemName: "2.circle.fill"), tag: 1)
-//
-//            let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-//            milestoneListViewController.tabBarItem
-//                = UITabBarItem(title: "마일스톤", image: UIImage(systemName: "3.circle.fill"), tag: 2)
-//
-//            let tabBarController = UITabBarController()
-//            tabBarController.tabBar.tintColor = UIColor.black
-//            tabBarController.viewControllers
-//                = [navController, labelListViewController, milestoneListViewController]
-//
-//            window?.rootViewController = tabBarController
-//
-//        } else {
-//            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
-//            //            window?.rootViewController = UIStoryboard(name: "IssueDetailEditing", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailEditingViewController.self))
-//        }
         
     }
     
@@ -80,7 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let url = URLContexts.first?.url {
             if url.absoluteString.starts(with: "ralp://") {
                 if let code = url.absoluteString.split(separator: "=").last.map({ String($0) }) {
-                    loginManager.requestAccessToken(with: code)
+                    LoginManager.shared.requestAccessToken(with: code)
                 }
             }
             print(url)

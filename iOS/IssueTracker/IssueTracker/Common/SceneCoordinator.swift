@@ -40,7 +40,6 @@ class SceneCoordinator: Coordinator {
     
     
     func showLoginFlow() {
-        print("1")
         let loginCoordinator = SignInCoordinator(navigationController)
         loginCoordinator.finishDelegate = self
         loginCoordinator.start()

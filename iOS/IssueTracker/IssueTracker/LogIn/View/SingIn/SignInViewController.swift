@@ -28,7 +28,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var passwordErrorMessageLabel: UILabel!
     
     var didSendEventClosure: ((SignInViewController.Event)-> Void)?
-    lazy var loginManager = LoginManager(viewModel: self)
 
     var loginSuccessed: Bool = false {
         didSet {
@@ -50,6 +49,10 @@ class SignInViewController: UIViewController {
         viewModel.status.idErrorMessage.bind(idErrorLabelUpdate)
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
         viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
+        
+        LoginManager.shared.updateUI = { [weak self] in
+            self?.loginSuccessed = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,7 +99,7 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func touchedSignInWithGithub(_ sender: Any) {
-        loginManager.requestCode()
+        LoginManager.shared.requestCode()
     }
     
     @IBAction func touchedSignIinWithApple(_ sender: Any) {

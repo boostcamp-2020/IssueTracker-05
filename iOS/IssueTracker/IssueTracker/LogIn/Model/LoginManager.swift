@@ -10,14 +10,14 @@ import KeychainSwift
 import Alamofire
 
 class LoginManager {
-        
-    init(viewModel: SignInViewController) { self.signInViewModel = viewModel }
     
+    var updateUI: (() -> Void)?
+    
+    static let shared = LoginManager()
+    private init() { }
     private let client_id = "0da3b116126e34da88f8"
     private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
     private let api_server_url = "http://group05issuetracker.duckdns.org:49203"
-
-    unowned var signInViewModel: SignInViewController
     
     func requestCode() {
         let scope = "user"
@@ -63,7 +63,7 @@ class LoginManager {
         AF.request(api_server_url+"/api/login/github", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case let .success(json):
-                self.signInViewModel.loginSuccessed = true
+                self.updateUI?()
             case let .failure(error):
                 print(error)
             }
@@ -88,6 +88,9 @@ class LoginManager {
             }
         })
     }
+    
+    
+    
     
     func logout() {
         KeychainSwift().clear()
