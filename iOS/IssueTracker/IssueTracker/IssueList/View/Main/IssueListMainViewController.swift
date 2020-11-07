@@ -49,7 +49,6 @@ class IssueListMainViewController: UIViewController {
         //self.tabBarController?.tabBar.isHidden = true
     }
     
-    
     func bind() {
         viewModel.status.searchResultList
             .bindAndFire(issueResultViewController.applySnapshot(sections:))

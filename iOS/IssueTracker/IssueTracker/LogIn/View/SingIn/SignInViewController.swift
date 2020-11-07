@@ -34,7 +34,7 @@ class SignInViewController: UIViewController {
             if loginSuccessed {
                 didSendEventClosure?(Event.signin)
             } else {
-                showToast(message: "failfail")
+                
             }
         }
     }
@@ -189,6 +189,13 @@ extension SignInViewController: UITextFieldDelegate {
         viewModel.action.idTextFieldChanged(self.idTextField.text!)
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        loginButton.sendActions(for: .touchUpInside)
+        return true
+    }
+    
 }
 
 extension SignInViewController {

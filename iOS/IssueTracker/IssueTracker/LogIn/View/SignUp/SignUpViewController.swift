@@ -10,18 +10,18 @@ import UIKit
 import Alamofire
 
 class SignUpViewController: UIViewController {
-
+    
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var nickNameTextField: UITextField!
-
+    
     @IBOutlet weak var idErrorMessageLabel: UILabel!
     @IBOutlet weak var passwordErrorMessageLabel: UILabel!
     @IBOutlet weak var passwordConfirmErrorMessageLabel: UILabel!
     @IBOutlet weak var nickNameErrorMessageLabel: UILabel!
-
+    
     @IBOutlet weak var signUpButton: UIButton!
     var viewModel = SignUpViewModel()
     
@@ -37,11 +37,11 @@ class SignUpViewController: UIViewController {
         setUI()
         bindUI()
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
+    
     func setUI() {
         idTextField.setLabel("아이디")
         passwordTextField.setLabel("비밀번호")
@@ -54,14 +54,16 @@ class SignUpViewController: UIViewController {
     @objc func tabbedbackButton() {
         didSendEventClosure?(Event.back)
     }
-
+    
     func bindUI() {
         viewModel.status.idErrorMessage.bind(idErrorLabelUpdate)
         viewModel.status.passwordErrorMessage.bind(passwordErrorLabelUpdate)
         viewModel.status.passwordConfirmErrorMessage.bind(passwordConfirmLabelUpdate)
         viewModel.status.nicknameErrorMessage.bind(nicknameConfirmLabelUpdate)
-    }
+        viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
 
+    }
+    
     func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool, passwordConfirmEnable: Bool, nicknameEnable: Bool) {
         if idEnable, passwordEnable, passwordConfirmEnable, nicknameEnable {
             self.signUpButton.isUserInteractionEnabled = true
@@ -81,7 +83,7 @@ class SignUpViewController: UIViewController {
             self.nickNameErrorMessageLabel.isHidden = false
         }
     }
-        
+    
     func passwordConfirmLabelUpdate(passwordConfirm: String) {
         if passwordConfirm.isEmpty {
             self.passwordConfirmErrorMessageLabel.isHidden = true
@@ -109,7 +111,7 @@ class SignUpViewController: UIViewController {
             self.passwordErrorMessageLabel.isHidden = false
         }
     }
-        
+    
     func showToast(message : String) {
         let width_variable:CGFloat = 100
         let toastLabel = UILabel(frame: CGRect(x: width_variable, y: self.view.frame.size.height-100, width: view.frame.size.width-2*width_variable, height: 35))
@@ -167,6 +169,13 @@ extension SignUpViewController: UITextFieldDelegate {
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
         viewModel.action.passwordConfirmFieldChanged(self.passwordTextField.text!, self.passwordConfirmTextField.text!)
         viewModel.action.nicknameFieldChanged(self.nickNameTextField.text!)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        signUpButton.sendActions(for: .touchUpInside)
+        return true
     }
 }
 

@@ -48,6 +48,11 @@
                                 <state key="normal" title="Sign in With Github">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="touchedSignInWithGithub:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="Nmf-g4-67b"/>
                                 </connections>
@@ -58,6 +63,11 @@
                                 <state key="normal" title=" Sign in With Apple">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="touchedSignIinWithApple:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="HfD-sD-eAv"/>
                                 </connections>
