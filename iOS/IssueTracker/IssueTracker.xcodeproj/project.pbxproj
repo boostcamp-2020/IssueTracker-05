@@ -27,6 +27,7 @@
 		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
 		8872A13B25569A0200EB1E91 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872A13A25569A0200EB1E91 /* TabCoordinator.swift */; };
 		8875E9782557DA910066146D /* LabelEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E9772557DA910066146D /* LabelEditingViewController.swift */; };
+		8875E97F255843CE0066146D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E97E255843CE0066146D /* String+.swift */; };
 		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
@@ -96,6 +97,7 @@
 		8856FFD0254A861C00C7FD26 /* IssueList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueList.storyboard; sourceTree = "<group>"; };
 		8872A13A25569A0200EB1E91 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		8875E9772557DA910066146D /* LabelEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditingViewController.swift; sourceTree = "<group>"; };
+		8875E97E255843CE0066146D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MilestoneList.storyboard; sourceTree = "<group>"; };
 		88B8F0F7254AB12000C23791 /* LabelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LabelList.storyboard; sourceTree = "<group>"; };
 		88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				DAC37CEC2550EDCA000C2777 /* UITextField+LeftView.swift */,
 				DAC37CF025510747000C2777 /* UIButton.swift */,
 				DA0C60E62557DE35000CC10E /* tagView.swift */,
+				8875E97E255843CE0066146D /* String+.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				8872A13B25569A0200EB1E91 /* TabCoordinator.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
 				880CC61425522FEF00AE34C5 /* IssueCreationViewController.swift in Sources */,
+				8875E97F255843CE0066146D /* String+.swift in Sources */,
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,
 				DABEB869254821B3006471F6 /* SceneDelegate.swift in Sources */,
 				DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */,

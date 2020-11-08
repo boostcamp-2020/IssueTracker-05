@@ -186,6 +186,9 @@
                                                 </constraints>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="arrow.clockwise.circle.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="resetColor:" destination="MUj-go-e84" eventType="touchUpInside" id="P8u-Jj-QKO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6h-SM-Hei">
                                                 <rect key="frame" x="155" y="215" width="89" height="30"/>
@@ -290,6 +293,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="wNs-XL-V7U"/>
                     <connections>
+                        <outlet property="colorBoard" destination="t6h-SM-Hei" id="5PH-7L-82C"/>
+                        <outlet property="colorTextField" destination="NCu-B1-w0R" id="WMw-8F-eU9"/>
                         <outlet property="descriptionField" destination="htC-O7-G2d" id="rD6-w1-Phw"/>
                         <outlet property="titleField" destination="4KW-kc-nFo" id="6Xx-wA-TTS"/>
                     </connections>
