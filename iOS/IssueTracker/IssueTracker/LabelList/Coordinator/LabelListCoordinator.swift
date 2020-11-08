@@ -7,7 +7,7 @@ class LabelListCoordinator: Coordinator {
     
     var childCoordinators = [Coordinator]()
     
-    var type: CoordinatorType { .issueList }
+    var type: CoordinatorType { .labelList }
     
     func start() {
         showLabelListViewController()
