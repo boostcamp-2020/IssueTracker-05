@@ -424,13 +424,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DA0C60EA2557E06B000CC10E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DA335262255664A400B9F24A /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +503,6 @@
 		DA8B33C02552F1A200E3331F /* IssueDetailEditing */ = {
 			isa = PBXGroup;
 			children = (
-				DA0C60EA2557E06B000CC10E /* Model */,
 				DA0C60E92557E066000CC10E /* View */,
 				DA0C608C2557B82B000CC10E /* Cell */,
 			);
