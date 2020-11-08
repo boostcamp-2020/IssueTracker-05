@@ -39,4 +39,13 @@ import UIKit
             return UIColor(cgColor: color)
         }
     }
+    
+    func makeTagStyle() {
+        self.borderWidth = 1.0
+        self.borderColor = .black
+        self.cornerRadius = self.frame.height / 8
+        self.setTitleColor(.white, for: .normal)
+        self.backgroundColor = UIColor(red: 42/255, green: 193/255, blue: 188/255, alpha: 1.0)
+        self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    }
 }

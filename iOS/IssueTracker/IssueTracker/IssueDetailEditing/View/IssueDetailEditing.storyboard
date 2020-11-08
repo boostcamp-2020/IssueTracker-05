@@ -36,15 +36,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKt-F3-pvZ">
-                                                    <rect key="frame" x="10" y="10" width="394" height="108"/>
+                                                    <rect key="frame" x="10" y="10" width="404" height="118"/>
                                                     <state key="normal" title="버튼"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="wKt-F3-pvZ" secondAttribute="bottom" constant="10" id="GT3-1w-qeZ"/>
-                                                <constraint firstItem="wKt-F3-pvZ" firstAttribute="leading" secondItem="NVl-ep-Tpg" secondAttribute="leading" constant="10" id="KHn-ey-i3n"/>
-                                                <constraint firstAttribute="trailing" secondItem="wKt-F3-pvZ" secondAttribute="trailing" constant="10" id="sHj-Q1-Ci5"/>
-                                                <constraint firstItem="wKt-F3-pvZ" firstAttribute="top" secondItem="NVl-ep-Tpg" secondAttribute="top" constant="10" id="sfI-Ht-ehn"/>
+                                                <constraint firstItem="wKt-F3-pvZ" firstAttribute="leading" secondItem="NVl-ep-Tpg" secondAttribute="leading" constant="10" id="OeI-69-5KK"/>
+                                                <constraint firstAttribute="trailing" secondItem="wKt-F3-pvZ" secondAttribute="trailing" id="QwO-8o-2lx"/>
+                                                <constraint firstItem="wKt-F3-pvZ" firstAttribute="top" secondItem="NVl-ep-Tpg" secondAttribute="top" constant="10" id="WIN-XV-otK"/>
+                                                <constraint firstAttribute="bottom" secondItem="wKt-F3-pvZ" secondAttribute="bottom" id="vMf-Ye-w2o"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="414" height="128"/>
