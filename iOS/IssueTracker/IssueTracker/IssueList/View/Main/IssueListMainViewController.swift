@@ -36,18 +36,14 @@ class IssueListMainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.topItem?.title = "이슈"
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.topItem?.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.layoutIfNeeded()
+        self.navigationController?.navigationBar.topItem?.title = "이슈"
         self.tabBarController?.tabBar.isHidden = false
         self.issueCreationButton.bottomAnchor.constraint(equalTo: self.tabBarController!.tabBar.topAnchor).isActive = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        //self.tabBarController?.tabBar.isHidden = true
     }
     
     func bind() {
@@ -75,7 +71,6 @@ class IssueListMainViewController: UIViewController {
     func setupSearchListViewController() {
         searchViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
-        
         searchContrainerView.frame = searchContrainerView.bounds
         searchContrainerView.addSubview(searchViewController.view)
     }
@@ -83,11 +78,7 @@ class IssueListMainViewController: UIViewController {
     func setupIssueResultViewController() {
         issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
-        
-        
         issueResultViewController.view.frame = resultContrainerView.bounds
-        
-        
         resultContrainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
     }

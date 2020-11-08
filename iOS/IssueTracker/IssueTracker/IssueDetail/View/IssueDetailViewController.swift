@@ -33,13 +33,19 @@ class IssueDetailViewController: UIViewController {
             return
         }
         
-        // TODO: 나중에 제거해야 한다. 
-//        updateViews(model: IssueDetailModel.all())
+        // TODO: 나중에 제거해야 한다.
+        updateViews(model: IssueDetailModel.all())
+      
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureContainerOfSwipeView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func updateViews(model: IssueDetailModel) {
@@ -158,11 +164,6 @@ class IssueDetailViewController: UIViewController {
     
     @objc func pushEditViewController() {
         print("Edit")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // TODO: action과 configure를 구분
