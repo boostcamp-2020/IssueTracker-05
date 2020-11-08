@@ -9,5 +9,6 @@
 import UIKit
 
 class MilestoneCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var milestoneLabel: UILabel!
     
 }

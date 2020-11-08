@@ -10,4 +10,5 @@ import UIKit
 
 class LabelCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var tagButton: UIButton!    
 }

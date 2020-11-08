@@ -6,6 +6,7 @@
 //  Copyright © 2020 ralph. All rights reserved.
 //
 import UIKit
+import Alamofire
 
 protocol IssueDetailEditingViewControllerDelegate {
     func scrollUpButtonTabbed()
@@ -27,6 +28,8 @@ class IssueDetailEditingViewController: UIViewController {
         }
     }
     
+    weak var viewModel: IssueDetailViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.reloadData()
@@ -34,9 +37,22 @@ class IssueDetailEditingViewController: UIViewController {
         buttonsForInit.forEach {
             $0.configureButtonInDetailEditing()
         }
+        viewModel?.status.model.bind(updateData(model:))
+    }
+    
+    func updateData(model: IssueDetailModel) {
+        collectionView.reloadData()
+    }
+    
+    func requestLabel() {
+        let url = "http://group05issuetracker.duckdns.org:49203"
+        
+        let parameters = [""]
+        
+        let headers: HTTPHeaders = ["Accept": "application/json"]
         
     }
-        
+    
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
         delegate?.addCommentButtonTabbed()
     }
@@ -66,22 +82,29 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        if section == 0 {
+            return viewModel?.status.model.value.assignees?.count ?? 0
+        } else if section == 1 {
+            return viewModel?.status.model.value.label?.count ?? 0
+        } else {
+            return viewModel?.status.model.value.mid == nil ? 0 : 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        var cell = UICollectionViewCell()
-
         if indexPath.section == 0 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
+            return cell
         } else if indexPath.section == 1 {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as! LabelCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as! LabelCollectionViewCell
+            return cell
         } else {
-            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
+            cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.mid))"
+            return cell
         }
         
-        return cell
     }
      
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -97,7 +120,6 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
         }
         return UICollectionReusableView()
     }
-
     
 }
 

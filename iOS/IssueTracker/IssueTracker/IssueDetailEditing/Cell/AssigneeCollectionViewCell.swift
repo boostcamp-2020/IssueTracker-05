@@ -9,5 +9,6 @@
 import UIKit
 
 class AssigneeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var tagButton: UIButton!
     
 }
