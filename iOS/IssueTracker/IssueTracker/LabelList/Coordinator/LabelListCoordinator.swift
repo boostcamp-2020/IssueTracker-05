@@ -20,7 +20,8 @@ class LabelListCoordinator: Coordinator {
     func showLabelListViewController() {
         let labelVC: LabelListViewController
             = UIStoryboard(name: "LabelList", bundle: nil)
-            .instantiateViewController(identifier: String(describing: LabelListViewController.self))
+            .instantiateViewController(
+                identifier: String(describing: LabelListViewController.self))
         
 //        labelVC.didSendEventClosure = { [weak self] event in
 //            //
