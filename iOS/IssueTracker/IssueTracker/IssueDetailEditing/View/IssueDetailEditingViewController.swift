@@ -95,6 +95,13 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
 
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
+            
+            if let assignee = viewModel?.status.model.value.assignees?[indexPath.row] {
+                cell.tagButton.setTitle(assignee.userId, for: .normal)
+                cell.tagButton.borderWidth = 1.0
+                cell.tagButton.borderColor = .black
+                cell.tagButton.cornerRadius = 4.0
+            }
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as! LabelCollectionViewCell
