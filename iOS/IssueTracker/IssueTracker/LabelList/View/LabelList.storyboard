@@ -105,12 +105,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPe-lc-fNR">
                                 <rect key="frame" x="41.5" y="229" width="331" height="448"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="초기화" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWc-5a-HXT">
-                                        <rect key="frame" x="10" y="421" width="42" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" systemColor="systemGrayColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TW3-ew-QkT">
                                         <rect key="frame" x="256" y="405" width="65" height="36"/>
                                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -127,6 +121,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="saveButtonTabbed:" destination="MUj-go-e84" eventType="touchUpInside" id="scA-T2-YSf"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwS-ok-e3q">
                                         <rect key="frame" x="20" y="67" width="291" height="314"/>
@@ -228,22 +225,31 @@
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button" image="xmark" catalog="system"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4G3-cl-sns">
+                                        <rect key="frame" x="10" y="411" width="39" height="30"/>
+                                        <state key="normal" title="초기화">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonTabbed:" destination="MUj-go-e84" eventType="touchUpInside" id="A3g-oC-71D"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="zwS-ok-e3q" firstAttribute="leading" secondItem="gPe-lc-fNR" secondAttribute="leading" constant="20" id="3xY-ja-JAA"/>
                                     <constraint firstAttribute="trailing" secondItem="TW3-ew-QkT" secondAttribute="trailing" constant="10" id="4rF-gC-YLg"/>
                                     <constraint firstItem="zwS-ok-e3q" firstAttribute="centerY" secondItem="gPe-lc-fNR" secondAttribute="centerY" id="8GP-QU-bcl"/>
+                                    <constraint firstItem="4G3-cl-sns" firstAttribute="leading" secondItem="gPe-lc-fNR" secondAttribute="leading" constant="10" id="Ev8-OD-GUY"/>
                                     <constraint firstItem="YLL-iR-lUi" firstAttribute="top" secondItem="gPe-lc-fNR" secondAttribute="top" constant="8" id="Fl3-I5-Fcv"/>
-                                    <constraint firstItem="tWc-5a-HXT" firstAttribute="leading" secondItem="gPe-lc-fNR" secondAttribute="leading" constant="10" id="GAs-UD-enD"/>
                                     <constraint firstItem="zwS-ok-e3q" firstAttribute="height" secondItem="gPe-lc-fNR" secondAttribute="height" multiplier="0.7" id="IF3-Qz-lXY"/>
                                     <constraint firstItem="Rqp-Nf-uWq" firstAttribute="leading" secondItem="gPe-lc-fNR" secondAttribute="leading" id="MmI-B8-GaB"/>
                                     <constraint firstItem="Rqp-Nf-uWq" firstAttribute="height" secondItem="gPe-lc-fNR" secondAttribute="height" multiplier="0.005" id="aWu-ca-JBN"/>
                                     <constraint firstItem="Rqp-Nf-uWq" firstAttribute="top" secondItem="YLL-iR-lUi" secondAttribute="bottom" constant="2" id="hUo-Bj-3k9"/>
                                     <constraint firstItem="YLL-iR-lUi" firstAttribute="leading" secondItem="gPe-lc-fNR" secondAttribute="leading" constant="8" id="myG-Sc-aEb"/>
                                     <constraint firstAttribute="trailing" secondItem="Rqp-Nf-uWq" secondAttribute="trailing" id="nLx-i3-TmH"/>
+                                    <constraint firstItem="4G3-cl-sns" firstAttribute="bottom" secondItem="TW3-ew-QkT" secondAttribute="bottom" id="qkW-8j-Obb"/>
                                     <constraint firstAttribute="bottom" secondItem="TW3-ew-QkT" secondAttribute="bottom" constant="7" id="qs6-EV-eNl"/>
-                                    <constraint firstItem="tWc-5a-HXT" firstAttribute="bottom" secondItem="TW3-ew-QkT" secondAttribute="bottom" id="ren-5D-rH0"/>
                                     <constraint firstAttribute="trailing" secondItem="zwS-ok-e3q" secondAttribute="trailing" constant="20" id="tGS-3F-8r4"/>
                                 </constraints>
                             </view>
@@ -258,6 +264,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wNs-XL-V7U"/>
+                    <connections>
+                        <outlet property="descriptionField" destination="htC-O7-G2d" id="rD6-w1-Phw"/>
+                        <outlet property="titleField" destination="4KW-kc-nFo" id="6Xx-wA-TTS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcv-99-6iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

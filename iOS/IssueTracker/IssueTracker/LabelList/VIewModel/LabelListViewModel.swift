@@ -13,7 +13,7 @@ class LabelListViewModel {
         // cell tabbed
         // 이슈 추가
         
-        // + 버튼 -> 이건 코디 네이터
+        // + 버튼 
     }
     
     let status = Status()
