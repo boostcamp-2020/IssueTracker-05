@@ -17,6 +17,8 @@
 		8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8762557B9D400784C57 /* LabelListCoordinator.swift */; };
 		8810F87A2557C0C400784C57 /* LabelListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8792557C0C400784C57 /* LabelListCellView.swift */; };
 		8810F87D2557C8BF00784C57 /* LabelListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F87C2557C8BF00784C57 /* LabelListModel.swift */; };
+		8810F8802557CF5C00784C57 /* LabelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F87F2557CF5C00784C57 /* LabelListViewModel.swift */; };
+		8810F8842557D11700784C57 /* LabelListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8832557D11700784C57 /* LabelListService.swift */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */; };
 		881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC67B25510A5B00676011 /* IssueDetailedView.swift */; };
@@ -81,6 +83,8 @@
 		8810F8762557B9D400784C57 /* LabelListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListCoordinator.swift; sourceTree = "<group>"; };
 		8810F8792557C0C400784C57 /* LabelListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListCellView.swift; sourceTree = "<group>"; };
 		8810F87C2557C8BF00784C57 /* LabelListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListModel.swift; sourceTree = "<group>"; };
+		8810F87F2557CF5C00784C57 /* LabelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewModel.swift; sourceTree = "<group>"; };
+		8810F8832557D11700784C57 /* LabelListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListService.swift; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
 		881BC67B25510A5B00676011 /* IssueDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailedView.swift; sourceTree = "<group>"; };
@@ -194,6 +198,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		8810F8822557D10B00784C57 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8810F8832557D11700784C57 /* LabelListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		8818249B25484B8000C352A8 /* Extenstion */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +311,7 @@
 		8872A1442557A96C00EB1E91 /* VIewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8810F87F2557CF5C00784C57 /* LabelListViewModel.swift */,
 			);
 			path = VIewModel;
 			sourceTree = "<group>";
@@ -328,6 +341,7 @@
 			children = (
 				8810F8752557B9C300784C57 /* Coordinator */,
 				8872A1432557A96200EB1E91 /* Model */,
+				8810F8822557D10B00784C57 /* Service */,
 				8872A1442557A96C00EB1E91 /* VIewModel */,
 				8872A1452557A97300EB1E91 /* View */,
 			);
@@ -679,6 +693,7 @@
 				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
 				8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
+				8810F8802557CF5C00784C57 /* LabelListViewModel.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				DA18FD0E2552CC4500E17D7B /* IssueDetailCollectionView.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
@@ -713,6 +728,7 @@
 				881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */,
 				88E697452553F8F00090635D /* IssueDetailService.swift in Sources */,
 				88D14AAD25528397000A6395 /* IssueDetailModel.swift in Sources */,
+				8810F8842557D11700784C57 /* LabelListService.swift in Sources */,
 				88D14AB22552935A000A6395 /* IssueCommentCellView.swift in Sources */,
 				88C03823254990C5000D4D4A /* Bindable.swift in Sources */,
 			);

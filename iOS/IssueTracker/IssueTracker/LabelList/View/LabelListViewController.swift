@@ -8,15 +8,30 @@ class LabelListViewController: UIViewController {
     lazy var dataLayout = makeDataLayout()
     
     let dummy = Label.all()
+    var viewModel = LabelListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.collectionViewLayout = configureCollectionViewLayout()
+        
+        navigationItem.rightBarButtonItem
+            = UIBarButtonItem(
+                image: UIImage(systemName: "plus"),
+                style: .done,
+                target: self, action: #selector(createLabelButtonTabbed))
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        applyAnapshot(sections: dummy)
+    }
+    
+    func bind() {
+        viewModel.status.labels.bindAndFire(applyAnapshot)
+    }
+    
+    @objc func createLabelButtonTabbed() {
+        print("createLabelButtonTabbed")
     }
     
     func applyAnapshot(sections: [Label]) {
