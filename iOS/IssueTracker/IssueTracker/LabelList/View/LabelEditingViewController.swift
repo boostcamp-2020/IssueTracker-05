@@ -29,7 +29,7 @@ class LabelEditingViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: UIButton) {
-        
+        dismiss(animated: true)
     }
     
     override func viewDidLoad() {

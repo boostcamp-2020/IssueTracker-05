@@ -5,6 +5,7 @@ extension LabelListViewController: LabelEditingViewControllerDelegate {
         viewModel.action.labelEditSaveButtonDidTabbed(title, description, color)
     }
 }
+
 class LabelListViewController: UIViewController {
     
     var didSendEventClosure: ((LabelListViewController.Event)-> Void)?
