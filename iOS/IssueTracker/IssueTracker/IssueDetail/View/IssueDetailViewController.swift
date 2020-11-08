@@ -32,8 +32,10 @@ class IssueDetailViewController: UIViewController {
             viewModel.status.model.bindAndFire(updateViews(model:))
             return
         }
+        
         // TODO: 나중에 제거해야 한다.
         updateViews(model: IssueDetailModel.all())
+      
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +52,6 @@ class IssueDetailViewController: UIViewController {
         
         // 유저 이미지 - 아직은 없음
         
-        //userName.text = model.
         issueTitle.text = model.title
         issueNumber.text = "#\(model.iid)"
         isOpen = model.isOpen
@@ -61,6 +62,8 @@ class IssueDetailViewController: UIViewController {
         } else {
             applySnapshot(sections: Comment.all())
         }
+        
+        swipeUpView.collectionView.reloadData()
         
         //swipeUpView update -> 담당자, 마일스톤, 레이블
     }
@@ -113,6 +116,7 @@ class IssueDetailViewController: UIViewController {
     func configureContainerOfSwipeView() {
         swipeUpView = UIStoryboard(name: "IssueDetailEditing", bundle: nil)
             .instantiateViewController(identifier: String(describing:IssueDetailEditingViewController.self))
+        swipeUpView.viewModel = viewModel
         swipeUpView.delegate = self
         swipeUpView.view.frame = containerView.bounds
         containerView.addSubview(swipeUpView.view)

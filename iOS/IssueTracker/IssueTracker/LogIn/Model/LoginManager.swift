@@ -63,12 +63,14 @@ class LoginManager {
         AF.request(api_server_url+"/api/login/github", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case let .success(json):
-                self.updateUI?()
+                if let json = json as? [String: Any] {
+                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    self.updateUI?()
+                }
             case let .failure(error):
                 print(error)
             }
         }
-        
         
     }
     
@@ -89,11 +91,24 @@ class LoginManager {
         })
     }
     
-    
-    
-    
-    func logout() {
-        KeychainSwift().clear()
+    func requestiOSJWT(acccess_token:String) {
+        
+        let parameters = ["token":acccess_token]
+        
+        let headers: HTTPHeaders = ["content-type": "application/x-www-form-urlencoded"]
+        
+        AF.request(api_server_url+"/api/login/ios", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                if let json = json as? [String: Any] {
+                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    self.updateUI?()
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+        
     }
     
 }

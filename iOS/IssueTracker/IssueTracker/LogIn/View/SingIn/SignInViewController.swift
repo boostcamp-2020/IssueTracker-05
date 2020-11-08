@@ -111,8 +111,6 @@ class SignInViewController: UIViewController {
         controller.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
         controller.performRequests()
         
-        
-        
     }
     
     @IBAction func touchedSignUp(_ sender: Any) {
@@ -130,8 +128,11 @@ class SignInViewController: UIViewController {
         
         AF.request(url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
             switch response.result {
-            case let .success(_):
-                self?.loginSuccessed = true
+            case let .success(json):
+                if let json = json as? [String: Any] {
+                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    self?.loginSuccessed = true
+                }
             case let .failure(error):
                 self?.loginSuccessed = false
             }
@@ -153,9 +154,12 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             let user = credential.user
-            let identityToken = credential.identityToken
+            guard let identityToken = credential.identityToken else { return }
+            guard let token = String(data: identityToken, encoding: .utf8) else { return }
+            print(token)
+            LoginManager.shared.requestiOSJWT(acccess_token: token)
+            sleep(3)
             self.didSendEventClosure?(.signin)
-
         }
     }
     

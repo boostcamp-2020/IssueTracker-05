@@ -31,7 +31,7 @@ class IssueDetailService {
                     let decodedData = try JSONDecoder().decode(IssueDetailModel.self, from: resultData)
                     
                     weakSelf.viewModel.status.model.value = decodedData
-                    
+                    //.. = weakSelf.viewModel.status.model.value.assignees
                 } catch {
                     print(error)
                 }
