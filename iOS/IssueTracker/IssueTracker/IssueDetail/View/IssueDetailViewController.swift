@@ -57,6 +57,8 @@ class IssueDetailViewController: UIViewController {
             applySnapshot(sections: Comment.all())
         }
         
+        swipeUpView.collectionView.reloadData()
+        
         //swipeUpView update -> 담당자, 마일스톤, 레이블
     }
     

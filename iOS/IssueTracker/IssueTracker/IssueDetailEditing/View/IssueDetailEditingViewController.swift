@@ -37,23 +37,11 @@ class IssueDetailEditingViewController: UIViewController {
         buttonsForInit.forEach {
             $0.configureButtonInDetailEditing()
         }
-        viewModel?.status.model.bind(updateData(model:))
-    }
-    
-    func updateData(model: IssueDetailModel) {
-        collectionView.reloadData()
-    }
-    
-    func requestLabel() {
-        let url = "http://group05issuetracker.duckdns.org:49203"
-        
-        let parameters = [""]
-        
-        let headers: HTTPHeaders = ["Accept": "application/json"]
         
     }
-    
+        
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
+        self.collectionView.reloadData()
         delegate?.addCommentButtonTabbed()
     }
     

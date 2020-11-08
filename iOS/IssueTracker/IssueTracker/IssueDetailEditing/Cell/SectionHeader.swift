@@ -12,5 +12,6 @@ class SectionHeader: UICollectionReusableView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBAction func touchedEditButton(_ sender: Any) {
+        
     }
 }
