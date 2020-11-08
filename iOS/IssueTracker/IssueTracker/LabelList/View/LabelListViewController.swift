@@ -5,6 +5,51 @@ class LabelListViewController: UIViewController {
     var didSendEventClosure: ((LabelListViewController.Event)-> Void)?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    lazy var dataLayout = makeDataLayout()
+    
+    let dummy = Label.all()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView.collectionViewLayout = configureCollectionViewLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyAnapshot(sections: dummy)
+    }
+    
+    func applyAnapshot(sections: [Label]) {
+        var snapshot = NSDiffableDataSourceSnapshot<[Label], Label>()
+        snapshot.appendSections([sections])
+        snapshot.appendItems(sections)
+        dataLayout.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func configureCollectionViewLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(80))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: itemSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    func makeDataLayout() -> UICollectionViewDiffableDataSource<[Label],Label> {
+        return UICollectionViewDiffableDataSource<[Label], Label>(
+            collectionView: collectionView,
+            cellProvider: { [weak self] collectionView, indexPath, label
+                -> UICollectionViewCell? in
+                guard let weakSelf = self else { return nil }
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
+                    return nil
+                }
+                cell.setup(title: label.name, description: label.desc)
+                return cell
+            })
+    }
     
 }
 
