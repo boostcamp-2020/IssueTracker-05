@@ -27,8 +27,8 @@ class SignUpCoordinator: Coordinator {
 
     func showSignUpViewController() {
         let signupVC: SignUpViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateViewController(identifier: String(describing: SignUpViewController.self))
-        signupVC.didSendEventClosure = { event in
-            self.finish()
+        signupVC.didSendEventClosure = { [weak self] event in
+            self?.finish()
         }
         navigationController.pushViewController(signupVC, animated: true)
     }

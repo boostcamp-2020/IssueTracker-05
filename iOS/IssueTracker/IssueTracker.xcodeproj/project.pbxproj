@@ -14,6 +14,7 @@
 		880CC61D2552304E00AE34C5 /* IssueCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */; };
 		880CC6202552306600AE34C5 /* IssueListFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */; };
 		880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */; };
+		8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8762557B9D400784C57 /* LabelListCoordinator.swift */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
 		881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */; };
 		881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC67B25510A5B00676011 /* IssueDetailedView.swift */; };
@@ -75,6 +76,7 @@
 		880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueCreation.storyboard; sourceTree = "<group>"; };
 		880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueListFilter.storyboard; sourceTree = "<group>"; };
 		880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
+		8810F8762557B9D400784C57 /* LabelListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListCoordinator.swift; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
 		881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
 		881BC67B25510A5B00676011 /* IssueDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailedView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,14 @@
 				88D14AAC25528397000A6395 /* IssueDetailModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8810F8752557B9C300784C57 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8810F8762557B9D400784C57 /* LabelListCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		8818249B25484B8000C352A8 /* Extenstion */ = {
@@ -310,6 +320,7 @@
 		88B8F0F3254AB09100C23791 /* LabelList */ = {
 			isa = PBXGroup;
 			children = (
+				8810F8752557B9C300784C57 /* Coordinator */,
 				8872A1432557A96200EB1E91 /* Model */,
 				8872A1442557A96C00EB1E91 /* VIewModel */,
 				8872A1452557A97300EB1E91 /* View */,
@@ -660,6 +671,7 @@
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,
 				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
+				8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				DA18FD0E2552CC4500E17D7B /* IssueDetailCollectionView.swift in Sources */,

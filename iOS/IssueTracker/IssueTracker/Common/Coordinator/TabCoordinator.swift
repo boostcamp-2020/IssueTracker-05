@@ -103,16 +103,9 @@ class TabCoordinator: NSObject, Coordinator {
             
             newNavController.pushViewController(issueListMainViewController, animated: true)
         case .label:
-            let labelListViewController: LabelListViewController
-                = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-            labelListViewController.didSendEventClosure
-                = { [weak self] event in
-                    switch event {
-                    case .finished:
-                        self?.finish()
-                    }
-                }
-            newNavController.pushViewController(labelListViewController, animated: true)
+            let labelCoordinator = LabelListCoordinator(newNavController)
+            labelCoordinator.finishDelegate = self
+            childCoordinators.append(labelCoordinator)
         case .milestone:
             
             let milestoneListViewController: MilestoneListViewController
@@ -147,8 +140,14 @@ class TabCoordinator: NSObject, Coordinator {
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
+
         
         
-        
+    }
+}
+
+extension TabCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        // 여기서 이슈리스트, 레이블리스트, 마일스톤 리스트 코디네이터를 정리해준다. 
     }
 }

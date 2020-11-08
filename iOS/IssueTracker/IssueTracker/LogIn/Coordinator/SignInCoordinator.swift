@@ -28,12 +28,12 @@ class SignInCoordinator: Coordinator {
     func showLoginViewController() {
         let loginVC: SignInViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: String(describing: SignInViewController.self))
 
-        loginVC.didSendEventClosure = { event in
+        loginVC.didSendEventClosure = { [weak self] event in
             switch event {
             case .signin:
-                self.finish()
+                self?.finish()
             case .signup:
-                self.showSignUpViewController()
+                self?.showSignUpViewController()
             }
         }
         navigationController.pushViewController(loginVC, animated: true)
@@ -43,6 +43,7 @@ class SignInCoordinator: Coordinator {
         let signCoordinator = SignUpCoordinator(navigationController)
         signCoordinator.finishDelegate = self
         signCoordinator.start()
+        childCoordinators.append(signCoordinator)
     }
     
     
