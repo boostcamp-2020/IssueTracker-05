@@ -22,12 +22,10 @@ class LabelListCoordinator: Coordinator {
             = UIStoryboard(name: "LabelList", bundle: nil)
             .instantiateViewController(identifier: String(describing: LabelListViewController.self))
         
-        labelVC.didSendEventClosure = { [weak self] event in
-            switch event {
-            case .finished:
-                self?.finish()
-            }
-        }
+//        labelVC.didSendEventClosure = { [weak self] event in
+//            //
+//        }
+        
         navigationController.pushViewController(labelVC, animated: true)
     }
 }
