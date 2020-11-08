@@ -1,14 +1,20 @@
-//
-//  MileStoneListModel.swift
-//  IssueTracker
-//
-//  Created by cho on 2020/11/02.
-//  Copyright © 2020 ralph. All rights reserved.
-//
-
 import Foundation
 
-struct MilestoneListModel: Codable, Hashable {
-    var id: String?
+struct Milestone: Hashable, Codable {
     
+    var mid: String
+    var title: String
+    var issues: IssueState
+    
+    static func == (lhs: Milestone, rhs: Milestone) -> Bool {
+        lhs.mid == rhs.mid
+            && lhs.title == rhs.title
+            && lhs.issues == rhs.issues
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(mid)
+        hasher.combine(title)
+        hasher.combine(issues)
+    }
 }
