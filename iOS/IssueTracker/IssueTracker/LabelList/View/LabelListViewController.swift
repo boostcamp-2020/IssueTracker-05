@@ -1,7 +1,7 @@
 import UIKit
 
 class LabelListViewController: UIViewController {
-  
+    
     var didSendEventClosure: ((LabelListViewController.Event)-> Void)?
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -32,6 +32,12 @@ class LabelListViewController: UIViewController {
     
     @objc func createLabelButtonTabbed() {
         print("createLabelButtonTabbed")
+        
+        let editVC: LabelEditingViewController
+            = UIStoryboard(name: "LabelList", bundle: nil)
+            .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
+        editVC.modalPresentationStyle = .overCurrentContext
+        present(editVC, animated: false)
     }
     
     func applyAnapshot(sections: [Label]) {

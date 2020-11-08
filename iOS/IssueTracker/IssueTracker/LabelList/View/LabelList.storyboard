@@ -94,11 +94,42 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="94.419642857142847"/>
         </scene>
+        <!--Label Editing View Controller-->
+        <scene sceneID="sJc-Y5-ABc">
+            <objects>
+                <viewController storyboardIdentifier="LabelEditingViewController" id="MUj-go-e84" customClass="LabelEditingViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bjo-DT-vO1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPe-lc-fNR">
+                                <rect key="frame" x="87" y="389" width="240" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aJm-BX-vpO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gPe-lc-fNR" firstAttribute="width" secondItem="bjo-DT-vO1" secondAttribute="width" multiplier="0.57971" id="6Ra-GO-wpt"/>
+                            <constraint firstItem="gPe-lc-fNR" firstAttribute="height" secondItem="bjo-DT-vO1" secondAttribute="height" multiplier="0.142857" id="EZo-45-pEW"/>
+                            <constraint firstItem="gPe-lc-fNR" firstAttribute="centerY" secondItem="aJm-BX-vpO" secondAttribute="centerY" id="qyP-6v-G0y"/>
+                            <constraint firstItem="gPe-lc-fNR" firstAttribute="centerX" secondItem="aJm-BX-vpO" secondAttribute="centerX" id="wof-6N-olH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="wNs-XL-V7U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gcv-99-6iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848" y="100"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
