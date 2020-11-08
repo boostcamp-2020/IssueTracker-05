@@ -87,19 +87,16 @@ class TabCoordinator: NSObject, Coordinator {
                                                      tag: page.pageOrderNumber())
         
         switch page {
-        // If needed: Each tab bar flow can have it's own Coordinator.
         case .issue:
             let issueListMainViewController: IssueListMainViewController
                 = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
                     identifier: String(describing: IssueListMainViewController.self))
-            
             issueListMainViewController.didSendEventClosure = { [weak self] event in
                 switch event {
                 case .finished :
                     self?.finish()
                 }
             }
-            
             newNavController.pushViewController(issueListMainViewController, animated: true)
         case .label:
             let labelCoordinator = LabelListCoordinator(newNavController)
@@ -119,6 +116,7 @@ class TabCoordinator: NSObject, Coordinator {
                 }
             newNavController.pushViewController(milestoneListViewController, animated: true)
         }
+        
         // 네비게이션에 vc가 들어간 후 설정해주어야 한다.
         newNavController.navigationBar.prefersLargeTitles = true
         newNavController.navigationItem.largeTitleDisplayMode = .never
@@ -145,7 +143,7 @@ extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
 
-        
+        // 탭바에서 이동할 때 뭔가 화면 전환 로직이 필요하면 여기서 추가한다.
         
     }
 }
@@ -153,6 +151,6 @@ extension TabCoordinator: UITabBarControllerDelegate {
 extension TabCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
         // 여기서 이슈리스트, 레이블리스트, 마일스톤 리스트 코디네이터를 정리해준다.
-        
+        // 탭바의 자식이 사라질 일은 우리 프로젝트에 존재하지 않는다. 
     }
 }
