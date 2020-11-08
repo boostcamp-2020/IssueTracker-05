@@ -15,13 +15,11 @@ protocol IssueDetailEditingViewControllerDelegate {
 
 class IssueDetailEditingViewController: UIViewController {
     
-    //@IBOutlet weak var buttonForInit:
-    
     var delegate: IssueDetailEditingViewControllerDelegate?
     
     @IBOutlet var buttonsForInit: [UIButton]!
     
-    @IBOutlet var collectionView: IssueDetailCollectionView! {
+    @IBOutlet var collectionView: UICollectionView! {
         didSet {
             collectionView.delegate = self
             collectionView.dataSource = self
@@ -36,14 +34,9 @@ class IssueDetailEditingViewController: UIViewController {
         buttonsForInit.forEach {
             $0.configureButtonInDetailEditing()
         }
+        
     }
-    
-    func configure() {
-        self.collectionView.reloadData()
-        self.collectionView.layoutIfNeeded()
-        self.collectionView.isDynamicSizeRequired = true
-    }
-    
+        
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
         delegate?.addCommentButtonTabbed()
     }
@@ -58,58 +51,53 @@ class IssueDetailEditingViewController: UIViewController {
     
 }
 
-extension IssueDetailEditingViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.frame.width, height: 40)
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 400, height: 100)
+    }
         
-        let width = view.frame.width
-        let estimatedHeight: CGFloat = 100.0
-        let dummyCell = IssueDetailEditingCollectionViewCell(frame: CGRect(x:0, y:0, width: width, height: estimatedHeight))
-        dummyCell.layoutIfNeeded()
-        let estimatedSize = dummyCell.systemLayoutSizeFitting(
-            CGSize(width: width, height: estimatedHeight))
-        return CGSize(width: width, height: estimatedSize.height)
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueDetailEditingCell", for: indexPath) as! IssueDetailEditingCollectionViewCell
-        
-        switch indexPath.row {
-        case 0:
-            cell.titleLabel.text = "담당자"
-        case 1:
-            cell.titleLabel.text = "레이블"
-        case 2:
-            cell.titleLabel.text = "마일스톤"
-        default: break
+
+        var cell = UICollectionViewCell()
+
+        if indexPath.section == 0 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
+        } else if indexPath.section == 1 {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as! LabelCollectionViewCell
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
         }
         
-        cell.backgroundColor = .systemBackground
-        cell.layoutIfNeeded()
-
-//        self.collectionView.collectionViewLayout.invalidateLayout()
         return cell
     }
-    
-}
+     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader{
+            if indexPath.section == 0 {
+                sectionHeader.titleLabel.text = "담당자"
+            } else if indexPath.section == 1 {
+                sectionHeader.titleLabel.text = "레이블"
+            } else {
+                sectionHeader.titleLabel.text = "마일스톤"
+            }
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
 
-extension IssueDetailEditingViewController: UICollectionViewDelegateFlowLayout {
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        CGSize(width: self.view.bounds.width, height: 128)
-//    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        2.0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        2.0
-    }
     
 }
 
@@ -123,7 +111,6 @@ extension UIButton {
         self.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }
-
 
 #if DEBUG
 

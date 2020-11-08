@@ -20,6 +20,7 @@ class IssueListService {
         httpHeaders
             = ["Accept": "application/json",
                "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token")!)"]
+        
     }
     
     //MARK: GET
