@@ -1,5 +1,10 @@
 import UIKit
 
+extension LabelListViewController: LabelEditingViewControllerDelegate {
+    func labelEditSaveButtonDidTabbed(title: String, description: String, color: String) {
+        viewModel.action.labelEditSaveButtonDidTabbed(title, description, color)
+    }
+}
 class LabelListViewController: UIViewController {
     
     var didSendEventClosure: ((LabelListViewController.Event)-> Void)?
@@ -37,6 +42,7 @@ class LabelListViewController: UIViewController {
             = UIStoryboard(name: "LabelList", bundle: nil)
             .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
         editVC.modalPresentationStyle = .overCurrentContext
+        editVC.delegate = self
         present(editVC, animated: false)
     }
     
