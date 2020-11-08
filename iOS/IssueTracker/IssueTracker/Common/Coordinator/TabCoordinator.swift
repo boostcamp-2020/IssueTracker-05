@@ -66,11 +66,13 @@ class TabCoordinator: NSObject, Coordinator {
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         prepareTabBarController(withTabControllers: controllers)
+        // 각각 뷰컨트롤러를 네비게이션 바에 넣어준다.
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
         
         tabBarController.delegate = self
+        
         tabBarController.setViewControllers(tabControllers, animated: true)
         tabBarController.selectedIndex = TabBarPage.issue.pageOrderNumber() // 첫 화면 설정
         tabBarController.tabBar.isTranslucent = false
@@ -79,17 +81,17 @@ class TabCoordinator: NSObject, Coordinator {
     }
     
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
-        let navController = UINavigationController()
-        navController.setNavigationBarHidden(false, animated: false)
-        navController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
+        let newNavController = UINavigationController()
+        newNavController.navigationBar.prefersLargeTitles = true
+        newNavController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: page.pageIconImage(),
                                                      tag: page.pageOrderNumber())
         
         switch page {
         // If needed: Each tab bar flow can have it's own Coordinator.
         case .issue:
-            let issueListMainViewController: IssueListMainViewController =
-                UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
+            let issueListMainViewController: IssueListMainViewController
+                = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
                     identifier: String(describing: IssueListMainViewController.self))
             
             issueListMainViewController.didSendEventClosure = { [weak self] event in
@@ -99,9 +101,10 @@ class TabCoordinator: NSObject, Coordinator {
                 }
             }
             
-            navController.pushViewController(issueListMainViewController, animated: true)
+            newNavController.pushViewController(issueListMainViewController, animated: true)
         case .label:
-            let labelListViewController: LabelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
+            let labelListViewController: LabelListViewController
+                = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
             labelListViewController.didSendEventClosure
                 = { [weak self] event in
                     switch event {
@@ -109,10 +112,11 @@ class TabCoordinator: NSObject, Coordinator {
                         self?.finish()
                     }
                 }
-            navController.pushViewController(labelListViewController, animated: true)
+            newNavController.pushViewController(labelListViewController, animated: true)
         case .milestone:
             
-            let milestoneListViewController: MilestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
+            let milestoneListViewController: MilestoneListViewController
+                = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
             milestoneListViewController.didSendEventClosure
                 = { [weak self] event in
                     switch event {
@@ -120,10 +124,10 @@ class TabCoordinator: NSObject, Coordinator {
                         self?.finish()
                     }
                 }
-            navController.pushViewController(milestoneListViewController, animated: true)
+            newNavController.pushViewController(milestoneListViewController, animated: true)
         }
-        
-        return navController
+
+        return newNavController
     }
     
     func currentPage() -> TabBarPage? { TabBarPage.init(index: tabBarController.selectedIndex) }
@@ -143,6 +147,8 @@ class TabCoordinator: NSObject, Coordinator {
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
-        print("viewController \(1)")
+        
+        
+        
     }
 }

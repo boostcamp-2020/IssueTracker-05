@@ -274,12 +274,35 @@
 			path = IssueDetail;
 			sourceTree = "<group>";
 		};
+		8872A1432557A96200EB1E91 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8872A1442557A96C00EB1E91 /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIewModel;
+			sourceTree = "<group>";
+		};
+		8872A1452557A97300EB1E91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				88B8F0F7254AB12000C23791 /* LabelList.storyboard */,
+				88B8F0FD254AB14400C23791 /* LabelListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		88B8F0F2254AB08500C23791 /* MilestoneList */ = {
 			isa = PBXGroup;
 			children = (
 				DA8B33CB2553C36100E3331F /* Model */,
-				DA8B33CC2553C36700E3331F /* View */,
 				DA8B33CD2553C37500E3331F /* VIewModel */,
+				DA8B33CC2553C36700E3331F /* View */,
 			);
 			path = MilestoneList;
 			sourceTree = "<group>";
@@ -287,8 +310,9 @@
 		88B8F0F3254AB09100C23791 /* LabelList */ = {
 			isa = PBXGroup;
 			children = (
-				88B8F0F7254AB12000C23791 /* LabelList.storyboard */,
-				88B8F0FD254AB14400C23791 /* LabelListViewController.swift */,
+				8872A1432557A96200EB1E91 /* Model */,
+				8872A1442557A96C00EB1E91 /* VIewModel */,
+				8872A1452557A97300EB1E91 /* View */,
 			);
 			path = LabelList;
 			sourceTree = "<group>";
