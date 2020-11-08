@@ -37,12 +37,14 @@ class SceneCoordinator: Coordinator {
         let loginCoordinator = SignInCoordinator(navigationController)
         loginCoordinator.finishDelegate = self
         loginCoordinator.start()
+        childCoordinators.append(loginCoordinator)
     }
     
     func showMainFlow() {
         let tabCoordinator = TabCoordinator(navigationController)
         tabCoordinator.finishDelegate = self
         tabCoordinator.start()
+        childCoordinators.append(tabCoordinator)
     }
     
 }
