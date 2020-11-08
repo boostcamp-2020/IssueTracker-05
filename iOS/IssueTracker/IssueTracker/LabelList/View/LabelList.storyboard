@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Label List View Controller-->
+        <!--Title-->
         <scene sceneID="ACs-YF-trH">
             <objects>
                 <viewController storyboardIdentifier="LabelListViewController" id="38c-xV-UKf" customClass="LabelListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,23 +19,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-Xd-Qsx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ro2-i9-WUz">
-                                    <size key="itemSize" width="404" height="128"/>
+                                    <size key="itemSize" width="404" height="93"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ynb-cx-lOc">
-                                        <rect key="frame" x="5" y="0.0" width="404" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LabelListCellView" id="Ynb-cx-lOc" customClass="LabelListCellView" customModule="IssueTracker" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="0.0" width="404" height="93"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sHW-7G-Yma">
-                                            <rect key="frame" x="0.0" y="0.0" width="404" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYl-2b-UBn">
+                                                    <rect key="frame" x="26" y="52" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-3l-o9M">
+                                                    <rect key="frame" x="26" y="16" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ka2-4y-8Q4">
+                                                    <rect key="frame" x="383.5" y="38.5" width="12.5" height="16.5"/>
+                                                    <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="16" id="3Om-AO-4xz"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ka2-4y-8Q4" secondAttribute="trailing" constant="8" id="6D2-rN-Yra"/>
+                                                <constraint firstItem="Ka2-4y-8Q4" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" id="Ip2-7a-w2P"/>
+                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="-16" id="bWU-zr-t38"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="404" height="128"/>
+                                        <size key="customSize" width="404" height="93"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -49,6 +76,9 @@
                             <constraint firstItem="IX8-bh-Hsc" firstAttribute="bottom" secondItem="kM6-Xd-Qsx" secondAttribute="bottom" id="xsL-Kv-h0i"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="BDy-4q-ucy"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSp-2m-EVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,8 +86,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

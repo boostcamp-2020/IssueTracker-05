@@ -82,7 +82,6 @@ class TabCoordinator: NSObject, Coordinator {
     
     private func getTabController(_ page: TabBarPage) -> UINavigationController {
         let newNavController = UINavigationController()
-        newNavController.navigationBar.prefersLargeTitles = true
         newNavController.tabBarItem = UITabBarItem.init(title: page.pageTitleValue(),
                                                      image: page.pageIconImage(),
                                                      tag: page.pageOrderNumber())
@@ -105,6 +104,7 @@ class TabCoordinator: NSObject, Coordinator {
         case .label:
             let labelCoordinator = LabelListCoordinator(newNavController)
             labelCoordinator.finishDelegate = self
+            labelCoordinator.start()
             childCoordinators.append(labelCoordinator)
         case .milestone:
             
@@ -119,7 +119,10 @@ class TabCoordinator: NSObject, Coordinator {
                 }
             newNavController.pushViewController(milestoneListViewController, animated: true)
         }
-
+        // 네비게이션에 vc가 들어간 후 설정해주어야 한다.
+        newNavController.navigationBar.prefersLargeTitles = true
+        newNavController.navigationBar.topItem?.title = page.pageTitleValue()
+        
         return newNavController
     }
     
@@ -148,6 +151,7 @@ extension TabCoordinator: UITabBarControllerDelegate {
 
 extension TabCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        // 여기서 이슈리스트, 레이블리스트, 마일스톤 리스트 코디네이터를 정리해준다. 
+        // 여기서 이슈리스트, 레이블리스트, 마일스톤 리스트 코디네이터를 정리해준다.
+        
     }
 }

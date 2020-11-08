@@ -15,6 +15,7 @@ class LabelListCoordinator: Coordinator {
     
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
+        //self.navigationController.navigationBar.isHidden = false
     }
     
     func showLabelListViewController() {
