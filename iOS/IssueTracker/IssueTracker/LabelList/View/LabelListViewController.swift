@@ -74,11 +74,20 @@ class LabelListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
                     return nil
                 }
-                cell.setup(title: label.name, description: label.desc)
+                cell.setup(
+                    title: label.name,
+                    description: label.desc,
+                    color: label.color)
                 return cell
             })
     }
     
+}
+
+extension LabelListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension LabelListViewController {
@@ -86,4 +95,3 @@ extension LabelListViewController {
         case finished
     }
 }
-
