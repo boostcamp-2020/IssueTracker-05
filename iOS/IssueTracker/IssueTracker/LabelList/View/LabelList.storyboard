@@ -35,14 +35,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="404" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYl-2b-UBn">
-                                                    <rect key="frame" x="26" y="52" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYl-2b-UBn">
+                                                    <rect key="frame" x="20" y="52" width="39.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-3l-o9M">
-                                                    <rect key="frame" x="26" y="16" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-3l-o9M">
+                                                    <rect key="frame" x="20" y="14.5" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -56,13 +56,19 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="16" id="3Om-AO-4xz"/>
+                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="15" id="3Om-AO-4xz"/>
+                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="leading" secondItem="sHW-7G-Yma" secondAttribute="leading" constant="20" id="4PR-fs-eCW"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ka2-4y-8Q4" secondAttribute="trailing" constant="8" id="6D2-rN-Yra"/>
                                                 <constraint firstItem="Ka2-4y-8Q4" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" id="Ip2-7a-w2P"/>
-                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="-16" id="bWU-zr-t38"/>
+                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="-17" id="bWU-zr-t38"/>
+                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="leading" secondItem="Oly-3l-o9M" secondAttribute="leading" id="d6d-46-sRp"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="404" height="93"/>
+                                        <connections>
+                                            <outlet property="labelDetail" destination="TYl-2b-UBn" id="vh2-HM-IwQ"/>
+                                            <outlet property="labelTitle" destination="Oly-3l-o9M" id="aXi-c3-PW5"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -79,6 +85,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="BDy-4q-ucy"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="kM6-Xd-Qsx" id="vWO-6T-cYw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kSp-2m-EVP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

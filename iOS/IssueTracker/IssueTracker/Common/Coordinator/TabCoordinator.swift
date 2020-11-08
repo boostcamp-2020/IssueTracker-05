@@ -121,6 +121,7 @@ class TabCoordinator: NSObject, Coordinator {
         }
         // 네비게이션에 vc가 들어간 후 설정해주어야 한다.
         newNavController.navigationBar.prefersLargeTitles = true
+        newNavController.navigationItem.largeTitleDisplayMode = .never
         newNavController.navigationBar.topItem?.title = page.pageTitleValue()
         
         return newNavController
