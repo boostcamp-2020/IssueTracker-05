@@ -4,6 +4,7 @@ class LabelListCellView: UICollectionViewCell {
     
     @IBOutlet weak var labelTitle: UIButton!
     @IBOutlet weak var labelDetail: UILabel!
+    var labelColor: String?
     
     func setup(title: String, description: String?, color: String) { // 색도 받아와야 한다.
         labelTitle.setTitle(title, for: .normal)
@@ -11,6 +12,7 @@ class LabelListCellView: UICollectionViewCell {
             labelDetail.text = description
         }
         labelTitle.backgroundColor = color.hexToColor()
+        labelColor = color
     }
     
 }

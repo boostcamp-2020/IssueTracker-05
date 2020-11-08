@@ -13,23 +13,39 @@ class LabelEditingViewController: UIViewController {
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var colorBoard: UIButton!
     
-    let defaultColor = "#FF5D5D"
+    var defualtTitle: String?
+    var defaultDesc: String?
+    var defaultColor: String? = "#FF5D5D"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         colorTextField.delegate = self
         view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        setupUI()
     }
     
-    @IBAction func resetColor(_ sender: UIButton) {
-        colorBoard.backgroundColor = defaultColor.hexToColor()
-    }
-    
-    @IBAction func resetButtonTabbed(_ sender: UIButton) {
+    func setupUI() {
         titleField.text = ""
         descriptionField.text = ""
         colorTextField.text = defaultColor
-        colorBoard.backgroundColor = defaultColor.hexToColor()
+        titleField.placeholder = defualtTitle
+        descriptionField.placeholder = defaultDesc
+        colorTextField.placeholder = defaultColor
+        colorBoard.backgroundColor = defaultColor?.hexToColor()
+    }
+    
+    func setupDefaultValue(title: String?, desc: String?, color: String?) {
+        defualtTitle = title ?? ""
+        defaultDesc = desc ?? ""
+        defaultColor = color ?? "#FF5D5D"
+    }
+    
+    @IBAction func resetColor(_ sender: UIButton) {
+        colorBoard.backgroundColor = defaultColor?.hexToColor()
+    }
+    
+    @IBAction func resetButtonTabbed(_ sender: UIButton) {
+        setupUI()
     }
     
     @IBAction func saveButtonTabbed(_ sender: UIButton) {

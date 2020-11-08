@@ -7,19 +7,28 @@ class LabelListViewModel {
     struct Status {
         // 데이타 소스
         var labels = Bindable([Label]())
+        var selectedLabel
+            = Bindable(Label(color: "", desc: "", name: ""))
     }
     
     struct Action {
-        // cell tabbed -> 레이블 편집 모드
-        
-        // label 추가
+        var cellTouched: (String, String, String) -> Void
         var labelEditSaveButtonDidTabbed: (String, String, String) -> Void
     }
     
     let status = Status()
     lazy var action = Action(
-        labelEditSaveButtonDidTabbed: { [weak self] title, desc, color in
+        cellTouched: { [weak self] title, desc, color in
             guard let weakSelf = self else { return }
+            weakSelf.status.selectedLabel.value
+                = Label(color: color,
+                        desc: desc,
+                        name: title)
+        }, labelEditSaveButtonDidTabbed: { [weak self] title, desc, color in
+            guard let weakSelf = self else { return }
+            
+            // title로 식별 같으면 변경 후 서버에 요청, 전체 label reload
+            
             let newLabel = Label(color: color, desc: desc, name: title)
             weakSelf.status.labels.value.append(newLabel)
             weakSelf.status.labels.value = weakSelf.status.labels.value
