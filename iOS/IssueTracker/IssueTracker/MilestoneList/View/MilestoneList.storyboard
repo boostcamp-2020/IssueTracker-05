@@ -92,9 +92,9 @@
                                             <outlet property="closedLabel" destination="Hyh-Nz-hp5" id="b2j-Kx-fBx"/>
                                             <outlet property="descriptionLabel" destination="q4T-JE-kyM" id="a9a-8k-jcZ"/>
                                             <outlet property="dueDateLabel" destination="bsW-b5-iY6" id="O4F-dP-1CO"/>
+                                            <outlet property="milestoneTitle" destination="kna-u0-4UJ" id="6Ul-qB-KBb"/>
                                             <outlet property="openLabel" destination="907-Vv-R9A" id="nVy-Gf-7by"/>
                                             <outlet property="percentageLabel" destination="DOz-pJ-kPI" id="SM5-1X-Pmg"/>
-                                            <outlet property="sprintButton" destination="kna-u0-4UJ" id="6Ul-qB-KBb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
