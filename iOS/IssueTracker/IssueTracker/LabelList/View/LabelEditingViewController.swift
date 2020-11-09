@@ -17,6 +17,13 @@ class LabelEditingViewController: UIViewController {
     var defaultDesc: String?
     var defaultColor: String? = "#FF5D5D"
     
+    var randomColor: UIColor {
+        UIColor(red: CGFloat.random(in: 0.0...1.0),
+                green: CGFloat.random(in: 0.0...1.0),
+                blue: CGFloat.random(in: 0.0...1.0),
+                alpha: 1)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorTextField.delegate = self
@@ -40,8 +47,13 @@ class LabelEditingViewController: UIViewController {
         defaultColor = color ?? "#FF5D5D"
     }
     
-    @IBAction func resetColor(_ sender: UIButton) {
-        colorBoard.backgroundColor = defaultColor?.hexToColor()
+    @IBAction func resetRandomColor(_ sender: UIButton) {
+        let randomColor = self.randomColor
+        
+        // text update도 해야 한다. 
+        
+        colorBoard.backgroundColor = randomColor
+        
     }
     
     @IBAction func resetButtonTabbed(_ sender: UIButton) {
