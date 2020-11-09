@@ -9,6 +9,7 @@ class IssueListViewModel {
         var issues =  Bindable(IssueListModel.all())
         var searchResultTitleList = Bindable([String]())
         var searchResultList = Bindable(IssueListModel.all())
+        // reulstOfFiltering = Bindable(IssueListModel.all()) <-> snapshot()
     }
     
     struct Action {
@@ -17,6 +18,15 @@ class IssueListViewModel {
         var searchCancelButtonClicked: () -> Void
         var closeButtonTabbed: (Int) -> Void
         var deleteButtonTabbed: (Int) -> Void
+        
+        // 필터링
+        // Done(bool, , , , , ,)
+        //issues.filter{}
+        
+        // 다중 선택
+        
+        // 이슈 추가, 수정
+        
     }
     
     var status = Status()

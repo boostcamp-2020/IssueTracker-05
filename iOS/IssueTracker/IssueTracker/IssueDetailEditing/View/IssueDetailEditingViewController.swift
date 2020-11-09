@@ -82,7 +82,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
         } else if section == 1 {
             return viewModel?.status.model.value.label?.count ?? 0
         } else {
-            return viewModel?.status.model.value.mid == nil ? 0 : 1
+            return viewModel?.status.model.value.milestone?.mid == nil ? 0 : 1
         }
     }
     
@@ -101,7 +101,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
-            cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.mid))"
+            cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.milestone?.mid))"
             return cell
         }
         
