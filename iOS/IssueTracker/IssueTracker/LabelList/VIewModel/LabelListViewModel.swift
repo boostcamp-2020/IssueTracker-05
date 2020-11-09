@@ -54,6 +54,7 @@ class LabelListViewModel {
                     return
                 }
             }
+            weakSelf.service.requestAddLabel(name: title, desc: desc, color: color)
             weakSelf.status.resultOfSaving.value = .success
             
             // append만 해도 didset이 호출 되는지 test해보자.
