@@ -10,6 +10,12 @@ module.exports = {
     modules: [path.join(__dirname, 'src'), 'node_modules'],
     alias: {
       react: path.join(__dirname, 'node_modules', 'react'),
+      '@hooks': path.join(__dirname, 'src/hooks'),
+      '@atoms': path.join(__dirname, 'src/components/atoms'),
+      '@molecules': path.join(__dirname, 'src/components/molecules'),
+      '@organisms': path.join(__dirname, 'src/components/organisms'),
+      '@templates': path.join(__dirname, 'src/components/templates'),
+      '@pages': path.join(__dirname, 'src/components/pages'),
     },
   },
   module: {

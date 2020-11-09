@@ -19,13 +19,15 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1",
-    "styled-theme": "^0.3.3"
+    "styled-theme": "^0.3.3",
+    "styled-tools": "^1.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-controls": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-knobs": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
