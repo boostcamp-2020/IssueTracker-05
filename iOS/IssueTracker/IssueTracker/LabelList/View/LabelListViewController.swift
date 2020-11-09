@@ -1,8 +1,8 @@
 import UIKit
 
 extension LabelListViewController: LabelEditingViewControllerDelegate {
-    func labelEditSaveButtonDidTabbed(title: String, description: String, color: String) {
-        viewModel.action.labelEditSaveButtonDidTabbed(title, description, color)
+    func labelEditSaveButtonDidTab(title: String, description: String, color: String, labelID: String?) {
+        viewModel.action.labelEditSaveButtonDidTabbed(title, description, color, labelID)
     }
 }
 
@@ -33,7 +33,7 @@ class LabelListViewController: UIViewController {
         viewModel.status.labels.bindAndFire(applyAnapshot)
     }
     
-    func editLabel(label: Label) {
+    func editLabel(label: Label) { // 편집 모드
         let editVC = configureLabelEdiginVC()
         editVC.setupDefaultValue(title: label.name, desc: label.desc, color: label.color)
         present(editVC, animated: false)
@@ -50,6 +50,7 @@ class LabelListViewController: UIViewController {
             .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
         editVC.modalPresentationStyle = .overCurrentContext
         editVC.delegate = self
+        viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
         return editVC
     }
     

@@ -1,7 +1,7 @@
 import UIKit
 
 protocol LabelEditingViewControllerDelegate {
-    func labelEditSaveButtonDidTabbed(title: String, description: String, color: String) // title, desc, 색상 정보를 매개변수로 넘겨준다.
+    func labelEditSaveButtonDidTab(title: String, description: String, color: String, labelID: String?) // title, desc, 색상 정보를 매개변수로 넘겨준다.
 }
 
 class LabelEditingViewController: UIViewController {
@@ -12,6 +12,9 @@ class LabelEditingViewController: UIViewController {
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var colorTextField: UITextField!
     @IBOutlet weak var colorBoard: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var labelID: String? // 있으면 추가, 없으면 편집 모드
     
     var defualtTitle: String?
     var defaultDesc: String?
@@ -42,9 +45,14 @@ class LabelEditingViewController: UIViewController {
     }
     
     func setupDefaultValue(title: String?, desc: String?, color: String?) {
+        labelID = title
         defualtTitle = title ?? ""
         defaultDesc = desc ?? ""
         defaultColor = color ?? "#FF5D5D"
+    }
+    
+    @IBAction func cancel(_ sender: UIButton) {
+        dismiss(animated: true)
     }
     
     @IBAction func resetRandomColor(_ sender: UIButton) {
@@ -58,19 +66,32 @@ class LabelEditingViewController: UIViewController {
     }
     
     @IBAction func saveButtonTabbed(_ sender: UIButton) {
-        delegate?.labelEditSaveButtonDidTabbed(
+        saveButton.isEnabled = false
+        delegate?.labelEditSaveButtonDidTab(
             title: titleField.text ?? "",
             description: descriptionField.text ?? "",
-            color: colorTextField.text ?? ""
+            color: colorTextField.text ?? "",
+            labelID: labelID
         )
-        sender.isEnabled = false
+    }
+    
+    func resultOfSuccess(result: LabelListResultType) {
+        switch result {
+        case .success:
+            successSaving()
+        case .fail:
+            guard let message = result.errorDescription else { return }
+            failSaving(errorMessage: message)
+        }
+    }
+    
+    func successSaving() {
         dismiss(animated: true)
     }
     
-    @IBAction func cancel(_ sender: UIButton) {
-        dismiss(animated: true)
+    func failSaving(errorMessage: String) {
+        saveButton.isEnabled = true
     }
-    
 }
 
 extension LabelEditingViewController: UITextFieldDelegate {

@@ -302,6 +302,7 @@
                         <outlet property="colorBoard" destination="t6h-SM-Hei" id="5PH-7L-82C"/>
                         <outlet property="colorTextField" destination="NCu-B1-w0R" id="WMw-8F-eU9"/>
                         <outlet property="descriptionField" destination="htC-O7-G2d" id="rD6-w1-Phw"/>
+                        <outlet property="saveButton" destination="TW3-ew-QkT" id="nyX-el-EzJ"/>
                         <outlet property="titleField" destination="4KW-kc-nFo" id="6Xx-wA-TTS"/>
                     </connections>
                 </viewController>
