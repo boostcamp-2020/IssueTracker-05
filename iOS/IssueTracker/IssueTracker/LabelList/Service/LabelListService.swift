@@ -103,9 +103,21 @@ class LabelListService {
                    method: .delete,
                    parameters: nil,
                    headers: httpHeaders)
-            .response{ [weak self] _ in
+            .responseJSON { [weak self] (response) in
                 guard let weakSelf = self else { return }
                 weakSelf.requestLabelListGet()
+                switch response.result {
+                case .success(let result):
+                    print(result)
+                    do {
+                        let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
+                        print(String(data: resultData, encoding: .utf8))
+                    } catch {
+                        print(error)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
     }
     
