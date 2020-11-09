@@ -15,8 +15,12 @@ class LoginManager {
     
     static let shared = LoginManager()
     private init() { }
-    private let client_id = "0da3b116126e34da88f8"
-    private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
+    private var client_id: String {
+        (Bundle.main.infoDictionary?["APP_KEY"] as? String) ?? ""
+    } 
+    private var client_secret: String {
+        (Bundle.main.infoDictionary?["API_SECRET_KEY"] as? String) ?? ""
+    }
     private let api_server_url = "http://group05issuetracker.duckdns.org:49203"
     
     func requestCode() {
