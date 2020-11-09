@@ -42,6 +42,12 @@ const LabelInformCreate = (props) => {
     onLabelInformCreate,
     resetLabelInformCreate,
   ] = treatState();
+  let isDisabled;
+  if (labelName === '' || labelColor === '') {
+    isDisabled = true;
+  } else {
+    isDisabled = false;
+  }
   return (
     <WhoreWrapper>
       <LabelPreviewWrapper>
@@ -75,7 +81,13 @@ const LabelInformCreate = (props) => {
         </InputBox>
         <ButtonWrapper>
           <Button type="cancel">Cancel</Button>
-          <Button type="create">Create Label</Button>
+          <Button
+            type="create"
+            disabled={isDisabled}
+            onClick={resetLabelInformCreate}
+          >
+            Create Label
+          </Button>
         </ButtonWrapper>
       </DescWrapper>
     </WhoreWrapper>
