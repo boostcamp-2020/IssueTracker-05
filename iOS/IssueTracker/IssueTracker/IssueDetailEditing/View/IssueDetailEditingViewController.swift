@@ -41,7 +41,6 @@ class IssueDetailEditingViewController: UIViewController {
     }
         
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
-        self.collectionView.reloadData()
         delegate?.addCommentButtonTabbed()
     }
     

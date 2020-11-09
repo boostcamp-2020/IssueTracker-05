@@ -5,6 +5,7 @@ extension LabelListViewController: LabelEditingViewControllerDelegate {
         viewModel.action.labelEditSaveButtonDidTabbed(title, description, color)
     }
 }
+
 class LabelListViewController: UIViewController {
     
     var didSendEventClosure: ((LabelListViewController.Event)-> Void)?
@@ -18,32 +19,38 @@ class LabelListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.collectionViewLayout = configureCollectionViewLayout()
-        
+        collectionView.delegate = self
         navigationItem.rightBarButtonItem
             = UIBarButtonItem(
                 image: UIImage(systemName: "plus"),
                 style: .done,
-                target: self, action: #selector(createLabelButtonTabbed))
+                target: self, action: #selector(addLabelButtonTabbed))
         bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     func bind() {
+        viewModel.status.selectedLabel.bind(editLabel)
         viewModel.status.labels.bindAndFire(applyAnapshot)
     }
     
-    @objc func createLabelButtonTabbed() {
-        print("createLabelButtonTabbed")
-        
+    func editLabel(label: Label) {
+        let editVC = configureLabelEdiginVC()
+        editVC.setupDefaultValue(title: label.name, desc: label.desc, color: label.color)
+        present(editVC, animated: false)
+    }
+    
+    @objc func addLabelButtonTabbed() {
+        let editVC = configureLabelEdiginVC()
+        present(editVC, animated: false)
+    }
+    
+    func configureLabelEdiginVC() -> LabelEditingViewController {
         let editVC: LabelEditingViewController
             = UIStoryboard(name: "LabelList", bundle: nil)
             .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
         editVC.modalPresentationStyle = .overCurrentContext
         editVC.delegate = self
-        present(editVC, animated: false)
+        return editVC
     }
     
     func applyAnapshot(sections: [Label]) {
@@ -73,11 +80,24 @@ class LabelListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
                     return nil
                 }
-                cell.setup(title: label.name, description: label.desc)
+                cell.setup(
+                    title: label.name,
+                    description: label.desc,
+                    color: label.color)
                 return cell
             })
     }
     
+}
+
+extension LabelListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell: LabelListCellView = collectionView.cellForItem(at: indexPath) as? LabelListCellView else { return }
+        viewModel.action.cellTouched(
+            cell.labelTitle.titleLabel?.text ?? "",
+            cell.labelDetail.text ?? "",
+            cell.labelColor ?? "")
+    }
 }
 
 extension LabelListViewController {
@@ -85,4 +105,3 @@ extension LabelListViewController {
         case finished
     }
 }
-

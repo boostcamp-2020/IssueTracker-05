@@ -137,40 +137,6 @@ struct Comment: Hashable, Codable {
     }
 }
 
-struct Milestone: Hashable, Codable {
-    
-    var mid: String
-    var title: String
-    var issues: IssueState
-    
-    static func == (lhs: Milestone, rhs: Milestone) -> Bool {
-        lhs.mid == rhs.mid
-            && lhs.title == rhs.title
-            && lhs.issues == rhs.issues
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(mid)
-        hasher.combine(title)
-        hasher.combine(issues)
-    }
-}
-
-struct IssueState: Hashable, Codable { // 이걸로 이슈 얼마나 열려있는지 확인
-    
-    var open: Int
-    var close: Int
-    
-    static func == (lhs: IssueState, rhs: IssueState) -> Bool {
-        lhs.open == rhs.open && lhs.close == rhs.close
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(open)
-        hasher.combine(close)
-    }
-}
-
 struct Assignees: Hashable, Codable {
     var uid: Int
     var userId: String

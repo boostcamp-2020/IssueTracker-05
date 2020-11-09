@@ -87,38 +87,28 @@ class TabCoordinator: NSObject, Coordinator {
                                                      tag: page.pageOrderNumber())
         
         switch page {
-        // If needed: Each tab bar flow can have it's own Coordinator.
         case .issue:
             let issueListMainViewController: IssueListMainViewController
                 = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
                     identifier: String(describing: IssueListMainViewController.self))
-            
             issueListMainViewController.didSendEventClosure = { [weak self] event in
                 switch event {
                 case .finished :
                     self?.finish()
                 }
             }
-            
             newNavController.pushViewController(issueListMainViewController, animated: true)
         case .label:
             let labelCoordinator = LabelListCoordinator(newNavController)
-            labelCoordinator.finishDelegate = self
+            //labelCoordinator.finishDelegate = self
             labelCoordinator.start()
             childCoordinators.append(labelCoordinator)
         case .milestone:
-            
-            let milestoneListViewController: MilestoneListViewController
-                = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-            milestoneListViewController.didSendEventClosure
-                = { [weak self] event in
-                    switch event {
-                    case .finished:
-                        self?.finish()
-                    }
-                }
-            newNavController.pushViewController(milestoneListViewController, animated: true)
+            let milestoneCoordinator = MilestoneListCoordinator(newNavController)
+            milestoneCoordinator.start()
+            childCoordinators.append(milestoneCoordinator)
         }
+        
         // 네비게이션에 vc가 들어간 후 설정해주어야 한다.
         newNavController.navigationBar.prefersLargeTitles = true
         newNavController.navigationItem.largeTitleDisplayMode = .never
@@ -145,14 +135,15 @@ extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
 
-        
+        // 탭바에서 이동할 때 뭔가 화면 전환 로직이 필요하면 여기서 추가한다.
         
     }
 }
 
 extension TabCoordinator: CoordinatorFinishDelegate {
     func coordinatorDidFinish(childCoordinator: Coordinator) {
-        // 여기서 이슈리스트, 레이블리스트, 마일스톤 리스트 코디네이터를 정리해준다.
-        
+        // tabBar는 지워지면서 가지고 있는 vc를 삭제해 준다. 그래서 각 vc의 삭제 로직이 필요 없다.
+        // 이 함수가 호출되는 경우는 tabBar에 들어가는 VC를 하나만 교체 또는 삭제 하는 경우다.
+        // 우리 프로젝트에는 그런 경우가 없다.
     }
 }
