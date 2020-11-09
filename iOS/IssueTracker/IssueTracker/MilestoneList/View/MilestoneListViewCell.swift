@@ -12,8 +12,8 @@ class MilestoneListViewCell: UICollectionViewCell {
     
     func setup(title: String, open: Int, close: Int) {
         milestoneTitle.setTitle(title, for: .normal)
-        openLabel.text = "\(open)"
-        closedLabel.text = "\(close)"
+        openLabel.text = "\(open) open"
+        closedLabel.text = "\(close) closed"
     }
     
 }
