@@ -30,6 +30,7 @@
 		8875E97F255843CE0066146D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E97E255843CE0066146D /* String+.swift */; };
 		8875E9842558553E0066146D /* MilestoneListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E9832558553D0066146D /* MilestoneListService.swift */; };
 		8875E989255856E60066146D /* MilestoneListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E988255856E60066146D /* MilestoneListCoordinator.swift */; };
+		88AB3EDC2559165F004286B4 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AB3EDB2559165F004286B4 /* UIColor+.swift */; };
 		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
@@ -101,6 +102,7 @@
 		8875E97E255843CE0066146D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8875E9832558553D0066146D /* MilestoneListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListService.swift; sourceTree = "<group>"; };
 		8875E988255856E60066146D /* MilestoneListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListCoordinator.swift; sourceTree = "<group>"; };
+		88AB3EDB2559165F004286B4 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MilestoneList.storyboard; sourceTree = "<group>"; };
 		88B8F0F7254AB12000C23791 /* LabelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LabelList.storyboard; sourceTree = "<group>"; };
 		88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
@@ -222,8 +224,8 @@
 				8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */,
 				DAC37CEC2550EDCA000C2777 /* UITextField+LeftView.swift */,
 				DAC37CF025510747000C2777 /* UIButton.swift */,
-				DA0C60E62557DE35000CC10E /* tagView.swift */,
 				8875E97E255843CE0066146D /* String+.swift */,
+				88AB3EDB2559165F004286B4 /* UIColor+.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -742,6 +744,7 @@
 				DA1B56DB254FEC4400FE8D2D /* MilestoneListViewController.swift in Sources */,
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
 				DA8B33BB2552D6F000E3331F /* IssueDetailViewController.swift in Sources */,
+				88AB3EDC2559165F004286B4 /* UIColor+.swift in Sources */,
 				DA1B56F8255024B000FE8D2D /* MilestoneListViewCell.swift in Sources */,
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,

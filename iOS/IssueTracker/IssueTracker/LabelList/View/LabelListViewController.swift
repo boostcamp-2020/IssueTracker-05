@@ -65,6 +65,8 @@ class LabelListViewController: UIViewController {
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(80))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 3, leading: 0, bottom: 1, trailing: 0)
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: itemSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
@@ -105,3 +107,17 @@ extension LabelListViewController {
         case finished
     }
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct LabelListViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "LabelList", bundle: nil)
+            .instantiateViewController(identifier: String(describing: LabelListViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif

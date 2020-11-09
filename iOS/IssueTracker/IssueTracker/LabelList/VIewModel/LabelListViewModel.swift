@@ -6,9 +6,9 @@ class LabelListViewModel {
     
     struct Status {
         // 데이타 소스
-        var labels = Bindable([Label]())
+        var labels = Bindable<[Label]>(Label.all())
         var selectedLabel
-            = Bindable(Label(color: "", desc: "", name: ""))
+            = Bindable<Label>(Label(color: "", desc: "", name: ""))
     }
     
     struct Action {

@@ -49,11 +49,8 @@ class LabelEditingViewController: UIViewController {
     
     @IBAction func resetRandomColor(_ sender: UIButton) {
         let randomColor = self.randomColor
-        
-        // text update도 해야 한다. 
-        
+        colorTextField.text = randomColor.toHexString()
         colorBoard.backgroundColor = randomColor
-        
     }
     
     @IBAction func resetButtonTabbed(_ sender: UIButton) {
@@ -82,3 +79,17 @@ extension LabelEditingViewController: UITextFieldDelegate {
         return true
     }
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct LabelEditingViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "LabelList", bundle: nil)
+            .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif
