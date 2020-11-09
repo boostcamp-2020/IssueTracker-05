@@ -54,7 +54,8 @@ class LabelListViewModel {
                     return
                 }
             }
-            weakSelf.service.requestLabelPost(name: title, desc: desc, color: color)
+            weakSelf.service.requestLabelPost(
+                name: title, desc: desc, color: color)
             weakSelf.status.resultOfSaving.value = .success
         })
     

@@ -1,6 +1,11 @@
 import Foundation
 import Alamofire
 
+
+// get, pose 잘됨.
+
+// Patch 문제 있음.
+
 class LabelListService {
     
     let port: Int = 49203
@@ -54,14 +59,26 @@ class LabelListService {
                    method: .patch,
                    parameters: parameters,
                    headers: httpHeaders)
-            .response { [weak self] _ in
+            .responseJSON { [weak self] (response) in
                 guard let weakSelf = self else { return }
-                weakSelf.requestLabelListGet()
+                switch response.result {
+                case .success(let result):
+                    print(result)
+                    do {
+                        let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
+                        print(String(data: resultData, encoding: .utf8))
+                        weakSelf.requestLabelListGet()
+                    } catch {
+                        print(error)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
     }
     
     
-    // MARK: label 추가
+    // MARK: label 추가, 생성
     func requestLabelPost(name: String, desc: String, color: String) {
         
         let parameters = [
