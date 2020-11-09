@@ -294,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				DAAB9ECC2558555E0056C2CB /* View */,
+				DA395CD32559D0B000D190F6 /* ViewModel */,
 			);
 			path = IssueCreation;
 			sourceTree = "<group>";
@@ -488,6 +489,13 @@
 				DA395CD02559A8C600D190F6 /* Debug.xcconfig */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		DA395CD32559D0B000D190F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {

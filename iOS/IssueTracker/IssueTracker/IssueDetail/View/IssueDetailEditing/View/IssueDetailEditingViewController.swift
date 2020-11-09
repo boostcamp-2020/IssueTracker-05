@@ -37,7 +37,6 @@ class IssueDetailEditingViewController: UIViewController {
         buttonsForInit.forEach {
             $0.configureButtonInDetailEditing()
         }
-        
     }
         
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
@@ -90,7 +89,6 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
 
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
-            
             if let assignee = viewModel?.status.model.value.assignees?[indexPath.row] {
                 cell.tagButton.setTitle(assignee.userId, for: .normal)
                 cell.tagButton.makeTagStyle()
@@ -112,7 +110,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
 
             if let total = viewModel?.status.model.value.milestone?.issues?.count {
                 
-                var complete:Double = viewModel?.status.model.value.milestone?.issues?.reduce(0.0) { (s1, s2) in
+                let complete:Double = viewModel?.status.model.value.milestone?.issues?.reduce(0.0) { (s1, s2) in
                     s1 + (s2.isOpen ? 1 : 0)
                 } ?? 0
                 
@@ -139,17 +137,6 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
         return UICollectionReusableView()
     }
     
-}
-
-extension UIButton {
-    func configureButtonInDetailEditing() {
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 1
-        self.layer.shadowOpacity = 1.0
-        self.layer.cornerRadius = 5
-        self.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-    }
 }
 
 #if DEBUG
