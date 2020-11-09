@@ -87,4 +87,24 @@ class IssueListService {
             }
         
     }
+    
+    //MARK: ADD
+    func requestAddIssue(issueId: Int) {
+        AF.request(issueAPIURL + "\(issueId)",
+                   method: .delete,
+                   headers: httpHeaders)
+            .responseData { [weak self] response in
+                guard let weakSelf = self else { return }
+                switch response.result {
+                case .success(let data):
+                    print(String(data: data, encoding: .utf8))
+                    weakSelf.requestIssueData()
+                    print("success",data)
+                case .failure(let error):
+                    print("error",error)
+                }
+            }
+        
+    }
+    
 }

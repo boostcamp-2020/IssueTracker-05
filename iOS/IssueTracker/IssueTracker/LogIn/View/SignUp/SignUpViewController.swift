@@ -164,13 +164,13 @@ class SignUpViewController: UIViewController {
 
 
 extension SignUpViewController: UITextFieldDelegate {
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.action.idTextFieldChanged(self.idTextField.text!)
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)
         viewModel.action.passwordConfirmFieldChanged(self.passwordTextField.text!, self.passwordConfirmTextField.text!)
         viewModel.action.nicknameFieldChanged(self.nickNameTextField.text!)
-    }
-    
+    }    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

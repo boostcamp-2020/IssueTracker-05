@@ -10,7 +10,6 @@ struct IssueDetailModel: Hashable, Codable {
     var comments: [Comment]?
     var updatedAt: String?
     var createdAt: String?
-    //var author: String?
     var milestone: Milestone?
     var assignees: [Assignees]?
     
@@ -21,8 +20,6 @@ struct IssueDetailModel: Hashable, Codable {
             && lhs.labels == rhs.labels
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
-            //&& lhs.author == rhs.author
-            //&& lhs.mid == rhs.mid
             && lhs.milestone == rhs.milestone
             && lhs.assignees == rhs.assignees
             && lhs.comments == rhs.comments
@@ -35,7 +32,6 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(labels)
         hasher.combine(content)
         hasher.combine(createdAt)
-        //hasher.combine(author)
         hasher.combine(milestone)
         hasher.combine(assignees)
         hasher.combine(comments)
@@ -52,8 +48,6 @@ struct IssueDetailModel: Hashable, Codable {
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
             milestone: Milestone(mid: 1, title: "milestone sample", issues: [IssueState(isOpen: true)]),
-           // author: nil,
-//            mid: nil,
             assignees: nil)
     }
 }

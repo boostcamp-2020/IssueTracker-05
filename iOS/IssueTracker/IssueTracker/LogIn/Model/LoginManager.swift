@@ -111,4 +111,26 @@ class LoginManager {
         
     }
     
+    func requestLoginPost(userId:String, password: String, handler: @escaping (Bool) -> Void) {
+        
+        let parameters = ["userId": userId,
+                          "password": password]
+
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(api_server_url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                if let json = json as? [String: Any] {
+                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    handler(true)
+                }
+            case let .failure(error):
+                print(error)
+                handler(false)
+            }
+        }
+    
+    }
+    
 }
