@@ -14,7 +14,7 @@ const githubLogin = async (token) => {
     where: {
       userId: data.id,
       resourceServer: 'github',
-      nickname: data.name,
+      nickname: data.login,
       OAuth: true,
     },
   });

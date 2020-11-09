@@ -1,6 +1,6 @@
 import db from '@models';
 
-const getUsers = async () => {
+export default async () => {
   try {
     const users = db.user.findAll({
       attributes: ['uid', 'userId', 'nickname', 'image'],
@@ -10,5 +10,3 @@ const getUsers = async () => {
     throw new Error(err);
   }
 };
-
-export default { getUsers };

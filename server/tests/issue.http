@@ -23,7 +23,7 @@ content-type: {{contentType}}
 
 ### 특정 이슈 하나 불러오기
 
-@issueId=9
+@issueId=7
 
 GET {{host}}/issue/{{issueId}} HTTP/1.1
 content-type: {{contentType}}
@@ -38,7 +38,8 @@ Authorization: Bearer {{authToken}}
 ### 이슈 불러오기
 
 GET {{host}}/issue
-?page=4
+?labels[]=bug,
+&is
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
@@ -49,8 +50,8 @@ content-type: {{contentType}}
 Authorization: Bearer {{authToken}}
 
 {
-  "title": "[회원가입 화면] 회원가입 API",
-  "content": "- [ ] 6자 ~ 16자로 구성하는지 유효성 검증\n- [ ] 유효성 검증이 되었을 경우 BE로 가입된 아이디인지 체크 요청 전송",
+  "title": "[이미지 넣기] 이미지 API",
+  "content": "-",
   "uid": 17,
   "label": null,
   "mid": null,
@@ -95,85 +96,8 @@ Authorization: Bearer {{authToken}}
   "content": "- [ ] 6자 ~ 16자로 구성하는지 유효성 검증\n- [ ] 유효성 검증이 되었을 경우 BE로 가입된 아이디인지 체크 요청 전송"
 }
 
-### 이슈 수정(2). 이슈에 할당되어 있는 label 수정
-
-# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-# content-type: {{contentType}}
-# Authorization: Bearer {{authToken}}
-
-# {
-#   "labels": [
-#     {
-#       "name": "bug",
-#       "state": false
-#     }
-#   ]
-# }
-
-# ### 이슈 수정(3). 이슈에 할당되어 있는 assginee 추가
-
-# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-# content-type: {{contentType}}
-# Authorization: Bearer {{authToken}}
-
-# {
-#   "assignees": [
-#     {
-#       "uid": 6,
-#       "state": false
-#     },
-#     {
-#       "uid": 8,
-#       "state": false
-#     }
-#   ]
-# }
-
-# ### 이슈 수정(4). 이슈에 할당되어 있는 assginee 삭제
-
-# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-# content-type: {{contentType}}
-# Authorization: Bearer {{authToken}}
-
-# {
-#   "assignees": [
-#     {
-#       "uid": 6,
-#       "state": false
-#     },
-#     {
-#       "uid": 8,
-#       "state": false
-#     }
-#   ]
-# }
-
-# ### 이슈 수정 (5). assignees 추가/삭제 동시에 테스트
-
-# PATCH {{host}}/issue/{{issueId}} HTTP/1.1
-# content-type: {{contentType}}
-# Authorization: Bearer {{authToken}}
-
-# {
-#   "assignees": [
-#     {
-#       "uid": 6,
-#       "state": false
-#     },
-#     {
-#       "uid": 8,
-#       "state": false
-#     },
-#     {
-#       "uid": 10,
-#       "state": true
-#     }
-#   ]
-# }
-
-### 특정 이슈 삭제
-
-@deleteIssueId=9
+### 이슈 삭제
+@deleteIssueId=2
 DELETE {{host}}/issue/{{deleteIssueId}} HTTP/1.1
 content-type: {{contentType}}
 Authorization: Bearer {{authToken}}

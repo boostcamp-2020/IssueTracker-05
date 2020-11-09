@@ -3,7 +3,7 @@ import commentService from '@services/comment';
 const getComments = async (req, res) => {
   const { iid } = req.params;
   try {
-    const comments = await commentService.getComments(iid);
+    const comments = await commentService.readComments(iid);
     return res.status(200).json(comments);
   } catch (err) {
     throw new Error(err);
@@ -27,7 +27,7 @@ const patchComment = async (req, res) => {
   const { cid } = req.params;
   const { content } = req.body;
   try {
-    await commentService.patchComment(content, cid);
+    await commentService.updateComment(content, cid);
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({

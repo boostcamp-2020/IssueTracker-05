@@ -2,7 +2,7 @@ import milestoneService from '@services/milestone';
 
 const getMilestone = async (req, res) => {
   try {
-    const milestoneList = await milestoneService.getMilestoneFromDB();
+    const milestoneList = await milestoneService.readMilestones();
     return res.status(200).json(milestoneList);
   } catch (err) {
     return res.status(400).json({
@@ -13,7 +13,7 @@ const getMilestone = async (req, res) => {
 
 const deleteMilestone = async (req, res) => {
   try {
-    await milestoneService.deleteMilestonFromDB(req.params.id);
+    await milestoneService.deleteMilestone(req.params.id);
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({
@@ -25,26 +25,25 @@ const deleteMilestone = async (req, res) => {
 const editMilestone = async (req, res) => {
   const { body } = req;
   try {
-    await milestoneService.editMilestoneFromDB(req.params.id, body);
+    await milestoneService.updateMilestone(req.params.id, body);
+    return res.status(200).end();
   } catch (err) {
     res.status(400).json({
       message: err,
     });
   }
-  return res.status(200).end();
 };
 
 const addMilestone = async (req, res) => {
   const { body } = req;
-  let milestone;
   try {
-    milestone = await milestoneService.addMilestoneToDB(body);
+    const milestone = await milestoneService.createMilestone(body);
+    return res.status(200).json(milestone);
   } catch (err) {
     res.status(400).json({
       message: err,
     });
   }
-  return res.status(200).json(milestone);
 };
 
 export default { getMilestone, deleteMilestone, editMilestone, addMilestone };
