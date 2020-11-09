@@ -11,7 +11,7 @@ struct IssueDetailModel: Hashable, Codable {
     var updatedAt: String?
     var createdAt: String?
     //var author: String?
-    var mid: Int?
+    var milestone: Milestone
     var assignees: [Assignees]?
     
     static func == (lhs: IssueDetailModel, rhs: IssueDetailModel) -> Bool {
@@ -22,7 +22,8 @@ struct IssueDetailModel: Hashable, Codable {
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
             //&& lhs.author == rhs.author
-            && lhs.mid == rhs.mid
+            //&& lhs.mid == rhs.mid
+            && lhs.milestone == rhs.milestone
             && lhs.assignees == rhs.assignees
             && lhs.comments == rhs.comments
     }
@@ -35,7 +36,7 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(content)
         hasher.combine(createdAt)
         //hasher.combine(author)
-        hasher.combine(mid)
+        hasher.combine(milestone)
         hasher.combine(assignees)
         hasher.combine(comments)
     }
@@ -50,8 +51,9 @@ struct IssueDetailModel: Hashable, Codable {
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
+            milestone: Milestone(mid: 1, title: "milestone sample", issues: IssueState(open: 12, close: 24)),
            // author: nil,
-            mid: nil,
+//            mid: nil,
             assignees: nil)
     }
 }

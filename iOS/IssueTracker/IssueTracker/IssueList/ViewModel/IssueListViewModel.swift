@@ -17,6 +17,13 @@ class IssueListViewModel {
         var searchCancelButtonClicked: () -> Void
         var closeButtonTabbed: (Int) -> Void
         var deleteButtonTabbed: (Int) -> Void
+        
+        // 필터링
+        
+        // 다중 선택
+        
+        // 이슈 추가, 수정
+        
     }
     
     var status = Status()
