@@ -8,10 +8,11 @@ class LabelListCellView: UICollectionViewCell {
     
     func setup(title: String, description: String?, color: String) { // 색도 받아와야 한다.
         labelTitle.setTitle(title, for: .normal)
+        labelTitle.makeTagStyle(color.hexToColor())
         if let description = description {
             labelDetail.text = description
         }
-        labelTitle.backgroundColor = color.hexToColor()
+        //labelTitle.backgroundColor =
         labelColor = color
     }
     

@@ -40,12 +40,11 @@ import UIKit
         }
     }
     
-    func makeTagStyle() {
-        self.borderWidth = 1.0
-        self.borderColor = .black
+    func makeTagStyle(_ tagColor: UIColor? = nil) {
         self.cornerRadius = self.frame.height / 8
         self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor(red: 42/255, green: 193/255, blue: 188/255, alpha: 1.0)
-        self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        self.backgroundColor = tagColor ?? UIColor(
+            red: 42/255, green: 193/255, blue: 188/255, alpha: 1.0)
+        self.contentEdgeInsets = UIEdgeInsets(top: 3, left: 8, bottom: 4, right: 8)
     }
 }
