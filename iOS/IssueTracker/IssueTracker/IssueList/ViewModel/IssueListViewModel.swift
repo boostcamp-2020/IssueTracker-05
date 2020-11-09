@@ -9,6 +9,7 @@ class IssueListViewModel {
         var issues =  Bindable(IssueListModel.all())
         var searchResultTitleList = Bindable([String]())
         var searchResultList = Bindable(IssueListModel.all())
+        // reulstOfFiltering = Bindable(IssueListModel.all()) <-> snapshot()
     }
     
     struct Action {
@@ -19,6 +20,8 @@ class IssueListViewModel {
         var deleteButtonTabbed: (Int) -> Void
         
         // 필터링
+        // Done(bool, , , , , ,)
+        //issues.filter{}
         
         // 다중 선택
         

@@ -5,13 +5,13 @@ struct IssueDetailModel: Hashable, Codable {
     var iid: Int
     var title: String // 이슈 타이틀
     var isOpen: Bool
-    var label: [String]?
+    var label: [Label]?
     var content: String?
     var comments: [Comment]?
     var updatedAt: String?
     var createdAt: String?
     //var author: String?
-    var milestone: Milestone
+    var milestone: Milestone?
     var assignees: [Assignees]?
     
     static func == (lhs: IssueDetailModel, rhs: IssueDetailModel) -> Bool {
@@ -51,7 +51,7 @@ struct IssueDetailModel: Hashable, Codable {
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
-            milestone: Milestone(mid: 1, title: "milestone sample", issues: IssueState(open: 12, close: 24)),
+            milestone: Milestone(mid: 1, title: "milestone sample", issues: [IssueState(isOpen: true)]),
            // author: nil,
 //            mid: nil,
             assignees: nil)

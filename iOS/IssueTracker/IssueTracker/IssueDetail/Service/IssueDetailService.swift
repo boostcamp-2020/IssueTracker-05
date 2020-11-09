@@ -32,14 +32,16 @@ class IssueDetailService {
                     
                     weakSelf.viewModel.status.model.value = decodedData
                     
-                    print(decodedData)
+                    print("이슈 디테일 데이터", decodedData)
                     
                     
                     //.. = weakSelf.viewModel.status.model.value.assignees
                 } catch {
+                    print("에러에러에러에러에러에러에러에러에러에러에러에러에러에러에러")
                     print(error)
                 }
             case .failure(let error):
+                print("에러에러에러에러에러에러에러에러에러에러에러에러에러에러에러")
                 print("error\nerror\n error\n error\n error\n error\n error\n error\n error ")
                 print(error)
             }
