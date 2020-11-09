@@ -20,11 +20,13 @@ class LabelListViewModel {
         var selectedLabel
             = Bindable<Label>(Label(color: "", desc: "", name: ""))
         var resultOfSaving = Bindable(LabelListResultType.fail)
+        var inPlace = Bindable(true) // true면 제자리
     }
     
     struct Action {
         var cellTouched: (String, String, String) -> Void
         var labelEditSaveButtonDidTabbed: (String, String, String, String?) -> Void
+        var deleteButtonTabbed: (String) -> Void
     }
     
     let status = Status()
@@ -36,9 +38,13 @@ class LabelListViewModel {
             weakSelf.status.selectedLabel.value = Label(
                 color: color, desc: desc, name: title)
             
+            weakSelf.status.inPlace.value = true
+            
         }, labelEditSaveButtonDidTabbed: {
             [weak self] title, desc, color, id in
             guard let weakSelf = self else { return }
+            
+            weakSelf.status.inPlace.value = true
             
             if let id = id { // 수정
                 weakSelf.service.requestLabelPatch(
@@ -57,6 +63,12 @@ class LabelListViewModel {
             weakSelf.service.requestLabelPost(
                 name: title, desc: desc, color: color)
             weakSelf.status.resultOfSaving.value = .success
+        }, deleteButtonTabbed: { [weak self] name in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.service.requestLabelDelete(name: name)
+            
+            // 사용성을 위해 서버에서 응답을 받지 않았어도 셀을 삭제해주는 것을 고려해보자.
         })
     
     init() {

@@ -236,7 +236,6 @@
 				88C0381C25497B5E000D4D4A /* IssueResultViewController.swift */,
 				88C0382625499494000D4D4A /* IssueResultCellView.swift */,
 				881BC67B25510A5B00676011 /* IssueDetailedView.swift */,
-				881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */,
 			);
 			path = IssueResultList;
 			sourceTree = "<group>";
@@ -398,6 +397,7 @@
 				DABEB866254821B3006471F6 /* AppDelegate.swift */,
 				DABEB868254821B3006471F6 /* SceneDelegate.swift */,
 				88C03822254990C5000D4D4A /* Bindable.swift */,
+				881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";

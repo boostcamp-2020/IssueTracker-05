@@ -83,10 +83,12 @@ class LabelListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
                     return nil
                 }
+                cell.delegate = self
                 cell.setup(
                     title: label.name,
                     description: label.desc,
                     color: label.color)
+                weakSelf.viewModel.status.inPlace.bind(cell.reset(inPlace:))
                 return cell
             })
     }
@@ -97,9 +99,18 @@ extension LabelListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell: LabelListCellView = collectionView.cellForItem(at: indexPath) as? LabelListCellView else { return }
         viewModel.action.cellTouched(
-            cell.labelTitle.titleLabel?.text ?? "",
-            cell.labelDetail.text ?? "",
+            cell.labelTitle ?? "",
+            cell.labelDescription ?? "",
             cell.labelColor ?? "")
+    }
+}
+
+extension LabelListViewController: LabelListCellViewDelegate {
+    func LabelListCellView(_ labelViewCell: UICollectionViewCell, didSelectCellView: BothSidesSwipingView) {
+        didSelectCellView.reset()
+        guard let cell = labelViewCell as? LabelListCellView else { return }
+        guard let name = cell.labelTitle else { return }
+        viewModel.action.deleteButtonTabbed(name)
     }
 }
 
