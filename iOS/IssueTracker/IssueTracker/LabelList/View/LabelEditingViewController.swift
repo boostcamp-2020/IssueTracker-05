@@ -63,6 +63,7 @@ class LabelEditingViewController: UIViewController {
             description: descriptionField.text ?? "",
             color: colorTextField.text ?? ""
         )
+        sender.isEnabled = false
         dismiss(animated: true)
     }
     
