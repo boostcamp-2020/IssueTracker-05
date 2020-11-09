@@ -57,6 +57,14 @@ class IssueDetailEditingViewController: UIViewController {
 
 extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        5
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 40)
     }
@@ -86,9 +94,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
             
             if let assignee = viewModel?.status.model.value.assignees?[indexPath.row] {
                 cell.tagButton.setTitle(assignee.userId, for: .normal)
-                cell.tagButton.borderWidth = 1.0
-                cell.tagButton.borderColor = .black
-                cell.tagButton.cornerRadius = 4.0
+                cell.tagButton.makeTagStyle()
             }
             return cell
         } else if indexPath.section == 1 {

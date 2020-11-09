@@ -58,7 +58,12 @@ class IssueListMainViewController: UIViewController {
     }
     
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
-        print("Add")
+        //print("Add")
+        
+        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil).instantiateViewController(identifier: String(describing: IssueCreationViewController.self))
+
+        self.present(creationVC, animated: true)
+        
     }
     @objc func pushFilterViewController() {
         print("filter")
