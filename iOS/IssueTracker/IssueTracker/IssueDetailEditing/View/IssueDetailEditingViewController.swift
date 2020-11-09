@@ -69,7 +69,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 400, height: 100)
+        CGSize(width: collectionView.frame.width, height: 80)
     }
         
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -80,7 +80,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
         if section == 0 {
             return viewModel?.status.model.value.assignees?.count ?? 0
         } else if section == 1 {
-            return viewModel?.status.model.value.label?.count ?? 0
+            return viewModel?.status.model.value.labels?.count ?? 0
         } else {
             return viewModel?.status.model.value.milestone?.mid == nil ? 0 : 1
         }
@@ -98,10 +98,28 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell", for: indexPath) as! LabelCollectionViewCell
+            
+            if let label = viewModel?.status.model.value.labels?[indexPath.row] {
+                cell.tagButton.setTitle(label.name, for: .normal)
+                cell.tagButton.makeTagStyle()
+                cell.tagButton.backgroundColor = label.color.hexToColor()
+            }
+            
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
-            cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.milestone?.mid))"
+            cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.milestone?.title ?? ""))"
+
+            if let total = viewModel?.status.model.value.milestone?.issues?.count {
+                
+                var complete:Double = viewModel?.status.model.value.milestone?.issues?.reduce(0.0) { (s1, s2) in
+                    s1 + (s2.isOpen ? 1 : 0)
+                } ?? 0
+                
+                cell.milestoneProgressView.progress = Float(complete / Double(total))
+            }
+            
+                
             return cell
         }
         

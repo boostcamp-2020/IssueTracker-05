@@ -159,11 +159,17 @@ class IssueDetailViewController: UIViewController {
     func configureNavigation() {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Edit", style: .done, target: nil, action: #selector(pushEditViewController))
+            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(pushEditViewController))
     }
     
     @objc func pushEditViewController() {
-        print("Edit")
+        
+        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil).instantiateViewController(identifier: String(describing: IssueCreationViewController.self)) as IssueCreationViewController
+        
+        creationVC.issueNumber = viewModel?.issueId
+        
+        self.present(creationVC, animated: true)
+        
     }
     
     // TODO: action과 configure를 구분
@@ -187,10 +193,8 @@ extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
         print("button")
         // TODO: 이슈 생성 화면을 보여준다.
     }
-
+    
 }
-
-
 
 #if DEBUG
 

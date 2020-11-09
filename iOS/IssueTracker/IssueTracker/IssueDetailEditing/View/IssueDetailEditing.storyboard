@@ -119,6 +119,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="milestoneLabel" destination="U6h-Cd-4Ng" id="n7g-Ha-0Bm"/>
+                                            <outlet property="milestoneProgressView" destination="UbS-IT-ine" id="DIe-bA-BRg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
