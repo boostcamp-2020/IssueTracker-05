@@ -5,7 +5,7 @@ export default async (query, uid) => {
     if (!query.page) {
       // app의 경우 client rendering
       const issues = await db.issue.findAll({
-        attributes: ['iid', 'isOpen', 'title', 'createdAt', 'closedAt'],
+        attributes: ['iid', 'isOpen', 'title', 'createdAt', 'closedAt', 'content'],
         include: [
           {
             model: db.user,
