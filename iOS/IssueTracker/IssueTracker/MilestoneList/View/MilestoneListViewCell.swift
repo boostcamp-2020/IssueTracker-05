@@ -15,14 +15,11 @@ class MilestoneListViewCell: UICollectionViewCell {
     
     var issueStates: [IssueState]?
     
-    func date(with date: String) -> String {
-        date.components(separatedBy: "T")[0]
-    }
-    
     func setup(with milestone: Milestone) {
         self.milestone = milestone
+        self.milestone.updatedAt = format(with: self.milestone.updatedAt)
         milestoneTitle.setTitle(milestone.title, for: .normal)
-        dueDateLabel.text = milestone.updatedAt
+        dueDateLabel.text = formatToKorean(from: self.milestone.updatedAt)
         descriptionLabel.text = milestone.content ?? ""
         issueStates = milestone.issues
         percentageLabel.text = "\(percentageProgress)%"
@@ -30,8 +27,7 @@ class MilestoneListViewCell: UICollectionViewCell {
         closedLabel.text = "\(numberOfOpen ?? 0) closed"
         setupMilestoneTitleLabel()
         
-        self.milestone.updatedAt = date(with: self.milestone.updatedAt)
-        print(self.milestone.updatedAt)
+        
     }
     
     func setupMilestoneTitleLabel() {
@@ -39,6 +35,19 @@ class MilestoneListViewCell: UICollectionViewCell {
         milestoneTitle.contentEdgeInsets.bottom = 2
         milestoneTitle.contentEdgeInsets.left = 4
         milestoneTitle.contentEdgeInsets.right = 4
+    }
+    
+    func format(with date: String) -> String {
+        date.components(separatedBy: "T")[0]
+    }
+    
+    func formatToKorean(from dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일까지"
+        guard let result = date else { return nil }
+        return dateFormatter.string(from: result)
     }
     
     var numberOfOpen: Int? {
