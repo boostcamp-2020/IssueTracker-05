@@ -12,12 +12,12 @@ class MilestoneListViewModel {
     
     struct Status {
         var milestones = Bindable(Milestone.all())
-        var selectedLabel
+        var selectedMilestone
             = Bindable<Milestone>(Milestone.all()[0])
     }
     
     struct Action {
-        var cellTouched: (String, String, String) -> Void
+        var cellTouched: (Milestone) -> Void
         var labelEditSaveButtonDidTabbed: (String, String, String, String?) -> Void
         var deleteButtonTabbed: (String) -> Void
         var refreshData: () -> Void
@@ -25,12 +25,9 @@ class MilestoneListViewModel {
     
     lazy var action = Action(
         cellTouched: {
-            [weak self] title, desc, color in
+            [weak self] milestone in
             guard let weakSelf = self else { return }
-            
-//            weakSelf.status.selectedLabel.value = Label(
-//                color: color, desc: desc, name: title)
-            
+            weakSelf.status.selectedMilestone.value = milestone
         }, labelEditSaveButtonDidTabbed: {
             [weak self] title, desc, color, id in
             guard let weakSelf = self else { return }

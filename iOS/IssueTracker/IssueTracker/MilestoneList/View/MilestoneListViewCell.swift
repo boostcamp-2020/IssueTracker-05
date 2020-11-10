@@ -3,6 +3,8 @@ import UIKit
 
 
 class MilestoneListViewCell: UICollectionViewCell {
+
+    var milestone: Milestone?
     
     @IBOutlet var milestoneTitle: UIButton!
     @IBOutlet var dueDateLabel: UILabel!
@@ -13,20 +15,23 @@ class MilestoneListViewCell: UICollectionViewCell {
     
     var issueStates: [IssueState]?
     
-    
     func setup(with milestone: Milestone) {
+        self.milestone = milestone
         milestoneTitle.setTitle(milestone.title, for: .normal)
-        milestoneTitle.contentEdgeInsets.top = 2
-        milestoneTitle.contentEdgeInsets.bottom = 2
-        milestoneTitle.contentEdgeInsets.left = 4
-        milestoneTitle.contentEdgeInsets.right = 4
         dueDateLabel.text = milestone.updatedAt
-        // TODO: 날짜 형식 바꿔주기
         descriptionLabel.text = milestone.content ?? ""
         issueStates = milestone.issues
         percentageLabel.text = "\(percentageProgress)%"
         openLabel.text = "\(numberOfOpen ?? 0) open"
         closedLabel.text = "\(numberOfOpen ?? 0) closed"
+        setupMilestoneTitleLabel()
+    }
+    
+    func setupMilestoneTitleLabel() {
+        milestoneTitle.contentEdgeInsets.top = 2
+        milestoneTitle.contentEdgeInsets.bottom = 2
+        milestoneTitle.contentEdgeInsets.left = 4
+        milestoneTitle.contentEdgeInsets.right = 4
     }
     
     var numberOfOpen: Int? {

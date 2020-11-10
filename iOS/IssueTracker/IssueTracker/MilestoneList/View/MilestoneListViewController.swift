@@ -95,14 +95,21 @@ class MilestoneListViewController: UIViewController {
 }
 
 extension MilestoneListViewController: MilestoneEditingViewControllerDelegate {
-    func MilestoneEditSaveButtonDidTab(title: String, description: String, color: String, labelID: String?) {
+    func MilestoneEditSaveButtonDidTab(title: String, description: String, date color: String, milestoneID labelID: String?) {
         
     }
 }
 
 extension MilestoneListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let cell = collectionView.cellForItem(at: indexPath)
+                as? MilestoneListViewCell else { return }
+//        guard let id = cell.milestoneID else { return }
+//        guard let title = cell.milestoneTitle.title(for: .normal) else { return }
+//        guard let desc = cell.descriptionLabel.text else { return }
+//        guard let date = cell.dueDateLabel.text else { return }
+        guard let milestone = cell.milestone else { return }
+        viewModel.action.cellTouched(milestone)
     }
 }
 
