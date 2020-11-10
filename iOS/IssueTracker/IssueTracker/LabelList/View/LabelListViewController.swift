@@ -18,8 +18,7 @@ class LabelListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout = configureCollectionViewLayout()
-        collectionView.delegate = self
+        configureCollectionView()
         navigationItem.rightBarButtonItem
             = UIBarButtonItem(
                 image: UIImage(systemName: "plus"),
@@ -31,6 +30,19 @@ class LabelListViewController: UIViewController {
     func bind() {
         viewModel.status.selectedLabel.bind(editLabel)
         viewModel.status.labels.bindAndFire(applyAnapshot)
+    }
+    
+    func configureCollectionView() {
+        collectionView.collectionViewLayout = configureCollectionViewLayout()
+        collectionView.delegate = self
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        viewModel.action.refreshData()
+        collectionView.refreshControl?.endRefreshing()
     }
     
     func editLabel(label: Label) { // 편집 모드
@@ -88,7 +100,6 @@ class LabelListViewController: UIViewController {
                     title: label.name,
                     description: label.desc,
                     color: label.color)
-                weakSelf.viewModel.status.inPlace.bind(cell.reset(inPlace:))
                 return cell
             })
     }
@@ -102,6 +113,10 @@ extension LabelListViewController: UICollectionViewDelegate {
             cell.labelTitle ?? "",
             cell.labelDescription ?? "",
             cell.labelColor ?? "")
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        print("맨위")
     }
 }
 
