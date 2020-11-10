@@ -55,7 +55,7 @@ class MilestoneListViewController: UIViewController {
             .instantiateViewController(identifier: String(describing: MilestoneEditingViewController.self))
         editVC.modalPresentationStyle = .overCurrentContext
         editVC.delegate = self
-        //viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
+        viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
         return editVC
     }
     
@@ -97,7 +97,8 @@ class MilestoneListViewController: UIViewController {
 
 extension MilestoneListViewController: MilestoneEditingViewControllerDelegate {
     func MilestoneEditSaveButtonDidTab(title: String, description: String?, date: String, milestoneID: Int?) {
-        
+        viewModel.action.milestoneEditSaveButtonDidTabbed(
+            title, description ?? "", date, milestoneID)
     }
     
     func MilestoneEditSaveButtonDidTab(title: String, description: String, date color: String, milestoneID labelID: String?) {

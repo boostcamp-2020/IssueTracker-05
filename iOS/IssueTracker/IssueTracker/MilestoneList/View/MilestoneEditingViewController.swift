@@ -51,8 +51,7 @@ class MilestoneEditingViewController: UIViewController {
     
     
     @IBAction func saveButtonTabbed(_ sender: UIButton) {
-        saveButton.isEnabled = false // TODO: 저장 성공하면 true로 만들어주어야한다.
-        // 그런데 만약 저장 실패 따로 처리 할 필요없으면 그냥 false인채로 바로 꺼지게 하면 된다.
+        saveButton.isEnabled = false
         
         guard let title = titleField.text else {
             print("title nil")
@@ -71,7 +70,7 @@ class MilestoneEditingViewController: UIViewController {
                 description: desc == "" ? milestone.content ?? "" : desc,
                 date: date == "" ? milestone.updatedAt: date,
                 milestoneID: milestone.mid)
-            //dismiss(animated: true)
+            return
         }
         
         // 추가 모드: 입려되어 있지 않으면 그냥 빈값으로
@@ -81,23 +80,21 @@ class MilestoneEditingViewController: UIViewController {
             description: desc,
             date: date,
             milestoneID: nil)
-        
-        //dismiss(animated: true)
     }
     
-    func resultOfSuccess(result: LabelListResultType) {
+    func resultOfSuccess(result: MilestoneListResultType) {
         switch result {
         case .success:
             successSaving()
-        case .fail:
-            guard let message = result.errorDescription else { return }
-            failSaving(errorMessage: message)
+        case .title:
+            failSaving(errorMessage: result.rawValue)
+        case .date:
+            failSaving(errorMessage: result.rawValue)
         }
     }
     
     func successSaving() {
         dismiss(animated: true)
-        // 저장 성공 alert를 할지 고민
     }
     
     func failSaving(errorMessage: String) {

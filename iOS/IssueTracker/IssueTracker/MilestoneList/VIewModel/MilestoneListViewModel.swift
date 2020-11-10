@@ -26,7 +26,7 @@ class MilestoneListViewModel {
     
     struct Action {
         var cellTouched: (Milestone) -> Void
-        var milestoneEditSaveButtonDidTabbed: (String, String, String, String?) -> Void
+        var milestoneEditSaveButtonDidTabbed: (String, String, String, Int?) -> Void
         var deleteButtonTabbed: (String) -> Void
         var refreshData: () -> Void
     }
@@ -41,15 +41,23 @@ class MilestoneListViewModel {
             guard let weakSelf = self else { return }
             
             
-            
-            
-            
             if let id = id { // 수정
 //                weakSelf.service.requestLabelPatch(
 //                    oldName: id, name: title, desc: desc, color: color)
                 weakSelf.status.resultOfSaving.value = .success
                 return
             }
+            
+            if title == "" {
+                weakSelf.status.resultOfSaving.value = .title
+                return
+            }
+            
+            if weakSelf.isValid(date: date) { // 날짜 형식 검사 로직이 들어가야 한다.
+                weakSelf.status.resultOfSaving.value = .date
+                return
+            }
+            
             
             //let labels = weakSelf.status.labels.value
 //            for index in labels.indices {
@@ -63,17 +71,19 @@ class MilestoneListViewModel {
             weakSelf.status.resultOfSaving.value = .success
         }, deleteButtonTabbed: { [weak self] name in
             guard let weakSelf = self else { return }
-            
 //            weakSelf.service.requestLabelDelete(name: name)
-            
-            // 사용성을 위해 서버에서 응답을 받지 않았어도 셀을 삭제해주는 것을 고려해보자.
         }, refreshData: { [weak self] in
             guard let weakSelf = self else { return }
-            
 //            weakSelf.service.requestLabelListGet()
         })
     
     var status = Status()
     
+    // 날짜 형식 검사 함수 구현
+    func isValid(date: String) -> Bool {
+        date == ""
+    }
+    
+     // 날짜 형식 우리한테 맞게 변경 - 서비스에서 호출.
 }
 
