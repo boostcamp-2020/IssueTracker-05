@@ -26,7 +26,7 @@ class IssueListViewModel {
         // 다중 선택
         
         // 이슈 추가, 수정
-        
+        var addIssueTabbed: (Int) -> Void
     }
     
     var status = Status()
@@ -67,7 +67,12 @@ class IssueListViewModel {
                    return
                 }
             }
-        })
+        }, addIssueTabbed: { [weak self] iid in
+            guard let weakSelf = self else { return }
+            print(iid, "add")
+        }
+    
+    )
     
     init() {
         service.requestIssueListGet()

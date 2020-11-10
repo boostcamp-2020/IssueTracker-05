@@ -15,8 +15,12 @@ class LoginManager {
     
     static let shared = LoginManager()
     private init() { }
-    private let client_id = "0da3b116126e34da88f8"
-    private let client_secret = "5f0e074688ac520816482649c0ea663cd78a7041"
+    private var client_id: String {
+        (Bundle.main.infoDictionary?["APP_KEY"] as? String) ?? ""
+    } 
+    private var client_secret: String {
+        (Bundle.main.infoDictionary?["API_SECRET_KEY"] as? String) ?? ""
+    }
     private let api_server_url = "http://group05issuetracker.duckdns.org:49203"
     
     func requestCode() {
@@ -91,24 +95,47 @@ class LoginManager {
         })
     }
     
-    func requestiOSJWT(acccess_token:String) {
+    func requestiOSJWT(acccess_token:String, handler: @escaping (Bool) -> Void) {
         
         let parameters = ["token":acccess_token]
         
         let headers: HTTPHeaders = ["content-type": "application/x-www-form-urlencoded"]
         
-        AF.request(api_server_url+"/api/login/ios", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+        AF.request(api_server_url+"/api/login/apple", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
             switch response.result {
             case let .success(json):
                 if let json = json as? [String: Any] {
                     UserDefaults.standard.setValue(json["token"]!, forKey: "token")
                     self.updateUI?()
+                    handler(true)
                 }
             case let .failure(error):
                 print(error)
             }
         }
         
+    }
+    
+    func requestLoginPost(userId:String, password: String, handler: @escaping (Bool) -> Void) {
+        
+        let parameters = ["userId": userId,
+                          "password": password]
+
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(api_server_url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                if let json = json as? [String: Any] {
+                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    handler(true)
+                }
+            case let .failure(error):
+                print(error)
+                handler(false)
+            }
+        }
+    
     }
     
 }

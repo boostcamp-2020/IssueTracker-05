@@ -32,14 +32,14 @@
                                 <rect key="frame" x="80" y="366" width="39" height="30"/>
                                 <state key="normal" title="로그인"/>
                                 <connections>
-                                    <action selector="touchedLogIn:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="lq0-fs-YGn"/>
+                                    <action selector="signInTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="STt-5w-KCd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvn-xc-mSe">
                                 <rect key="frame" x="282" y="366" width="52" height="30"/>
                                 <state key="normal" title="회원가입"/>
                                 <connections>
-                                    <action selector="touchedSignUp:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="jOz-q1-xxr"/>
+                                    <action selector="signUpTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="8eD-9T-y5z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qj-NF-SeF">
@@ -54,7 +54,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="touchedSignInWithGithub:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="Nmf-g4-67b"/>
+                                    <action selector="signInWithGithubTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="0Th-n7-ruM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ki-Ie-WK5">
@@ -69,7 +69,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="touchedSignIinWithApple:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="HfD-sD-eAv"/>
+                                    <action selector="signinWithAppleTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="M14-or-9tl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-GH-6Nc">

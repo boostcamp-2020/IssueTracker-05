@@ -10,6 +10,7 @@ class IssueCreationViewController: UIViewController {
             titleTextView.delegate = self
         }
     }
+    @IBOutlet weak var IssueNumberLabel: UILabel!
     
     @IBOutlet weak var markdownTextView: UITextView! {
         didSet {
@@ -18,11 +19,18 @@ class IssueCreationViewController: UIViewController {
     }
     
     private let placeholderMessage = "코멘트는 여기에 작성하세요"
+    var issueNumber: Int?
     
     override func viewDidLoad() {
         textViewSetupView()
+        configure()
     }
         
+    func configure() {
+        guard let number = issueNumber else { return }
+        IssueNumberLabel.text = "# \(number)"
+    }
+    
     func removeMarkdownView() {
         view.subviews.forEach { view in
             if view is MarkdownView {
