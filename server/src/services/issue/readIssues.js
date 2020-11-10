@@ -13,7 +13,7 @@ export default async (query, uid) => {
           },
           {
             model: db.comment,
-            attributes: ['cid'],
+            attributes: ['cid', 'uid'],
           },
           {
             model: db.user,
