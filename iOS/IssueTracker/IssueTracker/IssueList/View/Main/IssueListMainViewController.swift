@@ -16,6 +16,9 @@ class IssueListMainViewController: UIViewController {
     var searchViewController: SearchListViewController!
     var issueResultViewController: IssueResultViewController!
     
+    
+    // MARK: View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
@@ -24,13 +27,10 @@ class IssueListMainViewController: UIViewController {
         setupSearchListViewController()
         setupIssueResultViewController()
         
-        //TODO: filter랑 edit에 데이터 넘겨줄 때 viewModel 액션을 여기에 바인딩 해야함.
-        // 데이터 넘겨주어야 하기 때문.
-        // Filter, Edit 후 서버에 보내고 필터링, 에디팅 된 정보를 출력한다.
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(pushFilterViewController))
+            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterButtonTabbed))
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(pushEditViewController))
+            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editButtonTabbed))
         bind()
     }
     
@@ -46,6 +46,9 @@ class IssueListMainViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
     }
     
+    
+    // MARK: Bind to ViewModel
+    
     func bind() {
         viewModel.status.searchResultList
             .bindAndFire(issueResultViewController.applySnapshot(sections:))
@@ -57,21 +60,26 @@ class IssueListMainViewController: UIViewController {
             = viewModel.action.deleteButtonTabbed
     }
     
+    
+    // MARK: Action
+    
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
-        //print("Add")
-        
-        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil).instantiateViewController(identifier: String(describing: IssueCreationViewController.self))
-
+        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueCreationViewController.self))
         self.present(creationVC, animated: true)
-        
     }
-    @objc func pushFilterViewController() {
+    
+    @objc func filterButtonTabbed() {
         print("filter")
     }
     
-    @objc func pushEditViewController() {
+    @objc func editButtonTabbed() {
         print("Edit")
     }
+    
+    
+    // MARK: Configure Child View Controller
     
     func setupSearchListViewController() {
         searchViewController = UIStoryboard(name: "IssueList", bundle: nil)
@@ -89,6 +97,9 @@ class IssueListMainViewController: UIViewController {
     }
     
 }
+
+
+// MARK: UISearchBarDelegate Delegate
 
 extension IssueListMainViewController: UISearchBarDelegate {
     
@@ -131,6 +142,9 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
 }
 
+
+// MARK: UICollectionViewDelegate Delegate
+
 extension IssueListMainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? IssueResultCellView else {
@@ -150,6 +164,8 @@ extension IssueListMainViewController {
     }
 }
 
+
+// MARK: Preview
 
 #if DEBUG
 

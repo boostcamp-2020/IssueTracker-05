@@ -52,15 +52,15 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             weakSelf.status.searchResultList.value
                 = weakSelf.status.issues.value
-            weakSelf.service.requestIssueData()
+            weakSelf.service.requestIssueListGet()
         }, closeButtonTabbed: { [weak self] iid in
             guard let weakSelf = self else { return }
             print(iid, "close")
-            weakSelf.service.requestCloaseIssue(issueId: iid)
+            weakSelf.service.requestIssueClose(issueId: iid)
         }, deleteButtonTabbed: { [weak self] iid in
             guard let weakSelf = self else { return }
             print(iid, "delete")
-            weakSelf.service.requestDeleteIssue(issueId: iid)
+            weakSelf.service.requestIssueDelete(issueId: iid)
             for index in weakSelf.status.issues.value.indices {
                 if weakSelf.status.issues.value[index].iid == iid {
                     weakSelf.status.issues.value.remove(at: index)
@@ -70,14 +70,12 @@ class IssueListViewModel {
         })
     
     init() {
-        service.requestIssueData()
+        service.requestIssueListGet()
         status.issues.bindAndFire(updateResultListView)
     }
     
     func updateResultListView(issues: [IssueListModel]) {
         status.searchResultList.value = issues
     }
-    
-    
     
 }

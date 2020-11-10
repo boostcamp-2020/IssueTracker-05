@@ -2,9 +2,10 @@ import UIKit
 
 class IssueResultCellView: UICollectionViewCell {
     
-    @IBOutlet weak var detailView: IssueDetailedView!
     var iid: Int?
-
+    
+    @IBOutlet weak var detailView: IssueDetailedView!
+    
     var closeButtonAction: ((Int) -> Void)?
     var deleteButtonAction: ((Int) -> Void)?
     
@@ -12,6 +13,9 @@ class IssueResultCellView: UICollectionViewCell {
         detailView.setup(title: title, description: description)
         self.iid = iid
     }
+    
+    
+    // MARK: Action
     
     @IBAction func closeButtonTabbed(_ sender: UIButton) {
         guard let iid = iid else { return }

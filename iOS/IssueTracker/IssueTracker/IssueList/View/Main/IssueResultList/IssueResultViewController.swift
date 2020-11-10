@@ -6,14 +6,23 @@ class IssueResultViewController: UIViewController {
     
     lazy var dataLayout = makeDataLayout()
     
+    
+    // MARK: Cell button Closure
+    
     var closeIssueButtonTabbed: ((Int) -> Void)?
     var deleteIssueButtonTabbed: ((Int) -> Void)?
+    
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
-        applySnapshot(sections: IssueListModel.all())
+        applySnapshot(sections: IssueListModel.all()) // TODO: dummy - 삭제 대상
     }
+    
+    
+    // MARK: Configure CollectionView
     
     func applySnapshot(sections: [IssueListModel]) {
         var snapshot = NSDiffableDataSourceSnapshot<[IssueListModel], IssueListModel>()
@@ -55,6 +64,9 @@ class IssueResultViewController: UIViewController {
         return UICollectionViewCompositionalLayout(section: section)
     }
 }
+
+
+// MARK: Preview
 
 #if DEBUG
 
