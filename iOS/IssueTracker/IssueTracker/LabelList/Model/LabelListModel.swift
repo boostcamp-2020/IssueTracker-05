@@ -19,9 +19,9 @@ struct Label: Codable, Hashable {
     
     static func all() -> [Label] {
         return [
-            Label(color: "#0075cb", desc: "Improvements or additions to documentation", name: "documentation"),
-            Label(color: "#0075cb", desc: "Improvements or additions to documentation", name: "documentation"),
-            Label(color: "#0070ca", desc: "Improvements or additions to documentation", name: "documentation")
+            Label(color: "#0075cb", desc: "Improvements or additions to documentation", name: "documentatdion"),
+            Label(color: "#0075cb", desc: "Improvements or additions to documentation", name: "documeantation"),
+            Label(color: "#0070ca", desc: "Improvements or additions to documentation", name: "dodasdn")
         ]
     }
 }

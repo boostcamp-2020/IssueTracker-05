@@ -29,9 +29,9 @@ struct Milestone: Hashable, Codable {
     
     static func all() -> [Milestone] {
         [
-            Milestone(mid: 1000, title: "hello", content: "contentekalksdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
-            Milestone(mid: 2010, title: "hlo", content: "contentekalksdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
-            Milestone(mid: 3001, title: "hllo", content: "contentekalksdj", createdAt: "", updatedAt: "", issues: IssueState.all())
+            Milestone(mid: 1000, title: "hello", content: "contewntekalksdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
+            Milestone(mid: 2010, title: "hlo", content: "contentekalkssdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
+            Milestone(mid: 3001, title: "hllo", content: "contentekddalksdj", createdAt: "", updatedAt: "", issues: IssueState.all())
         ]
     }
 }
