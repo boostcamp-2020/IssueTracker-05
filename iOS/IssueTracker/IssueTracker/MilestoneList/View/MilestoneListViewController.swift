@@ -11,8 +11,12 @@ class MilestoneListViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout
-            = configureCollectionViewLayout()
+        configureCollectionView()
+        navigationItem.rightBarButtonItem
+            = UIBarButtonItem(
+                image: UIImage(systemName: "plus"),
+                style: .done,
+                target: self, action: #selector(addMilestoneButtonTabbed))
         bind()
     }
     
@@ -20,11 +24,45 @@ class MilestoneListViewController: UIViewController {
         viewModel.status.milestones.bindAndFire(applyAnapshot)
     }
     
+    func configureCollectionView() {
+        collectionView.collectionViewLayout = configureCollectionViewLayout()
+        collectionView.delegate = self
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        viewModel.action.refreshData()
+        collectionView.refreshControl?.endRefreshing()
+    }
+    
+    func editLabel(label: Label) { // 편집 모드
+        let editVC = configureLabelEdiginVC()
+        //editVC.setupDefaultValue(title: label.name, desc: label.desc, color: label.color)
+        present(editVC, animated: false)
+    }
+    
+    @objc func addMilestoneButtonTabbed() { // 추가 모드
+        let editVC = configureLabelEdiginVC()
+        present(editVC, animated: false)
+    }
+    
     func applyAnapshot(sections: [Milestone]) {
         var snapshot = NSDiffableDataSourceSnapshot<[Milestone], Milestone>()
         snapshot.appendSections([sections])
         snapshot.appendItems(sections)
         dataLayout.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func configureLabelEdiginVC() -> MilestoneEditingViewController {
+        let editVC: MilestoneEditingViewController
+            = UIStoryboard(name: "MilestoneList", bundle: nil)
+            .instantiateViewController(identifier: String(describing: MilestoneEditingViewController.self))
+        editVC.modalPresentationStyle = .overCurrentContext
+        editVC.delegate = self
+        //viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
+        return editVC
     }
     
     func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -54,6 +92,18 @@ class MilestoneListViewController: UIViewController {
             })
     }
 
+}
+
+extension MilestoneListViewController: MilestoneEditingViewControllerDelegate {
+    func MilestoneEditSaveButtonDidTab(title: String, description: String, color: String, labelID: String?) {
+        
+    }
+}
+
+extension MilestoneListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension MilestoneListViewController {

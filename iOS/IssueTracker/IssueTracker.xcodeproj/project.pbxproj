@@ -14,6 +14,7 @@
 		880CC61D2552304E00AE34C5 /* IssueCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */; };
 		880CC6202552306600AE34C5 /* IssueListFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */; };
 		880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */; };
+		8810F60C255A829800620452 /* MilestoneEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F60B255A829800620452 /* MilestoneEditingViewController.swift */; };
 		8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8762557B9D400784C57 /* LabelListCoordinator.swift */; };
 		8810F87A2557C0C400784C57 /* LabelListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8792557C0C400784C57 /* LabelListCellView.swift */; };
 		8810F87D2557C8BF00784C57 /* LabelListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F87C2557C8BF00784C57 /* LabelListModel.swift */; };
@@ -87,6 +88,7 @@
 		880CC61C2552304E00AE34C5 /* IssueCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueCreation.storyboard; sourceTree = "<group>"; };
 		880CC61F2552306600AE34C5 /* IssueListFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueListFilter.storyboard; sourceTree = "<group>"; };
 		880CC62B255270DC00AE34C5 /* IssueDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewModel.swift; sourceTree = "<group>"; };
+		8810F60B255A829800620452 /* MilestoneEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneEditingViewController.swift; sourceTree = "<group>"; };
 		8810F8762557B9D400784C57 /* LabelListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListCoordinator.swift; sourceTree = "<group>"; };
 		8810F8792557C0C400784C57 /* LabelListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListCellView.swift; sourceTree = "<group>"; };
 		8810F87C2557C8BF00784C57 /* LabelListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListModel.swift; sourceTree = "<group>"; };
@@ -590,8 +592,9 @@
 			isa = PBXGroup;
 			children = (
 				88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */,
-				DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */,
 				88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */,
+				DA1B56F7255024B000FE8D2D /* MilestoneListViewCell.swift */,
+				8810F60B255A829800620452 /* MilestoneEditingViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,
 				8875E9842558553E0066146D /* MilestoneListService.swift in Sources */,
 				8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */,
+				8810F60C255A829800620452 /* MilestoneEditingViewController.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
 				8810F8802557CF5C00784C57 /* LabelListViewModel.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
