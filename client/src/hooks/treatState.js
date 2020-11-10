@@ -1,16 +1,17 @@
 import React, { useReducer } from 'react';
 import * as axios from './axios/index.js';
 
-const reducer = async (state, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'GET_LABELS':
       return {
         labels: state.labels.concat('axios.getLabels'),
       };
     case 'CHANGE_lABEL_INFORM_CREATE':
+      console.log(state);
       return { ...state, [action.name]: action.value };
     case 'RESET_LABEL_INFORM_CREATE':
-      const data = await axios.createLabel(
+      const data = axios.createLabel(
         state.labelName,
         state.labelDesc,
         state.labelColor,
