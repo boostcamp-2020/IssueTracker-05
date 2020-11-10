@@ -49,10 +49,7 @@ class MilestoneListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneListViewCell", for: indexPath) as? MilestoneListViewCell else {
                     return nil
                 }
-//                cell.setup(
-//                    title: milestone.title,
-//                    open: milestone.issues.open,
-//                    close: milestone.issues.close)
+                cell.setup(with: milestone)
                 return cell
             })
     }
