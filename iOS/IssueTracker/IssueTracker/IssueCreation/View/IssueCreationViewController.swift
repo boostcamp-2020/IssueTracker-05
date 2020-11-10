@@ -1,14 +1,8 @@
 import UIKit
 import MarkdownView
 
-protocol IssueCreationViewControllerDelegate {
-    
-    func didUploadTabbed(_ id: Int?, title: String, content: String)
-}
-
-
 class IssueCreationViewController: UIViewController {
-    
+        
     @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var titleTextView: UITextView! {
@@ -24,11 +18,10 @@ class IssueCreationViewController: UIViewController {
             markdownTextView.delegate = self
         }
     }
-
-    var delegate: IssueCreationViewControllerDelegate?
     
     private let placeholderMessage = "코멘트는 여기에 작성하세요"
-    var issueNumber: Int?
+    
+    var viewModel = IssueCreationViewModel()
     
     override func viewDidLoad() {
         textViewSetupView()
@@ -36,9 +29,8 @@ class IssueCreationViewController: UIViewController {
     }
         
     func configure() {
-        guard let number = issueNumber else { return }
+        guard let number = viewModel.status.id else { return }
         IssueNumberLabel.text = "# \(number)"
-        
     }
     
     func removeMarkdownView() {
@@ -71,9 +63,14 @@ class IssueCreationViewController: UIViewController {
     }
 
     @IBAction func uploadButtonTabbed(_ sender: Any) {
-        self.delegate?.didUploadTabbed(self.issueNumber, title: self.titleTextView.text, content: self.markdownTextView.text)
+        
+        if let id = self.viewModel.status.id {
+            self.viewModel.service.requestEditIssue(issueId: id, title: self.titleTextView.text , content: markdownTextView.text)
+        } else {
+            self.viewModel.service.requestAddIssue(title: self.titleTextView.text, content: markdownTextView.text)
+        }
+        self.dismiss(animated: true)
     }
-
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

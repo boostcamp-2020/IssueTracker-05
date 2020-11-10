@@ -103,7 +103,6 @@ class IssueListService {
                 weakSelf.requestIssueListGet()
                 switch response.result {
                 case .success(let data):
-//                    print(String(data: data, encoding: .utf8))
                     print("success",data)
                 case .failure(let error):
                     print("error",error)
@@ -125,7 +124,6 @@ class IssueListService {
                 weakSelf.requestIssueListGet()
                 switch response.result {
                 case .success(let data):
-//                    print(String(data: data, encoding: .utf8))
                     print("success",data)
                 case .failure(let error):
                     print("error",error)

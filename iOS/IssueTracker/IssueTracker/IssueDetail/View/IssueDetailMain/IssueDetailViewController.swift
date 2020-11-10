@@ -166,7 +166,7 @@ class IssueDetailViewController: UIViewController {
         
         let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil).instantiateViewController(identifier: String(describing: IssueCreationViewController.self)) as IssueCreationViewController
         
-        creationVC.issueNumber = viewModel?.issueId
+        creationVC.viewModel.status.id = viewModel?.issueId
         
         self.present(creationVC, animated: true)
         
