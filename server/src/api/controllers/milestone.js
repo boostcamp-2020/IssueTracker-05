@@ -6,7 +6,7 @@ const getMilestone = async (req, res) => {
     return res.status(200).json(milestoneList);
   } catch (err) {
     return res.status(400).json({
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -17,7 +17,7 @@ const deleteMilestone = async (req, res) => {
     return res.status(200).end();
   } catch (err) {
     return res.status(400).json({
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -29,7 +29,7 @@ const editMilestone = async (req, res) => {
     return res.status(200).end();
   } catch (err) {
     res.status(400).json({
-      message: err,
+      message: err.message,
     });
   }
 };
@@ -41,7 +41,7 @@ const addMilestone = async (req, res) => {
     return res.status(200).json(milestone);
   } catch (err) {
     res.status(400).json({
-      message: err,
+      message: err.message,
     });
   }
 };

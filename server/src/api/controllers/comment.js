@@ -6,7 +6,9 @@ const getComments = async (req, res) => {
     const comments = await commentService.readComments(iid);
     return res.status(200).json(comments);
   } catch (err) {
-    throw new Error(err);
+    return res.status(400).json({
+      message: err.message,
+    });
   }
 };
 
