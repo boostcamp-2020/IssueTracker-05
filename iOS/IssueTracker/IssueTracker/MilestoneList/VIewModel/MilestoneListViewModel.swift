@@ -2,6 +2,12 @@
 import Foundation
 import Alamofire
 
+enum MilestoneListResultType: String {
+    case success = "성공"
+    case title = "마일스톤의 제목을 입력해주세요."
+    case date = "날자형식(yyyy-mm-dd)을 올바르게 입력해주세요."
+}
+
 class MilestoneListViewModel {
     
     lazy var service = MilestoneListService(viewModel: self)
@@ -14,11 +20,13 @@ class MilestoneListViewModel {
         var milestones = Bindable(Milestone.all())
         var selectedMilestone
             = Bindable<Milestone>(Milestone.all()[0])
+        var resultOfSaving
+            = Bindable(MilestoneListResultType.success)
     }
     
     struct Action {
         var cellTouched: (Milestone) -> Void
-        var labelEditSaveButtonDidTabbed: (String, String, String, String?) -> Void
+        var milestoneEditSaveButtonDidTabbed: (String, String, String, String?) -> Void
         var deleteButtonTabbed: (String) -> Void
         var refreshData: () -> Void
     }
@@ -28,14 +36,18 @@ class MilestoneListViewModel {
             [weak self] milestone in
             guard let weakSelf = self else { return }
             weakSelf.status.selectedMilestone.value = milestone
-        }, labelEditSaveButtonDidTabbed: {
-            [weak self] title, desc, color, id in
+        }, milestoneEditSaveButtonDidTabbed: {
+            [weak self] title, desc, date, id in
             guard let weakSelf = self else { return }
+            
+            
+            
+            
             
             if let id = id { // 수정
 //                weakSelf.service.requestLabelPatch(
 //                    oldName: id, name: title, desc: desc, color: color)
-//                weakSelf.status.resultOfSaving.value = .success
+                weakSelf.status.resultOfSaving.value = .success
                 return
             }
             
@@ -48,7 +60,7 @@ class MilestoneListViewModel {
 //            }
 //            weakSelf.service.requestLabelPost(
 //                name: title, desc: desc, color: color)
-//            weakSelf.status.resultOfSaving.value = .success
+            weakSelf.status.resultOfSaving.value = .success
         }, deleteButtonTabbed: { [weak self] name in
             guard let weakSelf = self else { return }
             
