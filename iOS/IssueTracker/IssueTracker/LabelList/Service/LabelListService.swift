@@ -1,11 +1,6 @@
 import Foundation
 import Alamofire
 
-
-// get, pose 잘됨.
-
-// Patch 문제 있음.
-
 class LabelListService {
     
     let port: Int = 49203
@@ -22,7 +17,9 @@ class LabelListService {
                "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token")!)"]
     }
     
+    
     //MARK: GET
+    
     func requestLabelListGet() {
         // 검색 결과 화면에서 돌아오면 다시 호출해 주어야 한다.
         AF.request(issueAPIURL,
@@ -46,8 +43,13 @@ class LabelListService {
             }
     }
     
-    // MARK: label 수정
+    
+    // MARK: PATCH - 수정
+    
     func requestLabelPatch(oldName: String, name: String, desc: String, color: String) {
+        
+        guard let url = (issueAPIURL + "\(oldName)").addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed) else { return }
         
         let parameters = [
             "name": "\(name)",
@@ -55,19 +57,19 @@ class LabelListService {
             "desc": "\(desc)"
         ]
         
-        AF.request(issueAPIURL + "\(oldName)",
+        AF.request(url,
                    method: .patch,
                    parameters: parameters,
                    headers: httpHeaders)
             .responseJSON { [weak self] (response) in
                 guard let weakSelf = self else { return }
+                weakSelf.requestLabelListGet()
                 switch response.result {
                 case .success(let result):
-                    print(result)
                     do {
                         let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-                        print(String(data: resultData, encoding: .utf8))
-                        weakSelf.requestLabelListGet()
+                        guard let data = String(data: resultData, encoding: .utf8) else { return }
+                        print(data)
                     } catch {
                         print(error)
                     }
@@ -78,7 +80,8 @@ class LabelListService {
     }
     
     
-    // MARK: label 추가, 생성
+    // MARK: POST - 추가, 생성
+    
     func requestLabelPost(name: String, desc: String, color: String) {
         
         let parameters = [
@@ -97,9 +100,15 @@ class LabelListService {
             }
     }
     
-    // MARK: Delete
+    
+    // MARK: DELETE
+    
     func requestLabelDelete(name: String) {
-        AF.request(issueAPIURL + "\(name)",
+        
+        guard let url = (issueAPIURL + "\(name)").addingPercentEncoding(
+                withAllowedCharacters: .urlQueryAllowed) else { return }
+        
+        AF.request(url,
                    method: .delete,
                    parameters: nil,
                    headers: httpHeaders)
@@ -111,7 +120,8 @@ class LabelListService {
                     print(result)
                     do {
                         let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-                        print(String(data: resultData, encoding: .utf8))
+                        guard let data = String(data: resultData, encoding: .utf8) else { return }
+                        print(data)
                     } catch {
                         print(error)
                     }
@@ -122,4 +132,3 @@ class LabelListService {
     }
     
 }
-
