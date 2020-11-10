@@ -143,4 +143,29 @@ class LoginManager {
     
     }
     
+    func requestSignUpPost(userId: String, password: String, nickname: String, handler: @escaping (Bool) -> Void) {
+        let url = "http://group05issuetracker.duckdns.org:49203"
+        
+        let parameters = ["userId": userId,
+                          "password": password,
+                          "nickname": nickname]
+        
+        let headers: HTTPHeaders = ["Accept": "application/json"]
+        
+        AF.request(url + "/api/signup", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case let .success(json):
+                print(json)
+                if let dic = json as? [String: String] {
+                    let message = dic["message"] ?? ""
+                    print(message)
+                }
+                handler(true)
+            case let .failure(error):
+                print(error)
+                handler(false)
+            }
+        }
+    }
+    
 }
