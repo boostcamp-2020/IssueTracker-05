@@ -71,7 +71,11 @@ class IssueListMainViewController: UIViewController {
     }
     
     @objc func filterButtonTabbed() {
-        print("filter")
+        let filterVC:IssueListFilterViewController = UIStoryboard(name: "IssueListFilter", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueListFilterViewController.self))
+        self.present(filterVC, animated: true)
+        
     }
     
     @objc func editButtonTabbed() {

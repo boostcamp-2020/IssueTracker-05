@@ -14,6 +14,8 @@ class IssueCreationViewModel {
     
     struct Status {
         var id: Int?
+        var title: String = ""
+        var content: String = ""
     }
     
     struct Action {
@@ -25,7 +27,7 @@ class IssueCreationViewModel {
     lazy var action = Action(
         
         didUploadTabbed: { [weak self] (id, title, content) in
-            guard let weakSelf = self else { return }
+                guard let weakSelf = self else { return }
             if let id = id {
                 self?.service.requestEditIssue(issueId: id, title: title, content: content)
             } else {
