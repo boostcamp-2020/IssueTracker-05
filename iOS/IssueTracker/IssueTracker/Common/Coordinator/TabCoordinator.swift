@@ -1,46 +1,6 @@
 
 import UIKit
 
-enum TabBarPage {
-    case issue
-    case label
-    case milestone
-    
-    init?(index: Int) {
-        switch index {
-        case 0: self = .issue
-        case 1: self = .label
-        case 2: self = .milestone
-        default: return nil
-        }
-    }
-    
-    func pageTitleValue() -> String {
-        switch self {
-        case .issue:  return "이슈"
-        case .label: return "레이블"
-        case .milestone: return "마일스톤"
-        }
-    }
-    
-    func pageOrderNumber() -> Int {
-        switch self {
-        case .issue:  return 0
-        case .label: return 1
-        case .milestone: return 2
-        }
-    }
-    
-    // Add tab icon value
-    func pageIconImage() -> UIImage? {
-        UIImage(systemName: "\(self.pageOrderNumber() + 1).circle.fill")
-    }
-    
-    // Add tab icon selected / deselected color
-    
-    // etc
-}
-
 
 protocol TabCoordinatorProtocol: Coordinator {
     var tabBarController: UITabBarController { get set }
@@ -88,16 +48,9 @@ class TabCoordinator: NSObject, Coordinator {
         
         switch page {
         case .issue:
-            let issueListMainViewController: IssueListMainViewController
-                = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(
-                    identifier: String(describing: IssueListMainViewController.self))
-            issueListMainViewController.didSendEventClosure = { [weak self] event in
-                switch event {
-                case .finished :
-                    self?.finish()
-                }
-            }
-            newNavController.pushViewController(issueListMainViewController, animated: true)
+            let issueListCoordinator = IssueListCoordinator(newNavController)
+            issueListCoordinator.start()
+            childCoordinators.append(issueListCoordinator)
         case .label:
             let labelCoordinator = LabelListCoordinator(newNavController)
             //labelCoordinator.finishDelegate = self
@@ -130,7 +83,9 @@ class TabCoordinator: NSObject, Coordinator {
     }
 }
 
+
 // MARK: - UITabBarControllerDelegate
+
 extension TabCoordinator: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           didSelect viewController: UIViewController) {
@@ -146,4 +101,47 @@ extension TabCoordinator: CoordinatorFinishDelegate {
         // 이 함수가 호출되는 경우는 tabBar에 들어가는 VC를 하나만 교체 또는 삭제 하는 경우다.
         // 우리 프로젝트에는 그런 경우가 없다.
     }
+}
+
+
+// MARK: TabBarPage Enum
+
+enum TabBarPage {
+    case issue
+    case label
+    case milestone
+    
+    init?(index: Int) {
+        switch index {
+        case 0: self = .issue
+        case 1: self = .label
+        case 2: self = .milestone
+        default: return nil
+        }
+    }
+    
+    func pageTitleValue() -> String {
+        switch self {
+        case .issue:  return "이슈"
+        case .label: return "레이블"
+        case .milestone: return "마일스톤"
+        }
+    }
+    
+    func pageOrderNumber() -> Int {
+        switch self {
+        case .issue:  return 0
+        case .label: return 1
+        case .milestone: return 2
+        }
+    }
+    
+    // Add tab icon value
+    func pageIconImage() -> UIImage? {
+        UIImage(systemName: "\(self.pageOrderNumber() + 1).circle.fill")
+    }
+    
+    // Add tab icon selected / deselected color
+    
+    // etc
 }

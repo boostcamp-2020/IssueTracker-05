@@ -25,6 +25,7 @@
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
 		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
+		885E3875255A1755009CEE6B /* IssueListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885E3874255A1755009CEE6B /* IssueListCoordinator.swift */; };
 		8872A13B25569A0200EB1E91 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872A13A25569A0200EB1E91 /* TabCoordinator.swift */; };
 		8875E9782557DA910066146D /* LabelEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E9772557DA910066146D /* LabelEditingViewController.swift */; };
 		8875E97F255843CE0066146D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E97E255843CE0066146D /* String+.swift */; };
@@ -97,6 +98,7 @@
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8856FFD0254A861C00C7FD26 /* IssueList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueList.storyboard; sourceTree = "<group>"; };
+		885E3874255A1755009CEE6B /* IssueListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCoordinator.swift; sourceTree = "<group>"; };
 		8872A13A25569A0200EB1E91 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
 		8875E9772557DA910066146D /* LabelEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditingViewController.swift; sourceTree = "<group>"; };
 		8875E97E255843CE0066146D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -312,6 +314,14 @@
 			path = IssueDetail;
 			sourceTree = "<group>";
 		};
+		885E3873255A1747009CEE6B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				885E3874255A1755009CEE6B /* IssueListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		8872A1432557A96200EB1E91 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +392,7 @@
 		88C03805254960FA000D4D4A /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
+				885E3873255A1747009CEE6B /* Coordinator */,
 				88E697412553DE550090635D /* Service */,
 				8848EC0E2549DBC000F15A10 /* Model */,
 				8848EC102549DBC800F15A10 /* ViewModel */,
@@ -778,6 +789,7 @@
 				880CC62C255270DC00AE34C5 /* IssueDetailViewModel.swift in Sources */,
 				DA8B33CF2553C3DE00E3331F /* MilestoneListViewModel.swift in Sources */,
 				88C0382725499494000D4D4A /* IssueResultCellView.swift in Sources */,
+				885E3875255A1755009CEE6B /* IssueListCoordinator.swift in Sources */,
 				DA33526825566ABD00B9F24A /* SignInCoordinator.swift in Sources */,
 				DA0C608E2557B858000CC10E /* LabelCollectionViewCell.swift in Sources */,
 				DA0C60E42557D16D000CC10E /* SectionHeader.swift in Sources */,
