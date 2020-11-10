@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MilestoneEditingViewControllerDelegate {
-    func MilestoneEditSaveButtonDidTab(title: String, description: String, date: String, milestoneID: String?) // title, desc, 색상 정보를 매개변수로 넘겨준다.
+    func MilestoneEditSaveButtonDidTab(title: String, description: String?, date: String, milestoneID: Int?) // title, desc, 색상 정보를 매개변수로 넘겨준다.
 }
 
 class MilestoneEditingViewController: UIViewController {
@@ -13,7 +13,7 @@ class MilestoneEditingViewController: UIViewController {
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
     
-    var milestoneID: String? // 있으면 추가, 없으면 편집 모드
+    var milestoneID: Int? // 있으면 추가, 없으면 편집 모드
     
     var defualtTitle: String!
     var defaultDesc: String!
@@ -34,11 +34,11 @@ class MilestoneEditingViewController: UIViewController {
         uptoDateField.placeholder = defaultUptoDate
     }
     
-    func setupDefaultValue(id: String?, title: String, desc: String?, date: String?) {
-        milestoneID = id
-        defualtTitle = title
-        defaultDesc = desc ?? ""
-        defaultUptoDate = date
+    func setupDefaultValue(with milestone: Milestone) {
+        milestoneID = milestone.mid
+        defualtTitle = milestone.title
+        defaultDesc = milestone.content ?? ""
+        defaultUptoDate = milestone.updatedAt
     }
     
     @IBAction func saveButtonTabbed(_ sender: UIButton) {

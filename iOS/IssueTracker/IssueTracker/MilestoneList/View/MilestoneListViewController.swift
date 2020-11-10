@@ -22,6 +22,7 @@ class MilestoneListViewController: UIViewController {
     
     func bind() {
         viewModel.status.milestones.bindAndFire(applyAnapshot)
+        viewModel.status.selectedMilestone.bind(editMilestone)
     }
     
     func configureCollectionView() {
@@ -37,22 +38,15 @@ class MilestoneListViewController: UIViewController {
         collectionView.refreshControl?.endRefreshing()
     }
     
-    func editLabel(label: Label) { // 편집 모드
+    func editMilestone(with milestone: Milestone) { // 편집 모드
         let editVC = configureLabelEdiginVC()
-        //editVC.setupDefaultValue(title: label.name, desc: label.desc, color: label.color)
+        editVC.setupDefaultValue(with: milestone)
         present(editVC, animated: false)
     }
     
     @objc func addMilestoneButtonTabbed() { // 추가 모드
         let editVC = configureLabelEdiginVC()
         present(editVC, animated: false)
-    }
-    
-    func applyAnapshot(sections: [Milestone]) {
-        var snapshot = NSDiffableDataSourceSnapshot<[Milestone], Milestone>()
-        snapshot.appendSections([sections])
-        snapshot.appendItems(sections)
-        dataLayout.apply(snapshot, animatingDifferences: true)
     }
     
     func configureLabelEdiginVC() -> MilestoneEditingViewController {
@@ -63,6 +57,13 @@ class MilestoneListViewController: UIViewController {
         editVC.delegate = self
         //viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
         return editVC
+    }
+    
+    func applyAnapshot(sections: [Milestone]) {
+        var snapshot = NSDiffableDataSourceSnapshot<[Milestone], Milestone>()
+        snapshot.appendSections([sections])
+        snapshot.appendItems(sections)
+        dataLayout.apply(snapshot, animatingDifferences: true)
     }
     
     func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -95,6 +96,10 @@ class MilestoneListViewController: UIViewController {
 }
 
 extension MilestoneListViewController: MilestoneEditingViewControllerDelegate {
+    func MilestoneEditSaveButtonDidTab(title: String, description: String?, date: String, milestoneID: Int?) {
+        
+    }
+    
     func MilestoneEditSaveButtonDidTab(title: String, description: String, date color: String, milestoneID labelID: String?) {
         
     }
