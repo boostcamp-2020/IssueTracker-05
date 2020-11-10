@@ -29,38 +29,38 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AssigneeCollectionViewCell" id="oJd-MK-hd6" customClass="AssigneeCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NVl-ep-Tpg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKt-F3-pvZ">
-                                                    <rect key="frame" x="10" y="10" width="404" height="118"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="50"/>
                                                     <state key="normal" title="버튼"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wKt-F3-pvZ" firstAttribute="leading" secondItem="NVl-ep-Tpg" secondAttribute="leading" constant="10" id="OeI-69-5KK"/>
-                                                <constraint firstAttribute="trailing" secondItem="wKt-F3-pvZ" secondAttribute="trailing" id="QwO-8o-2lx"/>
+                                                <constraint firstAttribute="trailing" secondItem="wKt-F3-pvZ" secondAttribute="trailing" constant="10" id="QwO-8o-2lx"/>
                                                 <constraint firstItem="wKt-F3-pvZ" firstAttribute="top" secondItem="NVl-ep-Tpg" secondAttribute="top" constant="10" id="WIN-XV-otK"/>
-                                                <constraint firstAttribute="bottom" secondItem="wKt-F3-pvZ" secondAttribute="bottom" id="vMf-Ye-w2o"/>
+                                                <constraint firstAttribute="bottom" secondItem="wKt-F3-pvZ" secondAttribute="bottom" constant="10" id="vMf-Ye-w2o"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="128"/>
+                                        <size key="customSize" width="414" height="70"/>
                                         <connections>
                                             <outlet property="tagButton" destination="wKt-F3-pvZ" id="1Cx-on-UL2"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="LabelCollectionViewCell" id="iMf-Eo-oBP" customClass="LabelCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="177.5" y="188" width="59" height="50"/>
+                                        <rect key="frame" x="0.0" y="130" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2HN-dO-OIx">
-                                            <rect key="frame" x="0.0" y="0.0" width="59" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLR-JQ-IZY">
-                                                    <rect key="frame" x="10" y="10" width="39" height="30"/>
+                                                    <rect key="frame" x="10" y="10" width="394" height="50"/>
                                                     <state key="normal" title="레이블"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -76,12 +76,13 @@
                                                 <constraint firstItem="cLR-JQ-IZY" firstAttribute="top" secondItem="2HN-dO-OIx" secondAttribute="top" constant="10" id="mGD-33-tWn"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="70"/>
                                         <connections>
                                             <outlet property="tagButton" destination="cLR-JQ-IZY" id="nk1-Uh-fb4"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MilestoneCollectionViewCell" id="foZ-NE-SkH" customClass="MilestoneCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="248" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="210" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="God-Rt-q8Q">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
@@ -119,6 +120,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="milestoneLabel" destination="U6h-Cd-4Ng" id="n7g-Ha-0Bm"/>
+                                            <outlet property="milestoneProgressView" destination="UbS-IT-ine" id="DIe-bA-BRg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

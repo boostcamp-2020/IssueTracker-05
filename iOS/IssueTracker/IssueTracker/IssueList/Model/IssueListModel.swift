@@ -10,7 +10,7 @@ struct IssueListModel: Codable, Hashable {
     var mId: String? // 마일스톤 아이디
     var labels: [Label]?
     var assignees: [Assignees]?
-    //var user: User
+    var user: User
     
     static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
         return lhs.iid == rhs.iid
@@ -20,6 +20,7 @@ struct IssueListModel: Codable, Hashable {
             && lhs.mId == rhs.mId
             && lhs.labels == rhs.labels
             && lhs.assignees == rhs.assignees
+            && lhs.user == rhs.user
     }
     
     func hash(into hasher: inout Hasher) {
@@ -41,7 +42,7 @@ struct IssueListModel: Codable, Hashable {
                 content: "Hello",
                 isOpen: true,
                 mId: nil,
-                labels: Label.all())
+                labels: Label.all(), user: User(uid: 1, userId: "123123", nickname: "123123"))
         )
         newModel.append(
             IssueListModel(
@@ -50,7 +51,7 @@ struct IssueListModel: Codable, Hashable {
                 content: nil,
                 isOpen: false,
                 mId: nil,
-                labels: Label.all())
+                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
         )
         return newModel
     }

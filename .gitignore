@@ -153,4 +153,5 @@ Temporary Items
 
 iOS/IssueTracker/IssueTracker/dummyToken.txt
 
-#
+# config
+*.xcconfig

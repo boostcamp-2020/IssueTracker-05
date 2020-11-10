@@ -61,7 +61,6 @@
 		DA33526B255672CB00B9F24A /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA33526A255672CB00B9F24A /* SignUpCoordinator.swift */; };
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
-		DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9F254A83EF0036DDC3 /* LoginModel.swift */; };
 		DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */; };
 		DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* OctoKit */; };
 		DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AB4254AA3490036DDC3 /* LoginManager.swift */; };
@@ -130,10 +129,10 @@
 		DA335263255664B000B9F24A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DA33526725566ABD00B9F24A /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
 		DA33526A255672CB00B9F24A /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		DA395CD02559A8C600D190F6 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		DA511A8D254A83020036DDC3 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		DA511A99254A83A00036DDC3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DA511A9A254A83A00036DDC3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		DA511A9F254A83EF0036DDC3 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationChecker.swift; sourceTree = "<group>"; };
 		DA511AB4254AA3490036DDC3 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		DA511AC0254ABB450036DDC3 /* IssueTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTracker.entitlements; sourceTree = "<group>"; };
@@ -222,7 +221,6 @@
 				8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */,
 				DAC37CEC2550EDCA000C2777 /* UITextField+LeftView.swift */,
 				DAC37CF025510747000C2777 /* UIButton.swift */,
-				DA0C60E62557DE35000CC10E /* tagView.swift */,
 				8875E97E255843CE0066146D /* String+.swift */,
 			);
 			path = Extenstion;
@@ -296,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				DAAB9ECC2558555E0056C2CB /* View */,
+				DA395CD32559D0B000D190F6 /* ViewModel */,
 			);
 			path = IssueCreation;
 			sourceTree = "<group>";
@@ -305,8 +304,8 @@
 			children = (
 				88E697432553F8E10090635D /* Service */,
 				880CC62A255270C900AE34C5 /* Model */,
-				880CC629255270C200AE34C5 /* ViewModel */,
 				88D14AAF255286C2000A6395 /* View */,
+				880CC629255270C200AE34C5 /* ViewModel */,
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
@@ -358,10 +357,10 @@
 			isa = PBXGroup;
 			children = (
 				8875E987255856CE0066146D /* Coordinator */,
-				DA8B33CB2553C36100E3331F /* Model */,
 				8875E9822558551F0066146D /* Service */,
-				DA8B33CD2553C37500E3331F /* VIewModel */,
+				DA8B33CB2553C36100E3331F /* Model */,
 				DA8B33CC2553C36700E3331F /* View */,
+				DA8B33CD2553C37500E3331F /* VIewModel */,
 			);
 			path = MilestoneList;
 			sourceTree = "<group>";
@@ -370,10 +369,10 @@
 			isa = PBXGroup;
 			children = (
 				8810F8752557B9C300784C57 /* Coordinator */,
-				8872A1432557A96200EB1E91 /* Model */,
 				8810F8822557D10B00784C57 /* Service */,
-				8872A1442557A96C00EB1E91 /* VIewModel */,
+				8872A1432557A96200EB1E91 /* Model */,
 				8872A1452557A97300EB1E91 /* View */,
+				8872A1442557A96C00EB1E91 /* VIewModel */,
 			);
 			path = LabelList;
 			sourceTree = "<group>";
@@ -383,8 +382,8 @@
 			children = (
 				88E697412553DE550090635D /* Service */,
 				8848EC0E2549DBC000F15A10 /* Model */,
-				8848EC102549DBC800F15A10 /* ViewModel */,
 				8848EC122549DBD100F15A10 /* View */,
+				8848EC102549DBC800F15A10 /* ViewModel */,
 			);
 			path = IssueList;
 			sourceTree = "<group>";
@@ -392,7 +391,9 @@
 		88C0381025496860000D4D4A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DA395CCF2559A89B00D190F6 /* Config */,
 				DA335262255664A400B9F24A /* Coordinator */,
+				8818249B25484B8000C352A8 /* Extenstion */,
 				DABEB866254821B3006471F6 /* AppDelegate.swift */,
 				DABEB868254821B3006471F6 /* SceneDelegate.swift */,
 				88C03822254990C5000D4D4A /* Bindable.swift */,
@@ -403,9 +404,8 @@
 		88D14AAF255286C2000A6395 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */,
-				88D14AB12552935A000A6395 /* IssueCommentCellView.swift */,
-				DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */,
+				DA395CC72559827F00D190F6 /* IssueDetailMain */,
+				DA8B33C02552F1A200E3331F /* IssueDetailEditing */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -465,10 +465,44 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		DA395CC72559827F00D190F6 /* IssueDetailMain */ = {
+			isa = PBXGroup;
+			children = (
+				DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */,
+				88D14AB12552935A000A6395 /* IssueCommentCellView.swift */,
+				DA8B33BA2552D6F000E3331F /* IssueDetail.storyboard */,
+			);
+			path = IssueDetailMain;
+			sourceTree = "<group>";
+		};
+		DA395CC8255982F600D190F6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				DA511AB4254AA3490036DDC3 /* LoginManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		DA395CCF2559A89B00D190F6 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				DA395CD02559A8C600D190F6 /* Debug.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		DA395CD32559D0B000D190F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DA511A7E254A82A10036DDC3 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
 				DA33526625566AAF00B9F24A /* Coordinator */,
+				DA395CC8255982F600D190F6 /* Service */,
 				DA511A9E254A83EF0036DDC3 /* Model */,
 				DA511A8E254A83020036DDC3 /* View */,
 				DA511A8C254A83020036DDC3 /* ViewModel */,
@@ -515,9 +549,7 @@
 		DA511A9E254A83EF0036DDC3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DA511A9F254A83EF0036DDC3 /* LoginModel.swift */,
 				DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */,
-				DA511AB4254AA3490036DDC3 /* LoginManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,7 +624,6 @@
 				DA511A7E254A82A10036DDC3 /* LogIn */,
 				88C03805254960FA000D4D4A /* IssueList */,
 				8848EC182549DCBA00F15A10 /* IssueDetail */,
-				DA8B33C02552F1A200E3331F /* IssueDetailEditing */,
 				8848EC172549DCAB00F15A10 /* IssueCreation */,
 				8848EC162549DC9D00F15A10 /* IssueListFilter */,
 				88B8F0F3254AB09100C23791 /* LabelList */,
@@ -601,7 +632,6 @@
 				8856FFBD254A811700C7FD26 /* Main.storyboard */,
 				DABEB871254821B4006471F6 /* LaunchScreen.storyboard */,
 				DABEB874254821B4006471F6 /* Info.plist */,
-				8818249B25484B8000C352A8 /* Extenstion */,
 				DA71EACD2549916700F5EC25 /* dummy.json */,
 			);
 			path = IssueTracker;
@@ -745,7 +775,6 @@
 				DA1B56F8255024B000FE8D2D /* MilestoneListViewCell.swift in Sources */,
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,
-				DA511AA1254A83EF0036DDC3 /* LoginModel.swift in Sources */,
 				8875E9842558553E0066146D /* MilestoneListService.swift in Sources */,
 				8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
@@ -933,7 +962,7 @@
 		};
 		DABEB878254821B4006471F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D2F5DAF1454A56FD14A8A230 /* Pods-IssueTracker.debug.xcconfig */;
+			baseConfigurationReference = DA395CD02559A8C600D190F6 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
@@ -953,7 +982,7 @@
 		};
 		DABEB879254821B4006471F6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */;
+			baseConfigurationReference = DA395CD02559A8C600D190F6 /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;

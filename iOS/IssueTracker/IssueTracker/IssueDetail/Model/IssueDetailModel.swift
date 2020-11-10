@@ -5,12 +5,11 @@ struct IssueDetailModel: Hashable, Codable {
     var iid: Int
     var title: String // 이슈 타이틀
     var isOpen: Bool
-    var label: [Label]?
+    var labels: [Label]?
     var content: String?
     var comments: [Comment]?
     var updatedAt: String?
     var createdAt: String?
-    //var author: String?
     var milestone: Milestone?
     var assignees: [Assignees]?
     
@@ -18,11 +17,9 @@ struct IssueDetailModel: Hashable, Codable {
         lhs.iid == rhs.iid
             && lhs.title == rhs.title
             && lhs.isOpen == rhs.isOpen
-            && lhs.label == rhs.label
+            && lhs.labels == rhs.labels
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
-            //&& lhs.author == rhs.author
-            //&& lhs.mid == rhs.mid
             && lhs.milestone == rhs.milestone
             && lhs.assignees == rhs.assignees
             && lhs.comments == rhs.comments
@@ -32,10 +29,9 @@ struct IssueDetailModel: Hashable, Codable {
         hasher.combine(iid)
         hasher.combine(title)
         hasher.combine(isOpen)
-        hasher.combine(label)
+        hasher.combine(labels)
         hasher.combine(content)
         hasher.combine(createdAt)
-        //hasher.combine(author)
         hasher.combine(milestone)
         hasher.combine(assignees)
         hasher.combine(comments)
@@ -46,14 +42,12 @@ struct IssueDetailModel: Hashable, Codable {
             iid: 11,
             title: "이슈 제목",
             isOpen: true,
-            label: nil,
+            labels: nil,
             content: "이슈 내용",
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
             milestone: Milestone(mid: 1, title: "milestone sample", issues: [IssueState(isOpen: true)]),
-           // author: nil,
-//            mid: nil,
             assignees: nil)
     }
 }

@@ -29,9 +29,9 @@ class SignInViewController: UIViewController {
     
     var didSendEventClosure: ((SignInViewController.Event)-> Void)?
 
-    var loginSuccessed: Bool = false {
+    var loginSucceed: Bool = false {
         didSet {
-            if loginSuccessed {
+            if loginSucceed {
                 didSendEventClosure?(Event.signin)
             } else {
                 
@@ -51,7 +51,7 @@ class SignInViewController: UIViewController {
         viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
         
         LoginManager.shared.updateUI = { [weak self] in
-            self?.loginSuccessed = true
+            self?.loginSucceed = true
         }
     }
     
@@ -98,11 +98,11 @@ class SignInViewController: UIViewController {
         
     }
     
-    @IBAction func touchedSignInWithGithub(_ sender: Any) {
+    @IBAction func signInWithGithubTabbed(_ sender: Any) {
         LoginManager.shared.requestCode()
     }
     
-    @IBAction func touchedSignIinWithApple(_ sender: Any) {
+    @IBAction func signinWithAppleTabbed(_ sender: Any) {
         
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
@@ -113,29 +113,17 @@ class SignInViewController: UIViewController {
         
     }
     
-    @IBAction func touchedSignUp(_ sender: Any) {
+    @IBAction func signUpTabbed(_ sender: Any) {
         didSendEventClosure?(Event.signup)
     }
     
-    @IBAction func touchedLogIn(_ sender: Any) {
+    @IBAction func signInTabbed(_ sender: Any) {
         
-        let url = "http://group05issuetracker.duckdns.org:49203"
+        guard let id = self.idTextField.text else { return }
+        guard let password = self.passwordTextField.text else { return }
         
-        let parameters = ["userId": self.idTextField.text,
-                          "password": self.passwordTextField.text]
-
-        let headers: HTTPHeaders = ["Accept": "application/json"]
-        
-        AF.request(url + "/api/login", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
-            switch response.result {
-            case let .success(json):
-                if let json = json as? [String: Any] {
-                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
-                    self?.loginSuccessed = true
-                }
-            case let .failure(error):
-                self?.loginSuccessed = false
-            }
+        LoginManager.shared.requestLoginPost(userId: id, password: password) { success in
+            self.loginSucceed = success
         }
         
     }
@@ -156,10 +144,11 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
             let user = credential.user
             guard let identityToken = credential.identityToken else { return }
             guard let token = String(data: identityToken, encoding: .utf8) else { return }
-            print(token)
-            LoginManager.shared.requestiOSJWT(acccess_token: token)
-            sleep(3)
-            self.didSendEventClosure?(.signin)
+            LoginManager.shared.requestiOSJWT(acccess_token: token) { success in
+                if success {
+                    self.didSendEventClosure?(.signin)
+                }
+            }
         }
     }
     

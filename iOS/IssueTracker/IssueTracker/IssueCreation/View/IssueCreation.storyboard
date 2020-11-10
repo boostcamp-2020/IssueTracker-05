@@ -120,6 +120,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="IssueNumberLabel" destination="h9p-OX-Q5k" id="skx-LX-iq0"/>
                         <outlet property="markdownSegmentedControl" destination="fup-SA-AF2" id="7yl-zU-ELD"/>
                         <outlet property="markdownTextView" destination="YrM-oT-fdu" id="3AG-ed-w3G"/>
                         <outlet property="titleTextView" destination="a2L-NI-5Dk" id="ovs-0Q-Tn3"/>
