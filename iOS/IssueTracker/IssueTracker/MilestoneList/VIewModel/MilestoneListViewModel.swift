@@ -41,13 +41,6 @@ class MilestoneListViewModel {
             guard let weakSelf = self else { return }
             
             
-            if let id = id { // 수정
-//                weakSelf.service.requestLabelPatch(
-//                    oldName: id, name: title, desc: desc, color: color)
-                weakSelf.status.resultOfSaving.value = .success
-                return
-            }
-            
             if title == "" {
                 weakSelf.status.resultOfSaving.value = .title
                 return
@@ -58,14 +51,14 @@ class MilestoneListViewModel {
                 return
             }
             
+            if let id = id { // 수정
+//                weakSelf.service.requestMilestonePatch(
+//                    id: id, title: title, desc: desc, date: date)
+                weakSelf.status.resultOfSaving.value = .success
+                return
+            }
             
-            //let labels = weakSelf.status.labels.value
-//            for index in labels.indices {
-//                if labels[index].name == title {
-//                    weakSelf.status.resultOfSaving.value = .fail
-//                    return
-//                }
-//            }
+            
 //            weakSelf.service.requestLabelPost(
 //                name: title, desc: desc, color: color)
             weakSelf.status.resultOfSaving.value = .success

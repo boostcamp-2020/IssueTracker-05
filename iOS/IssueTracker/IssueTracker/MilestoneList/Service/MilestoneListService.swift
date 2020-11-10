@@ -32,7 +32,10 @@ class MilestoneListService {
                     do {
                         let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                         let decodedData = try JSONDecoder().decode([Milestone].self, from: resultData)
+                        
                         weakSelf.viewModel.status.milestones.value = decodedData
+                        print(decodedData[0].updatedAt)
+                        
                     } catch {
                         print(error)
                     }
@@ -45,27 +48,25 @@ class MilestoneListService {
     
     // MARK: PATCH - 수정
     
-    func requestMilestonePatch(oldName: String, name: String, desc: String, color: String) {
-        
-        guard let url = (issueAPIURL + "\(oldName)").addingPercentEncoding(
-                withAllowedCharacters: .urlQueryAllowed) else { return }
+    func requestMilestonePatch(id: Int, title: String, desc: String, date: String) {
         
         let parameters = [
-            "name": "\(name)",
-            "color": "\(color)",
-            "desc": "\(desc)"
+            "title": "\(title)",
+            "dueDate": "\(date)",
+            "content": "\(desc)"
         ]
         
-        AF.request(url,
+        AF.request(issueAPIURL + "\(id)",
                    method: .patch,
                    parameters: parameters,
                    headers: httpHeaders)
             .responseJSON { [weak self] (response) in
                 guard let weakSelf = self else { return }
-                //weakSelf.requestLabelListGet()
+                weakSelf.requestMilestoneGet()
                 switch response.result {
                 case .success(let result):
                     do {
+                        // TODO: 확인용. 나중에 삭제해야 한다.
                         let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                         guard let data = String(data: resultData, encoding: .utf8) else { return }
                         print(data)
@@ -81,12 +82,12 @@ class MilestoneListService {
     
     // MARK: POST - 추가, 생성
     
-    func requestMilestonePost(name: String, desc: String, color: String) {
+    func requestMilestonePost(title: String, desc: String, date: String) {
         
         let parameters = [
-            "name":"\(name)",
-            "desc":"\(desc)",
-            "color":"\(color)"
+            "title":"\(title)",
+            "dueDate":"\(date)",
+            "content":"\(desc)"
         ]
         
         AF.request(issueAPIURL,
@@ -95,25 +96,22 @@ class MilestoneListService {
                    headers: httpHeaders)
             .response { [weak self] _ in
                 guard let weakSelf = self else { return }
-                //weakSelf.requestLabelListGet()
+                weakSelf.requestMilestoneGet()
             }
     }
     
     
     // MARK: DELETE
     
-    func requestMilestoneDelete(name: String) {
+    func requestMilestoneDelete(id: Int) {
         
-        guard let url = (issueAPIURL + "\(name)").addingPercentEncoding(
-                withAllowedCharacters: .urlQueryAllowed) else { return }
-        
-        AF.request(url,
+        AF.request(issueAPIURL + "\(id)",
                    method: .delete,
                    parameters: nil,
                    headers: httpHeaders)
             .responseJSON { [weak self] (response) in
                 guard let weakSelf = self else { return }
-                //weakSelf.requestLabelListGet()
+                weakSelf.requestMilestoneGet()
                 switch response.result {
                 case .success(let result):
                     print(result)
