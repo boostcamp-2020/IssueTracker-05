@@ -24,7 +24,7 @@ class IssueListService {
     }
     
     //MARK: GET
-    func requestIssueData() {
+    func requestIssueListGet() {
         // 검색 결과 화면에서 돌아오면 다시 호출해 주어야 한다.
         AF.request(issueAPIURL, method: .get, parameters: nil, headers: httpHeaders).responseJSON
         { [weak self] (response) in
@@ -51,7 +51,7 @@ class IssueListService {
     }
     
     //MARK: POST
-    func requestCloaseIssue(issueId: Int) {
+    func requestIssueClose(issueId: Int) {
         
         let issueParameter = ["isOpen": "\(false)"]
         
@@ -70,7 +70,7 @@ class IssueListService {
     }
     
     //MARK: DELETE
-    func requestDeleteIssue(issueId: Int) {
+    func requestIssueDelete(issueId: Int) {
         AF.request(issueAPIURL + "\(issueId)",
                    method: .delete,
                    headers: httpHeaders)
@@ -79,7 +79,7 @@ class IssueListService {
                 switch response.result {
                 case .success(let data):
                     print(String(data: data, encoding: .utf8))
-                    weakSelf.requestIssueData()
+                    weakSelf.requestIssueListGet()
                     print("success",data)
                 case .failure(let error):
                     print("error",error)
@@ -98,7 +98,7 @@ class IssueListService {
                 switch response.result {
                 case .success(let data):
                     print(String(data: data, encoding: .utf8))
-                    weakSelf.requestIssueData()
+                    weakSelf.requestIssueListGet()
                     print("success",data)
                 case .failure(let error):
                     print("error",error)

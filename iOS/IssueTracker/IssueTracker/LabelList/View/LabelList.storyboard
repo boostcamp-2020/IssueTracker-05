@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kM6-Xd-Qsx">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ro2-i9-WUz">
                                     <size key="itemSize" width="404" height="93"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -35,42 +35,67 @@
                                             <rect key="frame" x="0.0" y="0.0" width="404" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYl-2b-UBn">
-                                                    <rect key="frame" x="20" y="52" width="39.5" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" systemColor="systemGrayColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oly-3l-o9M">
-                                                    <rect key="frame" x="20" y="14.5" width="46" height="30"/>
-                                                    <state key="normal" title="Button">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g7k-3K-ktd">
+                                                    <rect key="frame" x="323" y="0.0" width="81" height="93"/>
+                                                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                    <state key="normal" title="delete">
+                                                        <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                     </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="buttonTabbed:" destination="Ynb-cx-lOc" eventType="touchUpInside" id="UxV-TR-qXd"/>
+                                                    </connections>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ka2-4y-8Q4">
-                                                    <rect key="frame" x="383.5" y="38.5" width="12.5" height="16.5"/>
-                                                    <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPl-kD-Bf7" customClass="LabelListCellSwipeView" customModule="IssueTracker" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="93"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="R48-dl-njO">
+                                                            <rect key="frame" x="376.5" y="38.5" width="12.5" height="16.5"/>
+                                                            <color key="tintColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAo-Cn-t7s">
+                                                            <rect key="frame" x="15" y="17.5" width="41" height="28"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <state key="normal" title="Button"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gT-is-BOT">
+                                                            <rect key="frame" x="15" y="51.5" width="37.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="mAo-Cn-t7s" firstAttribute="leading" secondItem="xPl-kD-Bf7" secondAttribute="leading" constant="15" id="2Ee-Kx-DDW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="R48-dl-njO" secondAttribute="trailing" constant="15" id="3QI-uW-e82"/>
+                                                        <constraint firstItem="2gT-is-BOT" firstAttribute="leading" secondItem="xPl-kD-Bf7" secondAttribute="leading" constant="15" id="AHG-d2-l3r"/>
+                                                        <constraint firstItem="2gT-is-BOT" firstAttribute="centerY" secondItem="xPl-kD-Bf7" secondAttribute="centerY" constant="14" id="P6x-bw-8yX"/>
+                                                        <constraint firstItem="R48-dl-njO" firstAttribute="centerY" secondItem="xPl-kD-Bf7" secondAttribute="centerY" id="RBA-Ey-PIx"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2gT-is-BOT" secondAttribute="trailing" constant="40" id="Tsy-N0-TMJ"/>
+                                                        <constraint firstItem="mAo-Cn-t7s" firstAttribute="centerY" secondItem="xPl-kD-Bf7" secondAttribute="centerY" constant="-15" id="q6b-A6-zEF"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="labelDetail" destination="2gT-is-BOT" id="vX9-Bc-2mq"/>
+                                                        <outlet property="labelTitle" destination="mAo-Cn-t7s" id="UFk-kW-H3n"/>
+                                                    </connections>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="15" id="3Om-AO-4xz"/>
-                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="leading" secondItem="sHW-7G-Yma" secondAttribute="leading" constant="20" id="4PR-fs-eCW"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ka2-4y-8Q4" secondAttribute="trailing" constant="8" id="6D2-rN-Yra"/>
-                                                <constraint firstItem="Ka2-4y-8Q4" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" id="Ip2-7a-w2P"/>
-                                                <constraint firstItem="Ka2-4y-8Q4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TYl-2b-UBn" secondAttribute="trailing" constant="10" id="M5Q-OH-dOv"/>
-                                                <constraint firstItem="Oly-3l-o9M" firstAttribute="centerY" secondItem="sHW-7G-Yma" secondAttribute="centerY" constant="-17" id="bWU-zr-t38"/>
-                                                <constraint firstItem="TYl-2b-UBn" firstAttribute="leading" secondItem="Oly-3l-o9M" secondAttribute="leading" id="d6d-46-sRp"/>
+                                                <constraint firstItem="xPl-kD-Bf7" firstAttribute="leading" secondItem="sHW-7G-Yma" secondAttribute="leading" id="0ap-hZ-P6S"/>
+                                                <constraint firstAttribute="trailing" secondItem="g7k-3K-ktd" secondAttribute="trailing" id="2Yl-dv-1Yy"/>
+                                                <constraint firstAttribute="bottom" secondItem="g7k-3K-ktd" secondAttribute="bottom" id="6cL-vE-DwN"/>
+                                                <constraint firstAttribute="trailing" secondItem="xPl-kD-Bf7" secondAttribute="trailing" id="S94-hR-ZqX"/>
+                                                <constraint firstItem="xPl-kD-Bf7" firstAttribute="top" secondItem="sHW-7G-Yma" secondAttribute="top" id="UuS-Kn-pag"/>
+                                                <constraint firstItem="g7k-3K-ktd" firstAttribute="top" secondItem="sHW-7G-Yma" secondAttribute="top" id="qDZ-NH-KQV"/>
+                                                <constraint firstAttribute="bottom" secondItem="xPl-kD-Bf7" secondAttribute="bottom" id="zBT-eg-Aey"/>
+                                                <constraint firstItem="g7k-3K-ktd" firstAttribute="width" secondItem="sHW-7G-Yma" secondAttribute="width" multiplier="0.2" id="zWE-4k-EOj"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <size key="customSize" width="404" height="93"/>
                                         <connections>
-                                            <outlet property="labelDetail" destination="TYl-2b-UBn" id="vh2-HM-IwQ"/>
-                                            <outlet property="labelTitle" destination="Oly-3l-o9M" id="aXi-c3-PW5"/>
+                                            <outlet property="deleteButton" destination="g7k-3K-ktd" id="nay-Ax-uZu"/>
+                                            <outlet property="swipeView" destination="xPl-kD-Bf7" id="mDK-zi-myG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -189,7 +214,7 @@
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="arrow.clockwise.circle.fill" catalog="system"/>
                                                 <connections>
-                                                    <action selector="resetColor:" destination="MUj-go-e84" eventType="touchUpInside" id="P8u-Jj-QKO"/>
+                                                    <action selector="resetRandomColor:" destination="MUj-go-e84" eventType="touchUpInside" id="P8u-Jj-QKO"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t6h-SM-Hei">
@@ -301,6 +326,7 @@
                         <outlet property="colorBoard" destination="t6h-SM-Hei" id="5PH-7L-82C"/>
                         <outlet property="colorTextField" destination="NCu-B1-w0R" id="WMw-8F-eU9"/>
                         <outlet property="descriptionField" destination="htC-O7-G2d" id="rD6-w1-Phw"/>
+                        <outlet property="saveButton" destination="TW3-ew-QkT" id="nyX-el-EzJ"/>
                         <outlet property="titleField" destination="4KW-kc-nFo" id="6Xx-wA-TTS"/>
                     </connections>
                 </viewController>
@@ -322,8 +348,14 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

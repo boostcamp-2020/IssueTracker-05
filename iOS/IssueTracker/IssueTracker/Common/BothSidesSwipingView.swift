@@ -77,4 +77,12 @@ class BothSidesSwipingView: UIView {
             self.frame = newFrame
         })
     }
+    
+    func stopSwipe(to direction: UISwipeGestureRecognizer.Direction) {
+        if direction == .right {
+            self.removeGestureRecognizer(self.swipeRecognizerRight)
+            return
+        }
+        self.removeGestureRecognizer(self.swipeRecognizerLeft)
+    }
 }

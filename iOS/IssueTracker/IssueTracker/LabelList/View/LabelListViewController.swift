@@ -1,8 +1,8 @@
 import UIKit
 
 extension LabelListViewController: LabelEditingViewControllerDelegate {
-    func labelEditSaveButtonDidTabbed(title: String, description: String, color: String) {
-        viewModel.action.labelEditSaveButtonDidTabbed(title, description, color)
+    func labelEditSaveButtonDidTab(title: String, description: String, color: String, labelID: String?) {
+        viewModel.action.labelEditSaveButtonDidTabbed(title, description, color, labelID)
     }
 }
 
@@ -18,8 +18,7 @@ class LabelListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.collectionViewLayout = configureCollectionViewLayout()
-        collectionView.delegate = self
+        configureCollectionView()
         navigationItem.rightBarButtonItem
             = UIBarButtonItem(
                 image: UIImage(systemName: "plus"),
@@ -33,7 +32,20 @@ class LabelListViewController: UIViewController {
         viewModel.status.labels.bindAndFire(applyAnapshot)
     }
     
-    func editLabel(label: Label) {
+    func configureCollectionView() {
+        collectionView.collectionViewLayout = configureCollectionViewLayout()
+        collectionView.delegate = self
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        viewModel.action.refreshData()
+        collectionView.refreshControl?.endRefreshing()
+    }
+    
+    func editLabel(label: Label) { // 편집 모드
         let editVC = configureLabelEdiginVC()
         editVC.setupDefaultValue(title: label.name, desc: label.desc, color: label.color)
         present(editVC, animated: false)
@@ -50,6 +62,7 @@ class LabelListViewController: UIViewController {
             .instantiateViewController(identifier: String(describing: LabelEditingViewController.self))
         editVC.modalPresentationStyle = .overCurrentContext
         editVC.delegate = self
+        viewModel.status.resultOfSaving.bind(editVC.resultOfSuccess(result:))
         return editVC
     }
     
@@ -65,6 +78,8 @@ class LabelListViewController: UIViewController {
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(80))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 3, leading: 0, bottom: 1, trailing: 0)
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: itemSize, subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
@@ -80,6 +95,7 @@ class LabelListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
                     return nil
                 }
+                cell.delegate = self
                 cell.setup(
                     title: label.name,
                     description: label.desc,
@@ -94,9 +110,22 @@ extension LabelListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell: LabelListCellView = collectionView.cellForItem(at: indexPath) as? LabelListCellView else { return }
         viewModel.action.cellTouched(
-            cell.labelTitle.titleLabel?.text ?? "",
-            cell.labelDetail.text ?? "",
+            cell.labelTitle ?? "",
+            cell.labelDescription ?? "",
             cell.labelColor ?? "")
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        print("맨위")
+    }
+}
+
+extension LabelListViewController: LabelListCellViewDelegate {
+    func LabelListCellView(_ labelViewCell: UICollectionViewCell, didSelectCellView: BothSidesSwipingView) {
+        didSelectCellView.reset()
+        guard let cell = labelViewCell as? LabelListCellView else { return }
+        guard let name = cell.labelTitle else { return }
+        viewModel.action.deleteButtonTabbed(name)
     }
 }
 
@@ -105,3 +134,17 @@ extension LabelListViewController {
         case finished
     }
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct LabelListViewController_Preview: PreviewProvider {
+    static var previews: some View {
+        let vc = UIStoryboard(name: "LabelList", bundle: nil)
+            .instantiateViewController(identifier: String(describing: LabelListViewController.self))
+        return vc.view.liveView
+    }
+}
+
+#endif
