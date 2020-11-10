@@ -40,7 +40,6 @@ class MilestoneListViewModel {
             [weak self] title, desc, date, id in
             guard let weakSelf = self else { return }
             
-            
             if title == "" {
                 weakSelf.status.resultOfSaving.value = .title
                 return
@@ -57,8 +56,6 @@ class MilestoneListViewModel {
                 weakSelf.status.resultOfSaving.value = .success
                 return
             }
-            
-            
 //            weakSelf.service.requestLabelPost(
 //                name: title, desc: desc, color: color)
             weakSelf.status.resultOfSaving.value = .success
@@ -67,7 +64,7 @@ class MilestoneListViewModel {
 //            weakSelf.service.requestLabelDelete(name: name)
         }, refreshData: { [weak self] in
             guard let weakSelf = self else { return }
-//            weakSelf.service.requestLabelListGet()
+            weakSelf.service.requestMilestoneGet()
         })
     
     var status = Status()

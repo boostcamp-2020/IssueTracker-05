@@ -4,7 +4,7 @@ import UIKit
 
 class MilestoneListViewCell: UICollectionViewCell {
 
-    var milestone: Milestone?
+    var milestone: Milestone!
     
     @IBOutlet var milestoneTitle: UIButton!
     @IBOutlet var dueDateLabel: UILabel!
@@ -14,6 +14,10 @@ class MilestoneListViewCell: UICollectionViewCell {
     @IBOutlet var closedLabel: UILabel!
     
     var issueStates: [IssueState]?
+    
+    func date(with date: String) -> String {
+        date.components(separatedBy: "T")[0]
+    }
     
     func setup(with milestone: Milestone) {
         self.milestone = milestone
@@ -25,6 +29,9 @@ class MilestoneListViewCell: UICollectionViewCell {
         openLabel.text = "\(numberOfOpen ?? 0) open"
         closedLabel.text = "\(numberOfOpen ?? 0) closed"
         setupMilestoneTitleLabel()
+        
+        self.milestone.updatedAt = date(with: self.milestone.updatedAt)
+        print(self.milestone.updatedAt)
     }
     
     func setupMilestoneTitleLabel() {
