@@ -47,7 +47,7 @@ struct IssueDetailModel: Hashable, Codable {
             comments: Comment.all(),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
-            milestone: Milestone(mid: 1, title: "milestone sample", issues: [IssueState(isOpen: true)]),
+            milestone: Milestone.all()[0],
             assignees: nil)
     }
 }
