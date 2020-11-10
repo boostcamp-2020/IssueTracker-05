@@ -89,16 +89,43 @@ class IssueListService {
     }
     
     //MARK: ADD
-    func requestAddIssue(issueId: Int) {
-        AF.request(issueAPIURL + "\(issueId)",
-                   method: .delete,
+    func requestAddIssue(title: String, content: String) {
+        
+        let parameters = ["title" : title,
+                          "content" : UserDefaults.standard.string(forKey: "uid")]
+        
+        AF.request(issueAPIURL,
+                   method: .post,
+                   parameters: parameters,
                    headers: httpHeaders)
             .responseData { [weak self] response in
                 guard let weakSelf = self else { return }
+                weakSelf.requestIssueListGet()
                 switch response.result {
                 case .success(let data):
-                    print(String(data: data, encoding: .utf8))
-                    weakSelf.requestIssueListGet()
+//                    print(String(data: data, encoding: .utf8))
+                    print("success",data)
+                case .failure(let error):
+                    print("error",error)
+                }
+            }
+    }
+    
+    func requestEditIssue(issueId: Int?, title: String, content: String) {
+
+        let parameters = ["title" : title,
+                          "content" : UserDefaults.standard.string(forKey: "uid")]
+        
+        AF.request(issueAPIURL,
+                   method: .patch,
+                   parameters: parameters,
+                   headers: httpHeaders)
+            .responseData { [weak self] response in
+                guard let weakSelf = self else { return }
+                weakSelf.requestIssueListGet()
+                switch response.result {
+                case .success(let data):
+//                    print(String(data: data, encoding: .utf8))
                     print("success",data)
                 case .failure(let error):
                     print("error",error)
@@ -106,5 +133,6 @@ class IssueListService {
             }
         
     }
+    
     
 }

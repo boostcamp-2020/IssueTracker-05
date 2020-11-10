@@ -1,6 +1,12 @@
 import UIKit
 import MarkdownView
 
+protocol IssueCreationViewControllerDelegate {
+    
+    func didUploadTabbed(_ id: Int?, title: String, content: String)
+}
+
+
 class IssueCreationViewController: UIViewController {
     
     @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
@@ -10,6 +16,7 @@ class IssueCreationViewController: UIViewController {
             titleTextView.delegate = self
         }
     }
+    
     @IBOutlet weak var IssueNumberLabel: UILabel!
     
     @IBOutlet weak var markdownTextView: UITextView! {
@@ -17,6 +24,8 @@ class IssueCreationViewController: UIViewController {
             markdownTextView.delegate = self
         }
     }
+
+    var delegate: IssueCreationViewControllerDelegate?
     
     private let placeholderMessage = "코멘트는 여기에 작성하세요"
     var issueNumber: Int?
@@ -29,6 +38,7 @@ class IssueCreationViewController: UIViewController {
     func configure() {
         guard let number = issueNumber else { return }
         IssueNumberLabel.text = "# \(number)"
+        
     }
     
     func removeMarkdownView() {
@@ -56,9 +66,14 @@ class IssueCreationViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonDidTap(_ sender: Any) {
+    @IBAction func cancelButtonDidTabbed(_ sender: Any) {
         self.dismiss(animated: true)
     }
+
+    @IBAction func uploadButtonTabbed(_ sender: Any) {
+        self.delegate?.didUploadTabbed(self.issueNumber, title: self.titleTextView.text, content: self.markdownTextView.text)
+    }
+
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

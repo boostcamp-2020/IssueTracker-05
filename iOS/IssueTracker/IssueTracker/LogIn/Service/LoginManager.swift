@@ -69,6 +69,11 @@ class LoginManager {
             case let .success(json):
                 if let json = json as? [String: Any] {
                     UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    
+                    if let user = (json["user"] as? NSArray)?[0] as? [String: Any] {
+                        UserDefaults.standard.setValue(user["uid"] as? Int, forKey: "uid")
+                    }
+                    
                     self.updateUI?()
                 }
             case let .failure(error):

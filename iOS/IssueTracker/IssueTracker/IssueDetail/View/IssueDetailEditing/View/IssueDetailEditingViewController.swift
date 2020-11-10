@@ -139,6 +139,13 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
     
 }
 
+extension IssueDetailEditingViewController: IssueCreationViewControllerDelegate {
+    func didUploadTabbed(_ id: Int?, title: String, content: String) {
+        
+    }
+}
+
+
 #if DEBUG
 
 import SwiftUI

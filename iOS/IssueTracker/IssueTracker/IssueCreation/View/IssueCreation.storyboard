@@ -34,7 +34,7 @@
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="cancelButtonDidTap:" destination="uh0-x0-e44" eventType="touchUpInside" id="4av-fM-8go"/>
+                                    <action selector="cancelButtonDidTabbed:" destination="uh0-x0-e44" eventType="touchUpInside" id="1Au-LM-DB1"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xr-dN-JHj">
@@ -67,6 +67,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="uploadButtonTabbed:" destination="uh0-x0-e44" eventType="touchUpInside" id="Jqn-oZ-X1H"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="YrM-oT-fdu">
                                 <rect key="frame" x="10" y="244" width="394" height="608"/>

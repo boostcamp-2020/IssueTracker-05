@@ -64,9 +64,10 @@ class IssueListMainViewController: UIViewController {
     // MARK: Action
     
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
-        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil)
+        let creationVC:IssueCreationViewController = UIStoryboard(name: "IssueCreation", bundle: nil)
             .instantiateViewController(
                 identifier: String(describing: IssueCreationViewController.self))
+        creationVC.delegate = self
         self.present(creationVC, animated: true)
     }
     
@@ -161,6 +162,12 @@ extension IssueListMainViewController: UICollectionViewDelegate {
 extension IssueListMainViewController {
     enum Event {
         case finished
+    }
+}
+
+extension IssueListMainViewController: IssueCreationViewControllerDelegate {
+    func didUploadTabbed(_ id: Int?, title: String, content: String) {
+        viewModel.action.addIssueTabbed(id,title,content)
     }
 }
 
