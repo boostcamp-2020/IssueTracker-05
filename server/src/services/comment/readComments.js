@@ -3,7 +3,13 @@ import db from '@models';
 export default async (iid) => {
   try {
     const comments = db.comment.findAll({
-      include: db.user,
+      attributes: ['cid', 'content', 'createdAt'],
+      include: [
+        {
+          model: db.user,
+          attributes: ['uid', 'userId', 'nickname', 'image'],
+        }
+      ],
       where: { iid },
     });
     return comments;
