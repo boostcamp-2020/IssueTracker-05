@@ -46,7 +46,7 @@ class MilestoneListViewModel {
                 return
             }
             
-            if weakSelf.isValid(date: date) { // 날짜 형식 검사 로직이 들어가야 한다.
+            if !weakSelf.isValid(date: date) { // 날짜 형식 검사 로직이 들어가야 한다.
                 weakSelf.status.resultOfSaving.value = .date
                 return
             }
@@ -74,7 +74,14 @@ class MilestoneListViewModel {
     
     // 날짜 형식 검사 함수 구현
     func isValid(date: String) -> Bool {
-        date == ""
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd"
+        if let result = formatter.date(from: date) {
+            print(result)
+            return true
+        }
+        return false
     }
     
      // 날짜 형식 우리한테 맞게 변경 - 서비스에서 호출.
