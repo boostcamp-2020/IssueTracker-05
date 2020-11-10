@@ -9,7 +9,7 @@ if (envFound.error) {
 export default {
   prefix: '/api',
   corsOption: {
-    origin: process.env.CORS,
+    origin: true,
     credentials: true,
   },
 };
