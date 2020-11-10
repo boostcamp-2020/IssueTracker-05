@@ -7,7 +7,6 @@ struct Milestone: Hashable, Codable {
     var content: String?
     var createdAt: String
     var updatedAt: String
-    //var closedAt: String
     var issues: [IssueState]?
     
     static func == (lhs: Milestone, rhs: Milestone) -> Bool {
@@ -16,7 +15,6 @@ struct Milestone: Hashable, Codable {
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
             && lhs.updatedAt == rhs.updatedAt
-      //      && lhs.closedAt == rhs.closedAt
             && lhs.issues == rhs.issues
     }
     
@@ -26,7 +24,6 @@ struct Milestone: Hashable, Codable {
         hasher.combine(content)
         hasher.combine(createdAt)
         hasher.combine(updatedAt)
-        //hasher.combine(closedAt)
         hasher.combine(issues)
     }
     
