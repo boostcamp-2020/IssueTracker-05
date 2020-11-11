@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+const justifyContent = ({ type }) =>
+  type === 'main-header' ? 'center' : 'start';
+
 const fontColor = ({ type }) => {
   switch (type) {
     case 'main-header':
@@ -16,6 +19,7 @@ const SpanStyle = styled.span`
   box-sizing: border-box;
   padding: 0.3em 0;
   white-space: nowrap;
+  justify-content: ${justifyContent};
   align-items: center;
   text-decoration: none;
   border: none;
