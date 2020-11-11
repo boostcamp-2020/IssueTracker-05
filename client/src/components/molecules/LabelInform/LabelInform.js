@@ -5,7 +5,7 @@ import Button from '@atoms/Button';
 import Label from '@atoms/Label';
 import Span from '@atoms/Span';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
@@ -40,33 +40,48 @@ const LabelInform = (props) => {
   const edit = { ...props, type: 'edit' };
   const cancel = { ...props, type: 'cancel' };
   return (
-    <WhoreWrapper>
+    <WholeWrapper>
       <LabelWrapper>
         <Label {...props}>{props.name}</Label>
       </LabelWrapper>
       <ExplainWrapper>
-        <Span {...props}>{props.explain}</Span>
+        <Span {...props}>{props.desc}</Span>
       </ExplainWrapper>
       <ButtonWrapper>
-        <Button {...edit}>edit</Button>
-        <Button {...cancel}>delete</Button>
+        <Button
+          {...edit}
+          onClick={() =>
+            props.onEdit({
+              name: props.name,
+              desc: props.desc,
+              color: props.color,
+            })
+          }
+        >
+          edit
+        </Button>
+        <Button {...cancel} onClick={() => props.onDelete(props.name)}>
+          delete
+        </Button>
       </ButtonWrapper>
-    </WhoreWrapper>
+    </WholeWrapper>
   );
 };
 
 LabelInform.propTypes = {
   name: Proptypes.string,
-  explain: Proptypes.string,
+  desc: Proptypes.string,
   fontSize: Proptypes.string,
-  background: Proptypes.string,
+  color: Proptypes.string,
   type: Proptypes.string,
 };
 
 LabelInform.defaultProps = {
   name: 'gogogogogogogogogo',
-  explain: 'explain sth',
+  desc: 'explain sth',
   fontSize: '1em',
+  color: '#aaaaaa',
+  type: 'default',
 };
 
 export default LabelInform;

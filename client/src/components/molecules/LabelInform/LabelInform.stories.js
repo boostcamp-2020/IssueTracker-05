@@ -21,8 +21,8 @@ const Template = (args) => <LabelInform {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   name: 'test',
-  explain: '설명충',
+  desc: '설명충',
   fontSize: '1.2em',
-  background: '#34d5c1',
+  color: '#34d5c1',
   type: 'default',
 };
