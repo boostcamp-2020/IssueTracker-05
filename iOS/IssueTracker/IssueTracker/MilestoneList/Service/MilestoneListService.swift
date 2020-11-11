@@ -32,10 +32,7 @@ class MilestoneListService {
                     do {
                         let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                         let decodedData = try JSONDecoder().decode([Milestone].self, from: resultData)
-                        
                         weakSelf.viewModel.status.milestones.value = decodedData
-                        print(decodedData[0].updatedAt)
-                        
                     } catch {
                         print(error)
                     }
