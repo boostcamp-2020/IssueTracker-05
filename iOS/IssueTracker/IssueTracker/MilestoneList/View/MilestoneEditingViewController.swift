@@ -29,7 +29,7 @@ class MilestoneEditingViewController: UIViewController {
         if let milestone = self.milestone {
             titleField.placeholder = milestone.title
             descriptionField.placeholder = milestone.content ?? ""
-            uptoDateField.placeholder = milestone.updatedAt
+            uptoDateField.placeholder = milestone.dueDate
             return
         }
         titleField.placeholder = ""
@@ -68,7 +68,7 @@ class MilestoneEditingViewController: UIViewController {
             delegate?.MilestoneEditSaveButtonDidTab(
                 title: title == "" ? milestone.title : title,
                 description: desc == "" ? milestone.content ?? "" : desc,
-                date: date == "" ? milestone.updatedAt: date,
+                date: date == "" ? milestone.dueDate ?? "0000-00-00" : date,
                 milestoneID: milestone.mid)
             return
         }

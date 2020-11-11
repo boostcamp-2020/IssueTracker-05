@@ -5,8 +5,8 @@ struct Milestone: Hashable, Codable {
     var mid: Int
     var title: String
     var content: String?
-    var createdAt: String
-    var updatedAt: String
+    var createdAt: String?
+    var dueDate: String?
     var issues: [IssueState]?
     
     static func == (lhs: Milestone, rhs: Milestone) -> Bool {
@@ -14,7 +14,7 @@ struct Milestone: Hashable, Codable {
             && lhs.title == rhs.title
             && lhs.content == rhs.content
             && lhs.createdAt == rhs.createdAt
-            && lhs.updatedAt == rhs.updatedAt
+            && lhs.dueDate == rhs.dueDate
             && lhs.issues == rhs.issues
     }
     
@@ -23,15 +23,15 @@ struct Milestone: Hashable, Codable {
         hasher.combine(title)
         hasher.combine(content)
         hasher.combine(createdAt)
-        hasher.combine(updatedAt)
+        hasher.combine(dueDate)
         hasher.combine(issues)
     }
     
     static func all() -> [Milestone] {
         [
-            Milestone(mid: 1000, title: "hello", content: "contewntekalksdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
-            Milestone(mid: 2010, title: "hlo", content: "contentekalkssdj", createdAt: "", updatedAt: "", issues: IssueState.all()),
-            Milestone(mid: 3001, title: "hllo", content: "contentekddalksdj", createdAt: "", updatedAt: "", issues: IssueState.all())
+            Milestone(mid: 1000, title: "hello", content: "contewntekalksdj", createdAt: "", dueDate: "", issues: IssueState.all()),
+            Milestone(mid: 2010, title: "hlo", content: "contentekalkssdj", createdAt: "", dueDate: "", issues: IssueState.all()),
+            Milestone(mid: 3001, title: "hllo", content: "contentekddalksdj", createdAt: "", dueDate: "", issues: IssueState.all())
         ]
     }
 }
