@@ -26,6 +26,7 @@
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
 		8856FFD1254A861C00C7FD26 /* IssueList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFD0254A861C00C7FD26 /* IssueList.storyboard */; };
+		88598495255B61F0001B4410 /* IssueResultDetailCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88598494255B61F0001B4410 /* IssueResultDetailCellViewController.swift */; };
 		885E3875255A1755009CEE6B /* IssueListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885E3874255A1755009CEE6B /* IssueListCoordinator.swift */; };
 		885E3882255A2E13009CEE6B /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 885E3880255A2DF6009CEE6B /* Debug.xcconfig */; };
 		8872A13B25569A0200EB1E91 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8872A13A25569A0200EB1E91 /* TabCoordinator.swift */; };
@@ -100,6 +101,7 @@
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8856FFD0254A861C00C7FD26 /* IssueList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = IssueList.storyboard; sourceTree = "<group>"; };
+		88598494255B61F0001B4410 /* IssueResultDetailCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueResultDetailCellViewController.swift; sourceTree = "<group>"; };
 		885E3874255A1755009CEE6B /* IssueListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListCoordinator.swift; sourceTree = "<group>"; };
 		885E3880255A2DF6009CEE6B /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		8872A13A25569A0200EB1E91 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				88C0381C25497B5E000D4D4A /* IssueResultViewController.swift */,
 				88C0382625499494000D4D4A /* IssueResultCellView.swift */,
 				881BC67B25510A5B00676011 /* IssueDetailedView.swift */,
+				88598494255B61F0001B4410 /* IssueResultDetailCellViewController.swift */,
 			);
 			path = IssueResultList;
 			sourceTree = "<group>";
@@ -810,6 +813,7 @@
 				DA33526B255672CB00B9F24A /* SignUpCoordinator.swift in Sources */,
 				8872A13B25569A0200EB1E91 /* TabCoordinator.swift in Sources */,
 				88C0380E25496221000D4D4A /* IssueListModel.swift in Sources */,
+				88598495255B61F0001B4410 /* IssueResultDetailCellViewController.swift in Sources */,
 				880CC61425522FEF00AE34C5 /* IssueCreationViewController.swift in Sources */,
 				8875E97F255843CE0066146D /* String+.swift in Sources */,
 				DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */,
