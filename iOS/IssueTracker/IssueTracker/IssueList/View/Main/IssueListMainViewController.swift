@@ -64,7 +64,15 @@ class IssueListMainViewController: UIViewController {
     }
     
     @objc func editButtonTabbed() {
-        setupIssueResultViewController()
+        //setupIssueResultViewController()
+        
+        let vc = UIStoryboard(name: "IssueList", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueListMainViewController.self))
+        navigationController?.pushViewController(vc, animated: false)
+        
+        
+        
         print("Edit")
     }
     
@@ -172,7 +180,7 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)
-        // TODO: pop할 때 메모리 릭 발생. 
+        // TODO: pop할 때 메모리 릭 발생.
     }
 }
 
