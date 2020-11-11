@@ -3,14 +3,10 @@ import UIKit
 // 선택 이슈 닫기 누르면 선택된 데이터들 이전 vc(이슈 리스트)로 넘겨준다.
 // 이를 위해 델리게이트를 만들고, 종료 될 때 호출 한다.
 // 이슈리스트는 델리게이트를 호출하여 원하는 정보를 받아 간다.
-
-protocol MultiSelectiveEditingDelegate {
-    func closeSelectedIssuesButtonTabbed(selectedIssues: [IssueListModel])
-}
+// -> 근데 그냥 서버 요청하면 끝날 것 같다!
 
 class MultiSelectiveEditingViewController: UIViewController {
     
-    var delegate: MultiSelectiveEditingDelegate?
     var selectedIssues: [IssueListModel]?
     
     var viewModel: MultiSelectiveEditingViewModel!
@@ -21,8 +17,6 @@ class MultiSelectiveEditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 탭바 아이템 안보이게 해야 한다.
-        // 탭바 아이템에 클로즈 버튼을 추가 해야 한다.
         // 타이틀에 선택 개수가 나오도록 해야 한다.
         
         setupNavigationBarItem()
@@ -43,8 +37,7 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
     @IBAction func closeSelectedIssues(_ sender: UIButton) {
-        // 뷰모델
-        
+        viewModel.action.closeSelectedIssues()
         navigationController?.popViewController(animated: false)
     }
     
@@ -72,25 +65,22 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     
     @objc func selectAllButtonTabbed() {
-        
+        //collectionView
+        // 콜렉션 뷰를 모두 돌면서 버튼 이미지를 모두 true로?
     }
     
     @objc func closeButtonTabbed() {
         navigationController?.popViewController(animated: false)
     }
     
-    // 탭바에 들어가는 버튼
-    @objc func selectedIssuesCloseButtonTabbed() {
-     //   delegate?.closeSelectedIssuesButtonTabbed(selectedIssues: <#T##[IssueListModel]#>)
-    }
 }
 
 extension MultiSelectiveEditingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath)
                 as? IssueResultCellView else { return }
+        guard let id = cell.iid else { return }
         cell.toggleCheckButton()
-        
-        // 뷰모델
+        viewModel.action.cellTouched(id)
     }
 }
