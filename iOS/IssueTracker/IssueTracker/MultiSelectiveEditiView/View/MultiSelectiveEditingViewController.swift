@@ -34,7 +34,7 @@ class MultiSelectiveEditingViewController: UIViewController {
         resultViewController.view.frame = resultContainerView.bounds
         resultContainerView.addSubview(resultViewController.view)
         
-        
+        resultViewController.cellType = .MultiSelectedView
     }
     
     func setupNavigationBarItem() {
