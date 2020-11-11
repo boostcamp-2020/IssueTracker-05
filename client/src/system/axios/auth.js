@@ -30,4 +30,4 @@ const checkId = async (id) => {
   return false;
 };
 
-export default { localLogin, signup, checkId };
+export { localLogin, signup, checkId };
