@@ -61,7 +61,7 @@ class SignUpViewController: UIViewController {
         viewModel.status.passwordConfirmErrorMessage.bind(passwordConfirmLabelUpdate)
         viewModel.status.nicknameErrorMessage.bind(nicknameConfirmLabelUpdate)
         viewModel.status.buttonEnabled.bindAndFire(buttonEnabledCheck)
-
+        
     }
     
     func buttonEnabledCheck(idEnable: Bool, passwordEnable: Bool, passwordConfirmEnable: Bool, nicknameEnable: Bool) {
@@ -135,36 +135,22 @@ class SignUpViewController: UIViewController {
     
     @IBAction func touchedSignUp(_ sender: Any) {
         
-        let url = "http://group05issuetracker.duckdns.org:49203"
+        guard let userId = self.idTextField.text, let password = self.passwordTextField.text, let nickname = self.nickNameTextField.text else { return }
         
-        let parameters = ["userId": self.idTextField.text,
-                          "password": self.passwordTextField.text,
-                          "nickname": self.nickNameTextField.text]
-        
-        let headers: HTTPHeaders = ["Accept": "application/json"]
-        
-        AF.request(url + "/api/signup", method: .post, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
-            switch response.result {
-            case let .success(json):
-                print(json)
-                if let dic = json as? [String: String] {
-                    let message = dic["message"] ?? ""
-                    print(message)
-                }
-                self?.didSendEventClosure?(Event.signUp)
-            case let .failure(error):
-                print(error)
-                self?.showToast(message: "회원 가입에 실패했습니다.")
+        LoginManager.shared.requestSignUpPost(userId: userId, password: password, nickname: nickname) { success in
+            if success {
+                self.didSendEventClosure?(Event.signUp)
+            } else {
+                self.showToast(message: "회원 가입에 실패했습니다.")
             }
         }
-        
     }
     
 }
 
 
 extension SignUpViewController: UITextFieldDelegate {
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.action.idTextFieldChanged(self.idTextField.text!)
         viewModel.action.passwordTextFieldChanged(self.passwordTextField.text!)

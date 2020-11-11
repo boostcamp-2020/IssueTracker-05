@@ -26,7 +26,7 @@ class IssueListViewModel {
         // 다중 선택
         
         // 이슈 추가, 수정
-        var addIssueTabbed: (Int) -> Void
+        var addIssueTabbed: (Int?, String, String) -> Void
     }
     
     var status = Status()
@@ -67,9 +67,15 @@ class IssueListViewModel {
                    return
                 }
             }
-        }, addIssueTabbed: { [weak self] iid in
+        }, addIssueTabbed: { [weak self] iid, title, content in
             guard let weakSelf = self else { return }
-            print(iid, "add")
+            if let id = iid {
+                weakSelf.service.requestEditIssue(issueId: id, title: title, content: content)
+                print(id)
+            } else {
+                weakSelf.service.requestAddIssue(title: title, content: content)
+            }
+            
         }
     
     )

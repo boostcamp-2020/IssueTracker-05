@@ -2,14 +2,19 @@ import UIKit
 import MarkdownView
 
 class IssueCreationViewController: UIViewController {
-    
+        
     @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
     @IBOutlet weak var uploadButton: UIButton!
-    @IBOutlet weak var titleTextView: UITextView! {
-        didSet {
-            titleTextView.delegate = self
-        }
-    }
+    
+//    @IBOutlet weak var titleTextView: UITextView! {
+//        didSet {
+//            titleTextView.delegate = self
+//        }
+//    }
+
+    @IBOutlet weak var titleTextView: UITextField!
+    
+    
     @IBOutlet weak var IssueNumberLabel: UILabel!
     
     @IBOutlet weak var markdownTextView: UITextView! {
@@ -19,7 +24,8 @@ class IssueCreationViewController: UIViewController {
     }
     
     private let placeholderMessage = "코멘트는 여기에 작성하세요"
-    var issueNumber: Int?
+    
+    var viewModel = IssueCreationViewModel()
     
     override func viewDidLoad() {
         textViewSetupView()
@@ -27,8 +33,10 @@ class IssueCreationViewController: UIViewController {
     }
         
     func configure() {
-        guard let number = issueNumber else { return }
+        guard let number = viewModel.status.id else { return }
         IssueNumberLabel.text = "# \(number)"
+        titleTextView.text = viewModel.status.title
+        markdownTextView.text = viewModel.status.content
     }
     
     func removeMarkdownView() {
@@ -56,7 +64,18 @@ class IssueCreationViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonDidTap(_ sender: Any) {
+    @IBAction func cancelButtonDidTabbed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+
+    @IBAction func uploadButtonTabbed(_ sender: Any) {
+        
+        if let id = self.viewModel.status.id {
+            self.viewModel.service.requestEditIssue(issueId: id, title: self.titleTextView.text! , content: markdownTextView.text)
+        } else {
+            self.viewModel.service.requestAddIssue(title: self.titleTextView.text!, content: markdownTextView.text)
+        }
+        
         self.dismiss(animated: true)
     }
     
@@ -85,15 +104,7 @@ extension IssueCreationViewController: UITextViewDelegate {
         }
     }
     
-    func textViewSetupView() {
-        if titleTextView.text == "제목" {
-            titleTextView.text = ""
-            titleTextView.textColor = UIColor.black
-        } else if titleTextView.text.isEmpty {
-            titleTextView.text = "제목"
-            titleTextView.textColor = UIColor.lightGray
-        }
-        
+    func textViewSetupView() {        
         if markdownTextView.text == placeholderMessage {
             markdownTextView.text = ""
             markdownTextView.textColor = UIColor.black
