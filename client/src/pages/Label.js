@@ -8,11 +8,10 @@ import MilestoneList from '@organisms/MilestoneList';
 
 import labelPageStorage from '@constants/label/LabelPage';
 import labelInfromCreateStorage from '@constants/label/LabelInformCreate';
-import * as milestoneAxios from '@system/axios/milestone';
+import milestonePageStorgage from '@constants/milestone/MilestonePage';
 
-export default () => {
+const Labels = () => {
   const [labels, getLabels, deleteLabel, addLabel] = labelPageStorage();
-  const [milestones, setMilestones] = useState([]);
   const [
     state,
     createLabel,
@@ -31,12 +30,19 @@ export default () => {
     });
   };
 
+  const [
+    milestones,
+    setMilestoneCnt,
+    getMilestones,
+    deleteMilestone,
+    changeMilestoneStatus,
+  ] = milestonePageStorgage();
+
   const [tabState, SetTab] = useState(0);
   useEffect(() => {
     getLabels();
+    getMilestones();
   }, []);
-
-  milestoneAxios.default.getMilestones().then((res) => setMilestones(res));
 
   let Mainpage;
   switch (tabState) {
@@ -72,7 +78,11 @@ export default () => {
             state={tabState}
             tabChange={SetTab}
           />
-          <MilestoneList milestoneList={milestones} />
+          <MilestoneList
+            milestoneList={milestones.milestoneList}
+            onDelete={deleteMilestone}
+            onChange={changeMilestoneStatus}
+          />
         </>
       );
       break;
@@ -87,3 +97,5 @@ export default () => {
     </div>
   );
 };
+
+export default Labels;
