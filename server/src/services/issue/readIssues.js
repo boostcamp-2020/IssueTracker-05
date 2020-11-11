@@ -29,7 +29,7 @@ export default async (query, uid) => {
           },
           {
             model: db.milestone,
-            attributes: ['mid', 'title'],
+            attributes: ['mid', 'title', 'updatedAt'],
             include: [
               {
                 model: db.issue,
