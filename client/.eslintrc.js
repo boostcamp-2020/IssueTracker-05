@@ -15,7 +15,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'prettier'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'no-console': 'off',
@@ -23,5 +23,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'import/no-extraneous-dependencies': 0,
     'no-plusplus': 0,
+    'react/forbid-prop-types': 0,
   },
+  settings: { 'import/resolver': 'webpack' },
 };
