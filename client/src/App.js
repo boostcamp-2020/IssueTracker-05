@@ -1,12 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './components/themes/default';
 
+import Main from './route/Main';
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div> hi </div>
+      <Router>
+        <Main />
+      </Router>
     </ThemeProvider>
   );
 };
