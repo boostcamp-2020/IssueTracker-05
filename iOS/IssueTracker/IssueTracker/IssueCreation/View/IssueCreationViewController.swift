@@ -28,8 +28,8 @@ class IssueCreationViewController: UIViewController {
     var viewModel = IssueCreationViewModel()
     
     override func viewDidLoad() {
-        textViewSetupView()
         configure()
+        textViewSetupView()
     }
         
     func configure() {
@@ -37,6 +37,7 @@ class IssueCreationViewController: UIViewController {
         IssueNumberLabel.text = "# \(number)"
         titleTextView.text = viewModel.status.title
         markdownTextView.text = viewModel.status.content
+        isModalInPresentation = true
     }
     
     func removeMarkdownView() {

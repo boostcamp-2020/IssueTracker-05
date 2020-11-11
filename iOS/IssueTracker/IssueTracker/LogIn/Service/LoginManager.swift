@@ -133,6 +133,11 @@ class LoginManager {
             case let .success(json):
                 if let json = json as? [String: Any] {
                     UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+                    
+                    if let user = json["user"] as? [String: Any] {
+                        UserDefaults.standard.setValue(user["uid"] as? Int, forKey: "uid")
+                    }
+                    
                     handler(true)
                 }
             case let .failure(error):

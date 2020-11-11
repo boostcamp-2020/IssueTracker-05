@@ -90,14 +90,14 @@ class IssueListViewModel {
                 //내가 작성한 이슈들
                 case 1:
                     filterIssue = filterIssue.filter {
-                        return ($0.user.uid == Int(UserDefaults.standard.string(forKey: "uid") ?? ""))
+                        return ($0.user.uid == UserDefaults.standard.integer(forKey: "uid"))
                     }
                 //나한테 할당된 이슈들
                 case 2:
                     filterIssue = filterIssue.filter { list in
                         var isAssign = false
                         list.assignees?.forEach { assignee in
-                            if assignee.userId == UserDefaults.standard.string(forKey: "uid") {
+                            if assignee.userId == String( UserDefaults.standard.integer(forKey: "uid")) {
                                 isAssign = true
                             }
                         }
@@ -105,12 +105,16 @@ class IssueListViewModel {
                     }
                 //내가 댓글을 남긴 이슈들 (보류)
                 case 3:
-//                    filterIssue = filterIssue.filter { list in
-//                        let isComment = false
-//                        list.
-//                        return isAssign
-//                    }
-                    print("Q보류")
+                    filterIssue = filterIssue.filter { list in
+                        var isComment = false
+                        
+                        list.comments?.forEach { comment in
+                            isComment =  (comment.uid == UserDefaults.standard.integer(forKey: "uid"))
+                        }
+                        
+                        return isComment
+                    }
+                    
                 //닫힌 이슈들
                 case 4:
                     filterIssue = filterIssue.filter {

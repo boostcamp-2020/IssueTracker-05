@@ -9,8 +9,8 @@ class IssueListFilterViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     private var sections = Section.allSections
-    let viewModel = IssueListViewModel()
     
+    var viewModel: IssueListViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,7 @@ class IssueListFilterViewController: UIViewController {
         applySnapshot(animatingDifferences: false)
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
+        isModalInPresentation = true
     }
     
     func makeDataSource() -> DataSource {
@@ -50,6 +51,7 @@ class IssueListFilterViewController: UIViewController {
                 
                 if indexPath.section == 1 {
                     cell.checkButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+                    cell.isUserInteractionEnabled = false
                 }
                 
                 return cell
@@ -136,7 +138,7 @@ class IssueListFilterViewController: UIViewController {
             Int($0.last!)
         }
         
-        viewModel.action.issueFilter(indexPath!)
+        viewModel?.action.issueFilter(indexPath!)
         
         self.dismiss(animated: true)
     }
