@@ -23,14 +23,11 @@ class IssueListMainViewController: UIViewController {
         super.viewDidLoad()
         searchBar.delegate = self
         searchContainerView.isHidden = true
-        
         setupSearchListViewController()
+        
         setupIssueResultViewController()
         
-        navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterButtonTabbed))
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editButtonTabbed))
+        setupNavigationBarItem()
         bind()
     }
     
@@ -50,10 +47,14 @@ class IssueListMainViewController: UIViewController {
     // MARK: Bind to ViewModel
     
     func bind() {
-        viewModel.status.searchResultList
-            .bindAndFire(issueResultViewController.applySnapshot(sections:))
         viewModel.status.searchResultTitleList
             .bind(searchViewController.applySnapshot(sections:))
+        
+        viewModel.status.searchResultList
+            .bindAndFire(issueResultViewController.applySnapshot(sections:))
+        
+        
+        
         issueResultViewController.closeIssueButtonTabbed
             = viewModel.action.closeButtonTabbed
         issueResultViewController.deleteIssueButtonTabbed
@@ -98,8 +99,18 @@ class IssueListMainViewController: UIViewController {
         issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
         issueResultViewController.view.frame = resultContainerView.bounds
+        resultContainerView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
         resultContainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
+    }
+  
+    func setupNavigationBarItem() {
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterButtonTabbed))
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editButtonTabbed))
     }
     
 }
