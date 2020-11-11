@@ -13,12 +13,24 @@ class IssueResultViewController: UIViewController {
     var deleteIssueButtonTabbed: ((Int) -> Void)?
     
     
+    // MARK: Refresh Closure
+    var refreshData: (() -> Void)?
+    
+    
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
+        collectionview.refreshControl = UIRefreshControl()
+        collectionview.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
+        collectionview.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         applySnapshot(sections: IssueListModel.all()) // TODO: dummy - 삭제 대상
+    }
+    
+    @objc func refresh() {
+        refreshData?()
+        self.collectionview.refreshControl?.endRefreshing()
     }
     
     

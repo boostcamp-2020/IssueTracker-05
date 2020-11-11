@@ -27,6 +27,7 @@ class IssueListViewModel {
         
         // 이슈 추가, 수정
         var addIssueTabbed: (Int) -> Void
+        var refreshData: () -> Void
     }
     
     var status = Status()
@@ -70,8 +71,10 @@ class IssueListViewModel {
         }, addIssueTabbed: { [weak self] iid in
             guard let weakSelf = self else { return }
             print(iid, "add")
+        }, refreshData: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.service.requestIssueListGet()
         }
-    
     )
     
     init() {
