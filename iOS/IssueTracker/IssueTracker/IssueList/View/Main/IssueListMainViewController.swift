@@ -5,8 +5,8 @@ class IssueListMainViewController: UIViewController {
     
     var didSendEventClosure: ((IssueListMainViewController.Event)-> Void)?
     
-    @IBOutlet weak var searchContrainerView: UIView!
-    @IBOutlet weak var resultContrainerView: UIView!
+    @IBOutlet weak var searchContainerView: UIView!
+    @IBOutlet weak var resultContainerView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var issueCreationButton: UIButton!
@@ -22,7 +22,7 @@ class IssueListMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        searchContrainerView.isHidden = true
+        searchContainerView.isHidden = true
         
         setupSearchListViewController()
         setupIssueResultViewController()
@@ -90,15 +90,15 @@ class IssueListMainViewController: UIViewController {
     func setupSearchListViewController() {
         searchViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
-        searchContrainerView.frame = searchContrainerView.bounds
-        searchContrainerView.addSubview(searchViewController.view)
+        searchContainerView.frame = searchContainerView.bounds
+        searchContainerView.addSubview(searchViewController.view)
     }
     
     func setupIssueResultViewController() {
         issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
-        issueResultViewController.view.frame = resultContrainerView.bounds
-        resultContrainerView.addSubview(issueResultViewController.view)
+        issueResultViewController.view.frame = resultContainerView.bounds
+        resultContainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
     }
     
@@ -110,8 +110,8 @@ class IssueListMainViewController: UIViewController {
 extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchContrainerView.isHidden = false
-        resultContrainerView.isHidden = true
+        searchContainerView.isHidden = false
+        resultContainerView.isHidden = true
         issueCreationButton.isHidden = true
         navigationController?.isNavigationBarHidden = true
         searchBar.setShowsCancelButton(true, animated: true)
@@ -122,8 +122,8 @@ extension IssueListMainViewController: UISearchBarDelegate {
         viewModel.action.searchButtonClicked(searchBar.text ?? "")
         searchBar.searchTextField.text = ""
         searchBar.resignFirstResponder()
-        searchContrainerView.isHidden = true
-        resultContrainerView.isHidden = false
+        searchContainerView.isHidden = true
+        resultContainerView.isHidden = false
         issueCreationButton.isHidden = false
         
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
@@ -137,8 +137,8 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.searchTextField.text = ""
-        searchContrainerView.isHidden = true
-        resultContrainerView.isHidden = false
+        searchContainerView.isHidden = true
+        resultContainerView.isHidden = false
         issueCreationButton.isHidden = false
         navigationController?.isNavigationBarHidden = false
         searchBar.setShowsCancelButton(false, animated: true)

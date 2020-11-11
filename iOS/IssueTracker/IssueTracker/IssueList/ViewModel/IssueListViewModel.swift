@@ -18,11 +18,8 @@ class IssueListViewModel {
         var searchCancelButtonClicked: () -> Void
         var closeButtonTabbed: (Int) -> Void
         var deleteButtonTabbed: (Int) -> Void
-        
-        // 다중 선택
-      
-        var refreshData: () -> Void
         var addIssueTabbed: (Int?, String, String) -> Void
+        var refreshData: () -> Void
     }
     
     var status = Status()
