@@ -51,7 +51,7 @@ class LabelListViewController: UIViewController {
         present(editVC, animated: false)
     }
     
-    @objc func addLabelButtonTabbed() {
+    @objc func addLabelButtonTabbed() { // 추가 모드
         let editVC = configureLabelEdiginVC()
         present(editVC, animated: false)
     }
