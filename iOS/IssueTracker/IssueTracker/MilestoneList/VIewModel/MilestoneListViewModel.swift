@@ -27,7 +27,7 @@ class MilestoneListViewModel {
     struct Action {
         var cellTouched: (Milestone) -> Void
         var milestoneEditSaveButtonDidTabbed: (String, String, String, Int?) -> Void
-        var deleteButtonTabbed: (String) -> Void
+        var deleteButtonTabbed: (Int) -> Void
         var refreshData: () -> Void
     }
     
@@ -51,17 +51,16 @@ class MilestoneListViewModel {
             }
             
             if let id = id { // 수정
-//                weakSelf.service.requestMilestonePatch(
-//                    id: id, title: title, desc: desc, date: date)
+                weakSelf.service.requestMilestonePatch(id: id, title: title, desc: desc, date: date)
                 weakSelf.status.resultOfSaving.value = .success
                 return
             }
-//            weakSelf.service.requestLabelPost(
-//                name: title, desc: desc, color: color)
+            weakSelf.service.requestMilestonePost(
+                title: title, desc: desc, date: date)
             weakSelf.status.resultOfSaving.value = .success
-        }, deleteButtonTabbed: { [weak self] name in
+        }, deleteButtonTabbed: { [weak self] id in
             guard let weakSelf = self else { return }
-//            weakSelf.service.requestLabelDelete(name: name)
+            weakSelf.service.requestMilestoneDelete(id: id)
         }, refreshData: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.service.requestMilestoneGet()
