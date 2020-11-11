@@ -38,6 +38,10 @@ class IssueDetailViewController: UIViewController {
       
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        configureIsOpenView()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         configureContainerOfSwipeView()
@@ -166,8 +170,9 @@ class IssueDetailViewController: UIViewController {
         
         let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil).instantiateViewController(identifier: String(describing: IssueCreationViewController.self)) as IssueCreationViewController
         
-        creationVC.issueNumber = viewModel?.issueId
-        
+        creationVC.viewModel.status.id = viewModel?.issueId
+        creationVC.viewModel.status.title = viewModel?.status.model.value.title ?? ""
+        creationVC.viewModel.status.content = viewModel?.status.model.value.content ?? ""
         self.present(creationVC, animated: true)
         
     }

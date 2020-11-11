@@ -66,14 +66,18 @@ class IssueListMainViewController: UIViewController {
     // MARK: Action
     
     @IBAction func issueCreationButtonTabbed(_ sender: UIButton) {
-        let creationVC = UIStoryboard(name: "IssueCreation", bundle: nil)
+        let creationVC:IssueCreationViewController = UIStoryboard(name: "IssueCreation", bundle: nil)
             .instantiateViewController(
                 identifier: String(describing: IssueCreationViewController.self))
         self.present(creationVC, animated: true)
     }
     
     @objc func filterButtonTabbed() {
-        print("filter")
+        let filterVC:IssueListFilterViewController = UIStoryboard(name: "IssueListFilter", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueListFilterViewController.self))
+        self.present(filterVC, animated: true)
+        
     }
     
     @objc func editButtonTabbed() {
@@ -165,6 +169,7 @@ extension IssueListMainViewController {
         case finished
     }
 }
+
 
 
 // MARK: Preview

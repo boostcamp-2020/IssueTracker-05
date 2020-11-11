@@ -19,15 +19,10 @@ class IssueListViewModel {
         var closeButtonTabbed: (Int) -> Void
         var deleteButtonTabbed: (Int) -> Void
         
-        // 필터링
-        // Done(bool, , , , , ,)
-        //issues.filter{}
-        
         // 다중 선택
-        
-        // 이슈 추가, 수정
-        var addIssueTabbed: (Int) -> Void
+      
         var refreshData: () -> Void
+        var addIssueTabbed: (Int?, String, String) -> Void
     }
     
     var status = Status()
@@ -56,11 +51,9 @@ class IssueListViewModel {
             weakSelf.service.requestIssueListGet()
         }, closeButtonTabbed: { [weak self] iid in
             guard let weakSelf = self else { return }
-            print(iid, "close")
             weakSelf.service.requestIssueClose(issueId: iid)
         }, deleteButtonTabbed: { [weak self] iid in
             guard let weakSelf = self else { return }
-            print(iid, "delete")
             weakSelf.service.requestIssueDelete(issueId: iid)
             for index in weakSelf.status.issues.value.indices {
                 if weakSelf.status.issues.value[index].iid == iid {
@@ -68,12 +61,18 @@ class IssueListViewModel {
                    return
                 }
             }
-        }, addIssueTabbed: { [weak self] iid in
+        }, addIssueTabbed: { [weak self] iid, title, content in
             guard let weakSelf = self else { return }
-            print(iid, "add")
+            if let id = iid {
+                weakSelf.service.requestEditIssue(issueId: id, title: title, content: content)
+                print(id)
+            } else {
+                weakSelf.service.requestAddIssue(title: title, content: content)
+            }
         }, refreshData: { [weak self] in
             guard let weakSelf = self else { return }
-            weakSelf.service.requestIssueListGet()
+            weakSelf.service.requestIssueListGet() 
+
         }
     )
     
