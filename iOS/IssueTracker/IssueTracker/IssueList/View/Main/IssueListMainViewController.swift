@@ -5,8 +5,8 @@ class IssueListMainViewController: UIViewController {
     
     var didSendEventClosure: ((IssueListMainViewController.Event)-> Void)?
     
-    @IBOutlet weak var searchContrainerView: UIView!
-    @IBOutlet weak var resultContrainerView: UIView!
+    @IBOutlet weak var searchContainerView: UIView!
+    @IBOutlet weak var resultContainerView: UIView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var issueCreationButton: UIButton!
@@ -22,16 +22,15 @@ class IssueListMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        searchContrainerView.isHidden = true
-        
+        searchContainerView.isHidden = true
         setupSearchListViewController()
         setupIssueResultViewController()
-        
-        navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterButtonTabbed))
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editButtonTabbed))
-        bind()
+        setupNavigationBarItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.setupIssueResultViewController()
+        viewModel.action.refreshData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,23 +43,6 @@ class IssueListMainViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = ""
-    }
-    
-    
-    // MARK: Bind to ViewModel
-    
-    func bind() {
-        viewModel.status.searchResultList
-            .bindAndFire(issueResultViewController.applySnapshot(sections:))
-        viewModel.status.searchResultTitleList
-            .bind(searchViewController.applySnapshot(sections:))
-        issueResultViewController.closeIssueButtonTabbed
-            = viewModel.action.closeButtonTabbed
-        issueResultViewController.deleteIssueButtonTabbed
-            = viewModel.action.deleteButtonTabbed
-        issueResultViewController.refreshData
-            = viewModel.action.refreshData
-        
     }
     
     
@@ -79,11 +61,16 @@ class IssueListMainViewController: UIViewController {
                 identifier: String(describing: IssueListFilterViewController.self))
         filterVC.viewModel = self.viewModel
         self.present(filterVC, animated: true)
-        
     }
     
     @objc func editButtonTabbed() {
-        print(viewModel.status.searchResultList.value)
+        let vc: MultiSelectiveEditingViewController
+            = UIStoryboard(name: "MultiSelectedEditing", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: MultiSelectiveEditingViewController.self))
+        vc.viewModel = MultiSelectiveEditingViewModel(
+            issues: viewModel.status.searchResultList.value)
+        navigationController?.pushViewController(vc, animated: false)
         print("Edit")
     }
     
@@ -93,16 +80,42 @@ class IssueListMainViewController: UIViewController {
     func setupSearchListViewController() {
         searchViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: SearchListViewController.self))
-        searchContrainerView.frame = searchContrainerView.bounds
-        searchContrainerView.addSubview(searchViewController.view)
+        searchContainerView.frame = searchContainerView.bounds
+        searchContainerView.addSubview(searchViewController.view)
+        viewModel.status.searchResultTitleList
+            .bind(searchViewController.applySnapshot(sections:))
     }
     
     func setupIssueResultViewController() {
         issueResultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(identifier: String(describing: IssueResultViewController.self))
-        issueResultViewController.view.frame = resultContrainerView.bounds
-        resultContrainerView.addSubview(issueResultViewController.view)
+        issueResultViewController.view.frame = resultContainerView.bounds
+        resultContainerView.subviews.forEach {
+            $0.removeFromSuperview()
+        }
+        resultContainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
+        bindIssueResultVCToViewModel()
+    }
+    
+    func bindIssueResultVCToViewModel() {
+        issueResultViewController.closeIssueButtonTabbed
+            = viewModel.action.closeButtonTabbed
+        issueResultViewController.deleteIssueButtonTabbed
+            = viewModel.action.deleteButtonTabbed
+        issueResultViewController.refreshData = { [weak self] in
+            self?.viewModel.action.refreshData()
+            self?.setupIssueResultViewController()
+        }
+        viewModel.status.searchResultList
+            .bindAndFire(issueResultViewController.applySnapshot(sections:))
+    }
+  
+    func setupNavigationBarItem() {
+        navigationItem.leftBarButtonItem =
+            UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterButtonTabbed))
+        navigationItem.rightBarButtonItem =
+            UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editButtonTabbed))
     }
     
 }
@@ -113,8 +126,9 @@ class IssueListMainViewController: UIViewController {
 extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchContrainerView.isHidden = false
-        resultContrainerView.isHidden = true
+        setupIssueResultViewController()
+        searchContainerView.isHidden = false
+        resultContainerView.isHidden = true
         issueCreationButton.isHidden = true
         navigationController?.isNavigationBarHidden = true
         searchBar.setShowsCancelButton(true, animated: true)
@@ -125,8 +139,8 @@ extension IssueListMainViewController: UISearchBarDelegate {
         viewModel.action.searchButtonClicked(searchBar.text ?? "")
         searchBar.searchTextField.text = ""
         searchBar.resignFirstResponder()
-        searchContrainerView.isHidden = true
-        resultContrainerView.isHidden = false
+        searchContainerView.isHidden = true
+        resultContainerView.isHidden = false
         issueCreationButton.isHidden = false
         
         if let cancelButton = searchBar.value(forKey: "cancelButton") as? UIButton {
@@ -140,8 +154,8 @@ extension IssueListMainViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.searchTextField.text = ""
-        searchContrainerView.isHidden = true
-        resultContrainerView.isHidden = false
+        searchContainerView.isHidden = true
+        resultContainerView.isHidden = false
         issueCreationButton.isHidden = false
         navigationController?.isNavigationBarHidden = false
         searchBar.setShowsCancelButton(false, animated: true)
@@ -164,6 +178,7 @@ extension IssueListMainViewController: UICollectionViewDelegate {
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)
+        // TODO: pop할 때 메모리 릭 발생.
     }
 }
 
