@@ -9,6 +9,8 @@ class IssueListFilterViewController: UIViewController {
     
     private lazy var dataSource = makeDataSource()
     private var sections = Section.allSections
+    let viewModel = IssueListViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +131,13 @@ class IssueListFilterViewController: UIViewController {
     }
     
     @IBAction func doneButtonTabbed(_ sender: Any) {
+        
+        let indexPath = collectionView.indexPathsForSelectedItems?.map {
+            Int($0.last!)
+        }
+        
+        viewModel.action.issueFilter(indexPath!)
+        
         self.dismiss(animated: true)
     }
     

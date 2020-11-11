@@ -60,6 +60,7 @@ class IssueListMainViewController: UIViewController {
             = viewModel.action.deleteButtonTabbed
         issueResultViewController.refreshData
             = viewModel.action.refreshData
+        
     }
     
     
