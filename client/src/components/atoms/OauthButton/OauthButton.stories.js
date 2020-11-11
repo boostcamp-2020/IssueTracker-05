@@ -1,11 +1,11 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import OauthButton from './OauthButton';
+import OAuthButton from '.';
 
 export default {
-  component: OauthButton,
-  title: 'Atoms/OauthButton',
+  component: OAuthButton,
+  title: 'Atoms/OAuthButton',
   decorators: [
     (Story) => (
       <div style={{ margin: '3em' }}>
@@ -14,22 +14,9 @@ export default {
     ),
     withKnobs,
   ],
-  args: {
-    disabled: false,
-  },
-  argTypes: {
-    type: {
-      control: {
-        type: 'select',
-        options: ['default'],
-      },
-    },
-  },
 };
 
-const Template = () => (args) => <OauthButton {...args} />;
+const Template = (args) => <OAuthButton {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {
-  type: 'default',
-};
+Default.args = {};
