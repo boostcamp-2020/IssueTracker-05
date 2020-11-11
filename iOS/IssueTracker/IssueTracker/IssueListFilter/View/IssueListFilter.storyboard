@@ -24,6 +24,9 @@
                                     <constraint firstAttribute="height" constant="30" id="5PU-Yl-yvd"/>
                                 </constraints>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonTabbed:" destination="P6M-HQ-sP7" eventType="touchUpInside" id="RIU-wt-weH"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwl-iE-JtE">
                                 <rect key="frame" x="0.0" y="94" width="414" height="1"/>
@@ -43,48 +46,54 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kN5-ro-Cx0">
                                     <size key="itemSize" width="374" height="91"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueListFilterCollectionViewCell" id="bqE-bJ-zMP" customClass="IssueListFilterCollectionViewCell" customModule="IssueTracker" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="50" width="374" height="30.5"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="91"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5jk-iF-PEe">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="30.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9Q-QJ-29q">
-                                                    <rect key="frame" x="5" y="5" width="74" height="20.5"/>
+                                                    <rect key="frame" x="5" y="5" width="74" height="81"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZu-pb-pI5">
+                                                    <rect key="frame" x="334" y="5" width="30" height="81"/>
+                                                    <state key="selected" image="checkmark" catalog="system"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="lZu-pb-pI5" firstAttribute="top" secondItem="5jk-iF-PEe" secondAttribute="top" constant="5" id="0qc-cd-1Lh"/>
                                                 <constraint firstAttribute="bottom" secondItem="f9Q-QJ-29q" secondAttribute="bottom" constant="5" id="9Or-Cw-Kd9"/>
+                                                <constraint firstAttribute="trailing" secondItem="lZu-pb-pI5" secondAttribute="trailing" constant="10" id="LOS-6o-pbp"/>
+                                                <constraint firstAttribute="bottom" secondItem="lZu-pb-pI5" secondAttribute="bottom" constant="5" id="RBY-gC-rJf"/>
                                                 <constraint firstItem="f9Q-QJ-29q" firstAttribute="leading" secondItem="5jk-iF-PEe" secondAttribute="leading" constant="5" id="XOF-Dr-hq1"/>
                                                 <constraint firstItem="f9Q-QJ-29q" firstAttribute="top" secondItem="5jk-iF-PEe" secondAttribute="top" constant="5" id="ZRs-mK-ZCs"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="374" height="91"/>
+                                        <connections>
+                                            <outlet property="checkButton" destination="lZu-pb-pI5" id="1Nh-3E-Iel"/>
+                                            <outlet property="titleLabel" destination="f9Q-QJ-29q" id="BXg-8b-UxK"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="reusableView" id="LU3-bn-jvo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="다음 중에 조건을 고르세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAQ-LD-y51" userLabel="다음 중에 조건을 고르세요">
-                                            <rect key="frame" x="8" y="28" width="115" height="14"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdm-YZ-bqq">
+                                <rect key="frame" x="367" y="54" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTabbed:" destination="P6M-HQ-sP7" eventType="touchUpInside" id="eJJ-c9-Vvd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nfw-4n-gGC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -99,9 +108,14 @@
                             <constraint firstItem="1TK-AZ-Od5" firstAttribute="leading" secondItem="Nfw-4n-gGC" secondAttribute="leading" id="Yt7-8M-3jz"/>
                             <constraint firstItem="bQg-CW-p4P" firstAttribute="leading" secondItem="Nfw-4n-gGC" secondAttribute="leading" constant="10" id="mC9-vP-DUX"/>
                             <constraint firstItem="Nfw-4n-gGC" firstAttribute="trailing" secondItem="1TK-AZ-Od5" secondAttribute="trailing" id="pA2-qU-322"/>
+                            <constraint firstItem="Nfw-4n-gGC" firstAttribute="trailing" secondItem="sdm-YZ-bqq" secondAttribute="trailing" constant="10" id="pwd-53-GPf"/>
                             <constraint firstItem="lLW-2u-DMJ" firstAttribute="leading" secondItem="Nfw-4n-gGC" secondAttribute="leading" constant="10" id="u1A-ay-vqa"/>
+                            <constraint firstItem="sdm-YZ-bqq" firstAttribute="top" secondItem="Nfw-4n-gGC" secondAttribute="top" constant="10" id="xIm-7p-ZtT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="1TK-AZ-Od5" id="bRG-8B-dFK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wO-tb-80Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -109,6 +123,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
