@@ -1,10 +1,11 @@
-import React, { useReducer } from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import LabelListTitle from '@molecules/LabelListTitle';
+import LabelInform from '@molecules/LabelInform';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -12,44 +13,30 @@ const WhoreWrapper = styled.div`
   border: 1px solid black;
 `;
 
-const LabelPreviewWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 2em;
-`;
-
-const DescWrapper = styled.div`
-  width: 100%;
-  display: inline-flex;
-  gap: 12px;
-  gap: 12px;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const LabelInformCreate = (props) => {
+const LabelList = (props) => {
   return (
-    <WhoreWrapper>
-      <LabelPreviewWrapper>
-        <Label background="#34A3D5">Label Preview</Label>
-      </LabelPreviewWrapper>
-      <DescWrapper>
-        <InputBox>Label name</InputBox>
-        <InputBox type="textarea">Description</InputBox>
-        <InputBox>Color</InputBox>
-        <ButtonWrapper>
-          <Button type="cancel">Cancel</Button>
-          <Button type="create">Create Label</Button>
-        </ButtonWrapper>
-      </DescWrapper>
-    </WhoreWrapper>
+    <WholeWrapper>
+      <LabelListTitle name={`${props.labelList.length} label`} />
+      {props.labelList.map((value) => (
+        <LabelInform
+          {...value}
+          key={value.name}
+          onDelete={props.onDelete}
+          onEdit={props.updateLabel}
+        />
+      ))}
+    </WholeWrapper>
   );
 };
 
-export default LabelInformCreate;
+LabelList.propTypes = {
+  labelList: PropTypes.arrayOf(PropTypes.string),
+  type: PropTypes.string,
+};
+
+LabelList.defaultProps = {
+  labelList: [],
+  type: 'default',
+};
+
+export default LabelList;

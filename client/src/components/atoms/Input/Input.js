@@ -9,7 +9,7 @@ const fontSize = ({ height }) => `${height / 35.5555555556}rem`;
 const styles = css`
   font-family: ${font('primary')};
   display: block;
-  width: 90%;
+  width: 96%;
   padding: ${ifProp(
     { type: 'textarea' },
     '0.4444444444em',

@@ -21,4 +21,9 @@ const Template = (args) => <LabelInformCreate {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   type: 'default',
+  state: {
+    name: '',
+    color: '',
+    desc: '',
+  },
 };

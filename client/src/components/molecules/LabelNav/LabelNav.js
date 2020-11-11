@@ -12,12 +12,13 @@ const LabelNavStyle = styled.div`
   height: 2.5em;
   justify-content: space-between;
   width: 100%;
+  margin: 20px 0;
 `;
 
 const LabelNav = (props) =>
 <LabelNavStyle>
-  <Tab tabList={['Label', 'Milestone']}/>
-  <Button type={'create'}>New issue</Button>
+  <Tab tabList={['Label', 'Milestone']} state={props.state} tabChange={props.tabChange} />
+  <Button type={'create'} onClick={() => props.createLabel()}>New issue</Button>
 </LabelNavStyle>;
 
 LabelNav.propTypes = {};

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-const backgroundColor = ({ background }) => `${background}`;
+const backgroundColor = ({ color }) => `${color}`;
 const randomBackground = () => {
   const arr = [
     '0',
@@ -56,12 +56,12 @@ const LabelStyle = styled.div`
 const Label = (props) => <LabelStyle {...props} />;
 
 Label.propTypes = {
-  background: PropTypes.string,
+  color: PropTypes.string,
   fontSize: PropTypes.string,
 };
 
 Label.defaultProps = {
-  background: randomBackground(),
+  color: randomBackground(),
   fontSize: '1em',
 };
 

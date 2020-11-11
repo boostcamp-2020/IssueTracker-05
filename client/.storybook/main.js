@@ -14,12 +14,15 @@ module.exports = {
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@hooks': path.join(__dirname, '../src/hooks'),
+      '@components': path.join(__dirname, '../src/components'),
+      '@constants': path.join(__dirname, '../src/constants'),
+      '@lib': path.join(__dirname, '../src/lib'),
+      '@pages': path.join(__dirname, '../src/pages'),
+      '@system': path.join(__dirname, '../src/system'),
       '@atoms': path.join(__dirname, '../src/components/atoms'),
       '@molecules': path.join(__dirname, '../src/components/molecules'),
       '@organisms': path.join(__dirname, '../src/components/organisms'),
       '@templates': path.join(__dirname, '../src/components/templates'),
-      '@pages': path.join(__dirname, '../src/components/pages'),
     };
     return config;
   },

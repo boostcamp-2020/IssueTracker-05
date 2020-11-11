@@ -23,13 +23,29 @@ const TabStyle = styled.li`
   }
 `;
 
+const SelectedTabStyle = styled(TabStyle)`
+  box-sizing: border-box;
+  border: 1px solid #e5e6e6;
+  border-radius: 2px;
+  padding: 0.5em 2em;
+  background-color: #3498db;
+  color: white;
+`;
+
 const Tab = (props) => {
   const { tabList } = props;
   return (
     <TabListStyle>
-      {tabList.map((tabName) => (
-        <TabStyle>{tabName}</TabStyle>
-      ))}
+      {tabList.map((tabName, index) => {
+        if (index !== props.state) {
+          return (
+            <TabStyle onClick={() => props.tabChange(index)}>
+              {tabName}
+            </TabStyle>
+          );
+        }
+        return <SelectedTabStyle>{tabName}</SelectedTabStyle>;
+      })}
     </TabListStyle>
   );
 };

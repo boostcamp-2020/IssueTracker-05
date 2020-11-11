@@ -1,11 +1,11 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import OAuthButton from '.';
+import Label from './Label';
 
 export default {
-  component: OAuthButton,
-  title: 'Atoms/OAuthButton',
+  component: Label,
+  title: 'Pages/Label',
   decorators: [
     (Story) => (
       <div style={{ margin: '3em' }}>
@@ -16,7 +16,7 @@ export default {
   ],
 };
 
-const Template = (args) => <OAuthButton {...args} />;
+const Template = (args) => <Label {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
