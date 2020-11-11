@@ -22,6 +22,11 @@ class MultiSelectiveEditingViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarItem()
         setupResultViewController()
+//        viewModel.status.issues
+//            .bindAndFire(resultViewController.applySnapshot(sections:))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         viewModel.status.issues
             .bindAndFire(resultViewController.applySnapshot(sections:))
     }
