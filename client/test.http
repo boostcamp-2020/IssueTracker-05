@@ -1,7 +1,0 @@
-POST http://group05issuetracker.duckdns.org:49203/api/login
-content-type: application/json
-
-{
-  "userId": "testId1",
-  "password": "123456a@"
-}
