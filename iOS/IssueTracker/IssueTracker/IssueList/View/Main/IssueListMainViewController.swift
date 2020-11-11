@@ -60,6 +60,7 @@ class IssueListMainViewController: UIViewController {
             = viewModel.action.deleteButtonTabbed
         issueResultViewController.refreshData
             = viewModel.action.refreshData
+        
     }
     
     
@@ -76,11 +77,13 @@ class IssueListMainViewController: UIViewController {
         let filterVC:IssueListFilterViewController = UIStoryboard(name: "IssueListFilter", bundle: nil)
             .instantiateViewController(
                 identifier: String(describing: IssueListFilterViewController.self))
+        filterVC.viewModel = self.viewModel
         self.present(filterVC, animated: true)
         
     }
     
     @objc func editButtonTabbed() {
+        print(viewModel.status.searchResultList.value)
         print("Edit")
     }
     
