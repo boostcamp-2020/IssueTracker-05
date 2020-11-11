@@ -331,6 +331,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <size key="customSize" width="363" height="100"/>
                                         <connections>
+                                            <outlet property="checkButton" destination="Gdk-LL-OiO" id="fV5-dp-7nh"/>
                                             <outlet property="closeButton" destination="j9l-dh-H69" id="tMj-3J-yEF"/>
                                             <outlet property="detailView" destination="IYO-CD-0Xt" id="8wf-GC-57a"/>
                                             <outlet property="detailViewForMulti" destination="n2D-oL-lPd" id="9u0-yB-tsx"/>

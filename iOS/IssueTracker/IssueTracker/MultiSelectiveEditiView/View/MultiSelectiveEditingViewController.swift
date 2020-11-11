@@ -22,8 +22,7 @@ class MultiSelectiveEditingViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarItem()
         setupResultViewController()
-//        viewModel.status.issues
-//            .bindAndFire(resultViewController.applySnapshot(sections:))
+        resultViewController.collectionview.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,5 +60,15 @@ class MultiSelectiveEditingViewController: UIViewController {
     // 탭바에 들어가는 버튼
     @objc func selectedIssuesCloseButtonTabbed() {
      //   delegate?.closeSelectedIssuesButtonTabbed(selectedIssues: <#T##[IssueListModel]#>)
+    }
+}
+
+extension MultiSelectiveEditingViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath)
+                as? IssueResultCellView else { return }
+        cell.toggleCheckButton()
+        
+        // 뷰모델
     }
 }
