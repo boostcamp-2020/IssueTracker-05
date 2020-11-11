@@ -136,9 +136,10 @@ class LoginManager {
                     
                     if let user = json["user"] as? [String: Any] {
                         UserDefaults.standard.setValue(user["uid"] as? Int, forKey: "uid")
+                        handler(true)
+                        return
                     }
-                    
-                    handler(true)
+                    handler(false)
                 }
             case let .failure(error):
                 print(error)
