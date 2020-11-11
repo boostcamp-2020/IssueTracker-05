@@ -60,18 +60,18 @@ class IssueListMainViewController: UIViewController {
             .instantiateViewController(
                 identifier: String(describing: IssueListFilterViewController.self))
         self.present(filterVC, animated: true)
-        
     }
     
     @objc func editButtonTabbed() {
         //setupIssueResultViewController()
         
-        let vc = UIStoryboard(name: "IssueList", bundle: nil)
+        let vc: MultiSelectiveEditingViewController
+            = UIStoryboard(name: "MultiSelectedEditing", bundle: nil)
             .instantiateViewController(
-                identifier: String(describing: IssueListMainViewController.self))
+                identifier: String(describing: MultiSelectiveEditingViewController.self))
+        vc.viewModel = MultiSelectiveEditingViewModel(
+            issues: viewModel.status.searchResultList.value)
         navigationController?.pushViewController(vc, animated: false)
-        
-        
         
         print("Edit")
     }

@@ -8,17 +8,33 @@ protocol MultiSelectiveEditingDelegate {
     func closeSelectedIssuesButtonTabbed(selectedIssues: [IssueListModel])
 }
 
-class MultiSelectiveEditing: UIViewController {
+class MultiSelectiveEditingViewController: UIViewController {
     
     var delegate: MultiSelectiveEditingDelegate?
     var selectedIssues: [IssueListModel]?
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    var viewModel: MultiSelectiveEditingViewModel!
+    
+    @IBOutlet weak var resultContainerView: UIView!
+    var resultViewController: IssueResultViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarItem()
-        // 탭바에도 연결 시키기
+        setupResultViewController()
+        viewModel.status.issues
+            .bindAndFire(resultViewController.applySnapshot(sections:))
+    }
+    
+    func setupResultViewController() {
+        resultViewController = UIStoryboard(name: "IssueList", bundle: nil)
+            .instantiateViewController(
+                identifier: String(describing: IssueResultViewController.self))
+        
+        resultViewController.view.frame = resultContainerView.bounds
+        resultContainerView.addSubview(resultViewController.view)
+        
+        
     }
     
     func setupNavigationBarItem() {
@@ -34,11 +50,11 @@ class MultiSelectiveEditing: UIViewController {
     }
     
     @objc func closeButtonTabbed() {
-        
+        navigationController?.popViewController(animated: false)
     }
     
     // 탭바에 들어가는 버튼
     @objc func selectedIssuesCloseButtonTabbed() {
-        delegate?.closeSelectedIssuesButtonTabbed(selectedIssues: <#T##[IssueListModel]#>)
+     //   delegate?.closeSelectedIssuesButtonTabbed(selectedIssues: <#T##[IssueListModel]#>)
     }
 }
