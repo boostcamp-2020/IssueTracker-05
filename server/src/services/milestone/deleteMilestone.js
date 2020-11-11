@@ -2,7 +2,7 @@ import db from '@models';
 
 export default async (milestoneId) => {
   try {
-    await db.history.destroy({
+    await db.milestone.destroy({
       where: {
         mid: milestoneId,
       },
