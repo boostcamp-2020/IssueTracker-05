@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -35,17 +35,44 @@ const SignWrapper = styled.div`
 `;
 
 const Signbox = (props) => {
+  const [id, setId] = useState();
+  const [pw, setPw] = useState();
+
+  const changeInputId = (e) => {
+    setId(e.target.value);
+  };
+
+  const changeInputPw = (e) => {
+    setPw(e.target.value);
+  };
+
+  const login = (e) => {
+    e.preventDefault();
+  }
+
+  const signUp = (e) => {
+    e.preventDefault();
+  }
+
   return (
     <WholeWrapper>
       <InputWrapper>
-        <InputBox name="로그인">로그인</InputBox>
+        <InputBox name="아이디" onChange={changeInputId}>
+          아이디
+        </InputBox>
         <br />
-        <InputBox name="비밀번호">비밀번호</InputBox>
+        <InputBox name="비밀번호" type="password" onChange={changeInputPw}>
+          비밀번호
+        </InputBox>
         <br />
       </InputWrapper>
       <SignWrapper>
-        <a href="">로그인</a>
-        <a href="">회원가입</a>
+        <a href="" onClick={login}>
+          로그인
+        </a>
+        <a href="" onClick={signUp}>
+          회원가입
+        </a>
       </SignWrapper>
       <br /><br />
       <OauthButton />
