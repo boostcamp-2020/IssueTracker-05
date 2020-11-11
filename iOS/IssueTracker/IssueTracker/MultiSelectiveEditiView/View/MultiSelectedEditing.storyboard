@@ -17,13 +17,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnt-GD-RFa">
-                                <rect key="frame" x="0.0" y="224" width="414" height="638"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnt-GD-RFa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="758"/>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9P-bb-ML6">
+                                <rect key="frame" x="292" y="807" width="97" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="선택 이슈 닫기"/>
+                                <connections>
+                                    <action selector="closeSelectedIssues:" destination="HRO-kn-fLv" eventType="touchUpInside" id="67I-rb-h0W"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hGX-bZ-J7M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xnt-GD-RFa" firstAttribute="trailing" secondItem="hGX-bZ-J7M" secondAttribute="trailing" id="4dd-Cf-scD"/>
+                            <constraint firstItem="xnt-GD-RFa" firstAttribute="top" secondItem="hGX-bZ-J7M" secondAttribute="top" id="9Vs-cx-Puy"/>
+                            <constraint firstItem="w9P-bb-ML6" firstAttribute="top" secondItem="xnt-GD-RFa" secondAttribute="bottom" constant="5" id="KDs-yf-2RK"/>
+                            <constraint firstItem="xnt-GD-RFa" firstAttribute="leading" secondItem="hGX-bZ-J7M" secondAttribute="leading" id="hvi-ec-kXL"/>
+                            <constraint firstItem="hGX-bZ-J7M" firstAttribute="bottom" secondItem="xnt-GD-RFa" secondAttribute="bottom" constant="60" id="uFJ-aB-fDK"/>
+                            <constraint firstItem="hGX-bZ-J7M" firstAttribute="trailing" secondItem="w9P-bb-ML6" secondAttribute="trailing" constant="25" id="ytH-W8-ghM"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="resultContainerView" destination="xnt-GD-RFa" id="zzD-9U-aIY"/>

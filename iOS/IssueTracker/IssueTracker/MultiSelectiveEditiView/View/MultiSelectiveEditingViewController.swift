@@ -20,14 +20,32 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 탭바 아이템 안보이게 해야 한다.
+        // 탭바 아이템에 클로즈 버튼을 추가 해야 한다.
+        // 타이틀에 선택 개수가 나오도록 해야 한다.
+        
         setupNavigationBarItem()
+        setupTabBarButton()
         setupResultViewController()
         resultViewController.collectionview.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.status.issues
             .bindAndFire(resultViewController.applySnapshot(sections:))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func closeSelectedIssues(_ sender: UIButton) {
+        // 뷰모델
+        
+        navigationController?.popViewController(animated: false)
     }
     
     func setupResultViewController() {
@@ -46,6 +64,10 @@ class MultiSelectiveEditingViewController: UIViewController {
             UIBarButtonItem(title: "Select All", style: .done, target: self, action: #selector(selectAllButtonTabbed))
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(closeButtonTabbed))
+    }
+    
+    func setupTabBarButton() {
+        tabBarController?.tabBar.isHidden = true
     }
     
     
