@@ -24,10 +24,10 @@ class IssueResultCellView: UICollectionViewCell {
         isCheck.toggle()
         var image: UIImage
         if isCheck {
-            guard let checkedImage = UIImage(systemName: "circle") else { return }
+            guard let checkedImage = UIImage(systemName: "circle.fill") else { return }
             image = checkedImage
         } else {
-            guard let uncheckedImage = UIImage(systemName: "circle.fill") else { return }
+            guard let uncheckedImage = UIImage(systemName: "circle") else { return }
             image = uncheckedImage
         }
         checkButton.setImage(image, for: .normal)
