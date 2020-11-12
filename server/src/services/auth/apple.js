@@ -16,7 +16,7 @@ const appleLogin = async (token) => {
   const user = await db.user.findOrCreate({
     where: {
       userId: data.id,
-      resourceServer: 'github',
+      resourceServer: 'apple',
       nickname: data.login,
       OAuth: true,
     },

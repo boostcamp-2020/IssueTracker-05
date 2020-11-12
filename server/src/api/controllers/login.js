@@ -1,4 +1,3 @@
-// import loginService from '@services/passport';
 import githubService from '@services/auth/github';
 import appleService from '@services/auth/apple';
 
@@ -7,7 +6,13 @@ const localLogin = (req, res) => {
 };
 
 const githubCallback = (req, res) => {
-  return res.status(200).json(req.user);
+  res.cookie('token', req.user.token, {
+    maxAge: 1000 * 60 * 60,
+  });
+  res.cookie('user', req.user.user, {
+    maxAge: 1000 * 60 * 60,
+  });
+  return res.status(200).redirect('/login/github');
 };
 
 const githubAppLogin = async (req, res) => {
