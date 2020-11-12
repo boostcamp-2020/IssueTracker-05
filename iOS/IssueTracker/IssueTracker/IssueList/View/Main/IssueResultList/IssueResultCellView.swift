@@ -17,12 +17,7 @@ class IssueResultCellView: UICollectionViewCell {
     var closeButtonAction: ((Int) -> Void)?
     var deleteButtonAction: ((Int) -> Void)?
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-//        setup(iid: iid ?? 0, title: title, description: desc, type: type, isChosen: isChosen, label: label, milestone: mileston)
-//        detailView.labelButton.isHidden = true
-    }
-    
+ 
     var title = ""
     var desc = ""
     var type = IssueResultCellViewType.IssueListResult
@@ -39,7 +34,11 @@ class IssueResultCellView: UICollectionViewCell {
         self.label = label
         self.mileston = milestone
         
-        
+        detailView.titleLabel.text = ""
+    }
+    
+    func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?) {
+
         switch type {
         case .IssueListResult:
             detailViewForMulti.isHidden = true
@@ -53,34 +52,7 @@ class IssueResultCellView: UICollectionViewCell {
         }
         
         self.iid = iid
-        
-//        guard let newIsSelected = isChosen else { return }
-//        guard let oldIsSelected = self.isChosen else { return }
-//
-//        if newIsSelected != oldIsSelected {
-//            if newIsSelected == true {
-//                guard let checkedImage = UIImage(systemName: "circle.fill") else { return }
-//                checkButton.setImage(checkedImage, for: .normal)
-//            } else {
-//                guard let uncheckedImage = UIImage(systemName: "circle") else { return }
-//                checkButton.setImage(uncheckedImage, for: .normal)
-//            }
-//        }
-//        self.isChosen = newIsSelected
-        
     }
-//    
-//    func drawCheckButton() {
-//        // TODO:  selected 방식으로 바꾸기
-//        var image: UIImage
-//        if isCheck {
-//            
-//        } else {
-//            
-//        }
-//        checkButton.setImage(image, for: .normal)
-//    }
-//    
     
     // MARK: Action
     
