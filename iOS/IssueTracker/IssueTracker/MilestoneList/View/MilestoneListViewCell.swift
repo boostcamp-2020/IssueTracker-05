@@ -47,7 +47,7 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         issueStates = milestone.issues
         percentageLabel.text = "\(percentageProgress)%"
         openLabel.text = "\(numberOfOpen ?? 0) open"
-        closedLabel.text = "\(numberOfOpen ?? 0) closed"
+        closedLabel.text = "\(numberOfClosed ?? 0) closed"
         setupMilestoneTitleLabel()
     }
     
@@ -85,7 +85,7 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         guard let open = numberOfOpen else { return 0 }
         guard let close = numberOfClosed else { return 0 }
         if open + close == 0 { return 0 }
-        return Int(Float(open) / Float(open + close))
+        return Int(Float(close) / Float(open + close))
     }
     
     

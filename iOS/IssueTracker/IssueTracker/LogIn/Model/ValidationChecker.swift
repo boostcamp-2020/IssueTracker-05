@@ -52,7 +52,7 @@ class IdValidationChecker: Validator {
     
     func idFormatCheck(input: String) -> Bool {
         let specialCharacterRegEx = ".*[^0-9a-zA-Z]+.*"
-        var textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        let textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
         return textFilter.evaluate(with: input)
     }
     
@@ -133,7 +133,7 @@ class NicknameValidationChecker: Validator {
     
     func nicknameFormatCheck(input: String) -> Bool {
         let specialCharacterRegEx = ".*[^0-9a-zA-Z]+.*"
-        var textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        let textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
         return textFilter.evaluate(with: input)
     }
     

@@ -79,7 +79,6 @@ class IssueListService {
                 guard let weakSelf = self else { return }
                 switch response.result {
                 case .success(let data):
-                    print(String(data: data, encoding: .utf8))
                     weakSelf.requestIssueListGet()
                     print("success",data)
                 case .failure(let error):

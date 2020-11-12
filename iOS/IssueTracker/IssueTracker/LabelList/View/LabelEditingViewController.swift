@@ -163,7 +163,6 @@ extension LabelEditingViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keybaordRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keybaordRectangle.height
             popupViewVerticalConstraint.constant = 0
         }
     }
