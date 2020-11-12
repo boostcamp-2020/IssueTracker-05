@@ -33,3 +33,17 @@ extension String {
             alpha: CGFloat(1.0))
     }
 }
+
+
+extension String {
+
+    func dateFormatToKorean() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일까지"
+        guard let result = date else { return nil }
+        return dateFormatter.string(from: result)
+    }
+    
+}
