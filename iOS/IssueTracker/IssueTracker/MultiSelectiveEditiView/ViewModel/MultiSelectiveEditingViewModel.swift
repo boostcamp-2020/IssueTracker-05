@@ -2,7 +2,7 @@ import Foundation
 
 class MultiSelectiveEditingViewModel {
     
-    //var touchedIDs = [Int]() // 얘를 카운트 한 만큼 TiTle을 표시해야 한다. title에 관한 데이터 바인더블 필요
+    lazy var service = MultiSelectiveEditingService(viewModel: self)
     
     struct Status {
         var issues: Bindable<[IssueListModel]>
@@ -26,9 +26,11 @@ class MultiSelectiveEditingViewModel {
                 }
             }
             weakSelf.status.issues.value = issues // 발생
-        }, closeSelectedIssues: {
-            
-            
+        }, closeSelectedIssues: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.status.issues.value.forEach {
+                weakSelf.service.requestIssueClose(issueId: $0.iid)
+            }
         })
     
     init(issues: [IssueListModel]) {

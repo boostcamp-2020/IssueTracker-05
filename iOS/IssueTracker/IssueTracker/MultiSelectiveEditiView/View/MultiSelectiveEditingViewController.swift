@@ -1,13 +1,6 @@
 import UIKit
 
-// 선택 이슈 닫기 누르면 선택된 데이터들 이전 vc(이슈 리스트)로 넘겨준다.
-// 이를 위해 델리게이트를 만들고, 종료 될 때 호출 한다.
-// 이슈리스트는 델리게이트를 호출하여 원하는 정보를 받아 간다.
-// -> 근데 그냥 서버 요청하면 끝날 것 같다!
-
 class MultiSelectiveEditingViewController: UIViewController {
-    
-    //var selectedIssues: [IssueListModel]?
     
     var viewModel: MultiSelectiveEditingViewModel!
     
@@ -56,6 +49,7 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
     @objc func closeButtonTabbed() {
+        
         navigationController?.popViewController(animated: false)
     }
     
@@ -87,13 +81,7 @@ extension MultiSelectiveEditingViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath)
                 as? IssueResultCellView else { return }
         guard let id = cell.iid else { return }
-        //cell.drawCheckButton()
         viewModel.action.cellTouched(id)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let cell = cell as? IssueResultCellView else { return }
-//        //cell.drawCheckButton()
-//    }
     
 }
