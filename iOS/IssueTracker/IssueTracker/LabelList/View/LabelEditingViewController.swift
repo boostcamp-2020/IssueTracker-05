@@ -156,7 +156,7 @@ extension LabelEditingViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keybaordRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keybaordRectangle.height
-            popupViewVerticalConstraint.constant -= keyboardHeight / 2
+            popupViewVerticalConstraint.constant =  -keyboardHeight / 2
         }
     }
     
@@ -164,7 +164,7 @@ extension LabelEditingViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keybaordRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keybaordRectangle.height
-            popupViewVerticalConstraint.constant += keyboardHeight / 2
+            popupViewVerticalConstraint.constant = 0
         }
     }
     
