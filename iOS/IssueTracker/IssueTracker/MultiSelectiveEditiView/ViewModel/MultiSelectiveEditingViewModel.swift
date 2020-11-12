@@ -4,10 +4,14 @@ class MultiSelectiveEditingViewModel {
     
     lazy var service = MultiSelectiveEditingService(viewModel: self)
     
+    var countOfSelectedTitle: String {
+        "\(self.status.issues.value.filter { $0.isSelected }.count)개 선택"
+    }
+    
+    
     struct Status {
         var issues: Bindable<[IssueListModel]>
-        //var selectButtonTitle: Bindable<String>("Select All")
-        // selectedCount -> title로 사용 - 선택할 때 마다 얘를 업데이트 해준다. 긜고 타이틀 변경함수를 바인딩해 놓는다.
+        var title = Bindable("0개 선택")
     }
     
     struct Action {
@@ -18,22 +22,24 @@ class MultiSelectiveEditingViewModel {
     }
     
     var status: Status
+    
     lazy var action = Action(
         cellTouched: { [weak self] id in
             guard let weakSelf = self else { return }
             var issues = weakSelf.status.issues.value
             for index in issues.indices {
                 if issues[index].iid == id {
-                    print("여기인가\(id)")
                     issues[index].isSelected.toggle()
                 }
             }
             weakSelf.status.issues.value = issues // 발생
+            weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }, closeSelectedIssues: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.status.issues.value.forEach {
                 weakSelf.service.requestIssueClose(issueId: $0.iid)
             }
+            weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }, selectAll: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.status.issues.value
@@ -42,6 +48,7 @@ class MultiSelectiveEditingViewModel {
                     tempIssue.isSelected = true
                     return tempIssue
                 }
+            weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }, deSelectAll: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.status.issues.value
@@ -50,6 +57,7 @@ class MultiSelectiveEditingViewModel {
                     tempIssue.isSelected = false
                     return tempIssue
                 }
+            weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }
     )
     

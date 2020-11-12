@@ -12,19 +12,19 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 타이틀에 선택 개수가 나오도록 해야 한다.
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.isHidden = false
         setupNavigationBarItem()
         setupTabBarButton()
         setupResultViewController()
         resultViewController.collectionview.delegate = self
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.status.issues
             .bindAndFire(resultViewController.applySnapshot(sections:))
+        viewModel.status.title.bindAndFire(setSelectedNumberTitle)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,6 +34,10 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     
     // MARK: Action
+    
+    func setSelectedNumberTitle(title: String) {
+        navigationItem.title = title
+    }
     
     @IBAction func closeSelectedIssues(_ sender: UIButton) {
         viewModel.action.closeSelectedIssues()
@@ -54,12 +58,10 @@ class MultiSelectiveEditingViewController: UIViewController {
             navigationItem.leftBarButtonItem?.title = "Select All"
             navigationItem.leftBarButtonItem?.tintColor = .systemBlue
             viewModel.action.deSelectAll()
-            
         }
     }
     
     @objc func closeButtonTabbed() {
-        
         navigationController?.popViewController(animated: false)
     }
     
@@ -70,10 +72,8 @@ class MultiSelectiveEditingViewController: UIViewController {
         resultViewController = UIStoryboard(name: "IssueList", bundle: nil)
             .instantiateViewController(
                 identifier: String(describing: IssueResultViewController.self))
-        
         resultViewController.view.frame = resultContainerView.bounds
         resultContainerView.addSubview(resultViewController.view)
-        
         resultViewController.cellType = .MultiSelectedView
     }
     
@@ -85,6 +85,9 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
 }
+
+
+// MARK: CollectionView Delegate
 
 extension MultiSelectiveEditingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
