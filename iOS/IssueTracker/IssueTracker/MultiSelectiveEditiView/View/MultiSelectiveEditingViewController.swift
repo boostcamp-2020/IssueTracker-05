@@ -45,7 +45,17 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
     @objc func selectAllButtonTabbed() {
-        
+        let nowTitle = navigationItem.leftBarButtonItem?.title
+        if nowTitle == "Select All" {
+            navigationItem.leftBarButtonItem?.title = "Deselect All"
+            navigationItem.leftBarButtonItem?.tintColor = .red
+            viewModel.action.selectAll()
+        } else {
+            navigationItem.leftBarButtonItem?.title = "Select All"
+            navigationItem.leftBarButtonItem?.tintColor = .systemBlue
+            viewModel.action.deSelectAll()
+            
+        }
     }
     
     @objc func closeButtonTabbed() {
