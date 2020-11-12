@@ -54,7 +54,7 @@ const Signbox = (props) => {
 
   const githubLogin = () => {
     // window.location.href = CALLBACK_URL;
-    window.location.href = 'http://localhost:5000/api/login/github';
+    window.location.href = '/api/login/github';
   }
 
   return (
