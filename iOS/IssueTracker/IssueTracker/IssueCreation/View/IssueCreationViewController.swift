@@ -6,14 +6,7 @@ class IssueCreationViewController: UIViewController {
     @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
     @IBOutlet weak var uploadButton: UIButton!
     
-//    @IBOutlet weak var titleTextView: UITextView! {
-//        didSet {
-//            titleTextView.delegate = self
-//        }
-//    }
-
     @IBOutlet weak var titleTextView: UITextField!
-    
     
     @IBOutlet weak var IssueNumberLabel: UILabel!
     
@@ -24,6 +17,9 @@ class IssueCreationViewController: UIViewController {
     }
     
     private let placeholderMessage = "코멘트는 여기에 작성하세요"
+    
+    var refresh: (()->Void)?
+    
     
     var viewModel = IssueCreationViewModel()
     
@@ -77,7 +73,9 @@ class IssueCreationViewController: UIViewController {
             self.viewModel.service.requestAddIssue(title: self.titleTextView.text!, content: markdownTextView.text)
         }
         
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) { [weak self] in
+            self?.refresh?()
+        }
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
