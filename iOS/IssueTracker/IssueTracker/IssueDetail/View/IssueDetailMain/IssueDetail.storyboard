@@ -190,7 +190,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-1024" width="341" height="341"/>
+        <image name="Icon-1024" width="341.33334350585938" height="341.33334350585938"/>
         <image name="User1" width="71.333335876464844" height="86.666664123535156"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
