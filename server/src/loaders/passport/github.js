@@ -1,5 +1,4 @@
 import { Strategy as GitHubStrategy } from 'passport-github2';
-import jwt from 'jsonwebtoken';
 
 import passportConfig from '@config/passport';
 import db from '@models';
@@ -19,7 +18,11 @@ export default new GitHubStrategy(
         OAuth: true,
       },
     });
-    const token = jwt.sign(user[0].toJSON(), passportConfig.secretOrKey);
-    return done(null, { user, token, profile });
+    return done(null, {
+      uid: user[0].uid,
+      userId: user[0].userId,
+      nickname: user[0].nickname,
+      image: user[0].image,
+    });
   },
 );

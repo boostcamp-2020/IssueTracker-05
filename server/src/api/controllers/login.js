@@ -2,12 +2,15 @@
 import githubService from '@services/auth/github';
 import appleService from '@services/auth/apple';
 
+import githubCallbackService from '@services/auth/githubCallback';
+
 const localLogin = (req, res) => {
   return res.status(200).json(req.user);
 };
 
 const githubCallback = (req, res) => {
-  return res.status(200).json(req.user);
+  console.log('hi');
+  githubCallbackService.githubCallback(req, res);
 };
 
 const githubAppLogin = async (req, res) => {
