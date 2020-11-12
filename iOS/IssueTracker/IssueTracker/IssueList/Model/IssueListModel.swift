@@ -12,6 +12,7 @@ struct IssueListModel: Codable, Hashable {
     var assignees: [Assignees]?
     var user: User
     var comments: [IssueListComment]?
+    var isSelected: Bool? = false
     
     static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
         return lhs.iid == rhs.iid
@@ -23,6 +24,7 @@ struct IssueListModel: Codable, Hashable {
             && lhs.assignees == rhs.assignees
             && lhs.user == rhs.user
             && lhs.comments == rhs.comments
+            && lhs.isSelected == rhs.isSelected
     }
     
     func hash(into hasher: inout Hasher) {
@@ -34,6 +36,7 @@ struct IssueListModel: Codable, Hashable {
         hasher.combine(labels)
         hasher.combine(assignees)
         hasher.combine(comments)
+        hasher.combine(isSelected)
     }
     
     static func all() -> [IssueListModel] {

@@ -5,7 +5,7 @@ class IssueResultViewController: UIViewController {
     @IBOutlet weak var collectionview: UICollectionView!
     
     lazy var dataLayout = makeDataLayout()
-    
+    var cellType: IssueResultCellViewType?
     
     // MARK: Cell button Closure
     
@@ -25,7 +25,6 @@ class IssueResultViewController: UIViewController {
         collectionview.refreshControl = UIRefreshControl()
         collectionview.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
         collectionview.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        applySnapshot(sections: IssueListModel.all()) // TODO: dummy - 삭제 대상
     }
     
     @objc func refresh() {
@@ -48,13 +47,16 @@ class IssueResultViewController: UIViewController {
             collectionView: collectionview,
             cellProvider: { [weak self] (collectionView, indexPath, issue) -> UICollectionViewCell? in
                 guard let weakSelf = self else { return nil }
+                guard let cellType = weakSelf.cellType else { return nil }
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
                 cell.setup(
                     iid: issue.iid,
                     title: issue.title,
-                    description: issue.content ?? "no")
+                    description: issue.content ?? "no",
+                    type: cellType,
+                    isChosen: issue.isSelected)
                 cell.closeButtonAction = weakSelf.closeIssueButtonTabbed
                 cell.deleteButtonAction = weakSelf.deleteIssueButtonTabbed
                 return cell

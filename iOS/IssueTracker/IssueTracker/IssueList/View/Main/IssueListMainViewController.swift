@@ -95,6 +95,7 @@ class IssueListMainViewController: UIViewController {
         }
         resultContainerView.addSubview(issueResultViewController.view)
         issueResultViewController.collectionview.delegate = self
+        issueResultViewController.cellType = .IssueListResult
         bindIssueResultVCToViewModel()
     }
     
