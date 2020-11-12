@@ -8,6 +8,7 @@ class MilestoneEditingViewController: UIViewController {
     
     var delegate: MilestoneEditingViewControllerDelegate?
     
+    @IBOutlet weak var popupViewVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var uptoDateField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
@@ -18,7 +19,13 @@ class MilestoneEditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        addKeyboardNotification()
         setupUI()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setupUI() {
@@ -108,6 +115,42 @@ class MilestoneEditingViewController: UIViewController {
         let ok = UIAlertAction( title: "확인", style: .default)
         alert.addAction(ok)
         present(alert, animated: true)
+    }
+    
+}
+
+extension MilestoneEditingViewController {
+    
+    private func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant -= keyboardHeight / 2
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant += keyboardHeight / 2
+        }
     }
     
 }

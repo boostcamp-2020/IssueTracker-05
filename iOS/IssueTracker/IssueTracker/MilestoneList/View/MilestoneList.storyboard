@@ -372,6 +372,7 @@
                     <navigationItem key="navigationItem" id="TKF-a5-vI5"/>
                     <connections>
                         <outlet property="descriptionField" destination="NVS-om-5sW" id="tDk-Ya-NGx"/>
+                        <outlet property="popupViewVerticalConstraint" destination="3QL-r2-290" id="AkM-Uc-7uQ"/>
                         <outlet property="saveButton" destination="ef3-1X-3H2" id="HPi-zD-9KT"/>
                         <outlet property="titleField" destination="gQe-t4-5Go" id="9hj-0V-K72"/>
                         <outlet property="uptoDateField" destination="7Qr-1t-suQ" id="gzk-W3-8Ye"/>
