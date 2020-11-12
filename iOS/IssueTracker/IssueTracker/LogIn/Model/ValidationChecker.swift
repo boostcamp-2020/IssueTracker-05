@@ -22,6 +22,7 @@ enum validateMessage: String {
     case invalidNicknameFormat = "닉네임은 영문과 숫자로만 적어주셔야 합니다."
     case invalidPwSpecial = "비밀번호는 반드시 특수문자를 포함해야 합니다"
     case invalidPwNumber = "비밀번호는 반드시 숫자를 포함해야 합니다"
+    case invalidPwAlpha = "비밀번호는 반드시 영문자를 포함해야 합니다"
     case emptyId = "아이디를 입력하세요"
     case emptyPassword = "비밀번호를 입력하세요"
     case valid = ""
@@ -80,20 +81,31 @@ class PasswordValidationChecker: Validator {
             return .invalidPwNumber
         }
         
+        if !alphabetCheck(input: input) {
+            return .invalidPwAlpha
+        }
+        
         return .valid
     }
     
     func specialCheck(input: String) -> Bool {
         let specialCharacterRegEx = ".*[~!@#$%^&*()_+|<>?:{}]+.*"
-        var textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
+        let textFilter = NSPredicate(format: "SELF MATCHES %@", specialCharacterRegEx)
         return textFilter.evaluate(with: input)
     }
     
     func numberCheck(input: String) -> Bool {
         let numberRegEx  = ".*[0-9]+.*"
-        var textFilter = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
-        var numberresult = textFilter.evaluate(with: input)
+        let textFilter = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberresult = textFilter.evaluate(with: input)
         return numberresult
+    }
+    
+    func alphabetCheck(input: String) -> Bool {
+        let alphaRegEx = ".*[a-zA-Z]+.*"
+        let textFilter = NSPredicate(format:"SELF MATCHES %@", alphaRegEx)
+        let alphaResult = textFilter.evaluate(with: input)
+        return alphaResult
     }
     
 }

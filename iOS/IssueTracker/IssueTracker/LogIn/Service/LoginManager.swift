@@ -106,18 +106,22 @@ class LoginManager {
         
         let headers: HTTPHeaders = ["content-type": "application/x-www-form-urlencoded"]
         
-        AF.request(api_server_url+"/api/login/apple", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
-            switch response.result {
-            case let .success(json):
-                if let json = json as? [String: Any] {
-                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
-                    self.updateUI?()
-                    handler(true)
-                }
-            case let .failure(error):
-                print(error)
-            }
-        }
+        handler(true)
+        
+//        AF.request(api_server_url+"/api/login/apple", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
+//            print(response)
+//            switch response.result {
+//            case let .success(json):
+//                if let json = json as? [String: Any] {
+//                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
+//                    self.updateUI?()
+//                    handler(true)
+//                }
+//            case let .failure(error):
+//                print(error)
+//                handler(false)
+//            }
+//        }
         
     }
     
@@ -133,7 +137,6 @@ class LoginManager {
             case let .success(json):
                 if let json = json as? [String: Any] {
                     UserDefaults.standard.setValue(json["token"]!, forKey: "token")
-                    
                     if let user = json["user"] as? [String: Any] {
                         UserDefaults.standard.setValue(user["uid"] as? Int, forKey: "uid")
                         handler(true)

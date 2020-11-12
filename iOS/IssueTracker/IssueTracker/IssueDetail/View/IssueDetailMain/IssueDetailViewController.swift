@@ -183,20 +183,17 @@ class IssueDetailViewController: UIViewController {
 
 extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
     func scrollUpButtonTabbed() {
-        print("up")
         let topPoint = CGPoint(x: 0, y: 0)
         collectionView.setContentOffset(topPoint, animated: true)
     }
     
     func scrollDownButtonTabbed() {
-        print("down")
         let bottomPoint = CGPoint(x: 0, y: collectionView.contentSize.height - collectionView.frame.height)
         collectionView.setContentOffset(bottomPoint, animated: true)
     }
     
     func addCommentButtonTabbed() {
-        print("button")
-        // TODO: 이슈 생성 화면을 보여준다.
+        Toast.shared.showToast(message: "미 구현 기능입니다", view: self.view)
     }
     
 }

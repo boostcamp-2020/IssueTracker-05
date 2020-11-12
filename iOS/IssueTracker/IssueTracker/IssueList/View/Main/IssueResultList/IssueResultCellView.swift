@@ -8,7 +8,7 @@ enum IssueResultCellViewType {
 class IssueResultCellView: UICollectionViewCell {
     
     override func prepareForReuse() {
-        
+        print("reuse")
     }
     
     
