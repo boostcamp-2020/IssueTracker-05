@@ -64,7 +64,8 @@ class MilestoneListViewModel {
         }, refreshData: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.service.requestMilestoneGet()
-        })
+        }
+    )
     
     var status = Status()
     

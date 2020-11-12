@@ -16,11 +16,10 @@ class IssueDetailService {
                "Authorization": "Bearer \(UserDefaults.standard.string(forKey: "token")!)"]
     }
     
-    func callAPI(with issueId: Int) {
+    func requestIssueGet(with issueId: Int) {
         let parameters = ["issueID": String(issueId)]
         
         AF.request(url + "/api/issue/\(issueId)", method: .get, parameters: parameters, headers: headers).responseJSON { [weak self] (response) in
-            
             guard let weakSelf = self else { return }
             
             switch response.result {
@@ -29,20 +28,11 @@ class IssueDetailService {
                     print(result)
                     let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
                     let decodedData = try JSONDecoder().decode(IssueDetailModel.self, from: resultData)
-                    
                     weakSelf.viewModel.status.model.value = decodedData
-                    
-                    print("이슈 디테일 데이터", decodedData)
-                    
-                    
-                    //.. = weakSelf.viewModel.status.model.value.assignees
                 } catch {
-                    print("에러에러에러에러에러에러에러에러에러에러에러에러에러에러에러")
                     print(error)
                 }
             case .failure(let error):
-                print("에러에러에러에러에러에러에러에러에러에러에러에러에러에러에러")
-                print("error\nerror\n error\n error\n error\n error\n error\n error\n error ")
                 print(error)
             }
         }

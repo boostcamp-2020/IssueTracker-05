@@ -52,6 +52,7 @@ class IssueListMainViewController: UIViewController {
         let creationVC:IssueCreationViewController = UIStoryboard(name: "IssueCreation", bundle: nil)
             .instantiateViewController(
                 identifier: String(describing: IssueCreationViewController.self))
+        creationVC.refresh = viewModel.action.refreshData
         self.present(creationVC, animated: true)
     }
     

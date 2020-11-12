@@ -11,22 +11,24 @@ class IssueDetailViewModel {
     }
     
     struct Action {
-        // Edit 버튼
-        // 스와이프
-        // 댓글 추가 버튼
-        // 스크롤 버튼
-        var editIssueTabbed: (Int) -> Void
+        var refreshData: () -> Void
+        //var editIssueTabbed: (Int) -> Void
     }
     
     var status: Status
-    //var action: Action
+    lazy var action = Action(
+        refreshData: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.service.requestIssueGet(with: weakSelf.issueId)
+        }
+    )
   
     var issueId: Int
  
     init(issueId: Int) {
         self.status = Status()
         self.issueId = issueId
-        service.callAPI(with: issueId)
+        service.requestIssueGet(with: issueId)
     }
 
     

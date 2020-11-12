@@ -1,10 +1,32 @@
 
 import UIKit
 
+protocol MilestoneListCellViewDelegate {
+    func milestoneListCellView(_ milestoneViewCell: MilestoneListViewCell,  didSelectCellView: BothSidesSwipingView)
+}
 
 class MilestoneListViewCell: UICollectionViewCell {
 
-    var milestone: Milestone!
+    var delegate: MilestoneListCellViewDelegate?
+    
+    var milestone: Milestone {
+        detailView.milestone
+    }
+    
+    @IBOutlet weak var detailView: MilestoneListCellSwipeView!
+    
+    @IBAction func deleteButtonTabbed(_ sender: UIButton!) {
+        delegate?.milestoneListCellView(self, didSelectCellView: detailView)
+    }
+    
+    func setup(with milestone: Milestone) {
+        detailView.setup(with: milestone)
+        detailView.stopSwipe(to: .right)
+    }
+    
+}
+
+class MilestoneListCellSwipeView: BothSidesSwipingView {
     
     @IBOutlet var milestoneTitle: UIButton!
     @IBOutlet var dueDateLabel: UILabel!
@@ -13,6 +35,7 @@ class MilestoneListViewCell: UICollectionViewCell {
     @IBOutlet var openLabel: UILabel!
     @IBOutlet var closedLabel: UILabel!
     
+    var milestone: Milestone!
     var issueStates: [IssueState]?
     
     func setup(with milestone: Milestone) {
@@ -26,8 +49,6 @@ class MilestoneListViewCell: UICollectionViewCell {
         openLabel.text = "\(numberOfOpen ?? 0) open"
         closedLabel.text = "\(numberOfOpen ?? 0) closed"
         setupMilestoneTitleLabel()
-        
-        
     }
     
     func setupMilestoneTitleLabel() {
@@ -67,4 +88,11 @@ class MilestoneListViewCell: UICollectionViewCell {
         return Int(Float(open) / Float(open + close))
     }
     
+    
+    override func reset() {
+        super.reset()
+        self.stopSwipe(to: .right)
+    }
 }
+
+

@@ -1,6 +1,7 @@
 import UIKit
 
 class BothSidesSwipingView: UIView {
+    
     var withDuration = 0.4
     var delay = 0.0
     var usingSpringWithDamping: CGFloat = 0.5

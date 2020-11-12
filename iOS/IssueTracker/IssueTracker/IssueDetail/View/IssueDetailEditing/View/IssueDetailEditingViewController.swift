@@ -14,6 +14,29 @@ protocol IssueDetailEditingViewControllerDelegate {
     func addCommentButtonTabbed()
 }
 
+extension IssueDetailEditingViewController: SectionHeaderDelegate {
+    func touchedEditButton(title: String) {
+        if title == "레이블" {
+//            let vc: LabelListViewController
+//                = UIStoryboard(name: "LabelList", bundle: nil)
+//                .instantiateViewController(
+//                    identifier:String(describing: LabelListViewController.self))
+//
+//            navigationController?.modalPresentationStyle = .popover
+//            navigationController?
+//                .pushViewController(vc, animated: true)
+            //present(vc, animated: true, completion: nil)
+        } else if title == "마일스톤" {
+//            let vc: LabelListViewController
+//                = UIStoryboard(name: "MilestoneList", bundle: nil)
+//                .instantiateViewController(
+//                    identifier:String(describing: MilestoneListViewController.self))
+//            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+}
+
 class IssueDetailEditingViewController: UIViewController {
     
     var delegate: IssueDetailEditingViewControllerDelegate?
@@ -32,13 +55,14 @@ class IssueDetailEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.reloadData()
         collectionView.isScrollEnabled = false
         buttonsForInit.forEach {
             $0.configureButtonInDetailEditing()
         }
     }
-        
+    
     @IBAction func addCommentButtonTabbed(_ sender: UIButton) {
         delegate?.addCommentButtonTabbed()
     }
@@ -70,7 +94,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width, height: 80)
     }
-        
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
     }
@@ -86,7 +110,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AssigneeCollectionViewCell", for: indexPath) as! AssigneeCollectionViewCell
             if let assignee = viewModel?.status.model.value.assignees?[indexPath.row] {
@@ -107,7 +131,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneCollectionViewCell", for: indexPath) as! MilestoneCollectionViewCell
             cell.milestoneLabel.text = "\(String(describing: viewModel?.status.model.value.milestone?.title ?? ""))"
-
+            
             if let total = viewModel?.status.model.value.milestone?.issues?.count {
                 
                 let complete:Double = viewModel?.status.model.value.milestone?.issues?.reduce(0.0) { (s1, s2) in
@@ -117,20 +141,23 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
                 cell.milestoneProgressView.progress = Float(complete / Double(total))
             }
             
-                
+            
             return cell
         }
         
     }
-     
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader{
             if indexPath.section == 0 {
                 sectionHeader.titleLabel.text = "담당자"
+                sectionHeader.delegate = self
             } else if indexPath.section == 1 {
                 sectionHeader.titleLabel.text = "레이블"
+                sectionHeader.delegate = self
             } else {
                 sectionHeader.titleLabel.text = "마일스톤"
+                sectionHeader.delegate = self
             }
             return sectionHeader
         }

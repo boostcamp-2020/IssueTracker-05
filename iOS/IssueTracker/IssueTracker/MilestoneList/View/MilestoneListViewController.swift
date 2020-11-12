@@ -88,12 +88,20 @@ class MilestoneListViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneListViewCell", for: indexPath) as? MilestoneListViewCell else {
                     return nil
                 }
+                cell.delegate = self
                 cell.setup(with: milestone)
                 return cell
             })
     }
 
 }
+
+extension MilestoneListViewController: MilestoneListCellViewDelegate {
+    func milestoneListCellView(_ milestoneViewCell: MilestoneListViewCell, didSelectCellView: BothSidesSwipingView) {
+        viewModel.action.deleteButtonTabbed(milestoneViewCell.milestone.mid)
+    }
+}
+
 
 extension MilestoneListViewController: MilestoneEditingViewControllerDelegate {
     func MilestoneEditSaveButtonDidTab(title: String, description: String?, date: String, milestoneID: Int?) {
@@ -117,16 +125,3 @@ extension MilestoneListViewController {
 }
 
 
-#if DEBUG
-
-import SwiftUI
-
-struct MilestoneListViewController_Preview: PreviewProvider {
-    static var previews: some View {
-        let vc = UIStoryboard(name: "MilestoneList", bundle: nil)
-            .instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-        return vc.view.liveView
-    }
-}
-
-#endif

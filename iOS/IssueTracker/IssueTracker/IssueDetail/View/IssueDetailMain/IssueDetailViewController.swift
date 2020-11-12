@@ -16,26 +16,25 @@ class IssueDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     
-    var isOpen = true  {// TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
+    var isOpen = true  { // TODO: viewmodel에 바인딩 된 함수에서 바꿔준다.
         didSet {
             configureIsOpenView()
         }
     }
+
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
         configureIsOpenView()
-        collectionView.collectionViewLayout = createCompositionalList()
+        configureCollectionView()
         configureContainerOfSwipeView()
         if let viewModel = viewModel {
             viewModel.status.model.bindAndFire(updateViews(model:))
             return
         }
-        
-        // TODO: 나중에 제거해야 한다.
-        updateViews(model: IssueDetailModel.all())
-      
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,23 +52,29 @@ class IssueDetailViewController: UIViewController {
     }
     
     func updateViews(model: IssueDetailModel) {
-        
-        // 유저 이미지 - 아직은 없음
-        
         issueTitle.text = model.title
         issueNumber.text = "#\(model.iid)"
         isOpen = model.isOpen
-        
-        // 댓글 목록 -> apply
         if let comments = model.comments {
             applySnapshot(sections: comments)
         } else {
             applySnapshot(sections: Comment.all())
         }
-        
         swipeUpView.collectionView.reloadData()
-        
-        //swipeUpView update -> 담당자, 마일스톤, 레이블
+    }
+    
+    
+    // MARK: Collection View Config
+    func configureCollectionView() {
+        collectionView.collectionViewLayout = createCompositionalList()
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.attributedTitle = NSAttributedString(string: "새로고침")
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        viewModel?.action.refreshData()
+        self.collectionView.refreshControl?.endRefreshing()
     }
     
     func applySnapshot(sections: [Comment]) {
@@ -128,6 +133,9 @@ class IssueDetailViewController: UIViewController {
         configureAnimation()
     }
     
+    
+    // MARK: Swipe View config
+    
     var swipeGesture: UISwipeGestureRecognizer!
     var oldY: CGFloat!
     var newY: CGFloat!
@@ -173,6 +181,7 @@ class IssueDetailViewController: UIViewController {
         creationVC.viewModel.status.id = viewModel?.issueId
         creationVC.viewModel.status.title = viewModel?.status.model.value.title ?? ""
         creationVC.viewModel.status.content = viewModel?.status.model.value.content ?? ""
+        creationVC.refresh = viewModel?.action.refreshData
         self.present(creationVC, animated: true)
         
     }
@@ -180,6 +189,9 @@ class IssueDetailViewController: UIViewController {
     // TODO: action과 configure를 구분
     
 }
+
+
+// MARK: IssueDetailEditingViewControllerDelegate
 
 extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
     func scrollUpButtonTabbed() {
