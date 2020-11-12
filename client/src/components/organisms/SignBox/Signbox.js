@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import * as axios from '@system/axios/auth';
 
 import InputBox from '@molecules/InputBox';
 import OauthButton from '@atoms/OauthButton';
@@ -35,47 +35,37 @@ const SignWrapper = styled.div`
 `;
 
 const Signbox = (props) => {
-  const [id, setId] = useState();
-  const [pw, setPw] = useState();
+  const { state, changeHandler } = props;
 
-  const changeInputId = (e) => {
-    setId(e.target.value);
-  };
-
-  const changeInputPw = (e) => {
-    setPw(e.target.value);
-  };
-
-  const login = (e) => {
+  const localLogin = async (e) => {
     e.preventDefault();
-  }
-
-  const signUp = (e) => {
-    e.preventDefault();
-  }
+    await axios.localLogin(state);
+  };
 
   return (
     <WholeWrapper>
       <InputWrapper>
-        <InputBox name="아이디" onChange={changeInputId}>
+        <InputBox name="userId" value={state.userId} onChange={changeHandler}>
           아이디
         </InputBox>
         <br />
-        <InputBox name="비밀번호" type="password" onChange={changeInputPw}>
+        <InputBox
+          name="password"
+          value={state.password}
+          type="password"
+          onChange={changeHandler}>
           비밀번호
         </InputBox>
         <br />
       </InputWrapper>
       <SignWrapper>
-        <a href="" onClick={login}>
-          로그인
-        </a>
-        <a href="" onClick={signUp}>
-          회원가입
-        </a>
+        <a href="" onClick={localLogin}> 로그인 </a>
+        <a href=""> 회원가입 </a>
       </SignWrapper>
       <br /><br />
-      <OauthButton />
+      <a href="localhost:5000/api/login/github">
+        <OauthButton />
+      </a>
     </WholeWrapper>
   );
 };
