@@ -42,9 +42,7 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         self.milestone = milestone
         self.milestone.dueDate = format(with: self.milestone.dueDate ?? "0000-00-00")
         milestoneTitle.setTitle(milestone.title, for: .normal)
-        
         dueDateLabel.text = formatToKorean(from: self.milestone.dueDate ?? "yyyy-MM-dd")
-        
         descriptionLabel.text = milestone.content ?? ""
         issueStates = milestone.issues
         percentageLabel.text = "\(percentageProgress)%"
