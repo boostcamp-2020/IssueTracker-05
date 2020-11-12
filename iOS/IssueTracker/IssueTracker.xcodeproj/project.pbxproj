@@ -34,6 +34,7 @@
 		8875E989255856E60066146D /* MilestoneListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8875E988255856E60066146D /* MilestoneListCoordinator.swift */; };
 		888125AA255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888125A9255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift */; };
 		888125AE255BE701000D0F20 /* MultiSelectedEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888125AD255BE701000D0F20 /* MultiSelectedEditing.storyboard */; };
+		889BFD99255CF2DB00021C11 /* MultiSelectiveEditingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BFD98255CF2DB00021C11 /* MultiSelectiveEditingService.swift */; };
 		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
@@ -132,6 +133,7 @@
 		8875E988255856E60066146D /* MilestoneListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListCoordinator.swift; sourceTree = "<group>"; };
 		888125A9255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectiveEditingViewController.swift; sourceTree = "<group>"; };
 		888125AD255BE701000D0F20 /* MultiSelectedEditing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiSelectedEditing.storyboard; sourceTree = "<group>"; };
+		889BFD98255CF2DB00021C11 /* MultiSelectiveEditingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectiveEditingService.swift; sourceTree = "<group>"; };
 		88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MilestoneList.storyboard; sourceTree = "<group>"; };
 		88B8F0F7254AB12000C23791 /* LabelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LabelList.storyboard; sourceTree = "<group>"; };
 		88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
@@ -416,10 +418,19 @@
 		888125A7255BE34D000D0F20 /* MultiSelectiveEditiView */ = {
 			isa = PBXGroup;
 			children = (
+				889BFD97255CF2C300021C11 /* Service */,
 				88DB3083255C069000EE80F3 /* View */,
 				88DB3082255C068A00EE80F3 /* ViewModel */,
 			);
 			path = MultiSelectiveEditiView;
+			sourceTree = "<group>";
+		};
+		889BFD97255CF2C300021C11 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				889BFD98255CF2DB00021C11 /* MultiSelectiveEditingService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		88B8F0F2254AB08500C23791 /* MilestoneList */ = {
@@ -955,6 +966,7 @@
 				DABEB867254821B3006471F6 /* AppDelegate.swift in Sources */,
 				DA8B33BB2552D6F000E3331F /* IssueDetailViewController.swift in Sources */,
 				88CB53A2255A2F5000C99A9A /* UIColor+.swift in Sources */,
+				889BFD99255CF2DB00021C11 /* MultiSelectiveEditingService.swift in Sources */,
 				DA1B56F8255024B000FE8D2D /* MilestoneListViewCell.swift in Sources */,
 				DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */,
 				DAC37CF125510747000C2777 /* UIButton.swift in Sources */,
