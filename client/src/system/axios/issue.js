@@ -1,11 +1,8 @@
-import { useEffect } from 'react';
 import { main } from '@system/axios/config';
 
 export const getIssues = async () => {
-  useEffect(async () => {
-    const issue = await main.get('/issue');
-    return issue.data;
-  }, []);
+  const issue = await main.get('/issue');
+  return issue.data;
 };
 
 export const getIssue = async (id) => {

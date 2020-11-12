@@ -20,12 +20,12 @@ const MilestoneList = (props) => {
         ? props.milestoneList
             .filter((v) => v.isOpen)
             .map((milestone) => (
-              <MilestoneInform {...milestone} key={milestone.mid} />
+              <MilestoneInform {...milestone} key={milestone.mid} onDelete={props.onDelete} onChange={props.onChange} />
             ))
         : props.milestoneList
             .filter((v) => !v.isOpen)
             .map((milestone) => (
-              <MilestoneInform {...milestone} key={milestone.mid} />
+              <MilestoneInform {...milestone} key={milestone.mid} onDelete={props.onDelete} onChange={props.onChange} />
             ))}
     </Wrapper>
   );

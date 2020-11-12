@@ -76,14 +76,17 @@ const returnDate = (date) => {
 };
 
 const MilestoneInform = (props) => {
-  console.log(props);
   let complete;
-  if (props.open + props.close !== 0) {
-    complete = Math.floor((100 * props.open) / (props.open + props.close));
+
+  if (props.issues.length !== 0) {
+    complete = Math.floor(
+      (100 * props.issues.filter((v) => v.isOpen).length) / props.issues.length,
+    );
   } else {
     complete = 0;
   }
   const date = returnDate(props.dueDate);
+  const changeButton = props.isOpen ? 'Close' : 'Open';
 
   return (
     <WhoreWrapper>
@@ -104,8 +107,12 @@ const MilestoneInform = (props) => {
         </SpanWrapper>
         <ButtonWrapper>
           <Button type="edit">Edit</Button>
-          <Button type="delete">Close</Button>
-          <Button type="cancel">Delete</Button>
+          <Button type="delete" onClick={() => props.onChange(props.mid)}>
+            {changeButton}
+          </Button>
+          <Button type="cancel" onClick={() => props.onDelete(props.mid)}>
+            Delete
+          </Button>
         </ButtonWrapper>
       </ContentWrapper2>
     </WhoreWrapper>

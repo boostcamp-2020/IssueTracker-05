@@ -1,6 +1,13 @@
+// import dotenv from 'dotenv';
 import axios from 'axios';
 
-const baseURL = 'http://group05issuetracker.duckdns.org:49203/api';
+// const envFound = dotenv.config();
+
+// if (envFound.error) {
+//   throw new Error(" Couldn't find .env file ");
+// }
+
+const baseURL = 'http://localhost:5000/api';
 
 export const sign = axios.create({
   baseURL,

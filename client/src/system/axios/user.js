@@ -12,4 +12,4 @@ const updateProfile = async (image) => {
   return imageUrl.data.link;
 };
 
-export default { getUsers, updateProfile };
+export { getUsers, updateProfile };
