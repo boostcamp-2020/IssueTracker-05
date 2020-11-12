@@ -33,11 +33,11 @@ class IssueResultCellView: UICollectionViewCell {
         self.isChosen = isChosen
         self.label = label
         self.mileston = milestone
-        
-        detailView.titleLabel.text = ""
-    }
-    
-    func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?) {
+//
+//        detailView.titleLabel.text = ""
+//    }
+//
+//    func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?) {
 
         switch type {
         case .IssueListResult:
