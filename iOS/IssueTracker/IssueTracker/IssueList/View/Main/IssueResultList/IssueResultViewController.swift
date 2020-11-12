@@ -51,13 +51,16 @@ class IssueResultViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
+                
                 print("issue.iid",issue.iid,issue.isSelected)
                 cell.setup(
                     iid: issue.iid,
                     title: issue.title,
                     description: issue.content ?? "no",
                     type: cellType,
-                    isChosen: issue.isSelected)
+                    isChosen: issue.isSelected,
+                    label: issue.labels,
+                    milestone: issue.milestone)
                 cell.closeButtonAction = weakSelf.closeIssueButtonTabbed
                 cell.deleteButtonAction = weakSelf.deleteIssueButtonTabbed
                 return cell
@@ -78,6 +81,7 @@ class IssueResultViewController: UIViewController {
             top: 0, leading: 5, bottom: 0, trailing: 5)
         return UICollectionViewCompositionalLayout(section: section)
     }
+    
 }
 
 

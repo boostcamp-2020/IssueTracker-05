@@ -41,6 +41,7 @@ class IssueListService {
                     let decodedData = try JSONDecoder().decode([IssueListModel].self, from: resultData)
                     weakSelf.viewModel.status.issues.value = decodedData
                     
+                    
                 } catch {
                     print(error)
                 }

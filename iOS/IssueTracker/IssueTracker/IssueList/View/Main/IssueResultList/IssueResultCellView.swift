@@ -17,53 +17,42 @@ class IssueResultCellView: UICollectionViewCell {
     var closeButtonAction: ((Int) -> Void)?
     var deleteButtonAction: ((Int) -> Void)?
     
-    override func prepareForReuse() {
+ 
+    var title = ""
+    var desc = ""
+    var type = IssueResultCellViewType.IssueListResult
+    
+    var label = [Label]()
+    var mileston: Milestone?
+    
+    func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?, label: [Label], milestone: Milestone?) {
+        
+        self.title = title
+        self.desc = description
+        self.type = type
+        self.isChosen = isChosen
+        self.label = label
+        self.mileston = milestone
+        
         detailView.titleLabel.text = ""
     }
     
     func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?) {
-        
+
         switch type {
         case .IssueListResult:
             detailViewForMulti.isHidden = true
-            detailView.setup(title: title, description: description, isChosen: isChosen)
+            detailView.setup(title: title, description: description, isChosen: isChosen, label: label, milestone: milestone)
         case .MultiSelectedView:
             closeButton.isHidden = true
             detailView.isHidden = true
-            detailViewForMulti.setup(title: title, description: description, isChosen: isChosen)
+            detailViewForMulti.setup(title: title, description: description, isChosen: isChosen, label: nil, milestone: nil)
             detailViewForMulti.stopSwipe(to: .right)
             detailViewForMulti.stopSwipe(to: .left)
         }
         
         self.iid = iid
-        
-//        guard let newIsSelected = isChosen else { return }
-//        guard let oldIsSelected = self.isChosen else { return }
-//
-//        if newIsSelected != oldIsSelected {
-//            if newIsSelected == true {
-//                guard let checkedImage = UIImage(systemName: "circle.fill") else { return }
-//                checkButton.setImage(checkedImage, for: .normal)
-//            } else {
-//                guard let uncheckedImage = UIImage(systemName: "circle") else { return }
-//                checkButton.setImage(uncheckedImage, for: .normal)
-//            }
-//        }
-//        self.isChosen = newIsSelected
-        
     }
-//    
-//    func drawCheckButton() {
-//        // TODO:  selected 방식으로 바꾸기
-//        var image: UIImage
-//        if isCheck {
-//            
-//        } else {
-//            
-//        }
-//        checkButton.setImage(image, for: .normal)
-//    }
-//    
     
     // MARK: Action
     

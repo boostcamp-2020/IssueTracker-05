@@ -8,6 +8,7 @@ class MilestoneEditingViewController: UIViewController {
     
     var delegate: MilestoneEditingViewControllerDelegate?
     
+    @IBOutlet weak var popupViewVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var uptoDateField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
@@ -18,7 +19,13 @@ class MilestoneEditingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
+        addKeyboardNotification()
         setupUI()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setupUI() {
@@ -27,13 +34,13 @@ class MilestoneEditingViewController: UIViewController {
         uptoDateField.text = ""
         
         if let milestone = self.milestone {
-            titleField.placeholder = milestone.title
-            descriptionField.placeholder = milestone.content ?? ""
+            titleField.text = milestone.title
+            descriptionField.text = milestone.content ?? ""
             uptoDateField.placeholder = milestone.dueDate
             return
         }
-        titleField.placeholder = ""
-        descriptionField.placeholder = ""
+        titleField.text = ""
+        descriptionField.text = ""
         uptoDateField.placeholder = "yyyy-mm-dd"
     }
     
@@ -64,7 +71,6 @@ class MilestoneEditingViewController: UIViewController {
             return }
         
         if let milestone = self.milestone {
-            // 편집 모드: 입력되어 있으면 입력 된걸로, 아니면 디폴트 값으로
             delegate?.MilestoneEditSaveButtonDidTab(
                 title: title == "" ? milestone.title : title,
                 description: desc == "" ? milestone.content ?? "" : desc,
@@ -73,8 +79,6 @@ class MilestoneEditingViewController: UIViewController {
             return
         }
         
-        // 추가 모드: 입려되어 있지 않으면 그냥 빈값으로
-        // 빈값으로 입력할 경우 세 개 다 입력하라고 경고 메세지 띄워야 함.
         delegate?.MilestoneEditSaveButtonDidTab(
             title: title,
             description: desc,
@@ -108,6 +112,42 @@ class MilestoneEditingViewController: UIViewController {
         let ok = UIAlertAction( title: "확인", style: .default)
         alert.addAction(ok)
         present(alert, animated: true)
+    }
+    
+}
+
+extension MilestoneEditingViewController {
+    
+    private func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant =  -keyboardHeight / 2
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant += 0
+        }
     }
     
 }

@@ -7,13 +7,39 @@ struct IssueListModel: Codable, Hashable {
     var title: String
     var content: String?
     var isOpen: Bool
-    var labels: [Label]?
+    var labels: [Label]
     var assignees: [Assignees]?
     var user: User
     var comments: [IssueListComment]?
     var isSelected: Bool = false
-//
-    init(iid: Int, title: String, content: String? = nil, isOpen: Bool,labels:[Label]? = nil,
+    var milestone: Milestone?
+
+    static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
+        return lhs.iid == rhs.iid
+            && lhs.title == rhs.title
+            && lhs.content == rhs.content
+            && lhs.isOpen == rhs.isOpen
+            && lhs.labels == rhs.labels
+            && lhs.assignees == rhs.assignees
+            && lhs.user == rhs.user
+            && lhs.comments == rhs.comments
+            && lhs.isSelected == rhs.isSelected
+            && lhs.milestone == rhs.milestone
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(iid)
+        hasher.combine(title)
+        hasher.combine(content)
+        hasher.combine(isOpen)
+        hasher.combine(labels)
+        hasher.combine(assignees)
+        hasher.combine(comments)
+        hasher.combine(isSelected)
+    }
+    
+    
+    init(iid: Int, title: String, content: String? = nil, isOpen: Bool,labels:[Label],
          assignees: [Assignees]? = nil, user: User, comments: [IssueListComment]? = nil) {
         self.iid = iid
         self.title = title
@@ -34,6 +60,7 @@ struct IssueListModel: Codable, Hashable {
         case assignees
         case user
         case comments
+        case milestone
     }
     
     init(from decoder: Decoder) throws {
@@ -42,34 +69,14 @@ struct IssueListModel: Codable, Hashable {
         title = try value.decode(String.self, forKey: .title)
         content = try value.decode(String?.self, forKey: .content)
         isOpen = try value.decode(Bool.self, forKey: .isOpen)
-        labels = try value.decode([Label]?.self, forKey: .labels)
+        labels = try value.decode([Label].self, forKey: .labels)
         assignees = try value.decode([Assignees]?.self, forKey: .assignees)
         user = try value.decode(User.self, forKey: .user)
         comments = try value.decode([IssueListComment]?.self, forKey: .comments)
+        milestone = try value.decode(Milestone?.self, forKey: .milestone)
     }
     
-    static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
-        return lhs.iid == rhs.iid
-            && lhs.title == rhs.title
-            && lhs.content == rhs.content
-            && lhs.isOpen == rhs.isOpen
-            && lhs.labels == rhs.labels
-            && lhs.assignees == rhs.assignees
-            && lhs.user == rhs.user
-            && lhs.comments == rhs.comments
-            && lhs.isSelected == rhs.isSelected
-    }
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(iid)
-        hasher.combine(title)
-        hasher.combine(content)
-        hasher.combine(isOpen)
-        hasher.combine(labels)
-        hasher.combine(assignees)
-        hasher.combine(comments)
-        hasher.combine(isSelected)
-    }
     
     static func all() -> [IssueListModel] {
         var newModel = [IssueListModel]()
@@ -79,64 +86,10 @@ struct IssueListModel: Codable, Hashable {
                 title: "testtesttest",
                 content: "Hello",
                 isOpen: true,
-                labels: Label.all(), user: User(uid: 1, userId: "123123", nickname: "123123"))
+                labels: [],
+                user: User(uid: 1, userId: "123123", nickname: "123123"))
         )
-        newModel.append(
-            IssueListModel(
-                iid: 75,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 55,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 25,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 225,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 235,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 325,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
-        newModel.append(
-            IssueListModel(
-                iid: 2215,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                labels: Label.all(), user: User(uid: 2, userId: "123124", nickname: "123124"))
-        )
+        
         return newModel
     }
  

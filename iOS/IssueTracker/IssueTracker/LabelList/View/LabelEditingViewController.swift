@@ -8,6 +8,8 @@ class LabelEditingViewController: UIViewController {
     
     var delegate: LabelEditingViewControllerDelegate?
     
+    @IBOutlet weak var popupViewVerticalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var colorTextField: UITextField!
@@ -32,14 +34,20 @@ class LabelEditingViewController: UIViewController {
         colorTextField.delegate = self
         view.backgroundColor = UIColor.gray.withAlphaComponent(0.8)
         setupUI()
+        addKeyboardNotification()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setupUI() {
         titleField.text = ""
         descriptionField.text = ""
         colorTextField.text = defaultColor
-        titleField.placeholder = defualtTitle
-        descriptionField.placeholder = defaultDesc
+        titleField.text = defualtTitle
+        descriptionField.text = defaultDesc
         colorTextField.placeholder = defaultColor
         colorBoard.backgroundColor = defaultColor.hexToColor()
     }
@@ -125,6 +133,44 @@ extension LabelEditingViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension LabelEditingViewController {
+    
+    private func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant =  -keyboardHeight / 2
+        }
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            popupViewVerticalConstraint.constant = 0
+        }
+    }
+    
+}
+
+
 
 #if DEBUG
 

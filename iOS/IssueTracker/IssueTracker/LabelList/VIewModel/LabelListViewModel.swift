@@ -16,7 +16,7 @@ class LabelListViewModel {
     lazy var service = LabelListService(viewModel: self)
     
     struct Status {
-        var labels = Bindable<[Label]>(Label.all())
+        var labels = Bindable<[Label]>([])
         var selectedLabel
             = Bindable<Label>(Label(color: "", desc: "", name: ""))
         var resultOfSaving = Bindable(LabelListResultType.fail)

@@ -13,7 +13,6 @@ class LabelListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     lazy var dataLayout = makeDataLayout()
     
-    let dummy = Label.all()
     var viewModel = LabelListViewModel()
     
     override func viewDidLoad() {
