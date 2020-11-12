@@ -34,13 +34,13 @@ class MilestoneEditingViewController: UIViewController {
         uptoDateField.text = ""
         
         if let milestone = self.milestone {
-            titleField.placeholder = milestone.title
-            descriptionField.placeholder = milestone.content ?? ""
+            titleField.text = milestone.title
+            descriptionField.text = milestone.content ?? ""
             uptoDateField.placeholder = milestone.dueDate
             return
         }
-        titleField.placeholder = ""
-        descriptionField.placeholder = ""
+        titleField.text = ""
+        descriptionField.text = ""
         uptoDateField.placeholder = "yyyy-mm-dd"
     }
     
@@ -71,7 +71,6 @@ class MilestoneEditingViewController: UIViewController {
             return }
         
         if let milestone = self.milestone {
-            // 편집 모드: 입력되어 있으면 입력 된걸로, 아니면 디폴트 값으로
             delegate?.MilestoneEditSaveButtonDidTab(
                 title: title == "" ? milestone.title : title,
                 description: desc == "" ? milestone.content ?? "" : desc,
@@ -80,8 +79,6 @@ class MilestoneEditingViewController: UIViewController {
             return
         }
         
-        // 추가 모드: 입려되어 있지 않으면 그냥 빈값으로
-        // 빈값으로 입력할 경우 세 개 다 입력하라고 경고 메세지 띄워야 함.
         delegate?.MilestoneEditSaveButtonDidTab(
             title: title,
             description: desc,

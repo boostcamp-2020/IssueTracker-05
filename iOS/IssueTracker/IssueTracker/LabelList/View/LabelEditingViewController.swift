@@ -46,8 +46,8 @@ class LabelEditingViewController: UIViewController {
         titleField.text = ""
         descriptionField.text = ""
         colorTextField.text = defaultColor
-        titleField.placeholder = defualtTitle
-        descriptionField.placeholder = defaultDesc
+        titleField.text = defualtTitle
+        descriptionField.text = defaultDesc
         colorTextField.placeholder = defaultColor
         colorBoard.backgroundColor = defaultColor.hexToColor()
     }
