@@ -42,12 +42,14 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         self.milestone = milestone
         self.milestone.dueDate = format(with: self.milestone.dueDate ?? "0000-00-00")
         milestoneTitle.setTitle(milestone.title, for: .normal)
-        dueDateLabel.text = formatToKorean(from: self.milestone.dueDate ?? "0000-00-00")
+        
+        dueDateLabel.text = formatToKorean(from: self.milestone.dueDate ?? "yyyy-MM-dd")
+        
         descriptionLabel.text = milestone.content ?? ""
         issueStates = milestone.issues
         percentageLabel.text = "\(percentageProgress)%"
         openLabel.text = "\(numberOfOpen ?? 0) open"
-        closedLabel.text = "\(numberOfOpen ?? 0) closed"
+        closedLabel.text = "\(numberOfClosed ?? 0) closed"
         setupMilestoneTitleLabel()
     }
     
@@ -85,7 +87,7 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         guard let open = numberOfOpen else { return 0 }
         guard let close = numberOfClosed else { return 0 }
         if open + close == 0 { return 0 }
-        return Int(Float(open) / Float(open + close))
+        return (Int(Float(close) / Float(open + close))) * 100
     }
     
     
