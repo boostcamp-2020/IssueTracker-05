@@ -33,7 +33,7 @@ class IssueResultCellView: UICollectionViewCell {
         self.isChosen = isChosen
         self.label = label
         self.mileston = milestone
-        
+
         switch type {
         case .IssueListResult:
             detailViewForMulti.isHidden = true

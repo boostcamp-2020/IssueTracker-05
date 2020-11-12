@@ -10,6 +10,10 @@ class IssueCommentCellView: UICollectionViewCell {
     func setup(user: String, content: String, time: String) {
         userLabel.text = user
         contentLabel.text = content
-        timeLabel.text = time
+        if let dateString = time.timeFormatToDate()?.lastTimeToString() {
+            timeLabel.text = dateString
+        }
     }
+    
 }
+

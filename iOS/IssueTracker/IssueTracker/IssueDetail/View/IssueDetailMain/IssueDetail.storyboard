@@ -51,7 +51,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gm9-eP-cUw">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User1" translatesAutoresizingMaskIntoConstraints="NO" id="gm9-eP-cUw">
                                                             <rect key="frame" x="10.000000000000004" y="10.000000000000004" width="48.333333333333343" height="48.333333333333343"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="gm9-eP-cUw" secondAttribute="height" multiplier="1:1" id="LMo-xT-eNb"/>
@@ -102,7 +102,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wM-LR-gN6">
                                 <rect key="frame" x="0.0" y="44" width="414" height="135.33333333333334"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J4m-Lk-1O5">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-1024" translatesAutoresizingMaskIntoConstraints="NO" id="J4m-Lk-1O5">
                                         <rect key="frame" x="10" y="10" width="41.333333333333336" height="41.333333333333336"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="J4m-Lk-1O5" secondAttribute="height" multiplier="1:1" id="C2d-3F-WDc"/>
@@ -190,6 +190,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-1024" width="341.33334350585938" height="341.33334350585938"/>
+        <image name="User1" width="71.333335876464844" height="86.666664123535156"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

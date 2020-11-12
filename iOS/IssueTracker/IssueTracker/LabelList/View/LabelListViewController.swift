@@ -114,9 +114,6 @@ extension LabelListViewController: UICollectionViewDelegate {
             cell.labelColor ?? "")
     }
     
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        print("맨위")
-    }
 }
 
 extension LabelListViewController: LabelListCellViewDelegate {

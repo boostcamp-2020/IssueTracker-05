@@ -67,7 +67,6 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             if let id = iid {
                 weakSelf.service.requestEditIssue(issueId: id, title: title, content: content)
-                print(id)
             } else {
                 weakSelf.service.requestAddIssue(title: title, content: content)
             }
@@ -75,9 +74,7 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             
             var filterIssue = weakSelf.status.issues.value
-            
-            print(filterIssue)
-            
+
             conditions.forEach { condition in
                 switch condition {
                 //열린 이슈들
