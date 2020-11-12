@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol SectionHeaderDelegate {
+    func touchedEditButton(title: String)
+}
+
 class SectionHeader: UICollectionReusableView {
+    
+    var delegate: SectionHeaderDelegate?
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBAction func touchedEditButton(_ sender: Any) {
-        
+        delegate?.touchedEditButton(title: titleLabel.text ?? "")
     }
 }
