@@ -12,8 +12,6 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.isHidden = false
         setupNavigationBarItem()
         setupTabBarButton()
         setupResultViewController()
@@ -79,9 +77,15 @@ class MultiSelectiveEditingViewController: UIViewController {
     
     func setupNavigationBarItem() {
         navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Select All", style: .done, target: self, action: #selector(selectAllButtonTabbed))
+            UIBarButtonItem(title: "Select All",
+                            style: .done,
+                            target: self,
+                            action: #selector(selectAllButtonTabbed))
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(closeButtonTabbed))
+            UIBarButtonItem(title: "Cancel",
+                            style: .done,
+                            target: self,
+                            action: #selector(closeButtonTabbed))
     }
     
 }

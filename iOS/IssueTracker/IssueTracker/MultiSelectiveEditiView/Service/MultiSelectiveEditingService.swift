@@ -6,7 +6,7 @@ class MultiSelectiveEditingService {
     let port: Int = 49203
     lazy var issueAPIURL = "http://group05issuetracker.duckdns.org:\(port)/api/issue/"
     
-    let httpHeaders:HTTPHeaders
+    let httpHeaders: HTTPHeaders
     
     unowned var viewModel: MultiSelectiveEditingViewModel
     

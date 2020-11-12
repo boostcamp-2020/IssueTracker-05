@@ -8,7 +8,6 @@ class MultiSelectiveEditingViewModel {
         "\(self.status.issues.value.filter { $0.isSelected }.count)개 선택"
     }
     
-    
     struct Status {
         var issues: Bindable<[IssueListModel]>
         var title = Bindable("0개 선택")
@@ -32,7 +31,7 @@ class MultiSelectiveEditingViewModel {
                     issues[index].isSelected.toggle()
                 }
             }
-            weakSelf.status.issues.value = issues // 발생
+            weakSelf.status.issues.value = issues 
             weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }, closeSelectedIssues: { [weak self] in
             guard let weakSelf = self else { return }
