@@ -81,6 +81,7 @@ class MultiSelectiveEditingViewController: UIViewController {
                             style: .done,
                             target: self,
                             action: #selector(selectAllButtonTabbed))
+        
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Cancel",
                             style: .done,

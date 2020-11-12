@@ -6,8 +6,7 @@ enum IssueResultCellViewType {
 }
 
 class IssueResultCellView: UICollectionViewCell {
-    
-    
+        
     var iid: Int?
     var isChosen: Bool? = false
     

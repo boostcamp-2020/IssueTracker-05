@@ -91,6 +91,7 @@
 		DABEB873254821B4006471F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DABEB871254821B4006471F6 /* LaunchScreen.storyboard */; };
 		DAC05B7E255A4DAD003FCE94 /* IssueCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC05B7D255A4DAD003FCE94 /* IssueCreationViewModel.swift */; };
 		DAC05B83255A4E8E003FCE94 /* IssueCreationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC05B82255A4E8E003FCE94 /* IssueCreationService.swift */; };
+		DAC05BAA255D1A11003FCE94 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC05BA9255D1A11003FCE94 /* Toast.swift */; };
 		DAC37CE92550EC2F000C2777 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC37CE82550EC2F000C2777 /* SignUpViewModel.swift */; };
 		DAC37CED2550EDCA000C2777 /* UITextField+LeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC37CEC2550EDCA000C2777 /* UITextField+LeftView.swift */; };
 		DAC37CF125510747000C2777 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC37CF025510747000C2777 /* UIButton.swift */; };
@@ -193,6 +194,7 @@
 		DABEB874254821B4006471F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAC05B7D255A4DAD003FCE94 /* IssueCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCreationViewModel.swift; sourceTree = "<group>"; };
 		DAC05B82255A4E8E003FCE94 /* IssueCreationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCreationService.swift; sourceTree = "<group>"; };
+		DAC05BA9255D1A11003FCE94 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		DAC37CE82550EC2F000C2777 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		DAC37CEC2550EDCA000C2777 /* UITextField+LeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+LeftView.swift"; sourceTree = "<group>"; };
 		DAC37CF025510747000C2777 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				DAC37CF025510747000C2777 /* UIButton.swift */,
 				88CB53A1255A2F5000C99A9A /* UIColor+.swift */,
 				8875E97E255843CE0066146D /* String+.swift */,
+				DAC05BA9255D1A11003FCE94 /* Toast.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -1016,6 +1019,7 @@
 				881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */,
 				8875E9782557DA910066146D /* LabelEditingViewController.swift in Sources */,
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,
+				DAC05BAA255D1A11003FCE94 /* Toast.swift in Sources */,
 				881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */,
 				DAC05B7E255A4DAD003FCE94 /* IssueCreationViewModel.swift in Sources */,
 				DA0C60922557B865000CC10E /* MilestoneCollectionViewCell.swift in Sources */,

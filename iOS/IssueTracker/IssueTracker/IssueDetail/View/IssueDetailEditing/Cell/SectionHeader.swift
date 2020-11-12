@@ -20,5 +20,6 @@ class SectionHeader: UICollectionReusableView {
     @IBOutlet weak var editButton: UIButton!
     @IBAction func touchedEditButton(_ sender: Any) {
         delegate?.touchedEditButton(title: titleLabel.text ?? "")
+        Toast.shared.showToast(message: "미 구현 기능입니다", view: window!.rootViewController!.view )
     }
 }

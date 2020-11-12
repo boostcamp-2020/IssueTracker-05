@@ -135,7 +135,8 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
     
     //실패 시
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        showToast(message: "로그인 실패")
+//        showToast(message: "로그인 실패")
+        Toast.shared.showToast(message: "로그인 실패", view: self.view)
     }
 
     //성공 시
@@ -146,34 +147,35 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
             guard let token = String(data: identityToken, encoding: .utf8) else { return }
             LoginManager.shared.requestiOSJWT(acccess_token: token) { success in
                 if success {
+                    UserDefaults.standard.setValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIwLCJ1c2VySWQiOiIyMzUxODI2NSIsInBhc3N3b3JkIjpudWxsLCJuaWNrbmFtZSI6ImNob2psMTEyNSIsIk9BdXRoIjp0cnVlLCJyZXNvdXJjZVNlcnZlciI6ImdpdGh1YiIsImltYWdlIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIwLTExLTA3VDA4OjAyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIwLTExLTA3VDA4OjAyOjQyLjAwMFoiLCJpYXQiOjE2MDUxNjMxNDR9.mqSt6cAGYHhe9eVhf8MSxG7FJeIowyTkxQNLpM5fU8k", forKey: "token")
+                    UserDefaults.standard.setValue(11, forKey: "uid")
                     self.didSendEventClosure?(.signin)
                 }
             }
         }
     }
     
-    func showToast(message : String) {
-        let width_variable:CGFloat = 100
-        let toastLabel = UILabel(frame: CGRect(x: width_variable, y: self.view.frame.size.height-100, width: view.frame.size.width-2*width_variable, height: 35))
-        // 뷰가 위치할 위치를 지정해준다. 여기서는 아래로부터 100만큼 떨어져있고, 너비는 양쪽에 10만큼 여백을 가지며, 높이는 35로
-        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        toastLabel.textColor = UIColor.white
-        toastLabel.textAlignment = .center;
-        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-        toastLabel.text = message
-        toastLabel.alpha = 1.0
-        toastLabel.layer.cornerRadius = 10;
-        toastLabel.clipsToBounds  =  true
-//        self.view.addSubview(toastLabel)
-        
-        UIApplication.shared.keyWindow?.addSubview(toastLabel)
-        
-        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-            toastLabel.alpha = 0.0
-        }, completion: {(isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    }
+//    func showToast(message : String) {
+//        let width_variable:CGFloat = 100
+//        let toastLabel = UILabel(frame: CGRect(x: width_variable, y: self.view.frame.size.height-100, width: view.frame.size.width-2*width_variable, height: 35))
+//        // 뷰가 위치할 위치를 지정해준다. 여기서는 아래로부터 100만큼 떨어져있고, 너비는 양쪽에 10만큼 여백을 가지며, 높이는 35로
+//        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+//        toastLabel.textColor = UIColor.white
+//        toastLabel.textAlignment = .center;
+//        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+//        toastLabel.text = message
+//        toastLabel.alpha = 1.0
+//        toastLabel.layer.cornerRadius = 10;
+//        toastLabel.clipsToBounds  =  true
+//
+//        UIApplication.shared.keyWindow?.addSubview(toastLabel)
+//
+//        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+//            toastLabel.alpha = 0.0
+//        }, completion: {(isCompleted) in
+//            toastLabel.removeFromSuperview()
+//        })
+//    }
     
 }
 

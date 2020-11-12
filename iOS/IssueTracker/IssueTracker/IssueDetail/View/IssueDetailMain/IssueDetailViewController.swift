@@ -205,7 +205,7 @@ extension IssueDetailViewController: IssueDetailEditingViewControllerDelegate {
     }
     
     func addCommentButtonTabbed() {
-        
+        Toast.shared.showToast(message: "미 구현 기능입니다", view: self.view)
     }
     
 }
