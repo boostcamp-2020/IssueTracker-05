@@ -139,6 +139,7 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
                 } ?? 0
                 
                 cell.milestoneProgressView.progress = Float(complete / Double(total))
+                cell.milestonePercentLabel.text = "\(Int(Float(complete / Double(total))*100))%"
             }
             
             
