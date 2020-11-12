@@ -86,8 +86,8 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
     func setupNavigationBarItem() {
-        navigationItem.leftBarButtonItem =
-            UIBarButtonItem(title: "Select All", style: .done, target: self, action: #selector(selectAllButtonTabbed))
+        
+        UIBarButtonItem(title: "Select All", style: .done, target: self, action: #selector(selectAllButtonTabbed))
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(closeButtonTabbed))
     }

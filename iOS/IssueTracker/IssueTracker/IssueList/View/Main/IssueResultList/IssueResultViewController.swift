@@ -51,6 +51,7 @@ class IssueResultViewController: UIViewController {
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueResultCellView", for: indexPath) as? IssueResultCellView else {
                     return nil
                 }
+                print("issue.iid",issue.iid,issue.isSelected)
                 cell.setup(
                     iid: issue.iid,
                     title: issue.title,

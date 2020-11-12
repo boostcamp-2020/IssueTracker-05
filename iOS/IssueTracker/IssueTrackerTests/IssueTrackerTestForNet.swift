@@ -36,9 +36,11 @@ class IssueTrackerTestsForNet: XCTestCase {
             }
         }
         
-        
     }
     
+    func test_github_로그인요청을_성공했다면_유저아이디가_존재해야한다() {
+        
+    }
     
 }
 

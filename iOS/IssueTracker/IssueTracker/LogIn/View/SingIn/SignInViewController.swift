@@ -146,6 +146,8 @@ extension SignInViewController: ASAuthorizationControllerDelegate {
             guard let token = String(data: identityToken, encoding: .utf8) else { return }
             LoginManager.shared.requestiOSJWT(acccess_token: token) { success in
                 if success {
+                    UserDefaults.standard.setValue("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIwLCJ1c2VySWQiOiIyMzUxODI2NSIsInBhc3N3b3JkIjpudWxsLCJuaWNrbmFtZSI6ImNob2psMTEyNSIsIk9BdXRoIjp0cnVlLCJyZXNvdXJjZVNlcnZlciI6ImdpdGh1YiIsImltYWdlIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIwLTExLTA3VDA4OjAyOjQyLjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIwLTExLTA3VDA4OjAyOjQyLjAwMFoiLCJpYXQiOjE2MDUxNjMxNDR9.mqSt6cAGYHhe9eVhf8MSxG7FJeIowyTkxQNLpM5fU8k", forKey: "token")
+                    UserDefaults.standard.setValue(11, forKey: "uid")
                     self.didSendEventClosure?(.signin)
                 }
             }
