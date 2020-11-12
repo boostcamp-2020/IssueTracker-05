@@ -36,7 +36,9 @@ class MultiSelectiveEditingViewModel {
         }, closeSelectedIssues: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.status.issues.value.forEach {
-                weakSelf.service.requestIssueClose(issueId: $0.iid)
+                if $0.isSelected {
+                    weakSelf.service.requestIssueClose(issueId: $0.iid)
+                }
             }
             weakSelf.status.title.value = weakSelf.countOfSelectedTitle
         }, selectAll: { [weak self] in
