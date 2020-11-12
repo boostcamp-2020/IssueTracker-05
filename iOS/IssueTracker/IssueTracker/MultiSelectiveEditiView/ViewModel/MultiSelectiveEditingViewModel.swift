@@ -22,26 +22,13 @@ class MultiSelectiveEditingViewModel {
             for index in issues.indices {
                 if issues[index].iid == id {
                     print("여기인가\(id)")
-                    if var isSelected = issues[index].isSelected {
-                        isSelected.toggle()
-                        issues[index].isSelected = isSelected
-                    } else {
-                        issues[index].isSelected = true
-                    }
+                    issues[index].isSelected.toggle()
                 }
             }
             weakSelf.status.issues.value = issues // 발생
-
-            //
-//            for index in weakSelf.touchedIDs.indices {
-//                if weakSelf.touchedIDs[index] == id {
-//                    weakSelf.touchedIDs.remove(at: index)
-//                    return
-//                }
-//            }
-//            weakSelf.touchedIDs.append(id)
         }, closeSelectedIssues: {
-            // 해당 아이디 클로즈해달라고 서버 요청하고 끝
+            
+            
         })
     
     init(issues: [IssueListModel]) {
