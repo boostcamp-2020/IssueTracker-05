@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import InputBox from '@molecules/InputBox';
-import OauthButton from '@atoms/OauthButton';
+
+import signupStorage from '@constants/auth/signup';
+import * as axios from '@system/axios/auth';
 
 const WholeWrapper = styled.div`
   display: flex;
@@ -35,51 +36,51 @@ const SignWrapper = styled.div`
 `;
 
 const SignupBox = (props) => {
-  const [nickname, setNictname] = useState();
-  const [id, setId] = useState();
-  const [pw, setPw] = useState();
+  const [state, changeHandler] = signupStorage();
 
-  const changeInputId = (e) => {
-    setId(e.target.value);
+  const cancel = (e) => {
+    e.preventDefault();
+    props.page(0);
   };
 
-  const changeInputPw = (e) => {
-    setPw(e.target.value);
+  const signUp = async (e) => {
+    e.preventDefault();
+    const res = await axios.signup(state);
+    if (res) {
+      props.page(0);
+    }
   };
-
-  const login = (e) => {
-    e.preventDefault();
-  }
-
-  const signUp = (e) => {
-    e.preventDefault();
-  }
 
   return (
     <WholeWrapper>
       <InputWrapper>
-        <InputBox name="닉네임" onChange={changeInputId}>
+        <InputBox name="nickname" onChange={changeHandler}>
           닉네임
         </InputBox>
-        <br />
-        <InputBox name="아이디" onChange={changeInputId}>
+        - 영문과 숫자로 구성하여 6자 이상 16자 이하로 작성해주세요.
+        <br /><br />
+        <InputBox name="userId" onChange={changeHandler}>
           아이디
         </InputBox>
-        <br />
-        <InputBox name="비밀번호" type="password" onChange={changeInputPw}>
+        - 영문과 숫자로 구성하여 6자 이상 16자 이하로 작성해주세요.
+        <br /><br />
+        <InputBox name="password" type="password" onChange={changeHandler}>
           비밀번호
         </InputBox>
-        <br />
+        - 영문과 숫자, 특수문자로 구성하여 6자 이상 12자 이하로 작성해주세요. <br />
+        - 허용되는 특수문자는 {"~!@#$%^&*()_+|<>?:{}"} 입니다.
+        <br /><br />
       </InputWrapper>
       <SignWrapper>
-        <a href="" onClick={login}>
+        <a href="#" onClick={cancel}>
           취소
         </a>
-        <a href="" onClick={signUp}>
+        <a href="#" onClick={signUp}>
           회원가입
         </a>
       </SignWrapper>
-      <br /><br />
+      <br />
+      <br />
     </WholeWrapper>
   );
 };

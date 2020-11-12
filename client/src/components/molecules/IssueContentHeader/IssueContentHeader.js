@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Button from '@atoms/Button';
 import Span from '@atoms/Span';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   display: flex;
@@ -34,9 +34,8 @@ const InnerWrapper2 = styled.div`
 
 const IssueContentHeader = (props) => {
   const { issue } = props;
-  console.log(issue);
   return (
-    <WhoreWrapper>
+    <WholeWrapper>
       <InnerWrapper1>
         <Span>{issue.user ? issue.user.nickname : ''}</Span>
         <Span>
@@ -48,7 +47,7 @@ const IssueContentHeader = (props) => {
         {props.writer && <Span>Owner</Span>}
         <Button type="edit">Edit</Button>
       </InnerWrapper2>
-    </WhoreWrapper>
+    </WholeWrapper>
   );
 };
 

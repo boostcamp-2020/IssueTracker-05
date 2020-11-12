@@ -17,7 +17,7 @@ const LabelNav = (props) => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/main/new-milestone');
+    history.push('/label/new-milestone');
   };
 
   return (

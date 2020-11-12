@@ -11,10 +11,46 @@ const Wrapper = styled.div`
 `;
 
 const IssueDropBox = (props) => {
+  const users = props.state.users
+    ? props.state.users.map((v) => {
+        return { name: v.nickname };
+      })
+    : '';
+
+  const labels = props.state.labels
+    ? props.state.labels.map((v) => {
+        return { name: v.name };
+      })
+    : '';
+
+  const milestones = props.state.milestones
+    ? props.state.milestones.map((v) => {
+        return { name: v.title };
+      })
+    : '';
+
+  const IssueDropBoxContent = [
+    {
+      name: 'Assignees',
+      title: 'Filter List',
+      contentList: users,
+    },
+    {
+      name: 'Labels',
+      title: 'Filter List',
+      contentList: labels,
+    },
+    {
+      name: 'Milestones',
+      title: 'Filter List',
+      contentList: milestones,
+    },
+  ];
+
   return (
     <>
       <Wrapper>
-        {props.IssueDropBoxContent.map((v) => (
+        {IssueDropBoxContent.map((v) => (
           <Dropdown {...v} key={v.name} />
         ))}
       </Wrapper>

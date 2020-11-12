@@ -19,3 +19,9 @@ export default {
 const Template = (args) => <Signbox {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+  state:{
+    userId: '',
+    password: '',
+  },
+}

@@ -5,7 +5,7 @@ import IssueContentHeader from '@molecules/IssueContentHeader';
 import Span from '@atoms/Span';
 import Img from '@atoms/Img';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   box-sizing: border-box;
   border: 1px solid #ccc;
   width: 100%;
@@ -48,7 +48,7 @@ const IssueWrapper = styled.div`
 const IssueContent = (props) => {
   const { issue } = props;
   return (
-    <WhoreWrapper>
+    <WholeWrapper>
       <ContentWrapper>
         <Wrapper1>
           <Img />
@@ -77,7 +77,7 @@ const IssueContent = (props) => {
             );
           })
         : ''}
-    </WhoreWrapper>
+    </WholeWrapper>
   );
 };
 

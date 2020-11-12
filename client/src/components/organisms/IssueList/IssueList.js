@@ -6,7 +6,7 @@ import IssueListMenu from '@molecules/IssueListMenu';
 
 import IssueStore from '@constants/issue/issueList';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -19,12 +19,12 @@ const IssueList = (props) => {
   }, []);
 
   return (
-    <WhoreWrapper>
+    <WholeWrapper>
       <IssueListMenu />
       {state.map((v) => (
         <IssueListContent issue={v} key={v.iid} />
       ))}
-    </WhoreWrapper>
+    </WholeWrapper>
   );
 };
 

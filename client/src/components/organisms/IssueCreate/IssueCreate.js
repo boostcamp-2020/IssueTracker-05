@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Img from '@atoms/Img';
-import IssueCommentCreateHeader from '@molecules/IssueCommentCreateHeader';
 import InputBox from '@molecules/InputBox';
 import Button from '@atoms/Button';
 
@@ -26,6 +25,9 @@ const Wrapper2 = styled.div`
   box-sizing: border-box;
   width: 85%;
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 20px
 `;
 
 const ButtonWrapper = styled.div`
@@ -35,22 +37,21 @@ const ButtonWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-const IssueCommentCreate = (props) => {
+const IssueCreate = (props) => {
   return (
     <WholeWrapper>
       <Wrapper1>
         <Img />
       </Wrapper1>
       <Wrapper2>
-        <IssueCommentCreateHeader />
-        <InputBox type="textarea" children=""/>
+        <InputBox>Title</InputBox>
+        <InputBox type="textarea">Desc</InputBox>
         <ButtonWrapper>
-          <Button type="cancel">Close issue</Button>
-          <Button type="default">Comment</Button>
+          <Button type="create">New Issue</Button>
         </ButtonWrapper>
       </Wrapper2>
     </WholeWrapper>
   )
 }
 
-export default IssueCommentCreate;
+export default IssueCreate;

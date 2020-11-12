@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { CookiesProvider } from 'react-cookie';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -12,8 +13,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        {/* <Sign /> isAuthorized={isAuthorized}*/}
-        <Main />
+        <CookiesProvider>
+          <Main />
+        </CookiesProvider>
       </Router>
     </ThemeProvider>
   );

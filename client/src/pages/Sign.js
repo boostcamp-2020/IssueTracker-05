@@ -1,16 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
 
 import SignBox from '@organisms/SignBox';
-import SignupBox from '@organisms/Signup';
+import Signup from '@organisms/Signup';
 
-import authStorage from '@constants/auth/auth';
+import loginStorage from '@constants/auth/login';
 
 const WholeWrapper = styled.div`
   display: flex;
@@ -23,10 +17,16 @@ const WholeWrapper = styled.div`
 `;
 
 export default () => {
-  const [state, changeHandler] = authStorage();
+  const [state, changeHandler] = loginStorage();
+  const [page, setPage] = useState(0);
+
   return (
     <WholeWrapper>
-      <SignBox state={state} changeHandler={changeHandler} />
+      {page === 0 ? (
+        <SignBox state={state} changeHandler={changeHandler} page={setPage} />
+      ) : (
+        <Signup page={setPage} />
+      )}
     </WholeWrapper>
   );
 };

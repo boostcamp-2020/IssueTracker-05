@@ -6,13 +6,12 @@ function PrivateRoute({ children, ...rest }) {
     <Route
       {...rest}
       render={({ location }) => {
-        console.log(location);
         return localStorage.getItem('token') ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: '/',
+              pathname: '/login',
               state: { from: location },
             }}
           />

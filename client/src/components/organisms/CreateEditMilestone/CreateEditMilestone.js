@@ -4,7 +4,7 @@ import Button from '@atoms/Button';
 import InputBox from '@molecules/InputBox';
 import { useHistory } from 'react-router-dom';
 
-const WhoreStyle = styled.div`
+const WholeStyle = styled.div`
   box-sizing: border-box;
   padding: 0 1em;
 `;
@@ -31,10 +31,10 @@ const CreateEditMilestone = (props) => {
   const history = useHistory();
 
   const redirect = () => {
-    history.push('/main/label');
+    history.push('/label');
   };
   return (
-    <WhoreStyle>
+    <WholeStyle>
       <InputStyle>
         <InputBox
           children="제목"
@@ -72,7 +72,7 @@ const CreateEditMilestone = (props) => {
           Create
         </Button>
       </ButtonBox>
-    </WhoreStyle>
+    </WholeStyle>
   );
 };
 

@@ -6,12 +6,14 @@ import { getLabels } from '@system/axios/label';
 import { getUsers } from '@system/axios/user';
 import { getMilestones } from '@system/axios/milestone';
 
-const WhoreWrapper = styled.div`
+const WholeWrapper = styled.div`
   display: flex;
   gap: 2em;
   width: 100%;
-  background-color: #bdc3c7;
-  padding: 0.7em 1em;
+  background-color: #edf0f2;
+  padding: 0.7em 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   justify-content: space-around;
 `;
 
@@ -38,9 +40,9 @@ const IssueListMenu = (props) => {
   // axiosUser.default.getUsers().then((res) => setUsers(res));
   // axiosMilestone.default.getMilestone().then((res) => setMilestone(res));
   return (
-    <WhoreWrapper>
-      <WhoreWrapper />
-      <WhoreWrapper>
+    <WholeWrapper>
+      <WholeWrapper />
+      <WholeWrapper>
         <Dropdown name="Author" title="Filter by Author" contentList={users} />
         <Dropdown name="Labels" title="Filter by Labels" contentList={labels} />
         <Dropdown
@@ -53,8 +55,8 @@ const IssueListMenu = (props) => {
           title="Filter by Assignees"
           contentList={users}
         />
-      </WhoreWrapper>
-    </WhoreWrapper>
+      </WholeWrapper>
+    </WholeWrapper>
   );
 };
 

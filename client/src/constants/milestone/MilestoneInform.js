@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 
 const initialState = {
   title: '',
-  dueDate: '',
   desc: '',
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as axios from '@system/axios/auth';
+import { useHistory } from 'react-router-dom';
 
+import * as axios from '@system/axios/auth';
 import InputBox from '@molecules/InputBox';
 import OauthButton from '@atoms/OauthButton';
 
@@ -36,11 +37,25 @@ const SignWrapper = styled.div`
 
 const Signbox = (props) => {
   const { state, changeHandler } = props;
+  const history = useHistory();
 
   const localLogin = async (e) => {
     e.preventDefault();
-    await axios.localLogin(state);
+    const res = await axios.localLogin(state);
+    if (res) {
+      history.push('/');
+    }
   };
+
+  const signup = (e) => {
+    e.preventDefault();
+    props.page(1);
+  }
+
+  const githubLogin = () => {
+    // window.location.href = CALLBACK_URL;
+    window.location.href = 'http://localhost:5000/api/login/github';
+  }
 
   return (
     <WholeWrapper>
@@ -59,13 +74,11 @@ const Signbox = (props) => {
         <br />
       </InputWrapper>
       <SignWrapper>
-        <a href="" onClick={localLogin}> 로그인 </a>
-        <a href=""> 회원가입 </a>
+        <a href="#" onClick={localLogin}> 로그인 </a>
+        <a href="#" onClick={signup}> 회원가입 </a>
       </SignWrapper>
       <br /><br />
-      <a href="localhost:5000/api/login/github">
-        <OauthButton />
-      </a>
+      <OauthButton onClick={githubLogin} />
     </WholeWrapper>
   );
 };

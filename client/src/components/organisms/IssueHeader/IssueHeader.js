@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Span from '@atoms/Span';
 import Button from '@atoms/Button';
 
-const WhoreWrapper = styled.div`
+const WholeWrappe = styled.div`
   box-sizing: border-box;
   padding: 1em;
   width: 100%;
@@ -40,9 +40,9 @@ const Wrapper2 = styled.div`
 `;
 
 const IssueHeader = (props) => {
-  const {issue} = props;
+  const { issue } = props;
   return (
-    <WhoreWrapper>
+    <WholeWrappe>
       <Wrapper1>
         <TitleWrapper>
           <Span fontSize="2em">{issue.title ? issue.title : ''}</Span>
@@ -51,12 +51,10 @@ const IssueHeader = (props) => {
         <Button type="edit">Edit</Button>
       </Wrapper1>
       <Wrapper2>
-        <Span type={ props.spanType }>{issue.isOpend ? issue.isOpend : ''}</Span>
-        <Span>
-          {issue.comments ? issue.comments.length : ''} comments
-        </Span>
+        <Span type={props.spanType}>{issue.isOpend ? issue.isOpend : ''}</Span>
+        <Span>{issue.comments ? issue.comments.length : ''} comments</Span>
       </Wrapper2>
-    </WhoreWrapper>
+    </WholeWrappe>
   );
 };
 
