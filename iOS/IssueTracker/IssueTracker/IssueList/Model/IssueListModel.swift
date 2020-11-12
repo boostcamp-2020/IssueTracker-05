@@ -1,85 +1,109 @@
 
 import Foundation
 
-struct Label: Codable, Hashable {
-    var color: String
-    var desc: String?
-    var name: String
-    
-    static func == (lhs: Label, rhs: Label) -> Bool {
-        return lhs.color == rhs.color
-            && lhs.desc == rhs.desc
-            && lhs.name == rhs.name
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(color)
-        hasher.combine(desc)
-        hasher.combine(name)
-    }
-    
-    static func all() -> [Label] {
-        return [
-            Label(color: "#0075ca", desc: "Improvements or additions to documentation", name: "documentation")
-        ]
-    }
-}
-
 struct IssueListModel: Codable, Hashable {
     
-    var uid: Int
     var iid: Int
     var title: String
     var content: String?
     var isOpen: Bool
-    var mId: String? // 마일스톤 아이디
-    var labels: [Label]?
-    
-    // TODO: 어사이니 만들어야
-    
+    var labels: [Label]
+    var assignees: [Assignees]?
+    var user: User
+    var comments: [IssueListComment]?
+    var isSelected: Bool = false
+    var milestone: Milestone?
+
     static func == (lhs: IssueListModel, rhs: IssueListModel) -> Bool {
-        return lhs.uid == rhs.uid
-            && lhs.iid == rhs.iid
+        return lhs.iid == rhs.iid
             && lhs.title == rhs.title
             && lhs.content == rhs.content
             && lhs.isOpen == rhs.isOpen
-            && lhs.mId == rhs.mId
             && lhs.labels == rhs.labels
+            && lhs.assignees == rhs.assignees
+            && lhs.user == rhs.user
+            && lhs.comments == rhs.comments
+            && lhs.isSelected == rhs.isSelected
+            && lhs.milestone == rhs.milestone
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(uid)
         hasher.combine(iid)
         hasher.combine(title)
         hasher.combine(content)
         hasher.combine(isOpen)
-        hasher.combine(mId)
         hasher.combine(labels)
+        hasher.combine(assignees)
+        hasher.combine(comments)
+        hasher.combine(isSelected)
     }
+    
+    
+    init(iid: Int, title: String, content: String? = nil, isOpen: Bool,labels:[Label],
+         assignees: [Assignees]? = nil, user: User, comments: [IssueListComment]? = nil) {
+        self.iid = iid
+        self.title = title
+        self.content = content
+        self.isOpen = isOpen
+        self.labels = labels
+        self.assignees = assignees
+        self.user = user
+        self.comments = comments
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case iid
+        case title
+        case content
+        case isOpen
+        case labels
+        case assignees
+        case user
+        case comments
+        case milestone
+    }
+    
+    init(from decoder: Decoder) throws {
+        let value  = try decoder.container(keyedBy: CodingKeys.self)
+        iid = try value.decode(Int.self, forKey: .iid)
+        title = try value.decode(String.self, forKey: .title)
+        content = try value.decode(String?.self, forKey: .content)
+        isOpen = try value.decode(Bool.self, forKey: .isOpen)
+        labels = try value.decode([Label].self, forKey: .labels)
+        assignees = try value.decode([Assignees]?.self, forKey: .assignees)
+        user = try value.decode(User.self, forKey: .user)
+        comments = try value.decode([IssueListComment]?.self, forKey: .comments)
+        milestone = try value.decode(Milestone?.self, forKey: .milestone)
+    }
+    
+    
     
     static func all() -> [IssueListModel] {
         var newModel = [IssueListModel]()
         newModel.append(
             IssueListModel(
-                uid: 8,
-                iid: 66,
+                iid: 11,
                 title: "testtesttest",
                 content: "Hello",
                 isOpen: true,
-                mId: nil,
-                labels: Label.all())
+                labels: [],
+                user: User(uid: 1, userId: "123123", nickname: "123123"))
         )
-        newModel.append(
-            IssueListModel(
-                uid: 2,
-                iid: 68,
-                title: "bugs",
-                content: nil,
-                isOpen: false,
-                mId: nil,
-                labels: Label.all())
-        )
+        
         return newModel
     }
+ 
+}
+
+struct IssueListComment: Hashable, Codable {
     
+    var uid: Int
+    
+    static func == (lhs: IssueListComment, rhs: IssueListComment) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uid)
+    }
 }

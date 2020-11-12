@@ -4,41 +4,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    
+    var sceneCoordinator: SceneCoordinator?
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        if nil == Bundle.main.url(forResource: "dummyToken", withExtension: "txt") {
-            
-            let issueListMainViewController = UIStoryboard(name: "IssueList", bundle: nil).instantiateViewController(identifier: String(describing: IssueListMainViewController.self))
-            
-            let navController = UINavigationController(rootViewController: issueListMainViewController)
-            navController.navigationBar.topItem?.title = "이슈"
-            navController.navigationBar.prefersLargeTitles = true
-            navController.tabBarItem
-                = UITabBarItem(title: "이슈", image: nil, tag: 0)
-            
-            let labelListViewController = UIStoryboard(name: "LabelList", bundle: nil).instantiateViewController(identifier: String(describing: LabelListViewController.self))
-            labelListViewController.tabBarItem
-                = UITabBarItem(title: "레이블", image: nil, tag: 0)
-            
-            let milestoneListViewController = UIStoryboard(name: "MilestoneList", bundle: nil).instantiateViewController(identifier: String(describing: MilestoneListViewController.self))
-            milestoneListViewController.tabBarItem
-                = UITabBarItem(title: "마일스톤", image: nil, tag: 0)
-            
-            let tabBarController = UITabBarController()
-            tabBarController.tabBar.tintColor = UIColor.black
-            tabBarController.viewControllers
-                = [navController, labelListViewController, milestoneListViewController]
-            
-            
-            
-            window?.rootViewController = tabBarController
-            
-        } else {
-            window?.rootViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginNavigationVC")
-        }
-
+        let navigationController = UINavigationController()
+        
+        window?.rootViewController = navigationController
+        
+        sceneCoordinator = SceneCoordinator.init(navigationController)
+        sceneCoordinator?.start()
+        
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -76,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     LoginManager.shared.requestAccessToken(with: code)
                 }
             }
-//            print(url)
+            print(url)
         }
     }
 }

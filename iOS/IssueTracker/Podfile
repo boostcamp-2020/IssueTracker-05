@@ -6,6 +6,7 @@ target 'IssueTracker' do
   use_frameworks!
   pod 'Alamofire'
   pod 'KeychainSwift'
+  pod 'MarkdownView'
   # Pods for IssueTracker
 
 end

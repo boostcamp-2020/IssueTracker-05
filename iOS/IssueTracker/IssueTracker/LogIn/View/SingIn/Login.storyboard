@@ -31,12 +31,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKf-Jt-OLY">
                                 <rect key="frame" x="80" y="366" width="39" height="30"/>
                                 <state key="normal" title="로그인"/>
+                                <connections>
+                                    <action selector="signInTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="STt-5w-KCd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvn-xc-mSe">
                                 <rect key="frame" x="282" y="366" width="52" height="30"/>
                                 <state key="normal" title="회원가입"/>
                                 <connections>
-                                    <action selector="touchedSignUp:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="jOz-q1-xxr"/>
+                                    <action selector="signUpTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="8eD-9T-y5z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qj-NF-SeF">
@@ -45,8 +48,13 @@
                                 <state key="normal" title="Sign in With Github">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="touchedSignInWithGithub:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="Nmf-g4-67b"/>
+                                    <action selector="signInWithGithubTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="0Th-n7-ruM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ki-Ie-WK5">
@@ -55,8 +63,13 @@
                                 <state key="normal" title=" Sign in With Apple">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="touchedSignIinWithApple:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="HfD-sD-eAv"/>
+                                    <action selector="signinWithAppleTabbed:" destination="Ajq-qR-NIm" eventType="touchUpInside" id="M14-or-9tl"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6~12자로 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-GH-6Nc">
@@ -72,14 +85,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsN-fa-ryL">
-                                <rect key="frame" x="50" y="267" width="131" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="50" y="267" width="104.5" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PW Error Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T9-MZ-VT0">
-                                <rect key="frame" x="50" y="331" width="141.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="50" y="331" width="112" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

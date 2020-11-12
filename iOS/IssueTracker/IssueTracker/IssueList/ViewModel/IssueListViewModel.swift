@@ -1,19 +1,27 @@
 
 import Foundation
-import Alamofire
 
 class IssueListViewModel {
     
+    lazy var service = IssueListService(viewModel: self)
+    
     struct Status {
         var issues =  Bindable(IssueListModel.all())
-        var searchResultTitleList = Bindable([String]())        // searchTitleList의 apply 바인딩
-        var searchResultList = Bindable(IssueListModel.all())   // searchResultLis의 apply 바인딩
+        var searchResultTitleList = Bindable([String]())
+        var searchResultList = Bindable(IssueListModel.all())
+        var filterResult = Bindable(IssueListModel.all())
     }
     
     struct Action {
         var searchTextChanged: (String) -> Void
         var searchButtonClicked: (String) -> Void
         var searchCancelButtonClicked: () -> Void
+        var closeButtonTabbed: (Int) -> Void
+        var deleteButtonTabbed: (Int) -> Void
+        var refreshData: () -> Void
+        var addIssueTabbed: (Int?, String, String) -> Void
+        var issueFilter: ([Int]) -> Void
+
     }
     
     var status = Status()
@@ -23,9 +31,12 @@ class IssueListViewModel {
             weakSelf.status.searchResultTitleList.value
                 = weakSelf.status.issues.value.filter {
                     $0.title.contains(newText)
-                }.map {
-                    $0.title
-                }
+                }.reduce([String()], { (uniqueTitleList, issueListModel) in
+                    if !uniqueTitleList.contains(issueListModel.title) {
+                        return uniqueTitleList + [issueListModel.title]
+                    }
+                    return uniqueTitleList
+                })
         },searchButtonClicked: { [weak self] searchBarText in
             guard let weakSelf = self else { return }
             weakSelf.status.searchResultList.value
@@ -36,38 +47,94 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             weakSelf.status.searchResultList.value
                 = weakSelf.status.issues.value
-            weakSelf.requestIssueData()
-        })
-    
-    let url = "http://172.30.1.27:5000/api/issue"
-    let httpHeaders:HTTPHeaders = ["Accept": "application/json"]
+            weakSelf.service.requestIssueListGet()
+        }, closeButtonTabbed: { [weak self] iid in
+            guard let weakSelf = self else { return }
+            weakSelf.service.requestIssueClose(issueId: iid)
+        }, deleteButtonTabbed: { [weak self] iid in
+            guard let weakSelf = self else { return }
+            weakSelf.service.requestIssueDelete(issueId: iid)
+            for index in weakSelf.status.issues.value.indices {
+                if weakSelf.status.issues.value[index].iid == iid {
+                    weakSelf.status.issues.value.remove(at: index)
+                   return
+                }
+            }
+        }, refreshData: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.service.requestIssueListGet()
+        }, addIssueTabbed: { [weak self] iid, title, content in
+            guard let weakSelf = self else { return }
+            if let id = iid {
+                weakSelf.service.requestEditIssue(issueId: id, title: title, content: content)
+                print(id)
+            } else {
+                weakSelf.service.requestAddIssue(title: title, content: content)
+            }
+        }, issueFilter: { [weak self] conditions in
+            guard let weakSelf = self else { return }
+            
+            var filterIssue = weakSelf.status.issues.value
+            
+            print(filterIssue)
+            
+            conditions.forEach { condition in
+                switch condition {
+                //열린 이슈들
+                case 0:
+                    filterIssue = filterIssue.filter {
+                        $0.isOpen == true
+                    }
+                //내가 작성한 이슈들
+                case 1:
+                    filterIssue = filterIssue.filter {
+                        return ($0.user.uid == UserDefaults.standard.integer(forKey: "uid"))
+                    }
+                //나한테 할당된 이슈들
+                case 2:
+                    filterIssue = filterIssue.filter { list in
+                        var isAssign = false
+                        list.assignees?.forEach { assignee in
+                            if assignee.userId == String( UserDefaults.standard.integer(forKey: "uid")) {
+                                isAssign = true
+                            }
+                        }
+                        return isAssign
+                    }
+                //내가 댓글을 남긴 이슈들 (보류)
+                case 3:
+                    filterIssue = filterIssue.filter { list in
+                        var isComment = false
+                        
+                        list.comments?.forEach { comment in
+                            isComment =  (comment.uid == UserDefaults.standard.integer(forKey: "uid"))
+                        }
+                        
+                        return isComment
+                    }
+                    
+                //닫힌 이슈들
+                case 4:
+                    filterIssue = filterIssue.filter {
+                        $0.isOpen == false
+                    }
+                default:
+                    break
+                }
+            }
+            print(filterIssue)
+            weakSelf.status.searchResultList.value = filterIssue
+        }
+        
+    )
     
     init() {
-        requestIssueData()
+        service.requestIssueListGet()
         status.issues.bindAndFire(updateResultListView)
     }
     
     func updateResultListView(issues: [IssueListModel]) {
         status.searchResultList.value = issues
-    }
-    
-    func requestIssueData() {
-        // 검색 결과 화면에서 돌아오면 다시 호출해 주어야 한다.
-        AF.request(url, method: .get, parameters: nil, headers: httpHeaders).responseJSON { (response) in
-            switch response.result {
-            case .success(let result):
-                do {
-                    let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-                    let decodedData = try JSONDecoder().decode([IssueListModel].self, from: resultData)
-                    self.status.issues.value = decodedData
-                    print(self.status.issues.value)
-                } catch {
-                    print(error)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
     
 }

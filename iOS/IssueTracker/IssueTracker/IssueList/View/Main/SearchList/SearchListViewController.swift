@@ -6,18 +6,18 @@ class SearchListViewController: UIViewController {
     
     @IBOutlet weak var collectionview: UICollectionView!
     
-    var defaultModelData = ["abcdefg", "dummy"] //TOOD: 나중에 삭제해야 한다.]
     lazy var dataLayout = makeDataLayout()
+    
+    
+    // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
-        applySnapshot(sections: defaultModelData)
     }
     
-    func setup(models: [ResultType]) {
-        
-    }
+    
+    // MARK: Configure CollectionView
     
     func applySnapshot(sections: [ResultType]) {
         var snapshot = NSDiffableDataSourceSnapshot<[ResultType], ResultType>()
@@ -53,6 +53,17 @@ class SearchListViewController: UIViewController {
             return UICollectionViewCompositionalLayout(section: section)
         }
 }
+
+
+// MARK: UICollectionViewDelegate Delegate
+
+extension SearchListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 검색 결과 일치하는 이슈 검색하기
+    }
+}
+
+
 
 #if DEBUG
 
