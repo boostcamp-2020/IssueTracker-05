@@ -52,7 +52,6 @@ class IssueResultViewController: UIViewController {
                     return nil
                 }
                 
-                print("issue.iid",issue.iid,issue.isSelected)
                 cell.setup(
                     iid: issue.iid,
                     title: issue.title,

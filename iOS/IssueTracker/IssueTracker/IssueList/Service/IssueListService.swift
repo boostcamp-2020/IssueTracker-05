@@ -32,15 +32,11 @@ class IssueListService {
             switch response.result {
             case .success(let result):
                 do {
-                    
-                    print(result)
-                    
+//                    print(result)
                     let resultData = try JSONSerialization.data(withJSONObject: result, options: .prettyPrinted)
-                    print(resultData)
-                    
+//                    print(resultData)
                     let decodedData = try JSONDecoder().decode([IssueListModel].self, from: resultData)
                     weakSelf.viewModel.status.issues.value = decodedData
-                    
                     
                 } catch {
                     print(error)
@@ -79,7 +75,6 @@ class IssueListService {
                 guard let weakSelf = self else { return }
                 switch response.result {
                 case .success(let data):
-                    print(String(data: data, encoding: .utf8))
                     weakSelf.requestIssueListGet()
                     print("success",data)
                 case .failure(let error):

@@ -149,6 +149,43 @@ class SignUpViewController: UIViewController {
     
 }
 
+//extension SignUpViewController {
+//    
+//    private func addKeyboardNotification() {
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillShow),
+//            name: UIResponder.keyboardWillShowNotification,
+//            object: nil
+//        )
+//        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillHide),
+//            name: UIResponder.keyboardWillHideNotification,
+//            object: nil
+//        )
+//    }
+//    
+////    @objc private func keyboardWillShow(_ notification: Notification) {
+////        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+////            let keybaordRectangle = keyboardFrame.cgRectValue
+////            let keyboardHeight = keybaordRectangle.height
+////            popupViewVerticalConstraint.constant =  -keyboardHeight / 2
+////        }
+////    }
+////    
+////    @objc private func keyboardWillHide(_ notification: Notification) {
+////        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+////            let keybaordRectangle = keyboardFrame.cgRectValue
+////            let keyboardHeight = keybaordRectangle.height
+////            popupViewVerticalConstraint.constant = 0
+////        }
+////    }
+//    
+//}
+
+
 
 extension SignUpViewController: UITextFieldDelegate {
     
