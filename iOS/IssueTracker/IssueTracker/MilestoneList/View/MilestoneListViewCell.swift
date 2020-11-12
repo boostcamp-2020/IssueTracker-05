@@ -77,7 +77,7 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
         guard let open = numberOfOpen else { return 0 }
         guard let close = numberOfClosed else { return 0 }
         if open + close == 0 { return 0 }
-        return (Int(Float(close) / Float(open + close))) * 100
+        return (Int(Float(close) * 100 / Float(open + close)))
     }
     
     override func reset() {
@@ -86,3 +86,4 @@ class MilestoneListCellSwipeView: BothSidesSwipingView {
     }
 }
 
+    
