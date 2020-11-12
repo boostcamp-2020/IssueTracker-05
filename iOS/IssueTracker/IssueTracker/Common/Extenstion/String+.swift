@@ -47,3 +47,14 @@ extension String {
     }
     
 }
+
+
+extension String {
+    func timeFormatToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+}
