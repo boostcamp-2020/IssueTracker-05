@@ -1,4 +1,5 @@
 import db from '@models';
+import getTargetIssue from './readIssue';
 
 export default async (updatedContent, iid) => {
   try {
