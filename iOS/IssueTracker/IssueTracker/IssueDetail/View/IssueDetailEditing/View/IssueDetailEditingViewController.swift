@@ -135,10 +135,11 @@ extension IssueDetailEditingViewController: UICollectionViewDataSource, UICollec
             if let total = viewModel?.status.model.value.milestone?.issues?.count {
                 
                 let complete:Double = viewModel?.status.model.value.milestone?.issues?.reduce(0.0) { (s1, s2) in
-                    s1 + (s2.isOpen ? 1 : 0)
+                    s1 + (s2.isOpen ? 0 : 1)
                 } ?? 0
                 
                 cell.milestoneProgressView.progress = Float(complete / Double(total))
+                cell.milestonePercentLabel.text = "\(Int(Float(complete / Double(total))*100))%"
             }
             
             

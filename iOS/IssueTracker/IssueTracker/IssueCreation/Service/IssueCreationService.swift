@@ -33,10 +33,10 @@ class IssueCreationService {
                    parameters: parameters,
                    headers: headers)
             .responseData { [weak self] response in
-                guard let weakSelf = self else { return }
+                guard self != nil else { return }
                 switch response.result {
                 case .success(let data):
-                    print(String(data: data, encoding: .utf8))
+                    print(data)
                 case .failure(let error):
                     print("error",error)
                 }
@@ -54,10 +54,10 @@ class IssueCreationService {
                    parameters: parameters,
                    headers: headers)
             .responseData { [weak self] response in
-                guard let weakSelf = self else { return }
+                guard self != nil else { return }
                 switch response.result {
                 case .success(let data):
-                    print(String(data: data, encoding: .utf8))
+                    print(data)
                 case .failure(let error):
                     print("error",error)
                 }

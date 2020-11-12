@@ -90,7 +90,7 @@ class LabelListViewController: UIViewController {
             collectionView: collectionView,
             cellProvider: { [weak self] collectionView, indexPath, label
                 -> UICollectionViewCell? in
-                guard let weakSelf = self else { return nil }
+                guard self != nil else { return nil }
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelListCellView", for: indexPath) as? LabelListCellView else {
                     return nil
                 }

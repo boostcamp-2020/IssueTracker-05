@@ -52,7 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     LoginManager.shared.requestAccessToken(with: code)
                 }
             }
-            print(url)
         }
     }
 }
