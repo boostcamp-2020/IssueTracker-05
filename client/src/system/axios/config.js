@@ -7,7 +7,7 @@ import axios from 'axios';
 //   throw new Error(" Couldn't find .env file ");
 // }
 
-const baseURL = 'http://localhost:5000/api';
+const baseURL = '/api';
 
 export const sign = axios.create({
   baseURL,
