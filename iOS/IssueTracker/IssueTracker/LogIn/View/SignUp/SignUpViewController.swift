@@ -23,9 +23,15 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nickNameErrorMessageLabel: UILabel!
     
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet var signUpButtonConstraint: NSLayoutConstraint!
     var viewModel = SignUpViewModel()
     
     var didSendEventClosure: ((SignUpViewController.Event) -> Void)?
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +55,7 @@ class SignUpViewController: UIViewController {
         nickNameTextField.setLabel("닉네임")
         self.navigationItem.leftBarButtonItem =
             UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(tabbedbackButton))
+        addKeyboardNotification()
     }
     
     @objc func tabbedbackButton() {
@@ -111,28 +118,7 @@ class SignUpViewController: UIViewController {
             self.passwordErrorMessageLabel.isHidden = false
         }
     }
-    
-//    func showToast(message : String) {
-//        let width_variable:CGFloat = 100
-//        let toastLabel = UILabel(frame: CGRect(x: width_variable, y: self.view.frame.size.height-100, width: view.frame.size.width-2*width_variable, height: 35))
-//        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-//        toastLabel.textColor = UIColor.white
-//        toastLabel.textAlignment = .center;
-//        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
-//        toastLabel.text = message
-//        toastLabel.alpha = 1.0
-//        toastLabel.layer.cornerRadius = 10;
-//        toastLabel.clipsToBounds  =  true
-//
-//        UIApplication.shared.keyWindow?.addSubview(toastLabel)
-//
-//        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
-//            toastLabel.alpha = 0.0
-//        }, completion: {(isCompleted) in
-//            toastLabel.removeFromSuperview()
-//        })
-//    }
-    
+
     @IBAction func touchedSignUp(_ sender: Any) {
         
         guard let userId = self.idTextField.text, let password = self.passwordTextField.text, let nickname = self.nickNameTextField.text else { return }
@@ -149,41 +135,40 @@ class SignUpViewController: UIViewController {
     
 }
 
-//extension SignUpViewController {
-//    
-//    private func addKeyboardNotification() {
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(keyboardWillShow),
-//            name: UIResponder.keyboardWillShowNotification,
-//            object: nil
-//        )
-//        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(keyboardWillHide),
-//            name: UIResponder.keyboardWillHideNotification,
-//            object: nil
-//        )
-//    }
-//    
-////    @objc private func keyboardWillShow(_ notification: Notification) {
-////        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-////            let keybaordRectangle = keyboardFrame.cgRectValue
-////            let keyboardHeight = keybaordRectangle.height
-////            popupViewVerticalConstraint.constant =  -keyboardHeight / 2
-////        }
-////    }
-////    
-////    @objc private func keyboardWillHide(_ notification: Notification) {
-////        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-////            let keybaordRectangle = keyboardFrame.cgRectValue
-////            let keyboardHeight = keybaordRectangle.height
-////            popupViewVerticalConstraint.constant = 0
-////        }
-////    }
-//    
-//}
+extension SignUpViewController {
+    
+    private func addKeyboardNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            signUpButtonConstraint.constant = 50
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            signUpButtonConstraint.constant = 100
+        }
+    }
+    
+}
 
 
 
