@@ -55,7 +55,8 @@ class IssueResultViewController: UIViewController {
                     iid: issue.iid,
                     title: issue.title,
                     description: issue.content ?? "no",
-                    type: cellType)
+                    type: cellType,
+                    isChosen: issue.isSelected)
                 cell.closeButtonAction = weakSelf.closeIssueButtonTabbed
                 cell.deleteButtonAction = weakSelf.deleteIssueButtonTabbed
                 return cell

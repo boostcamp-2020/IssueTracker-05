@@ -2,7 +2,7 @@ import Foundation
 
 class MultiSelectiveEditingViewModel {
     
-    var touchedIDs = [Int]() // 얘를 카운트 한 만큼 TiTle을 표시해야 한다. title에 관한 데이터 바인더블 필요
+    //var touchedIDs = [Int]() // 얘를 카운트 한 만큼 TiTle을 표시해야 한다. title에 관한 데이터 바인더블 필요
     
     struct Status {
         var issues: Bindable<[IssueListModel]>
@@ -18,13 +18,28 @@ class MultiSelectiveEditingViewModel {
     lazy var action = Action(
         cellTouched: { [weak self] id in
             guard let weakSelf = self else { return }
-            for index in weakSelf.touchedIDs.indices {
-                if weakSelf.touchedIDs[index] == id {
-                    weakSelf.touchedIDs.remove(at: index)
-                    return
+            var issues = weakSelf.status.issues.value
+            for index in issues.indices {
+                if issues[index].iid == id {
+                    print("여기인가\(id)")
+                    if var isSelected = issues[index].isSelected {
+                        isSelected.toggle()
+                        issues[index].isSelected = isSelected
+                    } else {
+                        issues[index].isSelected = true
+                    }
                 }
             }
-            weakSelf.touchedIDs.append(id)
+            weakSelf.status.issues.value = issues // 발생
+
+            //
+//            for index in weakSelf.touchedIDs.indices {
+//                if weakSelf.touchedIDs[index] == id {
+//                    weakSelf.touchedIDs.remove(at: index)
+//                    return
+//                }
+//            }
+//            weakSelf.touchedIDs.append(id)
         }, closeSelectedIssues: {
             // 해당 아이디 클로즈해달라고 서버 요청하고 끝
         })

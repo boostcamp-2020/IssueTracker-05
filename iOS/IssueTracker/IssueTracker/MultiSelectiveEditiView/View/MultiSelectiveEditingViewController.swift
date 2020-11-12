@@ -7,7 +7,7 @@ import UIKit
 
 class MultiSelectiveEditingViewController: UIViewController {
     
-    var selectedIssues: [IssueListModel]?
+    //var selectedIssues: [IssueListModel]?
     
     var viewModel: MultiSelectiveEditingViewModel!
     
@@ -52,16 +52,19 @@ class MultiSelectiveEditingViewController: UIViewController {
     }
     
     @objc func selectAllButtonTabbed() {
-//        collectionView
-//         콜렉션 뷰를 모두 돌면서 버튼 이미지를 모두 true로?
-        print(resultViewController.collectionview.numberOfItems(inSection: 0))
-        
-        (0..<resultViewController.collectionview.numberOfItems(inSection: 0)).indices.forEach{
-            let indexPath = IndexPath(row: $0, section: 0)
-            guard let cell = resultViewController.collectionview.cellForItem(at: indexPath)
-                    as? IssueResultCellView else { return }
-            // 여기서 무언가를 하면 된다!
-        }
+        //        collectionView
+        //         콜렉션 뷰를 모두 돌면서 버튼 이미지를 모두 true로?
+//        print(resultViewController.collectionview.numberOfItems(inSection: 0))
+//
+//        (0..<resultViewController.collectionview.numberOfItems(inSection: 0)).indices.forEach{
+//            let indexPath = IndexPath(row: $0, section: 0)
+//            guard let cell = resultViewController.collectionview.cellForItem(at: indexPath)
+//                    as? IssueResultCellView else { return }
+//            // 여기서 무언가를 하면 된다!
+//            print(cell.iid!)
+//            cell.isCheck = true
+//            cell.drawCheckButton()
+//        }
     }
     
     @objc func closeButtonTabbed() {
@@ -96,9 +99,13 @@ extension MultiSelectiveEditingViewController: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath)
                 as? IssueResultCellView else { return }
         guard let id = cell.iid else { return }
-        cell.toggleCheckButton()
+        //cell.drawCheckButton()
         viewModel.action.cellTouched(id)
     }
     
-   
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        guard let cell = cell as? IssueResultCellView else { return }
+//        //cell.drawCheckButton()
+//    }
+    
 }
