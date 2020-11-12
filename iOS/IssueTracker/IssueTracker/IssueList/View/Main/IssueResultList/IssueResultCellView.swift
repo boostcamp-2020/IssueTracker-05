@@ -17,6 +17,10 @@ class IssueResultCellView: UICollectionViewCell {
     var closeButtonAction: ((Int) -> Void)?
     var deleteButtonAction: ((Int) -> Void)?
     
+    override func prepareForReuse() {
+        detailView.titleLabel.text = ""
+    }
+    
     func setup(iid: Int, title: String, description: String, type: IssueResultCellViewType, isChosen: Bool?) {
         
         switch type {
