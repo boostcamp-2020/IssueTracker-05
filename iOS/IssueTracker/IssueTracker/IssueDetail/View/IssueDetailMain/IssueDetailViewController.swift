@@ -8,10 +8,10 @@ class IssueDetailViewController: UIViewController {
     var swipeUpView: IssueDetailEditingViewController!
     
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var issueTitle: UILabel!
-    @IBOutlet weak var issueNumber: UILabel!
-    @IBOutlet weak var isOpenView: UIButton!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var issueTitleLabel: UILabel!
+    @IBOutlet weak var issueNumberLabel: UILabel!
+    @IBOutlet weak var isOpenButton: UIButton!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
@@ -21,6 +21,8 @@ class IssueDetailViewController: UIViewController {
             configureIsOpenView()
         }
     }
+    
+    var userNickName: String?
 
     
     // MARK: View Life Cycle
@@ -52,8 +54,12 @@ class IssueDetailViewController: UIViewController {
     }
     
     func updateViews(model: IssueDetailModel) {
-        issueTitle.text = model.title
-        issueNumber.text = "#\(model.iid)"
+        if let name = self.userNickName {
+            userNameLabel.text = name
+        }
+        
+        issueTitleLabel.text = model.title
+        issueNumberLabel.text = "#\(model.iid)"
         isOpen = model.isOpen
         if let comments = model.comments {
             applySnapshot(sections: comments)
@@ -112,14 +118,14 @@ class IssueDetailViewController: UIViewController {
     }
     
     func configureIsOpenView() {
-        isOpenView.setImage(
+        isOpenButton.setImage(
             UIImage(systemName: "exclamationmark.circle"),
             for: .normal)
         let title = isOpen ? "open" : "closed"
-        isOpenView.setTitle(title, for: .normal)
-        isOpenView.backgroundColor = isOpen ? .systemGreen : .systemPink
-        isOpenView.tintColor = isOpen ? .white : .white
-        isOpenView.contentEdgeInsets = UIEdgeInsets(top: 1, left: 7, bottom: 1, right: 7)
+        isOpenButton.setTitle(title, for: .normal)
+        isOpenButton.backgroundColor = isOpen ? .systemGreen : .systemPink
+        isOpenButton.tintColor = isOpen ? .white : .white
+        isOpenButton.contentEdgeInsets = UIEdgeInsets(top: 1, left: 7, bottom: 1, right: 7)
     }
     
     func configureContainerOfSwipeView() {

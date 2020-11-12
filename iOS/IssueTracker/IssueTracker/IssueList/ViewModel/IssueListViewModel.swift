@@ -21,7 +21,6 @@ class IssueListViewModel {
         var refreshData: () -> Void
         var addIssueTabbed: (Int?, String, String) -> Void
         var issueFilter: ([Int]) -> Void
-
     }
     
     var status = Status()
@@ -122,7 +121,6 @@ class IssueListViewModel {
             print(filterIssue)
             weakSelf.status.searchResultList.value = filterIssue
         }
-        
     )
     
     init() {

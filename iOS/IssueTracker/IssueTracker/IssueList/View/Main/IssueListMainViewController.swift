@@ -85,6 +85,11 @@ class IssueListMainViewController: UIViewController {
         searchContainerView.addSubview(searchViewController.view)
         viewModel.status.searchResultTitleList
             .bind(searchViewController.applySnapshot(sections:))
+        
+        searchViewController.resultCellTouched = { [weak self] title -> Void in
+            self?.viewModel.action.searchButtonClicked(title)
+            self?.jobsAfterSearchButtonClicked()
+        }
     }
     
     func setupIssueResultViewController() {
@@ -137,8 +142,13 @@ extension IssueListMainViewController: UISearchBarDelegate {
         return true
     }
     
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         viewModel.action.searchButtonClicked(searchBar.text ?? "")
+        jobsAfterSearchButtonClicked()
+    }
+    
+    func jobsAfterSearchButtonClicked() {
         searchBar.searchTextField.text = ""
         searchBar.resignFirstResponder()
         searchContainerView.isHidden = true
@@ -165,6 +175,8 @@ extension IssueListMainViewController: UISearchBarDelegate {
         viewModel.action.searchCancelButtonClicked()
     }
     
+    
+    
 }
 
 
@@ -176,7 +188,14 @@ extension IssueListMainViewController: UICollectionViewDelegate {
             return
         }
         let newVC = UIStoryboard(name: "IssueDetail", bundle: nil).instantiateViewController(identifier: String(describing: IssueDetailViewController.self)) as! IssueDetailViewController
-        newVC.viewModel = IssueDetailViewModel(issueId: cell.iid ?? 0)
+        guard let cellID = cell.iid else { return }
+        newVC.viewModel = IssueDetailViewModel(issueId: cellID)
+        viewModel.status.issues.value.forEach {
+            if $0.iid == cellID {
+                newVC.userNickName = $0.user.nickname
+                return
+            }
+        }
         self.tabBarController?.tabBar.isHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationController?.pushViewController(newVC, animated: true)

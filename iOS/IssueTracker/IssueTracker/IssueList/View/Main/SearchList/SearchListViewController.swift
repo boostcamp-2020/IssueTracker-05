@@ -8,12 +8,15 @@ class SearchListViewController: UIViewController {
     
     lazy var dataLayout = makeDataLayout()
     
+    var resultCellTouched: ((String) -> Void)?
+    
     
     // MARK: View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.collectionViewLayout = createListLayout()
+        collectionview.delegate = self
     }
     
     
@@ -41,17 +44,17 @@ class SearchListViewController: UIViewController {
     }
     
     func createListLayout() -> UICollectionViewLayout {
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1),
-                heightDimension: .absolute(30))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let group = NSCollectionLayoutGroup.horizontal(
-                layoutSize: itemSize, subitems: [item])
-            let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(
-                top: 3, leading: 20, bottom: 0, trailing: 20)
-            return UICollectionViewCompositionalLayout(section: section)
-        }
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(30))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: itemSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 3, leading: 20, bottom: 0, trailing: 20)
+        return UICollectionViewCompositionalLayout(section: section)
+    }
 }
 
 
@@ -59,7 +62,11 @@ class SearchListViewController: UIViewController {
 
 extension SearchListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 검색 결과 일치하는 이슈 검색하기
+        guard let cell = collectionView.cellForItem(at: indexPath)
+                as? SearchListCellView else { return }
+//        cell.titleLabel.text // -> 이거사용
+        guard let text = cell.titleLabel.text else { return }
+        resultCellTouched?(text)
     }
 }
 
