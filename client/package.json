@@ -24,7 +24,8 @@
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.1",
     "styled-theme": "^0.3.3",
-    "styled-tools": "^1.7.2"
+    "styled-tools": "^1.7.2",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

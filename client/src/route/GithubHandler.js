@@ -1,15 +1,12 @@
 import React from 'react';
-import { useCookies } from 'react-cookie';
 import { Redirect } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 const GithubHandler = (props) => {
-  const [userCookies, setUserCookie, removeUserCookie] = useCookies(['user']);
-  const [tokenCookies, setTokenCookie, removeTokenCookie] = useCookies([
-    'token',
-  ]);
+  const cookies = new Cookies();
 
-  localStorage.setItem('token', JSON.stringify(tokenCookies));
-  localStorage.setItem('user', userCookies);
+  localStorage.setItem('token', cookies.get('token'));
+  localStorage.setItem('user', cookies.get('user'));
 
   // removeUserCookie('user');
   // removeTokenCookie('token');
