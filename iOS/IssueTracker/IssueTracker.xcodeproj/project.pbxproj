@@ -73,7 +73,7 @@
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */; };
-		DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* OctoKit */; };
+		DA511AB0254A9E2E0036DDC3 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */; };
 		DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AB4254AA3490036DDC3 /* LoginManager.swift */; };
 		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DA8B33BB2552D6F000E3331F /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */; };
@@ -214,7 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */,
+				DA511AB0254A9E2E0036DDC3 /* BuildFile in Frameworks */,
 				40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -828,7 +828,7 @@
 			);
 			name = IssueTracker;
 			packageProductDependencies = (
-				DA511AAF254A9E2E0036DDC3 /* OctoKit */,
+				DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */,
 			);
 			productName = IssueTracker;
 			productReference = DABEB863254821B3006471F6 /* IssueTracker.app */;
@@ -863,7 +863,7 @@
 			);
 			mainGroup = DABEB85A254821B3006471F6;
 			packageReferences = (
-				DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */,
+				DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = DABEB864254821B3006471F6 /* Products */;
 			projectDirPath = "";
@@ -1232,13 +1232,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1247,17 +1247,18 @@
 		};
 		DABEB879254821B4006471F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1297,7 +1298,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */ = {
+		DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
 			requirement = {
@@ -1308,9 +1309,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA511AAF254A9E2E0036DDC3 /* OctoKit */ = {
+		DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */;
+			package = DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */;
 			productName = OctoKit;
 		};
 /* End XCSwiftPackageProductDependency section */

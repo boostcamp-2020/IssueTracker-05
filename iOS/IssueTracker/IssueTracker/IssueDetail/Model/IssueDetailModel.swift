@@ -40,11 +40,11 @@ struct IssueDetailModel: Hashable, Codable {
     static func all() -> IssueDetailModel {
         IssueDetailModel(
             iid: 11,
-            title: "이슈 제목",
+            title: "",
             isOpen: true,
             labels: nil,
-            content: "이슈 내용",
-            comments: Comment.all(),
+            content: "",
+            comments: [Comment](),
             updatedAt: "22-2323-1212",
             createdAt: "22-2323-1212",
             milestone: Milestone.all()[0],
@@ -95,40 +95,12 @@ struct Comment: Hashable, Codable {
     static func all() -> [Comment] {
         [
             Comment(cid: 1,
-                    content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다",
+                    content: "짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명",
                     createdAt: "12312312313123",
                     user: User(
                         uid: 22,
-                        userId: "정명짱",
-                        nickname: "짱짱짱정재명")),
-            Comment(cid: 2,
-                    content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다",
-                    createdAt: "12312312233123123123123",
-                    user: User(
-                        uid: 232,
-                        userId: "재명짱",
-                        nickname: "짱짱짱정재명")),
-            Comment(cid: 3,
-                    content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다",
-                    createdAt: "1231231231231233123123123123",
-                    user: User(
-                        uid: 222,
-                        userId: "정재짱",
-                        nickname: "짱짱정재명")),
-            Comment(cid: 4,
-                    content: "하뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면단 메 담당자, 레이블, 마일스톤 목록이 나오고 선택할 수 있다",
-                    createdAt: "12312312312312331233",
-                    user: User(
-                        uid: 23,
-                        userId: "정재명짱",
-                        nickname: "짱짱짱정재명")),
-            Comment(cid: 5,
-                    content: "하단 메뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면 담당자, 레이블, 마일스톤 목록이 뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면나오고 선택할 수 뉴를 잡아서 위로 끌어올리면, 담당자, 레이블과 마일스톤을 영역으로 나눠서 표시한다. [Edit] 버튼을 누르면있다",
-                    createdAt: "1231231231231233123123123123",
-                    user: User(
-                        uid: 12,
-                        userId: "정재명짱",
-                        nickname: "짱짱짱정재명"))
+                        userId: "조정래명",
+                        nickname: "짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명짱짱짱조정래명"))
         ]
     }
 }

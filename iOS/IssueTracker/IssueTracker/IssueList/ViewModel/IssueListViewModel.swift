@@ -91,7 +91,7 @@ class IssueListViewModel {
                     filterIssue = filterIssue.filter { list in
                         var isAssign = false
                         list.assignees?.forEach { assignee in
-                            if assignee.userId == String( UserDefaults.standard.integer(forKey: "uid")) {
+                            if assignee.uid == UserDefaults.standard.integer(forKey: "uid") {
                                 isAssign = true
                             }
                         }
