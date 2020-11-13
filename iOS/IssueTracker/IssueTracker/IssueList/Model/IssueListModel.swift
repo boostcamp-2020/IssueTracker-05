@@ -79,18 +79,9 @@ struct IssueListModel: Codable, Hashable {
     
     
     static func all() -> [IssueListModel] {
-        var newModel = [IssueListModel]()
-        newModel.append(
-            IssueListModel(
-                iid: 11,
-                title: "testtesttest",
-                content: "Hello",
-                isOpen: true,
-                labels: [],
-                user: User(uid: 1, userId: "123123", nickname: "123123"))
-        )
-        
-        return newModel
+        return [
+            IssueListModel(iid: 1, title: "asdasd", isOpen: true, labels: Label.all(), user: User(uid: 1, userId: "d", nickname: "asd"))
+        ]
     }
  
 }
