@@ -79,8 +79,9 @@ const MilestoneInform = (props) => {
   let complete;
 
   if (props.issues.length !== 0) {
+    console.log(props);
     complete = Math.floor(
-      (100 * props.issues.filter((v) => v.isOpen).length) / props.issues.length,
+      (100 * props.issues.filter((v) => !v.isOpen).length) / props.issues.length,
     );
   } else {
     complete = 0;
