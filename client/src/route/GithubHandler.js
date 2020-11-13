@@ -8,8 +8,8 @@ const GithubHandler = (props) => {
   localStorage.setItem('token', cookies.get('token'));
   localStorage.setItem('user', cookies.get('user'));
 
-  // removeUserCookie('user');
-  // removeTokenCookie('token');
+  cookies.remove('token');
+  cookies.remove('user');
 
   return <Redirect to={{ pathname: '/' }} />;
 };
