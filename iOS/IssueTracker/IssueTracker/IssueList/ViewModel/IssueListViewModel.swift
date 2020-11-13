@@ -21,7 +21,6 @@ class IssueListViewModel {
         var refreshData: () -> Void
         var addIssueTabbed: (Int?, String, String) -> Void
         var issueFilter: ([Int]) -> Void
-
     }
     
     var status = Status()
@@ -67,7 +66,6 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             if let id = iid {
                 weakSelf.service.requestEditIssue(issueId: id, title: title, content: content)
-                print(id)
             } else {
                 weakSelf.service.requestAddIssue(title: title, content: content)
             }
@@ -75,9 +73,7 @@ class IssueListViewModel {
             guard let weakSelf = self else { return }
             
             var filterIssue = weakSelf.status.issues.value
-            
-            print(filterIssue)
-            
+
             conditions.forEach { condition in
                 switch condition {
                 //열린 이슈들
@@ -95,7 +91,7 @@ class IssueListViewModel {
                     filterIssue = filterIssue.filter { list in
                         var isAssign = false
                         list.assignees?.forEach { assignee in
-                            if assignee.userId == String( UserDefaults.standard.integer(forKey: "uid")) {
+                            if assignee.uid == UserDefaults.standard.integer(forKey: "uid") {
                                 isAssign = true
                             }
                         }
@@ -125,7 +121,6 @@ class IssueListViewModel {
             print(filterIssue)
             weakSelf.status.searchResultList.value = filterIssue
         }
-        
     )
     
     init() {

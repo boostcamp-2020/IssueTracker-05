@@ -101,28 +101,7 @@ class LoginManager {
     }
     
     func requestiOSJWT(acccess_token:String, handler: @escaping (Bool) -> Void) {
-        
-        let parameters = ["token":acccess_token]
-        
-        let headers: HTTPHeaders = ["content-type": "application/x-www-form-urlencoded"]
-        
         handler(true)
-        
-//        AF.request(api_server_url+"/api/login/apple", method: .post, parameters: parameters, headers: headers).responseJSON { (response) in
-//            print(response)
-//            switch response.result {
-//            case let .success(json):
-//                if let json = json as? [String: Any] {
-//                    UserDefaults.standard.setValue(json["token"]!, forKey: "token")
-//                    self.updateUI?()
-//                    handler(true)
-//                }
-//            case let .failure(error):
-//                print(error)
-//                handler(false)
-//            }
-//        }
-        
     }
     
     func requestLoginPost(userId:String, password: String, handler: @escaping (Bool) -> Void) {

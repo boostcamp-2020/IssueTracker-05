@@ -21,7 +21,6 @@
 		8810F8802557CF5C00784C57 /* LabelListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F87F2557CF5C00784C57 /* LabelListViewModel.swift */; };
 		8810F8842557D11700784C57 /* LabelListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8810F8832557D11700784C57 /* LabelListService.swift */; };
 		8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */; };
-		881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */; };
 		881BC67C25510A5B00676011 /* IssueDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881BC67B25510A5B00676011 /* IssueDetailedView.swift */; };
 		8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8846B43F2549A552009073D6 /* SearchListCellView.swift */; };
 		8856FFBF254A811700C7FD26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8856FFBD254A811700C7FD26 /* Main.storyboard */; };
@@ -35,6 +34,8 @@
 		888125AA255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888125A9255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift */; };
 		888125AE255BE701000D0F20 /* MultiSelectedEditing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 888125AD255BE701000D0F20 /* MultiSelectedEditing.storyboard */; };
 		889BFD99255CF2DB00021C11 /* MultiSelectiveEditingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BFD98255CF2DB00021C11 /* MultiSelectiveEditingService.swift */; };
+		889BFDB7255DB2B000021C11 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BFDB6255DB2AE00021C11 /* Date+.swift */; };
+		889BFDC7255DB74800021C11 /* BothSidesSwipingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BFDC6255DB74700021C11 /* BothSidesSwipingView.swift */; };
 		88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B8F0FD254AB14400C23791 /* LabelListViewController.swift */; };
 		88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C03807254961BE000D4D4A /* IssueListViewModel.swift */; };
 		88C0380B254961E4000D4D4A /* IssueListMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0380A254961E4000D4D4A /* IssueListMainViewController.swift */; };
@@ -72,7 +73,7 @@
 		DA511A91254A83020036DDC3 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A8D254A83020036DDC3 /* SignInViewModel.swift */; };
 		DA511A9C254A83A00036DDC3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511A9A254A83A00036DDC3 /* SignInViewController.swift */; };
 		DA511AA2254A83EF0036DDC3 /* ValidationChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AA0254A83EF0036DDC3 /* ValidationChecker.swift */; };
-		DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* OctoKit */; };
+		DA511AB0254A9E2E0036DDC3 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */; };
 		DA511AB5254AA3490036DDC3 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA511AB4254AA3490036DDC3 /* LoginManager.swift */; };
 		DA71EACE2549916700F5EC25 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = DA71EACD2549916700F5EC25 /* dummy.json */; };
 		DA8B33BB2552D6F000E3331F /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8B33B92552D6F000E3331F /* IssueDetailViewController.swift */; };
@@ -121,7 +122,6 @@
 		8810F87F2557CF5C00784C57 /* LabelListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewModel.swift; sourceTree = "<group>"; };
 		8810F8832557D11700784C57 /* LabelListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListService.swift; sourceTree = "<group>"; };
 		8818249C25484B9B00C352A8 /* UIVIew+LivePreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIVIew+LivePreview.swift"; sourceTree = "<group>"; };
-		881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
 		881BC67B25510A5B00676011 /* IssueDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailedView.swift; sourceTree = "<group>"; };
 		8846B43F2549A552009073D6 /* SearchListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCellView.swift; sourceTree = "<group>"; };
 		8856FFBE254A811700C7FD26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +135,8 @@
 		888125A9255BE3C1000D0F20 /* MultiSelectiveEditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectiveEditingViewController.swift; sourceTree = "<group>"; };
 		888125AD255BE701000D0F20 /* MultiSelectedEditing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiSelectedEditing.storyboard; sourceTree = "<group>"; };
 		889BFD98255CF2DB00021C11 /* MultiSelectiveEditingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectiveEditingService.swift; sourceTree = "<group>"; };
+		889BFDB6255DB2AE00021C11 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		889BFDC6255DB74700021C11 /* BothSidesSwipingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BothSidesSwipingView.swift; sourceTree = "<group>"; };
 		88B8F0F4254AB0F400C23791 /* MilestoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MilestoneList.storyboard; sourceTree = "<group>"; };
 		88B8F0F7254AB12000C23791 /* LabelList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LabelList.storyboard; sourceTree = "<group>"; };
 		88B8F0FA254AB13800C23791 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
@@ -212,7 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA511AB0254A9E2E0036DDC3 /* OctoKit in Frameworks */,
+				DA511AB0254A9E2E0036DDC3 /* BuildFile in Frameworks */,
 				40514A205AB341AE2553A685 /* Pods_IssueTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +280,7 @@
 				88CB53A1255A2F5000C99A9A /* UIColor+.swift */,
 				8875E97E255843CE0066146D /* String+.swift */,
 				DAC05BA9255D1A11003FCE94 /* Toast.swift */,
+				889BFDB6255DB2AE00021C11 /* Date+.swift */,
 			);
 			path = Extenstion;
 			sourceTree = "<group>";
@@ -480,8 +483,8 @@
 				8818249B25484B8000C352A8 /* Extenstion */,
 				DABEB866254821B3006471F6 /* AppDelegate.swift */,
 				DABEB868254821B3006471F6 /* SceneDelegate.swift */,
+				889BFDC6255DB74700021C11 /* BothSidesSwipingView.swift */,
 				88C03822254990C5000D4D4A /* Bindable.swift */,
-				881BC6782550EC3F00676011 /* BothSidesSwipingView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -825,7 +828,7 @@
 			);
 			name = IssueTracker;
 			packageProductDependencies = (
-				DA511AAF254A9E2E0036DDC3 /* OctoKit */,
+				DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */,
 			);
 			productName = IssueTracker;
 			productReference = DABEB863254821B3006471F6 /* IssueTracker.app */;
@@ -860,7 +863,7 @@
 			);
 			mainGroup = DABEB85A254821B3006471F6;
 			packageReferences = (
-				DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */,
+				DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = DABEB864254821B3006471F6 /* Products */;
 			projectDirPath = "";
@@ -977,6 +980,7 @@
 				8810F8772557B9D400784C57 /* LabelListCoordinator.swift in Sources */,
 				8810F60C255A829800620452 /* MilestoneEditingViewController.swift in Sources */,
 				880CC6172552301500AE34C5 /* IssueListFilterViewController.swift in Sources */,
+				889BFDC7255DB74800021C11 /* BothSidesSwipingView.swift in Sources */,
 				8810F8802557CF5C00784C57 /* LabelListViewModel.swift in Sources */,
 				88C0381D25497B5E000D4D4A /* IssueResultViewController.swift in Sources */,
 				88C03808254961BE000D4D4A /* IssueListViewModel.swift in Sources */,
@@ -997,6 +1001,7 @@
 				8810F87A2557C0C400784C57 /* LabelListCellView.swift in Sources */,
 				DA335264255664B000B9F24A /* Coordinator.swift in Sources */,
 				8818249D25484B9B00C352A8 /* UIVIew+LivePreview.swift in Sources */,
+				889BFDB7255DB2B000021C11 /* Date+.swift in Sources */,
 				8846B4402549A552009073D6 /* SearchListCellView.swift in Sources */,
 				8810F87D2557C8BF00784C57 /* LabelListModel.swift in Sources */,
 				88B8F0FE254AB14400C23791 /* LabelListViewController.swift in Sources */,
@@ -1020,7 +1025,6 @@
 				8875E9782557DA910066146D /* LabelEditingViewController.swift in Sources */,
 				DA1B56FB2550269800FE8D2D /* MilestoneListModel.swift in Sources */,
 				DAC05BAA255D1A11003FCE94 /* Toast.swift in Sources */,
-				881BC6792550EC3F00676011 /* BothSidesSwipingView.swift in Sources */,
 				DAC05B7E255A4DAD003FCE94 /* IssueCreationViewModel.swift in Sources */,
 				DA0C60922557B865000CC10E /* MilestoneCollectionViewCell.swift in Sources */,
 				88E697452553F8F00090635D /* IssueDetailService.swift in Sources */,
@@ -1228,13 +1232,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1243,17 +1247,18 @@
 		};
 		DABEB879254821B4006471F6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99391153C87C09297B5F4CA5 /* Pods-IssueTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = IssueTracker/IssueTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8ULFNR9M33;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				INFOPLIST_FILE = IssueTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = net.ralph.IssueTracker5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1293,7 +1298,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */ = {
+		DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nerdishbynature/octokit.swift";
 			requirement = {
@@ -1304,9 +1309,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DA511AAF254A9E2E0036DDC3 /* OctoKit */ = {
+		DA511AAF254A9E2E0036DDC3 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DA511AAE254A9E2E0036DDC3 /* XCRemoteSwiftPackageReference "octokit" */;
+			package = DA511AAE254A9E2E0036DDC3 /* RemoteSwiftPackageReference */;
 			productName = OctoKit;
 		};
 /* End XCSwiftPackageProductDependency section */

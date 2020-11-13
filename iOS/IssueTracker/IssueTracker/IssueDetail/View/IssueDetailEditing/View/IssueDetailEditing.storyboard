@@ -100,12 +100,20 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtH-RF-lwJ">
+                                                            <rect key="frame" x="358" y="10" width="26" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstItem="U6h-Cd-4Ng" firstAttribute="leading" secondItem="d3Z-ec-91g" secondAttribute="leading" constant="10" id="2WJ-y6-9s2"/>
+                                                        <constraint firstItem="WtH-RF-lwJ" firstAttribute="top" secondItem="d3Z-ec-91g" secondAttribute="top" constant="10" id="5Hd-2G-OYN"/>
                                                         <constraint firstAttribute="trailing" secondItem="UbS-IT-ine" secondAttribute="trailing" constant="10" id="88S-D3-rhE"/>
                                                         <constraint firstItem="UbS-IT-ine" firstAttribute="top" secondItem="U6h-Cd-4Ng" secondAttribute="bottom" constant="10" id="9AI-Xw-X6i"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WtH-RF-lwJ" secondAttribute="trailing" constant="10" id="OGI-A2-IbM"/>
                                                         <constraint firstItem="U6h-Cd-4Ng" firstAttribute="top" secondItem="d3Z-ec-91g" secondAttribute="top" constant="10" id="WvH-Kx-OM6"/>
                                                         <constraint firstItem="UbS-IT-ine" firstAttribute="leading" secondItem="d3Z-ec-91g" secondAttribute="leading" constant="10" id="pMG-tK-WEl"/>
                                                     </constraints>
@@ -120,6 +128,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="milestoneLabel" destination="U6h-Cd-4Ng" id="n7g-Ha-0Bm"/>
+                                            <outlet property="milestonePercentLabel" destination="WtH-RF-lwJ" id="lBx-SX-GLS"/>
                                             <outlet property="milestoneProgressView" destination="UbS-IT-ine" id="DIe-bA-BRg"/>
                                         </connections>
                                     </collectionViewCell>

@@ -36,12 +36,14 @@ class MilestoneEditingViewController: UIViewController {
         if let milestone = self.milestone {
             titleField.text = milestone.title
             descriptionField.text = milestone.content ?? ""
-            uptoDateField.placeholder = milestone.dueDate
+            if milestone.dueDate != "0000-00-00" {
+                uptoDateField.placeholder = milestone.dueDate
+            }
             return
         }
-        titleField.text = ""
-        descriptionField.text = ""
-        uptoDateField.placeholder = "yyyy-mm-dd"
+        titleField.placeholder = "제목을 입력해주세요."
+        descriptionField.placeholder = "설명을 입력해주세요."
+        uptoDateField.placeholder = "yyyy-mm-dd(선택)"
     }
     
     func setupDefaultValue(with milestone: Milestone) {
@@ -60,15 +62,9 @@ class MilestoneEditingViewController: UIViewController {
     @IBAction func saveButtonTabbed(_ sender: UIButton) {
         saveButton.isEnabled = false
         
-        guard let title = titleField.text else {
-            print("title nil")
-            return }
-        guard let date = uptoDateField.text else {
-            print("title nil")
-            return }
-        guard let desc = descriptionField.text else {
-            print("title nil")
-            return }
+        guard let title = titleField.text else { return }
+        guard let date = uptoDateField.text else { return }
+        guard let desc = descriptionField.text else { return }
         
         if let milestone = self.milestone {
             delegate?.MilestoneEditSaveButtonDidTab(
@@ -145,7 +141,6 @@ extension MilestoneEditingViewController {
     @objc private func keyboardWillHide(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keybaordRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keybaordRectangle.height
             popupViewVerticalConstraint.constant += 0
         }
     }

@@ -84,7 +84,7 @@ class MilestoneListViewController: UIViewController {
             collectionView: collectionView,
             cellProvider: { [weak self] collectionView, indexPath, milestone
                 -> UICollectionViewCell? in
-                guard let weakSelf = self else { return nil }
+                guard self != nil else { return nil }
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MilestoneListViewCell", for: indexPath) as? MilestoneListViewCell else {
                     return nil
                 }
