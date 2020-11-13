@@ -24,7 +24,6 @@ const treatState = () => {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     dispatch({
       type: 'CHANGE_HANDLER',
       name,

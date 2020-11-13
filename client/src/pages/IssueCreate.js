@@ -5,7 +5,7 @@ import MainHeader from '@molecules/MainHeader';
 import IssueDropBox from '@organisms/IssueDropBox';
 import IssueCreate from '@organisms/IssueCreate';
 
-import IssuePageStore from '@constants/issue/issuePage';
+import IssueCreateStore from '@constants/issue/issueCreate';
 
 const WhoreWrapper = styled.div`
   box-sizing: border-box;
@@ -25,12 +25,9 @@ const Wrapper2 = styled.div`
 `;
 
 const IssueInform = (props) => {
-  const [state, getIssue, getAssignees, getLabels, getMilestones] = IssuePageStore();
-
+  const [state, changeHandler, submit, getSidebar] = IssueCreateStore();
   useEffect(() => {
-    getAssignees();
-    getLabels();
-    getMilestones();
+    getSidebar();
   }, []);
 
   return (
@@ -38,7 +35,10 @@ const IssueInform = (props) => {
       <MainHeader />
       <WhoreWrapper>
         <Wrapper1>
-          <IssueCreate />
+          <IssueCreate
+            state={state}
+            onChange={changeHandler}
+            onSubmit={submit} />
         </Wrapper1>
         <Wrapper2>
           <IssueDropBox state={state} />

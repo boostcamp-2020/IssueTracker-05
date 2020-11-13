@@ -22,9 +22,18 @@ const IssueListTitle = (props) => {
     history.push('/create-issue');
   };
 
+  const logoutHandler = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    history.push('/login');
+  };
+
   return (
     <WhoreWrapper>
       <Input />
+      <Button onClick={logoutHandler} type="cancel">
+        Logout
+      </Button>
       <Button onClick={redirectLabel}> Label / Milestone</Button>
       <Button type="create" onClick={redirectNewIssue}>
         New Issue
