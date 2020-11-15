@@ -34,7 +34,7 @@
 ## 바로가기
 저희 팀에 대해 더 알고 싶으시다면 요기로👉 [Home🏠](https://github.com/boostcamp-2020/IssueTracker-05/wiki)
 
-👉[iOS 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/iOS) <br>
-👉[client 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/client) <br>
-👉[server 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/server)
+👉 [iOS 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/iOS) <br>
+👉 [client 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/client) <br>
+👉 [server 바로가기](https://github.com/boostcamp-2020/IssueTracker-05/tree/master/server)
 
