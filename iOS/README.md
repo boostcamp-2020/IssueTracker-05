@@ -22,8 +22,8 @@
 
 ## 일지
 
-|월|화|수|목|
-|:-:|:-:|:-:|:-:|:-:|
+| 월 | 화 | 수 | 목 |
+|---|---|---|---|
 |[Day1](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day01-%EA%B0%9C%EB%B0%9C)|[Day2](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day02-%EA%B0%9C%EB%B0%9C)|[Day3](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day03-%EA%B0%9C%EB%B0%9C)|[Day4](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day04-%EA%B0%9C%EB%B0%9C)|
 |[Day6](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day06-%EA%B0%9C%EB%B0%9C)|[Day7](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day07-%EA%B0%9C%EB%B0%9C)|[Day8](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day08-%EA%B0%9C%EB%B0%9C)|[Day9](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day09-%EA%B0%9C%EB%B0%9C)|
 |[Day11](https://github.com/boostcamp-2020/IssueTracker-05/wiki/Day11-%EA%B0%9C%EB%B0%9C)|[Day12]()|[Day13]()|[Day14]()|
